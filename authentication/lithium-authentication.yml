@@ -1,0 +1,94 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/lithium-care-analytics-reports-openapi.json, openapi/lithium-care-conversation-tag-rules-v2-openapi.json,
+  openapi/lithium-care-secure-forms-api-v2-openapi.json, openapi/lithium-care-supervisor-reports-api-openapi.json,
+  openapi/lithium-marketing-beta-analytics-api-openapi.json, openapi/lithium-marketing-conversations-api-v1-openapi.json,
+  openapi/lithium-marketing-conversations-openapi.json, openapi/lithium-marketing-crm-openapi.json,
+  openapi/lithium-marketing-introspection-api-openapi.json, openapi/lithium-marketing-labelsets-api-openapi.json,
+  openapi/lithium-marketing-notification-service-openapi.json, openapi/lithium-marketing-stream-api-openapi.json
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: sec0
+  type: http
+  scheme: basic
+  sources:
+  - openapi/lithium-care-analytics-reports-openapi.json
+  - openapi/lithium-care-conversation-tag-rules-v2-openapi.json
+  - openapi/lithium-care-secure-forms-api-v2-openapi.json
+  - openapi/lithium-care-supervisor-reports-api-openapi.json
+- name: sec0
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+    scopes: 0
+  sources:
+  - openapi/lithium-marketing-beta-analytics-api-openapi.json
+  - openapi/lithium-marketing-conversations-openapi.json
+  - openapi/lithium-marketing-crm-openapi.json
+  - openapi/lithium-marketing-introspection-api-openapi.json
+  - openapi/lithium-marketing-labelsets-api-openapi.json
+  - openapi/lithium-marketing-notification-service-openapi.json
+  - openapi/lithium-marketing-stream-api-openapi.json
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+    tokenUrl: https://login.spredfast.com/v3/oauth/token
+    scopes: 1
+  sources:
+  - openapi/lithium-marketing-conversations-api-v1-openapi.json
+
+docs:
+  care_jwt: https://developer.khoros.com/khoroscaredevdocs/docs/jwt-authentication
+  care_overview: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
+  community_api_apps: https://developer.khoros.com/khorosauroradevdocs/docs/generating-api-credentials-with-api-apps
+  marketing_events_auth: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+
+documented_models:
+  - product: Khoros Care
+    schemes: [http-basic, jwt]
+    detail: >-
+      Care v1 and v2 APIs use HTTP Basic against the per-instance
+      {instance}.response.lithium.com host. The Automation Framework's Bot API v3 on
+      api.app.lithium.com uses a signed JSON Web Token (header/payload/signature) instead —
+      the documentation is explicit that only Bot API v3 uses JWT. The Care Authentication
+      API v2 (/api/v2/tokens) exchanges credentials for a token.
+    docs: https://developer.khoros.com/khoroscaredevdocs/docs/jwt-authentication
+  - product: Khoros Marketing
+    schemes: [oauth2]
+    detail: >-
+      OAuth 2.0 against login.spredfast.com. Token introspection is available at
+      https://api.spredfast.com/v2/whoami. Tenancy is carried in x-sf-company-id /
+      x-sf-initiative / x-sf-user-email request headers alongside the token.
+  - product: Khoros Community
+    schemes: [session, api-app-credentials]
+    detail: >-
+      Community v2 rejects anonymous calls with its JSON error envelope (code 203).
+      Credentials are provisioned as API apps through the community admin. Documentation is
+      behind the Atlas login.
+  - product: Khoros Flow
+    schemes: [api-key]
+    detail: Token-based access to the flow.ai REST API.
+
+caveats:
+  - >-
+    The `sec0` clientCredentials scheme repeated across seven Khoros Marketing definitions
+    declares tokenUrl https://example.com/oauth2/token with an empty scopes map. That is a
+    ReadMe API-designer placeholder, not a real authorization server — the working OAuth
+    endpoints are the login.spredfast.com pair on the Conversations API v1 definition.
+  - >-
+    Only 12 of the 28 harvested definitions declare any security scheme at all; the
+    remaining 16 (mostly the per-instance Care v2 APIs) document authentication in prose
+    only.
+
+related:
+  scopes: ../scopes/lithium-scopes.yml
+  conventions: ../conventions/lithium-conventions.yml
