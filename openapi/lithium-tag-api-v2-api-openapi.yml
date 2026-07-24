@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Tag Api V2 API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Tag Api V2
+paths:
+  /:
+    get:
+      summary: Get tag details
+      description: Get tag details
+      operationId: tags
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\": \"success\",\n   \"data\": [\n       {\n          \"updatedMillis\": 1453895922415,\n          \"tagId\": 2,\n          \"lswUuid\": \"304f654d-f03f-11e3-a5df-525400201fe1\",\n          \"name\": \"Laptops\",\n          \"hierarchy\": \"Computers > Laptops\",\n          \"internalHierarchy\": \"1>2\",\n          \"tagColor\": \"PURPLE\",\n          \"url\": \"\",\n          \"typeValue\": 1,\n          \"visibilityValue\": 1054,\n          \"tagState\": \"ENABLED\",\n          \"tagPartition\": \"COMPANY\"\n       },\n          \"updatedMillis\": 1453895922415,\n          \"tagId\": 3,\n          \"lswUuid\": \"304f67fc-f03f-11e3-a5df-525400201fe1\",\n          \"name\": \"Desktops\",\n          \"hierarchy\": \"Computers > Desktops\",\n          \"internalHierarchy\": \"1>3\",\n          \"tagColor\": \"GREY\",\n          \"url\": \"\",\n          \"typeValue\": 1,\n          \"visibilityValue\": 1054,\n          \"tagState\": \"ENABLED\",\n          \"tagPartition\": \"COMPANY\"\n       }\n  ]\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl -L -u [USERNAME]:[PASSWORD] ''https://[companykey].response.lithium.com/api/v2/tags'' '
+          name: GET /tags Example
+        samples-languages:
+        - curl
+      tags:
+      - Tag Api V2
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

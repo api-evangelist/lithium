@@ -1,0 +1,508 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Folder API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Folder
+paths:
+  /{environment}/v1/company/{companyId}/folder:
+    get:
+      tags:
+      - Folder
+      summary: Retrieve a list of folders.
+      description: This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders.
+      operationId: listFolders
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: nameFilter
+        in: query
+        description: If present, filter the results by the provided "nameFilter" string
+        required: false
+        schema:
+          type: string
+      - name: metrics
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityPageResponseAssetFolder'
+    post:
+      tags:
+      - Folder
+      summary: Create a new Content Center Asset Folder.
+      description: ''
+      operationId: createFolder
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetFolderCreate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAssetFolder'
+  /{environment}/v1/company/{companyId}/folder/{folderId}:
+    get:
+      tags:
+      - Folder
+      summary: Retrieve a specific Content Center Asset Folder by ID.
+      description: ''
+      operationId: findFolder
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAssetFolder'
+    put:
+      tags:
+      - Folder
+      summary: Updates an existing Content Center Asset Folder.
+      description: ''
+      operationId: updateFolder
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetFolderUpdate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAssetFolder'
+    delete:
+      tags:
+      - Folder
+      summary: Deletes an existing Content Center Asset Folder.
+      description: ''
+      operationId: deleteFolder
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionalResponseLong'
+  /{environment}/v1/company/{companyId}/folder/{folderId}/assets:
+    get:
+      tags:
+      - Folder
+      summary: Retrieve a list of assets in a folder.
+      description: ''
+      operationId: listFolderAssets
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: orderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: direction
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+          default: ASCENDING
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityPageResponseAsset'
+components:
+  schemas:
+    AssetFolderMetrics:
+      type: object
+      properties:
+        assetCount:
+          type: integer
+          format: int64
+        lastModifiedAssetImageThumb:
+          type: string
+          format: uri
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    Asset:
+      type: object
+      required:
+      - name
+      - folderId
+      - sfEntityType
+      properties:
+        id:
+          type: string
+        companyId:
+          type: string
+        folderId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        text:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        services:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+            - FACEBOOK
+            - GOOGLEPLUS
+            - SINAWEIBO
+            - LINKEDIN
+            - PINTEREST
+            - YOUTUBE
+            - VK
+        intendedForPublishing:
+          type: boolean
+          default: false
+        intendedForModeration:
+          type: boolean
+          default: false
+        createdDate:
+          type: string
+          format: date-time
+        originSystem:
+          type: string
+        originId:
+          type: string
+        contentLabels:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        image:
+          type: string
+          format: uri
+        imageMedium:
+          type: string
+          format: uri
+          readOnly: true
+        imageThumb:
+          type: string
+          format: uri
+          readOnly: true
+        video:
+          type: string
+          format: uri
+        videoThumb:
+          type: string
+          format: uri
+          readOnly: true
+        sfEntityType:
+          type: string
+          enum:
+          - Asset
+        externalId:
+          type: string
+          description: External ID to represent the ID of the asset outside of the system
+      example:
+        folderId: '999'
+        name: asset_name
+        description: Cool new Asset!
+        text: Text body.
+        sfEntityType: Asset
+    EntityResponseAssetFolder:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AssetFolder'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    AssetFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        companyId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        metrics:
+          $ref: '#/components/schemas/AssetFolderMetrics'
+        sfEntityType:
+          type: string
+          example: AssetFolder
+    EntityPageResponseAsset:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Asset'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    AssetFolderUpdate:
+      type: object
+      required:
+      - sfEntityType
+      - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - AssetFolder
+    AssetFolderCreate:
+      type: object
+      required:
+      - sfEntityType
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - AssetFolder
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
+          type: integer
+          format: int64
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+    EntityPageResponseAssetFolder:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssetFolder'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    OptionalResponseLong:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int64
+        status:
+          $ref: '#/components/schemas/CallStatus'
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

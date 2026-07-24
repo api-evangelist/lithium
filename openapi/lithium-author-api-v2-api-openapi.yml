@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Author Api V2 API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Author Api V2
+paths:
+  /{lswUuid}:
+    get:
+      summary: Get author details by ID
+      description: Get author details by the unique Care author ID
+      operationId: authorslswuuid
+      parameters:
+      - name: lswUuid
+        in: path
+        description: The unique Care author ID
+        schema:
+          type: string
+        required: true
+      - name: include_deleted_crm
+        in: query
+        description: When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{  \n  \"status\":\"success\",\n  \"data\":[  \n    {  \n      \"id\":\"2134086e-9024-4c3b-ab3b-afc6a36ea61c\",\n      \"displayNumber\":13366,\n      \"handles\":{  \n        \"external\":[  \n          {  \n            \"@class\":\"ExternalSpecificAuthorData\",\n            \"lswUuid\":\"edce6d32-ee19-4740-87b8-a9b69afd677d\",\n            \"displayNumber\":77285,\n            \"profileUrl\":\"\",\n            \"id\":\"73292839-fb73-4b2c-b7b6-32db4b2f855a\",\n            \"name\":\"Anusuya_user\",\n            \"screenName\":\"Anusuya_user\",\n            \"providerInstanceId\":\"smooch\",\n            \"profileImageURL\":\"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\",\n            \"networkinstance\":\"smooch\",\n            \"avatarUrl\":\"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\"\n          }\n        ],\n        \"twitter\":[  \n          {  \n            \"@class\":\"ScrubbedProviderSpecificAuthorData\",\n            \"id\":\"16148233\",\n            \"lswUuid\":\"b20dc99d-144a-4942-92a9-215e3f2ff864\",\n            \"networkinstance\":\"twitter\",\n          }\n        ]\n      },\n      \"tags\":[  \n        {  \n          \"creator\":{  \n            \"type\":\"AGENT\"\n          },\n          \"tagId\":14865,\n          \"lswUuid\":\"b8fee328-3676-4dd8-bab5-162c2417650e\"\n        }\n      ],\n      \"notes\":[  \n\n      ],\n      \"timezone\":[  \n        \"-21600\"\n      ]\n    }\n  ]\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/edce6d32-ee19-4740-87b8-a9b69afd677d'
+        samples-languages:
+        - curl
+      tags:
+      - Author Api V2
+    put:
+      summary: Update or merge author handles by Care author ID
+      description: Update or merge existing author handles for the specified Care author ID
+      operationId: authorslswuuid-1
+      parameters:
+      - name: lswUuid
+        in: path
+        description: The unique Care author ID
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - RAW_BODY
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: '{      "attribute_name1":"value1" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Author Api V2
+  /:
+    post:
+      summary: Create Care author
+      description: Add an author to Care
+      operationId: authors-1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                networkinstance:
+                  type: string
+                  description: The specific instance of the CRM system. The value of `networkinstance` is the value of a key that you give to Khoros Support or Khoros Services during author integration configuration. **The `networkinstance` field is required in the JSON body for POST with CRM and Khoros Community network types that can have multiple instances** (as opposed to network types like Instagram and Facebook that have only a single, default network)
+                id:
+                  type: string
+                  description: The author's ID in the CRM system to join with the new Author resource being created. The ID must be unique within the CRM instance.
+                customFieldName:
+                  type: string
+                  description: Maps to an internal attribute name (key) provided to Khoros for the custom CRM author attribute associated with the CRM instance
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Author already exists in the system:
+                  value: '"message": "Author entry already exists",
+
+                    "status": "fail"'
+      deprecated: false
+      security: []
+      tags:
+      - Author Api V2
+    put:
+      summary: Batch update author records by author
+      description: Batch update author records associated with a single author
+      operationId: authors-2
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://your_social_response_instance.lithium.com/api/v2/authors/
+        samples-languages:
+        - http
+      tags:
+      - Author Api V2
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet SsoId API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: SsoId
+paths:
+  /ssoId/{ssoId}/state:
+    put:
+      summary: Set Agent State by SSO ID
+      description: Set the State (`stateUUID`) of an active Agent identified by SSO ID (`ssoId`)
+      operationId: change-agent-state-by-sso-id
+      parameters:
+      - name: stateUUID
+        in: query
+        description: The unique identifier for the state to which the Agent will be switched.
+        schema:
+          type: string
+      - name: ssoId
+        in: path
+        description: The universally unique identifier (UUID) of the Agent being placed into a new state.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"success\",\n    \"data\": \"OK\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: string
+                    example: OK
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"fail\",\n    \"message\": \"State with UUID c0ed7f9f-f98a-40a8-a9a4-example56ba8 not available to team TEAM.5228 for User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  message:
+                    type: string
+                    example: State with UUID c0ed7f9f-f98a-40a8-a9a4-example56ba8 not available to team TEAM.5228 for User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"fail\",\n    \"message\": \"User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03 does not have an active session, could not set state to example-5c3e-4c2f-8949-670425bb4e18\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  message:
+                    type: string
+                    example: User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03 does not have an active session, could not set state to example-5c3e-4c2f-8949-670425bb4e18
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -L -u username:password 'https://{care-instance}/api/v2/users/ssoId/{ssoId}/state?stateUUID={stateUUID}'
+        samples-languages:
+        - curl
+      tags:
+      - SsoId
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

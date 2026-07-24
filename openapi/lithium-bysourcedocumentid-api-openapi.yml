@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet BySourceDocumentId API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: BySourceDocumentId
+paths:
+  /bySourceDocumentId/networks/{network}/instances/{instance}/id/{source document id}:
+    get:
+      summary: Get conversation details by document source ID
+      description: Get conversation details by display ID
+      operationId: get-conversation-details-by-document-source-id
+      parameters:
+      - name: network
+        in: path
+        description: The unique name of the network serving as the source channel for the conversation.
+        schema:
+          type: string
+        required: true
+      - name: instance
+        in: path
+        description: The unique name of the Khoros Care instance through which the conversation is managed.
+        schema:
+          type: string
+        required: true
+      - name: source document id
+        in: path
+        description: This is the unique ID given by the source channel for the document. (i.e. Facebook post)
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"userHasPermissionToView\": true,\n      \"displayNumber\": 1878862,\n      \"primaryDocId\": 3319840,\n      \"stateId\": 2,\n      \"dispositionId\": 19,\n      \"encodedCaseDisposition\": 2579,\n      \"customDisposition\": \"We love examples\",\n      \"status\": \"CLOSED\",\n      \"assignedToAgent\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"lswUuid\": \"401e017b-e98f-4eed-9345-3487ae9207cf\"\n      },\n      \"lswUuid\": \"45cd7d6f-ca88-46ff-a71d-84859c94e420\",\n      \"ownerId\": 1003043,\n      \"reviewOwnerId\": 0,\n      \"createDate\": 1592511678995,\n      \"tarStartDate\": 1592435572000,\n      \"dueDate\": 1592521972000,\n      \"closeDate\": 1592918036137,\n      \"responsePortalLink\": \"https://<your_care_url>/portal/conversation/1878862\",\n      \"primaryMessage\": {\n        \"lakeProperties\": [],\n        \"userHasPermissionToView\": true,\n        \"isSourceHidden\": false,\n        \"gdprdeleted\": false,\n        \"documentId\": 3319840,\n        \"conversationDisplayId\": 1878862,\n        \"network\": \"lithium\",\n        \"networkinstance\": \"example.com/\",\n        \"id\": \"example.com/:444\",\n        \"lswUuid\": \"e1624458-361d-4072-b92c-03a98a6d8452\",\n        \"author\": {\n          \"gdprMarked\": false,\n          \"gdprScrubbed\": false,\n          \"authorId\": 111327667,\n          \"lswUuid\": \"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\",\n          \"name\": \"DaveEvGUEST\",\n          \"screenName\": \"DaveEvGUEST\",\n          \"network\": \"lithium\",\n          \"networkinstance\": \"example.com/\",\n          \"id\": \"94\",\n          \"avatarUrl\": \"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\",\n          \"personId\": 111549247,\n          \"tags\": [\n            {\n              \"creator\": {\n                \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 28724,\n              \"lswUuid\": \"7b84200c-54fe-4a01-a7db-b1118b83bead\"\n            },\n            {\n              \"creator\": {\n                \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 61719,\n              \"lswUuid\": \"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\"\n            },\n            {\n              \"creator\": {\n                 \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 60314,\n              \"lswUuid\": \"a500a902-15c3-4b1b-b57f-39796f9c6392\"\n            },\n            {\n              \"creator\": {\n                \"type\": \"AGENT\"\n              },\n              \"tagId\": 16284,\n              \"lswUuid\": \"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\"\n            },\n            {\n              \"creator\": {\n                \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 59916,\n              \"lswUuid\": \"3045f656-2938-4b85-8b43-cd358fc16f68\"\n            }\n          ]\n        },\n        \"receiveDate\": 1592511678000,\n        \"publishDate\": 1592435572000,\n        \"postContent\": \"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\",\n        \"url\": \"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\",\n        \"isPrivate\": false,\n        \"isReferenceDoc\": true,\n        \"tags\": [\n          {\n            \"creator\": {\n              \"type\": \"SYSTEM\"\n            },\n            \"tagId\": 12,\n            \"lswUuid\": \"48a6df96-1f88-11e7-9247-99eedf934291\"\n          },\n          {\n            \"creator\": {\n              \"type\": \"SYSTEM\"\n            },\n            \"tagId\": 3945,\n            \"lswUuid\": \"240bf655-4728-11e8-84fc-0a0bfd34bea2\"\n          }\n        ],\n        \"docMeta\": {\n          \"lang\": \"en\"\n        },\n        \"urlRecords\": [],\n        \"title\": \"Need some advice\",\n        \"inReplySourceId\": \"\",\n        \"text\": \"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\",\n        \"documentType\": \"LI_TOPIC\",\n        \"ingestMethod\": \"UNKNOWN\",\n        \"createdDuringBusinessHours\": false,\n        \"isSourceDeleted\": false,\n        \"isSoftAttached\": false,\n        \"media\": []\n      },\n      \"messages\": [\n        {\n          \"lakeProperties\": [],\n          \"userHasPermissionToView\": true,\n          \"isSourceHidden\": false,\n          \"gdprdeleted\": false,\n          \"documentId\": 3319840,\n          \"conversationDisplayId\": 1878862,\n          \"network\": \"lithium\",\n          \"networkinstance\": \"example.com/\",\n          \"id\": \"example.com/:444\",\n          \"lswUuid\": \"e1624458-361d-4072-b92c-03a98a6d8452\",\n          \"author\": {\n            \"gdprMarked\": false,\n            \"gdprScrubbed\": false,\n            \"authorId\": 111327667,\n            \"lswUuid\": \"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\",\n            \"name\": \"DaveEvGUEST\",\n            \"screenName\": \"DaveEvGUEST\",\n            \"network\": \"lithium\",\n            \"networkinstance\": \"example.com/\",\n            \"id\": \"94\",\n            \"avatarUrl\": \"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\",\n            \"personId\": 111549247,\n            \"tags\": [\n              {\n                \"creator\": {\n                  \"type\": \"SYSTEM\"\n                },\n                \"tagId\": 28724,\n                \"lswUuid\": \"7b84200c-54fe-4a01-a7db-b1118b83bead\"\n              },\n              {\n                \"creator\": {\n                  \"type\": \"SYSTEM\"\n                },\n                \"tagId\": 61719,\n                \"lswUuid\": \"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\"\n              },\n              {\n                \"creator\": {\n                  \"type\": \"SYSTEM\"\n                },\n                \"tagId\": 60314,\n                \"lswUuid\": \"a500a902-15c3-4b1b-b57f-39796f9c6392\"\n              },\n              {\n                \"creator\": {\n                  \"type\": \"AGENT\"\n                },\n                \"tagId\": 16284,\n                \"lswUuid\": \"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\"\n              },\n              {\n                \"creator\": {\n                  \"type\": \"SYSTEM\"\n                },\n                \"tagId\": 59916,\n                \"lswUuid\": \"3045f656-2938-4b85-8b43-cd358fc16f68\"\n              }\n            ]\n          },\n          \"receiveDate\": 1592511678000,\n          \"publishDate\": 1592435572000,\n          \"postContent\": \"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\",\n          \"url\": \"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\",\n          \"isPrivate\": false,\n          \"isReferenceDoc\": true,\n          \"tags\": [\n            {\n              \"creator\": {\n                \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 12,\n              \"lswUuid\": \"48a6df96-1f88-11e7-9247-99eedf934291\"\n            },\n            {\n              \"creator\": {\n                \"type\": \"SYSTEM\"\n              },\n              \"tagId\": 3945,\n              \"lswUuid\": \"240bf655-4728-11e8-84fc-0a0bfd34bea2\"\n            }\n          ],\n          \"docMeta\": {\n            \"lang\": \"en\"\n          },\n          \"urlRecords\": [],\n          \"title\": \"Need some advice\",\n          \"inReplySourceId\": \"\",\n          \"text\": \"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\",\n          \"documentType\": \"LI_TOPIC\",\n          \"ingestMethod\": \"UNKNOWN\",\n          \"createdDuringBusinessHours\": false,\n          \"isSourceDeleted\": false,\n          \"isSoftAttached\": false,\n          \"media\": []\n        }\n      ],\n      \"tags\": [\n        {\n          \"creator\": {\n            \"type\": \"AGENT\"\n          },\n          \"tagId\": 20545,\n          \"lswUuid\": \"ec56355a-6628-4c11-865b-10adf01f7f71\"\n        },\n        {\n          \"creator\": {\n            \"type\": \"SYSTEM\"\n          },\n          \"tagId\": 61987,\n          \"lswUuid\": \"861038a4-9604-4920-9f12-952f1e04484f\"\n        }\n      ],\n      \"priority\": 5,\n      \"workQueue\": {\n        \"lswUuid\": \"e00dd04f-a459-47d8-9d94-d368eaffedef\",\n        \"id\": 156\n      },\n      \"notes\": [\n        {\n          \"source\": \"UI\",\n          \"createDate\": 1592918036000,\n          \"note\": \"test\",\n          \"agent\": {\n            \"name\": \"John Doe\",\n            \"email\": \"johndoe@example.com\",\n            \"lswUuid\": \"401e017b-e98f-4eed-9345-3487ae9207cf\"\n          }\n        }\n      ],\n      \"needsAttention\": false,\n      \"discussionStyle\": \"LI_BLOG\",\n      \"snoozeExpiration\": -1,\n      \"isUserWatching\": false,\n      \"isUserHelping\": false,\n      \"totalResponses\": 0,\n      \"hasResponse\": false\n    }\n  ]\n}\n404:\n\n \n\n{\n  \"status\": \"fail\",\n  \"message\": \"No conversations found that contain document with id not_a_real_id\"\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"fail\",\n  \"message\": \"No conversations found that contain document with id not_a_real_id\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  message:
+                    type: string
+                    example: No conversations found that contain document with id not_a_real_id
+      deprecated: false
+      tags:
+      - BySourceDocumentId
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

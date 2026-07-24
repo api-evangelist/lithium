@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Workqueues API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Workqueues
+paths:
+  /workqueues:
+    get:
+      summary: Get work queues details
+      description: Returns details about work queues in  Care
+      operationId: workqueues
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\": \"success\",\n   \"data\": [\n       {\n          \"id\": \"f0aac89c-8479-49d0-b331-472722e0334e\",\n           \"name\": \"Default Work Queue\",\n           \"description\": null,\n           \"archived\": false\n       },\n       {\n           \"id\": \"8380c937-37bb-4cd3-aef4-b850ff5499b1\",\n           \"name\": \"Hardware\",\n           \"description\": null,\n           \"archived\": false\n       },\n       {\n           \"id\": \"586d0003-4e09-46d9-9492-4fe884fd00f6\",\n           \"name\": \"Services\",\n           \"description\": null,\n           \"archived\": false\n       },\n       {\n          \"id\": \"980f06b2-e3d4-4aed-90ed-a62a9dd06e38\",\n          \"name\": \"Software\",\n           \"description\": null,\n           \"archived\": false\n       }\n   ]\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: f0aac89c-8479-49d0-b331-472722e0334e
+                        name:
+                          type: string
+                          example: Default Work Queue
+                        description: {}
+                        archived:
+                          type: boolean
+                          example: false
+                          default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -L -u username:password 'https://your_social_response_instance.lithium.com/api/v1/workqueues'
+        samples-languages:
+        - curl
+      tags:
+      - Workqueues
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

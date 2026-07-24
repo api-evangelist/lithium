@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Teams API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Teams
+paths:
+  /teams:
+    get:
+      summary: Get team IDs
+      description: Get team IDs
+      operationId: teams
+      parameters:
+      - name: companyKey
+        in: query
+        description: The company key found in **Account Admin > General Settings > Analytics API Settings**.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "Formatted JSON Data\n{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[\n    {\n      \"uuid\":\"4c1d5194-8946-4e7f-aa8e-6315b3379bf3\",\n      \"teamId\":6222,\n      \"name\":\"North West\",\n      \"description\":null,\n      \"numberOfMembers\":3\n    },\n    {\n      \"uuid\":\"6af42c52-ff19-4b3b-bd0c-d4cf617f27f8\",\n      \"teamId\":7031,\n      \"name\":\"South West\",\n      \"description\":null,\n      \"numberOfMembers\":3\n    }\n  ]\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -u [USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/teams?companyKey=[COMPANY_KEY]"
+        samples-languages:
+        - curl
+      tags:
+      - Teams
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

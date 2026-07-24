@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Threads API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Threads
+paths:
+  /threads:
+    get:
+      summary: Retrieve a list of threads
+      description: Fetches a list of threads using the Flow REST API.
+      operationId: get-a-list-of-threads
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Required parameter for pagination
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: threads
+        in: path
+        description: A list of threads
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"ok\",\n    \"result\": {\n        \"threads\": [\n            \"EXAMPLE-afa7-45ed-a3db-42c4b538d42c|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            \"EXAMPLE-133b-4d92-84e8-005d5350ca2e|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            \"EXAMPLE-1647-42db-bbb5-9d835f53ee95|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            ...\n        ],\n        \"page\": \"1\",\n        \"pages\": 100\n    }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/threads?sync=true&page=1 HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Threads
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

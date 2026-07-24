@@ -1,0 +1,282 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet MultiChannelMessages API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: MultiChannelMessages
+paths:
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/multiChannelMessage/{messageId}:
+    get:
+      tags:
+      - MultiChannelMessages
+      summary: Retrieve an existing multi-channel message.
+      description: The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative.
+      operationId: getMultiChannelMessage
+      parameters:
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiChannelMessage'
+components:
+  schemas:
+    MessageSponsor:
+      type: object
+      description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to *only* Facebook *verified* Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don't comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
+      properties:
+        profileId:
+          type: string
+          description: The sponsor's profile ID in the corresponding Social Network.
+        displayName:
+          type: string
+          description: The sponsor's display name in the corresponding Social Network.
+        link:
+          type: string
+          description: The link to the sponsor's profile in the corresponding Social Network.
+    SingleChannelMessage:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - SingleChannelMessage
+        service:
+          type: string
+          description: Social network to publish to
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        sponsor:
+          $ref: '#/components/schemas/MessageSponsor'
+    TargetingProfile:
+      type: object
+      properties:
+        targetingType:
+          type: string
+          enum:
+          - ENHANCED
+          - GATED
+        targetingValues:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TargetingValue'
+    PublicationResult:
+      type: object
+      properties:
+        accountId:
+          type: string
+        serviceId:
+          type: string
+        serviceLink:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PUBLISHED
+          - ERROR
+          - DELETED
+        datePublished:
+          type: string
+          format: date-time
+    MessageContent:
+      type: object
+      discriminator:
+        propertyName: sfEntityType
+    TargetingValue:
+      type: object
+      properties:
+        subType:
+          type: string
+          enum:
+          - COUNTRY
+          - REGION
+          - METRO
+          - CONTINENT
+          - ZIP_CODE
+        value:
+          type: string
+        description:
+          type: string
+    MultiChannelMessage:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - MultiChannelMessage
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        messageService:
+          type: string
+          description: Social network of Spredfast message
+          default: MULTI_CHANNEL
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - MULTI_CHANNEL
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+        channelMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SingleChannelMessage'
+      example:
+        sfEntityType: MultiChannelMessage
+        id: '111'
+        messageService: MULTI_CHANNEL
+        channelMessages:
+        - sfEntityType: SingleChannelMessage
+          service: FACEBOOK
+          targetAccountIds:
+          - '4'
+          content:
+            sfEntityType: Status
+            text: Status Update
+        - sfEntityType: SingleChannelMessage
+          service: FACEBOOK
+          targetAccountIds:
+          - '5'
+          content:
+            sfEntityType: Status
+            text: Facebook test post
+    MessageNote:
+      type: object
+      description: A Note on the Message.
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - Note
+        text:
+          type: string
+          description: The note's text content.
+        id:
+          type: string
+          description: The note's ID. This should be left empty or set to 0 for new notes.
+        createdByDisplayName:
+          type: string
+          description: The formatted name [firstName lastName] of the note's author.
+          readOnly: true
+        createdByUserId:
+          type: string
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          readOnly: true
+        lastModifiedByUserId:
+          type: string
+          readOnly: true
+        lastModifiedDate:
+          type: string
+          format: date-time
+          readOnly: true
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Control API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Control
+paths:
+  /control/network/{networkKey}/externalId/{externalId}/author/{authorId}:
+    get:
+      summary: Get entity currently controlling conversation by author and network
+      description: Return which entity (agent or bot) has current control of the conversation associated with the specified author on the specified network.
+      operationId: controlnetworknetworkkeyexternalidexternalidauthorauthorid-get
+      parameters:
+      - name: networkKey
+        in: path
+        description: The social network for the registration. Must match the `network` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: externalId
+        in: path
+        description: The external identifier of the bot on the social network. Must match the `externalId field` of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: authorId
+        in: path
+        description: The author ID. Find the author ID from the [Author object](ref:author-object) included in all messages.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{  \n  \"data\":{  \n    \"author\":{  \n      \"id\":\"authorId\",\n      \"fullName\":\"author name\"\n    },\n    \"coordinate\":{  \n      \"companyKey\":\"some-company\",\n      \"networkKey\":\"some-network\",\n      \"externalId\":\"external-id\"\n    },\n    \"owner\":{  \n      \"type\":\"BOT\",\n      \"appId\":\"foobar-bot\"\n    },\n    \"lastUpdatedTS\":1540501501979,\n    \"type\":\"control\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      author:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: authorId
+                          fullName:
+                            type: string
+                            example: author name
+                      coordinate:
+                        type: object
+                        properties:
+                          companyKey:
+                            type: string
+                            example: some-company
+                          networkKey:
+                            type: string
+                            example: some-network
+                          externalId:
+                            type: string
+                            example: external-id
+                      owner:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: BOT
+                          appId:
+                            type: string
+                            example: foobar-bot
+                      lastUpdatedTS:
+                        type: integer
+                        example: 1540501501979
+                        default: 0
+                      type:
+                        type: string
+                        example: control
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl GET \\\n  https://api.app.lithium.com/bots/v3/control/network/apple/externalId/117101b2-e66a-11e7-86ec-b1a405106b73/author/urn:mbid \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Control
+  /control:
+    put:
+      summary: Pass conversation control
+      description: Pass conversation control
+      operationId: control-put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: A `control` JSON payload. See payload details below.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 200 OK{  \n  \"data\":{  \n    \"type\":\"control\",\n    \"owner\":{  \n      \"type\":\"AGENT\"\n    },\n    \"author\":{  \n      \"id\":\"urn:mbid:....\",\n      \"fullName\":\"Anonymous Alligator\"\n    },\n    \"coordinate\":{  \n      \"companyKey\":\"[COMPANY KEY]\",\n      \"networkKey\":\"apple\",\n      \"externalId\":\"117101b2-e66a-11e7-86ec-b1a405106b73\",\n      \"messageId\":\"b7bee35c-0cfc-4de9-8a88-9b444d7b0475\",\n      \"botId\":\"my-abc-bot\",\n      \"scope\":\"PRIVATE\"\n    },\n    \"conversationDisplayId\":\"<conversationDisplayId>\",\n    \"lastUpdateTS\":\"<last-message-update-timestamp>\"\n  }\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}"
+        '409':
+          description: '409'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"requestId\": \"requestId\",\n  \"error\": {\n    \"messages\": [\n      \"A (possibly transient) conflict occurred. No change was made. This request may be retried.\"\n    ]\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                    example: requestId
+                  error:
+                    type: object
+                    properties:
+                      messages:
+                        type: array
+                        items:
+                          type: string
+                          example: A (possibly transient) conflict occurred. No change was made. This request may be retried.
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/control \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n \t-H \"Authorization: Bearer [TOKEN]\""
+        samples-languages:
+        - curl
+      tags:
+      - Control
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

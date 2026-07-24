@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Labels API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Labels
+paths:
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/contentLabel:
+    get:
+      tags:
+      - Labels
+      summary: Retrieve paged labels.
+      description: ''
+      operationId: findContentLabelsForCompany
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: q
+        in: query
+        description: If present, filter the results by the provided title string.
+        required: false
+        schema:
+          type: string
+      - name: priority
+        in: query
+        description: If present, only return "top" labels.
+        required: false
+        schema:
+          type: boolean
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentLabel'
+components:
+  schemas:
+    ContentLabel:
+      type: object
+      properties:
+        title:
+          type: string
+        priority:
+          type: boolean
+          default: false
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

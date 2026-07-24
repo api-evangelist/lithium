@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Handover API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Handover
+paths:
+  /handover/{threadId}:
+    post:
+      summary: Handover action
+      description: Use the Flow REST API to create a handover action to pause a bot.
+      operationId: handover-action
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: The unique threadId. This is a required field.
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secondsToPause:
+                  type: integer
+                  description: The number of seconds to pause the bot.
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: "POST rest/v1/handover/EXAMPLE63451da6f15f2b50991651|o_21361542-a262-4aaa-8edb-0f8f88e07d89 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  {\n    \"secondsToPause\": 600\n  }\n}"
+        samples-languages:
+        - http
+      tags:
+      - Handover
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

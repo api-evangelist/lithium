@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Broadcast API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Broadcast
+paths:
+  /broadcast/instant:
+    post:
+      summary: Broadcast to MSISDN
+      description: Broadcasts to a mobile subscriber ISDN (MSISDN) number with the Flow REST API.
+      operationId: broadcast-to-msisdn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                audience:
+                  type: array
+                  description: A list of originator objects. The intended audience to whom to send a message to. See the originator format for more details. Either the `phoneNumber` or `identifier` needs to be provided.
+                  items:
+                    properties:
+                      name:
+                        type: string
+                        description: Mandatory name, for example `Anonymous`
+                      phoneNumber:
+                        type: string
+                        description: Mandatory^1^ MSISDN (phone number in [E164](https://en.wikipedia.org/wiki/E.164) format)
+                      identifier:
+                        type: string
+                        description: Mandatory^1^ identifier
+                      profile:
+                        type: string
+                        description: Optional [profile](ref:create-a-text-message) data
+                    type: object
+                channel:
+                  type: object
+                  description: Information about the Flow integration used to send a message from.
+                  properties:
+                    channelName:
+                      type: string
+                      description: Type of channel to send the message, see the reference table below
+                    externalId:
+                      type: string
+                      description: Identifier of the channel to send the message, see the table below where to find this.
+                payload:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: Should be `event` or `text`
+                    eventName:
+                      type: string
+                      description: Mandatory if type is event. This is the name of the [event](ref:trigger-an-event) to trigger
+                    speech:
+                      type: string
+                      description: Mandatory if type is `text`. Use this to run text classification.
+                    metadata:
+                      type: object
+                      properties:
+                        language:
+                          type: object
+                          description: Optional language to use
+                          properties: {}
+                        timezone:
+                          type: object
+                          description: Optional UTC timezone offset to use
+                          properties: {}
+                        params:
+                          type: object
+                          description: Optional params to use
+                          properties: {}
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: "POST rest/v1/broadcast/instant HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"audience\": [{\n    \"name\": \"John Doe\",\n    \"phoneNumber\": \"+12345678901\",\n    \"profile\": {}\n  }],\n  \"channel\": {\n    \"channelName\": \"whatsapp\",\n    \"externalId\": \"+12345678902\"\n  },\n  \"payload\": {\n    \"type\": \"text\",\n    \"speech\": \"I'm searching for the address of your store in New York\"\n  }\n}"
+          name: Example of TEXT type
+        - language: http
+          code: "POST rest/v1/broadcast/instant HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"audience\": [{\n    \"name\": \"John Doe\",\n    \"phoneNumber\": \"+12345678901\",\n    \"profile\": {}\n  }],\n  \"channel\": {\n    \"channelName\": \"whatsapp\",\n    \"externalId\": \"+10987654321\"\n  },\n  \"payload\": {\n    \"type\": \"event\",\n    \"eventName\": \"Send template\"\n  }\n}"
+          name: Example of EVENT type
+        samples-languages:
+        - http
+      tags:
+      - Broadcast
+  /broadcast/instant/segment:
+    post:
+      summary: Broadcast to Segments
+      description: Broadcast to segments with the Flow REST API.
+      operationId: broadcast-to-segments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                audience:
+                  type: array
+                  description: The segment to trigger event for. A list of segment objects. Either the `name` or `id` needs to be provided.
+                  items:
+                    properties:
+                      name:
+                        type: string
+                        description: Name of your segment, for example `MY_SEGMENT_1`.
+                      id:
+                        type: string
+                        description: ID of your segment. Can be obtained [here](ref:get-audience-segments).
+                    type: object
+                payload:
+                  type: object
+                  description: A list of event objects
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - text
+                      - event
+                      - location
+                      - media
+                    speech:
+                      type: string
+                      description: used for text message type
+                    url:
+                      type: string
+                      description: used for media message type
+                    lat:
+                      type: string
+                      description: used for location message type
+                    eventName:
+                      type: string
+                      description: Name of the [event](https://community.khoros.com/t5/Triggers-Replies/Trigger-event/ta-p/635479) to trigger. For example, `MY_EVENT`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: "POST rest/v1/broadcast/instant/segment HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n    \"audience\": [{\n        \"name\": \"MY_SEGMENT_1\"\n    }, {\n        \"id\": \"ID_OF_MY_SEGMENT_2\"\n    }, {\n        \"name\": \"MY_SEGMENT_3\",\n        \"id\": \"ID_OF_MY_SEGMENT_3\"\n    }],\n    \"payload\": {\n        \"type\": \"event\",\n        \"eventName\": \"EVENT_NAME\"\n    }\n}"
+        samples-languages:
+        - http
+      tags:
+      - Broadcast
+  /broadcast/segments:
+    get:
+      summary: Retrieve audience segments
+      description: Retrieve audience segments with the Flow REST API.
+      operationId: get-audience-segments
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n{\n  \"status\": \"ok\",\n  \"segments\": [{\n      \"agentId\": \"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\",\n      \"audienceId\": \"EXAMPLE-7a3e-40fb-8b44-4de3688509f8\",\n      \"channels\": [\n        \"eazy\"\n      ],\n      \"conditions\": [],\n      \"contact\": \"all\",\n      \"createdAfterCondition\": \"2020-07-14T21:00:00.000Z\",\n      \"createdAt\": \"2020-07-15T15:44:05.831Z\",\n      \"createdBeforeCondition\": \"2020-07-15T21:00:00.000Z\",\n      \"importCondition\": \"all_contacts\",\n      \"title\": \"Created on 15th of July (Eazy)\",\n      \"type\": \"segment\",\n      \"updatedAt\": \"2020-07-15T15:44:05.828Z\"\n    },\n    {\n      \"agentId\": \"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\",\n      \"audienceId\": \"EXAMPLE-db65-4aaf-9b07-9eab3b4ff459\",\n      \"channels\": [\n        \"messenger\"\n      ],\n      \"conditions\": [{\n        \"condition\": \"has_tag_name\",\n        \"conditionValue\": \"OPTIN\"\n      }],\n      \"contact\": \"messenger\",\n      \"createdAfterCondition\": null,\n      \"createdAt\": \"2020-07-15T15:44:37.013Z\",\n      \"createdBeforeCondition\": null,\n      \"importCondition\": \"all_contacts\",\n      \"title\": \"OPTIN tag (Messenger)\",\n      \"type\": \"segment\",\n      \"updatedAt\": \"2020-07-15T15:44:37.012Z\"\n    }\n  ]\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/broadcast/segments?sync=true HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Broadcast
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: AccountSet
+paths:
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset:
+    get:
+      tags:
+      - AccountSet
+      operationId: accountSet
+      parameters:
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccountSet'
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccountSet'
+      description: 'List all account sets and accounts available.
+
+
+        Note: the following criteria must be met for an account set to be listed:
+
+        1. Your user must be a member of the Account Set.
+
+        2. There must be at least one Account registered in the Account Set.'
+      summary: Lists all accounts sets and corresponding accounts available to the user.
+components:
+  schemas:
+    Account:
+      type: object
+      description: A Conversations social media Account
+      properties:
+        sfEntityType:
+          type: string
+        id:
+          type: integer
+        service:
+          type: string
+        name:
+          type: string
+        accountType:
+          type: string
+        serviceId:
+          type: string
+    AccountSet:
+      type: object
+      description: A Conversations AccountSet
+      properties:
+        sfEntityType:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        thumbnail:
+          type: string
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

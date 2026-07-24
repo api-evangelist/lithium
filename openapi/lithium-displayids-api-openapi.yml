@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet DisplayIds API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: DisplayIds
+paths:
+  /displayIds/{displayNumber}:
+    get:
+      summary: Get conversation details by display ID
+      description: Get conversation details by display ID
+      operationId: displayidsdisplaynumber-1
+      parameters:
+      - name: displayNumber
+        in: path
+        description: One or more conversation IDs
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - DisplayIds
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

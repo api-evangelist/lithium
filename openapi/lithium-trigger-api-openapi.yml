@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Trigger API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Trigger
+paths:
+  /trigger/event:
+    get:
+      summary: Retrieve a list of events
+      description: Retrieve a list of events.
+      operationId: get-a-list-of-events
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"ok\",\n    \"result\": {\n        \"items\": [\n            \"EVENT 1\",\n            \"EVENT 2\",\n            \"EVENT 3\"\n        ]\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  result:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: string
+                          example: EVENT 1
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/trigger/event?sync=true HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Trigger
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

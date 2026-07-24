@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Data API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Data
+paths:
+  /data/{subscriptionId}:
+    get:
+      summary: Retrieve Subscription Events
+      description: Poll for events under the specified subscription using Khoros Marketing Events API.
+      operationId: retrieve-subscription-events
+      parameters:
+      - name: subscriptionId
+        in: path
+        description: Subscription UUID
+        schema:
+          type: string
+        required: true
+      - name: offset
+        in: query
+        description: Offset into results, use to cursor through results. **Format:** int32
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum events to return. **Format:** int32
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Data
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

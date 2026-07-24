@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Resolve API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Resolve
+paths:
+  /resolve:
+    put:
+      summary: Mark conversation resolved
+      description: Have a bot mark a conversation as resolved using the Bot v3 API
+      operationId: resolve-put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: A `resolve` JSON payload. See payload details below.
+                  format: json
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/resolve \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Resolve
+  /resolve/{threadId}:
+    post:
+      summary: Resolve Action
+      description: Use the Flow REST API to send a resolution action for a specific thread ID.
+      operationId: resolve-action
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: Unique threadId
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'POST rest/v1/resolve/EXAMPLE25763451da6f15f2b50991651|o_21361542-a262-4aaa-8edb-0f8f88e07d89 HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Resolve
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

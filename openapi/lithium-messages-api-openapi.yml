@@ -1,0 +1,1617 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Messages API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Messages
+paths:
+  /{integrationUuid}/messages/validation:
+    post:
+      summary: Validate JSON request of inbound messages
+      description: Validate the JSON request of inbound messages
+      operationId: integrationuuidmessagesvalidation
+      parameters:
+      - name: integrationUuid
+        in: path
+        description: The unique identifier of the social integration
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: The Raw JSON payload. Refer to [Listening API object definitions](ref:listening-api-object-definitions) to build your JSON.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\":\"success\",\n  \"data\":[\n      \"z135g3jz2tm0x5uq23gerbpiybcbb4\"\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      example: z135g3jz2tm0x5uq23gerbpiybcbb4
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://your_care_instance.lithium.com/api/v2/listening/fa600d27-dde1-4bdc-a3be-2f3edff236c7/messages/validation
+          name: /integrationUuid/messages/validation Example
+        samples-languages:
+        - http
+      tags:
+      - Messages
+  /{integrationUuid}/messages:
+    post:
+      summary: Create inbound messages
+      description: Create inbound messages
+      operationId: integrationuuiddiscussion
+      parameters:
+      - name: integrationUuid
+        in: path
+        description: The unique identifier of the social integration
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: The Raw JSON payload. Refer to [Listening API object definitions](ref:listening-api-object-definitions) to build your JSON.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\":\"success\",\n  \"data\":[\n      \"z135g3jz2tm0x5uq23gerbpiybcbb4\"\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      example: z135g3jz2tm0x5uq23gerbpiybcbb4
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://servername.response.lithium.com/api/v2/listening/fa600d27-dde1-4bdc-a3be-2f3edff236c7/messages
+          name: /integrationUuid/messages Example
+        samples-languages:
+        - http
+      tags:
+      - Messages
+    delete:
+      summary: Delete messages
+      description: Delete messages
+      operationId: integrationuuidmessages-1
+      parameters:
+      - name: integrationUuid
+        in: path
+        description: The unique identifier of the social integration
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: The Raw JSON payload. Refer to [Listening API object definitions](ref:listening-api-object-definitions) to build your JSON.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\":\"success\",\n  \"data\":[\n      \"z135g3jz2tm0xf5uq23gerbpiybcbb4\"\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      example: z135g3jz2tm0xf5uq23gerbpiybcbb4
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://servername.response.lithium.com/api/v2/listening/fa600d27-dde1-4bdc-a3be-2f3edff236c7/messages
+          name: DELETE /integrationUuid/messages Example
+        samples-languages:
+        - http
+      tags:
+      - Messages
+  /messages:
+    post:
+      summary: Generate a Thread ID
+      description: Generate a thread ID for various REST API usages.
+      operationId: generate-a-thread-id
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"ok\",\n    \"threadId\": \"1f85dbe7-fc0a-4f43-a1a0-87216587ab7b|w_caRv6my_8\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  threadId:
+                    type: string
+                    example: 1f85dbe7-fc0a-4f43-a1a0-87216587ab7b|w_caRv6my_8
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'POST rest/v1/messages HTTP/1.1
+
+            HOST: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        - language: javascript
+          code: "import request from \"async-request\";\nconst result = await request({\n  method: 'POST',\n  url: 'https://api.flow.ai/rest/v1/messages',\n  headers: {\n    'Authorization': 'MY_MESSAGING_API_KEY',\n    'Content-Type': 'application/json'\n  },\n  json: true\n})"
+        samples-languages:
+        - http
+        - javascript
+      tags:
+      - Messages
+  /messages/{threadId}:
+    post:
+      summary: Create a Text Message
+      description: Send a text message with the Flow REST API.
+      operationId: create-a-text-message
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: Unique identifier of the thread
+        schema:
+          type: string
+        required: true
+      - name: sync
+        in: query
+        description: Indicates that this message should be processed in sync mode.
+        schema:
+          type: boolean
+          default: true
+      - name: writeConcern
+        in: query
+        description: Indicates that this message should be processed in writeConcern mode.
+        schema:
+          type: boolean
+          default: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: array
+                  items:
+                    properties:
+                      traceId:
+                        type: integer
+                        description: Optional unique number that is passed along to identify the message. Use this to verify message delivery.
+                        format: int32
+                      type:
+                        type: string
+                        description: Indicates the type of message. Should be `text`
+                      speech:
+                        type: string
+                        description: The text or speech message to process. The maximum length of a message is 255 characters.
+                      originator:
+                        type: object
+                        description: Indicates the information about the sender.
+                        properties:
+                          name:
+                            type: string
+                            description: Name representing the originator
+                          role:
+                            type: string
+                            description: Either `external` or `moderator`
+                          profile:
+                            type: object
+                            description: Optional Profile object. An originator can contain additional profile information using the profile object.
+                            properties:
+                              fullName:
+                                type: string
+                                description: Complete name
+                              firstName:
+                                type: string
+                                description: First name
+                              lastName:
+                                type: string
+                                description: Family name
+                              gender:
+                                type: string
+                                description: Gender - M, F or U
+                              language:
+                                type: string
+                                description: Two letter [language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for example `fr`
+                              country:
+                                type: string
+                                description: Lowercase, two letter [country code](https://en.wikipedia.org/wiki/ISO_639-1)
+                              locale:
+                                type: string
+                                description: Locale code that combines the language and country code for example `en-GB`
+                              timezone:
+                                type: integer
+                                description: Number of hours of UTC
+                                format: int32
+                              email:
+                                type: string
+                                description: Email address
+                              phoneNumber:
+                                type: string
+                                description: Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164)
+                              picture:
+                                type: string
+                                description: URL to profile picture
+                      metadata:
+                        type: object
+                        description: The metadata is dynamic in nature and contains key value pairs with additional info. This is optional.
+                        properties: {}
+                    type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\",\n  \"activityId\": \"EXAMPLE-46b1-42b5-aefb-81856a7680bd\",\n  \"agentId\": \"a_EbAZzSW\",\n  \"channelId\": \"a_EbAZzSW\",\n  \"channelName\": \"gateway\",\n  \"threadId\": \"EXAMPLE-79b4-4543-9373-053924209cc7\",\n  \"messages\": [\n    {\n      \"fallback\": \"Hello\",\n      \"silent\": false,\n      \"replyTo\": \"hi\",\n      \"originator\": {\n        \"userId\": \"flowai|system\",\n        \"name\": \"system\",\n        \"role\": \"bot\",\n        \"profile\": {\n          \"picture\": \"https://flow.ai/img/EXAMPLES/flowai.svg\"\n        }\n      },\n      \"actions\": [],\n      \"responses\": [\n        {\n          \"type\": \"text\",\n          \"payload\": {\n            \"text\": \"Hello\"\n          }\n        }\n      ],\n      \"intents\": [],\n      \"entities\": [],\n      \"flow\": {\n        \"flowId\": \"fF5gEqEko\",\n        \"title\": \"Untitled\",\n        \"group\": \"Default\",\n        \"metadata\": []\n      },\n      \"step\": {\n        \"stepId\": \"sXaM8etEl\",\n        \"title\": \"Hi\",\n        \"type\": \"INTENT\"\n      },\n      \"slot\": false,\n      \"params\": {},\n      \"contexts\": [],\n      \"meta\": {\n        \"msgId\": \"EXAMPLE-6b60-47fd-950c-16634d3f2eef\",\n        \"prevMsgId\": null,\n        \"childMsgId\": \"EXAMPLE-29b7-4768-832d-56a6d1eaa8c6\",\n        \"prevChildMsgId\": null,\n        \"createdAt\": 1632166271745,\n        \"keepTyping\": false\n      }\n    }\n  ],\n  \"sentiment\": 0,\n  \"accuracy\": 0,\n  \"originator\": {\n    \"userId\": \"flowai|system\",\n    \"name\": \"system\",\n    \"role\": \"bot\",\n    \"profile\": {\n      \"picture\": \"https://flow.ai/img/EXAMPLE/flowai.svg\"\n    }\n  },\n  \"traceId\": \"EXAMPLE487a59c:23cab391bd64d5f1:6beafa70c487a59c:1\",\n  \"createdAt\": \"2021-09-20T19:31:12.031Z\",\n  \"replyTo\": \"hi\",\n  \"user\": {\n    \"name\": \"M B\",\n    \"role\": \"external\",\n    \"profile\": {\n      \"fullName\": \"M B\",\n      \"firstName\": \"M\",\n      \"lastName\": \"B\",\n      \"email\": \"EXAMPLE@mail.com\",\n      \"locale\": \"en\",\n      \"timezone\": 3,\n      \"gender\": \"U\"\n    }\n  },\n  \"metadata\": {\n    \"params\": {}\n  },\n  \"connectionKey\": \"EXAMPLE-cebd-428c-b3e8-8689bd42d842\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  activityId:
+                    type: string
+                    example: EXAMPLE-46b1-42b5-aefb-81856a7680bd
+                  agentId:
+                    type: string
+                    example: a_EbAZzSW
+                  channelId:
+                    type: string
+                    example: a_EbAZzSW
+                  channelName:
+                    type: string
+                    example: gateway
+                  threadId:
+                    type: string
+                    example: EXAMPLE-79b4-4543-9373-053924209cc7
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fallback:
+                          type: string
+                          example: Hello
+                        silent:
+                          type: boolean
+                          example: false
+                          default: true
+                        replyTo:
+                          type: string
+                          example: hi
+                        originator:
+                          type: object
+                          properties:
+                            userId:
+                              type: string
+                              example: flowai|system
+                            name:
+                              type: string
+                              example: system
+                            role:
+                              type: string
+                              example: bot
+                            profile:
+                              type: object
+                              properties:
+                                picture:
+                                  type: string
+                                  example: https://flow.ai/img/EXAMPLES/flowai.svg
+                        actions:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        responses:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: text
+                              payload:
+                                type: object
+                                properties:
+                                  text:
+                                    type: string
+                                    example: Hello
+                        intents:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        entities:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        flow:
+                          type: object
+                          properties:
+                            flowId:
+                              type: string
+                              example: fF5gEqEko
+                            title:
+                              type: string
+                              example: Untitled
+                            group:
+                              type: string
+                              example: Default
+                            metadata:
+                              type: array
+                              items:
+                                type: object
+                                properties: {}
+                        step:
+                          type: object
+                          properties:
+                            stepId:
+                              type: string
+                              example: sXaM8etEl
+                            title:
+                              type: string
+                              example: Hi
+                            type:
+                              type: string
+                              example: INTENT
+                        slot:
+                          type: boolean
+                          example: false
+                          default: true
+                        params:
+                          type: object
+                          properties: {}
+                        contexts:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        meta:
+                          type: object
+                          properties:
+                            msgId:
+                              type: string
+                              example: EXAMPLE-6b60-47fd-950c-16634d3f2eef
+                            prevMsgId: {}
+                            childMsgId:
+                              type: string
+                              example: EXAMPLE-29b7-4768-832d-56a6d1eaa8c6
+                            prevChildMsgId: {}
+                            createdAt:
+                              type: integer
+                              example: 1632166271745
+                              default: 0
+                            keepTyping:
+                              type: boolean
+                              example: false
+                              default: true
+                  sentiment:
+                    type: integer
+                    example: 0
+                    default: 0
+                  accuracy:
+                    type: integer
+                    example: 0
+                    default: 0
+                  originator:
+                    type: object
+                    properties:
+                      userId:
+                        type: string
+                        example: flowai|system
+                      name:
+                        type: string
+                        example: system
+                      role:
+                        type: string
+                        example: bot
+                      profile:
+                        type: object
+                        properties:
+                          picture:
+                            type: string
+                            example: https://flow.ai/img/EXAMPLE/flowai.svg
+                  traceId:
+                    type: string
+                    example: EXAMPLE487a59c:23cab391bd64d5f1:6beafa70c487a59c:1
+                  createdAt:
+                    type: string
+                    example: '2021-09-20T19:31:12.031Z'
+                  replyTo:
+                    type: string
+                    example: hi
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: M B
+                      role:
+                        type: string
+                        example: external
+                      profile:
+                        type: object
+                        properties:
+                          fullName:
+                            type: string
+                            example: M B
+                          firstName:
+                            type: string
+                            example: M
+                          lastName:
+                            type: string
+                            example: B
+                          email:
+                            type: string
+                            example: EXAMPLE@mail.com
+                          locale:
+                            type: string
+                            example: en
+                          timezone:
+                            type: integer
+                            example: 3
+                            default: 0
+                          gender:
+                            type: string
+                            example: U
+                  metadata:
+                    type: object
+                    properties:
+                      params:
+                        type: object
+                        properties: {}
+                  connectionKey:
+                    type: string
+                    example: EXAMPLE-cebd-428c-b3e8-8689bd42d842
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: "POST rest/v1/messages/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"payload\": {\n    \"type\": \"text\",\n    \"speech\": \"hello\",\n    \"originator\": {\n      \"name\": \"John Doe\",\n      \"role\": \"external\",\n      \"profile\": {\n        \"fullName\": \"John Doe\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"gender\": \"M\",\n        \"locale\": \"en-US\",\n        \"timezone\": -5,\n        \"country\": \"us\",\n        \"email\": \"EXAMPLE@dmail.com\",\n        \"picture\": \"https://...\"\n      }  \n    },\n    \"metadata\": {\n      \"language\": \"en\",\n      \"timezone\": 5,\n      \"params\": {\n        \"product\": [{\n          \"value\": \"Dish washer\"\n        }],\n        \"problems\": [{\n          \"value\": \"Noise\"\n        }, {\n          \"value\": \"Leaks\"\n        }]\n      }\n    }\n  }\n}"
+        samples-languages:
+        - http
+      tags:
+      - Messages
+    get:
+      summary: Retrieve a list of messages
+      description: Fetches a list of messages using the Flow REST API.
+      operationId: get-a-list-of-messages
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Optional parameter for pagination
+        schema:
+          type: integer
+          format: int32
+      - name: '{threadId}'
+        in: path
+        description: A unique identifier of the thread. This is a required field.
+        schema:
+          type: string
+        required: true
+      - name: event
+        in: query
+        description: Optional parameter to enable to retrieve the history of triggered events. Default value is `false`
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\",\n  \"result\": {\n    \"history\": [\n\n      {\n        \"originator\": {\n          \"name\": \"Anonymous\",\n          \"role\": \"external\",\n          \"profile\": {\n            \"fullName\": \"Anonymous\"\n          }\n        },\n        \"messages\": [\n          {\n            \"fallback\": \"Test Event\",\n            \"replyTo\": null,\n            \"contexts\": [],\n            \"params\": {},\n            \"intents\": [],\n            \"createdAt\": \"2021-09-14T13:45:08.516Z\",\n            \"meta\": {\n              \"msgId\": \"EXAMPLE-da4b-45aa-bf7a-2556a6ad073d\"\n            },\n            \"responses\": [\n              {\n                \"type\": \"event\",\n                \"payload\": {\n                  \"lat\": null,\n                  \"long\": null,\n                  \"name\": \"Selection\",\n                  \"title\": null,\n                  \"url\": null\n                }\n              }\n            ]\n          }\n        ],\n        \"interactionId\": \"EXAMPLE-bc7e-4ddf-a3bf-ea9c069602fb\"\n      }\n     \n    ],\n    \"threadId\": \"EXAMPLE-853a-448f-9f91-ef397588ff87\",\n    \"page\": 3,\n    \"pages\": 5\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  result:
+                    type: object
+                    properties:
+                      history:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            originator:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  example: Anonymous
+                                role:
+                                  type: string
+                                  example: external
+                                profile:
+                                  type: object
+                                  properties:
+                                    fullName:
+                                      type: string
+                                      example: Anonymous
+                            messages:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  fallback:
+                                    type: string
+                                    example: Test Event
+                                  replyTo: {}
+                                  contexts:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties: {}
+                                  params:
+                                    type: object
+                                    properties: {}
+                                  intents:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties: {}
+                                  createdAt:
+                                    type: string
+                                    example: '2021-09-14T13:45:08.516Z'
+                                  meta:
+                                    type: object
+                                    properties:
+                                      msgId:
+                                        type: string
+                                        example: EXAMPLE-da4b-45aa-bf7a-2556a6ad073d
+                                  responses:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          example: event
+                                        payload:
+                                          type: object
+                                          properties:
+                                            lat: {}
+                                            long: {}
+                                            name:
+                                              type: string
+                                              example: Selection
+                                            title: {}
+                                            url: {}
+                            interactionId:
+                              type: string
+                              example: EXAMPLE-bc7e-4ddf-a3bf-ea9c069602fb
+                      threadId:
+                        type: string
+                        example: EXAMPLE-853a-448f-9f91-ef397588ff87
+                      page:
+                        type: integer
+                        example: 3
+                        default: 0
+                      pages:
+                        type: integer
+                        example: 5
+                        default: 0
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/messages/EXAMPLE-853a-448f-9f91-ef397588ff87?sync=true&page=3&events=true HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Messages
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message:
+    post:
+      tags:
+      - Messages
+      summary: Publish a new message.
+      description: Publish a new *Spredfast* Messages for the target Initiative.
+      operationId: publishMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}:
+    get:
+      tags:
+      - Messages
+      summary: Retrieve an existing message.
+      description: The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative.
+      operationId: getMessage
+      parameters:
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    put:
+      tags:
+      - Messages
+      summary: Update an existing multi-part message.
+      description: This endpoint is used to update an existing multi-part *Spredfast* Message.
+      operationId: editMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags:
+      - Messages
+      summary: Delete an existing message.
+      description: This endpoint is used to delete an existing *Spredfast* Message.
+      operationId: deleteMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionalResponseLong'
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?multipart:
+    post:
+      tags:
+      - Messages
+      summary: Publish a new message.
+      description: Publish a new *Spredfast* Messages for the target Initiative.
+      operationId: publishMultiPartMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  x-multipart:
+                    schema:
+                      $ref: '#/components/schemas/MessageMultiPart'
+                image:
+                  type: string
+                  format: binary
+              required:
+              - message
+              - image
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?imageset:
+    post:
+      tags:
+      - Messages
+      summary: Publish a new message.
+      description: "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEntityType\":\"ImageShare\",\"caption\":\"image one\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image two\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image three\"}]},\"targetAccountIds\":[\"4\"]};type=application/json' -F 'image=@butterfly1.jpg' -F 'image=@butterfly2.jpg' -F 'image=@butterfly3.jpg' 'https://api.spredfast.com/{env}/v1/company/{companyId}/initiative/{initiativeId}/message' \n``` "
+      operationId: publishImageSetMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  x-multipart:
+                    schema:
+                      $ref: '#/components/schemas/MessageMultiPartImages'
+                image:
+                  type: string
+                  format: binary
+              required:
+              - message
+              - image
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?video:
+    post:
+      tags:
+      - Messages
+      summary: Publish a new message.
+      description: Publish a new *Spredfast* Messages for the target Initiative.
+      operationId: publishMultiPartVideoMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  x-multipart:
+                    schema:
+                      $ref: '#/components/schemas/MessageMultiPartVideo'
+              required:
+              - message
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}?multipart:
+    put:
+      tags:
+      - Messages
+      summary: Update an existing multi-part message.
+      description: This endpoint is used to update an existing multi-part *Spredfast* Message.
+      operationId: editMultiPartMessage
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  x-multipart:
+                    schema:
+                      $ref: '#/components/schemas/Message'
+                image:
+                  type: string
+                  format: binary
+              required:
+              - message
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+components:
+  schemas:
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    MessageSponsor:
+      type: object
+      description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to *only* Facebook *verified* Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don't comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
+      properties:
+        profileId:
+          type: string
+          description: The sponsor's profile ID in the corresponding Social Network.
+        displayName:
+          type: string
+          description: The sponsor's display name in the corresponding Social Network.
+        link:
+          type: string
+          description: The link to the sponsor's profile in the corresponding Social Network.
+    TargetingProfile:
+      type: object
+      properties:
+        targetingType:
+          type: string
+          enum:
+          - ENHANCED
+          - GATED
+        targetingValues:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TargetingValue'
+    MessageMultiPart:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          example: ImageShare
+        caption:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: FACEBOOK
+        content:
+          sfEntityType: ImageShare
+          caption: Status Update w/ image
+        targetAccountIds:
+        - '4'
+    PublicationResult:
+      type: object
+      properties:
+        accountId:
+          type: string
+        serviceId:
+          type: string
+        serviceLink:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PUBLISHED
+          - ERROR
+          - DELETED
+        datePublished:
+          type: string
+          format: date-time
+    MessageMultiPartVideo:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          example: Video
+        caption:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: YOUTUBE
+        content:
+          sfEntityType: Video
+          videoTitle: Cool video!
+          description: That one guy doing that thing.
+        assetIds:
+        - xxx-xxx-xxx-xxx
+        targetAccountIds:
+        - '4'
+    Message:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - Message
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          description: Social network to publish to.
+          default: FACEBOOK
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - MULTI_CHANNEL
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          default: DRAFT
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        sponsor:
+          $ref: '#/components/schemas/MessageSponsor'
+        publisherIds:
+          type: array
+          items:
+            type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: FACEBOOK
+        content:
+          sfEntityType: Status
+          text: Status Update
+        targetAccountIds:
+        - '4'
+    MessageContent:
+      type: object
+      discriminator:
+        propertyName: sfEntityType
+    MessageMultiPartImages:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          example: ImageShare
+        caption:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: FACEBOOK
+        content:
+          sfEntityType: ImageShareList
+          images:
+          - sfEntityType: ImageShare
+            caption: image one
+        targetAccountIds:
+        - '4'
+    TargetingValue:
+      type: object
+      properties:
+        subType:
+          type: string
+          enum:
+          - COUNTRY
+          - REGION
+          - METRO
+          - CONTINENT
+          - ZIP_CODE
+        value:
+          type: string
+        description:
+          type: string
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+    OptionalResponseLong:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int64
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    MessageNote:
+      type: object
+      description: A Note on the Message.
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - Note
+        text:
+          type: string
+          description: The note's text content.
+        id:
+          type: string
+          description: The note's ID. This should be left empty or set to 0 for new notes.
+        createdByDisplayName:
+          type: string
+          description: The formatted name [firstName lastName] of the note's author.
+          readOnly: true
+        createdByUserId:
+          type: string
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          readOnly: true
+        lastModifiedByUserId:
+          type: string
+          readOnly: true
+        lastModifiedDate:
+          type: string
+          format: date-time
+          readOnly: true
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

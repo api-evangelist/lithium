@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Discussion API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Discussion
+paths:
+  /{integrationUuid}/discussion:
+    post:
+      summary: Send batch(es) of messages to be assembled into a case by reference message
+      description: Send one or more batches of messages to be assembled onto a case based on a reference message
+      operationId: integrationuuidmessages
+      parameters:
+      - name: integrationUuid
+        in: path
+        description: The unique identifier of the social integration
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: The Raw JSON payload. Refer to [Listening API object definitions](ref:listening-api-object-definitions) to build your JSON.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"success\",\n    \"data\": {\n        \"present\": true\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      present:
+                        type: boolean
+                        example: true
+                        default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://servername.response.lithium.com/api/v2/listening/de763938-9e44-43df-a2a3-3e5ea2ebc5a6/discussion
+          name: /integrationUuid/discussion Example
+        samples-languages:
+        - http
+      tags:
+      - Discussion
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

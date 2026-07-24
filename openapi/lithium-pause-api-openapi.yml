@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Pause API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Pause
+paths:
+  /pause/{threadId}:
+    post:
+      summary: Pause a bot
+      description: Pause a bot for a specific thread with the Flow REST API.
+      operationId: pause-a-bot
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: A unique identifier of a thread
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'POST rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY
+
+            {}'
+        samples-languages:
+        - http
+      tags:
+      - Pause
+    delete:
+      summary: Resume a bot
+      description: Resume a bot for a specific thread using the Flow REST API.
+      operationId: resume-a-bot
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: A unique identifier of a thread
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'DELETE rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY
+
+            {}'
+        samples-languages:
+        - http
+      tags:
+      - Pause
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

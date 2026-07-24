@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Meta.json?num Hashtags API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Meta.json?num Hashtags
+paths:
+  /{account}/{streamName}/meta.json?num_hashtags:
+    get:
+      summary: Get number of hashtags returned
+      description: Retrieves the number of hashtags.
+      operationId: get-number-of-hashtags-returned-1
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: num_hashtags
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?num Hashtags
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

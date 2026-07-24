@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Meta.json?num Contributors API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Meta.json?num Contributors
+paths:
+  /{account}/{streamName}/meta.json?num_contributors:
+    get:
+      summary: Get number of contributors
+      description: Number of contributor user handles to return
+      operationId: get-number-of-topics
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: num_contributors
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 5
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?num Contributors
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

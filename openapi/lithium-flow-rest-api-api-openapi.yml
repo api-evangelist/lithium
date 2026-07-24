@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Flow Rest Api API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Flow Rest Api
+paths:
+  /{threadId}:
+    post:
+      summary: Trigger an event
+      description: ''
+      operationId: trigger-an-event
+      parameters:
+      - name: '{threadId}'
+        in: path
+        description: A unique identifier of the thread. This is a required field.
+        schema:
+          type: string
+        required: true
+      - name: eventName
+        in: query
+        description: Required parameter. The event name.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'POST rest/v1/trigger/event/EXAMPLE-853a-448f-9f91-ef397588ff87?eventName=MY_EVENT HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY
+
+            {}'
+        samples-languages:
+        - http
+      tags:
+      - Flow Rest Api
+  /:
+    get:
+      summary: Retrieve a bot's status
+      description: Retrieve the status of a bot (whether it's paused or active) for a specific `threadId`.
+      operationId: get-bot-status
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode
+        schema:
+          type: string
+      - name: '{threadId}'
+        in: path
+        description: Unique identifier of the thread
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\",\n  \"isPaued\": false,\n  \"threadId\": \"EXAMPLE-853a-448f-9f91-ef397588ff87\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  isPaued:
+                    type: boolean
+                    example: false
+                    default: true
+                  threadId:
+                    type: string
+                    example: EXAMPLE-853a-448f-9f91-ef397588ff87
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87?sync=true HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Flow Rest Api
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

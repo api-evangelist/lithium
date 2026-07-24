@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Respond API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Respond
+paths:
+  /respond:
+    post:
+      summary: Respond to incoming message (bot to channel)
+      description: Respond to an incoming message (bot to channel)
+      operationId: respond-post
+      parameters:
+      - name: charset
+        in: header
+        description: Add `charset=utf-8` if emoji support is required.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: A outgoing Message JSON payload (bot to channel). See payload details below.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\":\n    {\n        \"messageId\": \"1315739291251000000\",\n        \"payloadType\": \"message\",\n        \"requestState\": \"SUCCESS\"\n    },\n    \"requestId\": \"example1-f0b0-4dbb-8b6d-c82192c2054a\"\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      messageId:
+                        type: string
+                        example: '1315739291251000000'
+                      payloadType:
+                        type: string
+                        example: message
+                      requestState:
+                        type: string
+                        example: SUCCESS
+                  requestId:
+                    type: string
+                    example: example1-f0b0-4dbb-8b6d-c82192c2054a
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}\n"
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 403 Forbidden{  \n  \"error\":{  \n    \"messages\":[  \n      \"This bot doesn't own the conversation <message coordinates>\"\n    ]\n  },\n  \"requestId\":\"some id\"\n}\n"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl POST \\\n  https://api.app.lithium.com/bots/v3/respond \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Respond
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

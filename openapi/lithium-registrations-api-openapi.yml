@@ -1,0 +1,348 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Registrations API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Registrations
+paths:
+  /registrations:
+    get:
+      summary: Get registrations using valid JWT token
+      description: Get all registrations using any valid JWT token
+      operationId: botsv3registrations
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"platform\": \"LITHIUM\",\n            \"companyKey\": \"<company key>\",\n            \"networkKey\": \"apple\",\n            \"networkInstance\": \"www.apple.com\",\n            \"externalId\": \"appleExternalId\",\n            \"appId\": \"my-apple-bot\",\n            \"name\": \"My Apple bot\",\n            \"callbackUrl\": \"<callback URL>\",\n            \"mode\": \"LIVE\",\n            \"credentials\": {\n                \"type\": \"BASIC_AUTH\",\n                \"identity\": \"username\",\n                \"secret\": \"password\"\n            }, ...\n    ],\n    \"requestId\": \"8d6b6437-2632-4e89-b24c-53e4e0887b7f\"\n}"
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{ \n  \"error\": { \n    \"message\": \"Unauthorized\", \n    \"requestId\": \"e9ea518b-c84e-4c22-8f64-a01e04bd28cb\" \n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                      requestId:
+                        type: string
+                        example: e9ea518b-c84e-4c22-8f64-a01e04bd28cb
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -X GET \\\n  https://api.app.lithium.com/bots/v3/registrations \\\n  -H 'Authorization: Bearer <JWT TOKEN>' \\"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+    post:
+      summary: Register bot with Khoros Care and the Automation Framework
+      description: Register a bot with Khoros Care and the Automation Framework
+      operationId: registrations-post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: Path to a Registration payload. See [Registration payload](ref:registration-payload) for details.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 422 Unprocessable Entity\n{\n  \"errors\": [\n    \"callbackUrl may not be empty\",\n    \"credentials.secret may not be empty\"\n  ]\n}\n"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl POST \\\n  https://api.app.lithium.com/bots/v3/registrations \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+    put:
+      summary: Edit bot registration
+      description: Edit a bot registration for a bot registered with the Automation Framework
+      operationId: registrations-put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: Path to a Registration payload. See [Registration payload](ref:registration-payload) for details.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        4XX:
+          description: 4XX
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"errors\": [\n    \"callbackUrl may not be empty\",\n    \"credentials.secret may not be empty\"\n  ]\n}\n\n"
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                      example: callbackUrl may not be empty
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/registrations \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+  /registrations/network/{networkKey}/externalId/{externalId}:
+    get:
+      summary: Get bot registrations by source channel
+      description: Retrieve all bot registrations registered with the Automation Framework for the specified source channel
+      operationId: registrationsnetworknetworkkeyexternalidexternalid-get
+      parameters:
+      - name: networkKey
+        in: path
+        description: The source network for the registration. Must match the `network` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: externalId
+        in: path
+        description: The external identifier of the bot on the network. Must match the `externalId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      responses:
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 404 Not Found\n{\n\t\"error\": {\n\t\t\"message\": \"No bot registration found\"\n\t}\n}\n"
+        2XX:
+          description: 2XX
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 200 OK\n{  \n  \"data\":[  \n    {  \n      \"platform\":\"LITHIUM\",\n      \"companyKey\":\"...\",\n      \"networkKey\":\"facebook\",\n      \"networkInstance\":\"www.facebook.com\",\n      \"externalId\":\"...\",\n      \"appId\":\"my-bot\",\n      \"name\":\"simple bot\",\n      \"callbackUrl\":\"https://www.example.com/bot\",\n      \"mode\":\"LIVE\",\n      \"publicFilter\":{  \n        \"includeTargeted\":true,\n        \"includeSourceTagIds\":[  \n          999,\n          1002\n        ]\n      },\n      \"credentials\":{  \n        \"type\":\"...\",\n        \"identity\":\"...\",\n        \"secret\":\"...\"\n      },\n      \"contact\":{  \n        \"email\":\"...\"\n      },\n      \"createdEpochMillis\":1538146602440,\n      \"lastUpdatedEpochMillis\":1538146602440\n    }\n  ]\n}\n\n"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl GET \\\n  https://api.app.lithium.com/bots/v3/registrations/network/apple/externalId/117101b2-e66a-11e7-86ec-b1a405106b73 \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+  /registrations/network/{networkKey}/externalId/{externalId}/appId/{appId}:
+    get:
+      summary: Get bot registration details
+      description: Retrieve registration details about an existing bot registered with the Automation Framework
+      operationId: networknetworkkeyexternalidexternalidappidappid-get
+      parameters:
+      - name: networkKey
+        in: path
+        description: The source network for the registration. Must match the `networkKey` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: externalId
+        in: path
+        description: The external identifier of the bot on the source network. Must match the `externalId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: appId
+        in: path
+        description: The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 200 OK\n{  \n  \"data\":{  \n    \"platform\":\"LITHIUM\",\n    \"companyKey\":\"...\",\n    \"networkKey\":\"facebook\",\n    \"networkInstance\":\"www.facebook.com\",\n    \"externalId\":\"...\",\n    \"appId\":\"some-bot-that-doesn’t-exist\",\n    \"name\":\"simple bot\",\n    \"callbackUrl\":\"https://www.example.com/bot\",\n    \"mode\":\"LIVE\",\n    \"publicFilter\":{  \n      \"includeTargeted\":true,\n      \"includeSourceTagIds\":[  \n        999,\n        1002\n      ]\n    },\n    \"credentials\":{  \n      \"type\":\"...\",\n      \"identity\":\"...\",\n      \"secret\":\"...\"\n    },\n    \"contact\":{  \n      \"email\":\"...\"\n    },\n    \"createdEpochMillis\":1538146602440,\n    \"lastUpdatedEpochMillis\":1538146602440\n  }\n}\n"
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 404 Not Found\n{\n\t\"error\": {\n\t\t\"message\": \"No bot registration found\"\n\t}\n}\n"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl GET \\\n  https://api.app.lithium.com/bots/v3/registations/network/apple/externalId/117101b2-e66a-11e7-86ec-b1a405106b73/appId/abc-bot \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+    delete:
+      summary: Delete bot registration
+      description: Delete a bot registration from the Automation Framework
+      operationId: registrations-delete
+      parameters:
+      - name: networkKey
+        in: path
+        description: The social network for the registration. Must match the `networkKey` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: externalId
+        in: path
+        description: The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: appId
+        in: path
+        description: The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 204 No Content
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 500 Internal Server Error\n{\n    \"errors\": [\n        \"Unable to delete registration\"\n    ]\n}\n"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl DELETE \\\n  https://api.app.lithium.com/bots/v3/registrations/network/apple/externalId/117101b2-e66a-11e7-86ec-b1a405106b73/appId/abc-bot \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+  /registrations/network/{networkKey}/externalId/{externalId}/appId/{appId}/mode/{mode}:
+    put:
+      summary: Change bot operating mode
+      description: Change a bot's operating mode
+      operationId: registrationsnetworknetworkkeyexternalidexternalidappidappidmodemode-put
+      parameters:
+      - name: networkKey
+        in: path
+        description: The social network for the registration. Must match the `networkKey` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: externalId
+        in: path
+        description: The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: appId
+        in: path
+        description: The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration.
+        schema:
+          type: string
+        required: true
+      - name: mode
+        in: path
+        description: 'The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated "maintenanceMode”: true state.'
+        schema:
+          type: string
+        required: true
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request\n{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid mode: liev\"\n    ]\n  }\n}"
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 404 Not Found\n{  \n  \"error\":{  \n    \"messages\":[  \n      \"No such bot myfirstbot for company doghotel network facebook external id 12345678901234\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/registrations/network/apple/externalId/117101b2-e66a-11e7-86ec-b1a405106b73/appId/abc-bot/mode/maintenance \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Registrations
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

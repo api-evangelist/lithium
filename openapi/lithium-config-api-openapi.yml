@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Config API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Config
+paths:
+  /config/timezones:
+    get:
+      summary: Get time zone IDs for exports
+      description: Get time zone IDs used to format time zones in exports
+      operationId: configtimezones
+      parameters:
+      - name: companyKey
+        in: query
+        description: The company key found in **Account Admin > General Settings > Analytics API Settings**
+        required: true
+        schema:
+          type: string
+      - name: locale
+        in: query
+        description: A locale code to filter the response. Default is `en`
+        schema:
+          type: string
+          default: en
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[\n    {\n      \"id\":\"Etc/GMT+12\",\n      \"name\":\"GMT-12:00\",\n      \"shortName\":\"GMT-12:00\",\n      \"offsetString\":\"-12:00\",\n      \"offsetMillis\":-43200000\n    },\n    {\n      \"id\":\"Etc/GMT+11\",\n      \"name\":\"GMT-11:00\",\n      \"shortName\":\"GMT-11:00\",\n      \"offsetString\":\"-11:00\",\n      \"offsetMillis\":-39600000\n    },\n    ...\n    {\n      \"id\":\"Pacific/Apia\",\n      \"name\":\"Samoa Daylight Time\",\n      \"shortName\":\"SDT\",\n      \"offsetString\":\"+14:00\",\n      \"offsetMillis\":50400000\n    }\n  ]\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -u [USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/config/timezones?locale=en&companyKey=[COMPANY_KEY]'"
+        samples-languages:
+        - curl
+      tags:
+      - Config
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

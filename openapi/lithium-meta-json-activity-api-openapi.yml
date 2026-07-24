@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Meta.json?activity API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Meta.json?activity
+paths:
+  /{account}/{streamName}/meta.json?activity:
+    get:
+      summary: Get activity and count props
+      description: Include activity and count properties in response
+      operationId: get-activity-and-count-props
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: activity
+        in: query
+        description: '**Format:** binary'
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?activity
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

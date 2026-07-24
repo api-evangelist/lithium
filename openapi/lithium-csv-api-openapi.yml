@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Csv API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Csv
+paths:
+  /csv/{reportName}:
+    get:
+      summary: Create CSV export for download
+      description: Generate a CSV export for download
+      operationId: csvreportname-deprecated
+      parameters:
+      - name: reportName
+        in: path
+        description: 'The name of the report to run. Run `/reports/list` to get a list of available reports. Supported values: `authorReport`, `conversation`, `post`, `rawPost`, `rawPostIncludeActions`, `agentActions`, `publishExport`, `custSatisfaction`, `postTagTrend`, `incomingPostTag`'
+        schema:
+          type: string
+        required: true
+      - name: startTime
+        in: query
+        description: The beginning of the reporting interval (date range) represented as milliseconds since epoch.
+        required: true
+        schema:
+          type: string
+      - name: endTime
+        in: query
+        description: The end of the reporting interval (date range) represented as milliseconds since epoch.
+        schema:
+          type: string
+          default: The current time
+      - name: tzOffsetMs
+        in: query
+        description: Sets the timezone for the formatted dates in milliseconds. When using Epoch time, this parameter only affects the display of the date/time in the reports.
+        schema:
+          type: string
+          default: 0/GMT
+      - name: bucketSizeMs
+        in: query
+        description: 'The size of the bucketed intervals within the date range in milliseconds. Used by the following reports: `conversation`, `post`, `agentActions`, `custSatisfaction`, `incomingPostTag`'
+        schema:
+          type: string
+          default: 1 hour
+      - name: providerType
+        in: query
+        description: 'Filter report data by Provider Type/Source. Support values: `twitter`, `facebook`, `lithium`'
+        schema:
+          type: string
+          default: All providers
+      - name: incldActions
+        in: query
+        description: 'Use this for a raw post data report only. If `false`, the report will include all that that were received during the time range. If `true`, the report will include all posts that were received plus posts that had the following agent actions performed on them during the time range: Claimed, Responded to, Closed'
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://servername.lithium.com/reports/csv/conversation?startTime=1396224000000&endTime=1396396800000
+          name: /csv/reportName Example
+        samples-languages:
+        - http
+      tags:
+      - Csv
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

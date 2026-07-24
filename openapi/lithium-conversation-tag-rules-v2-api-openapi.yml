@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Conversation Tag Rules V2 API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Conversation Tag Rules V2
+paths:
+  /:
+    get:
+      summary: Get conversation tag rule definitions
+      description: Return all conversation tag rule definitions in the Khoros Care system
+      operationId: tagruledefinitions-1
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of tag rules to return from a single call. The default limit is 20. It is not recommended to change the limit between subsequent paginating requests. We do not enforce a max limit for the limit parameter, but for performance reasons, we recommend against using a value greater than 100.
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        description: 'An offset to use for pagination. This should be a multiple of the limit parameter, and be incremented by the value of limit between requests. For example, a series of requests might use the following incremental values for offset and limit: "offset=0,limit=20", "offset=20,limit=20", "offset=40,limit=20", ... until you have exhausted the result set.'
+        schema:
+          type: integer
+          format: int32
+      - name: tagIds
+        in: query
+        description: A comma-separated list of tag IDs used to filter the response. There is no limit to the number of tag IDs passed with this query parameter, but for performance purposes, we recommend passing no more than 25.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 348,\n            \"tagId\": 996,\n            \"definitions\": [\n                {\n                    \"type\": \"KEYWORD\",\n                    \"value\": \"rBGH, hormone free\",\n                    \"language\": null,\n                    \"operator\": \"ANY\"\n                },\n                {\n                    \"type\": \"KEYWORD\",\n                    \"value\": \"free range, fair trade\",\n                    \"language\": null,\n                    \"operator\": \"ANY\"\n                }\n            ]\n        },\n        {\n            \"id\": 355,\n            \"tagId\": 1003,\n            \"definitions\": [\n                {\n                    \"type\": \"KEYWORD\",\n                    \"value\": \"doin, this, for the, thrill of it\",\n                    \"language\": null,\n                    \"operator\": \"ALL\"\n                },\n                {\n                    \"type\": \"KEYWORD\",\n                    \"value\": \"whiskey, tango, foxtrot\",\n                    \"language\": null,\n                    \"operator\": \"ANY\"\n                },\n                {\n                    \"type\": \"LUCENE\",\n                    \"value\": \"\\\"bubbles ducky\\\"~10 OR derp*\",\n                    \"language\": null,\n                    \"operator\": null\n                }\n            ]\n        },\n        {\n            \"id\": 362,\n            \"tagId\": 1010,\n            \"definitions\": [\n                {\n                    \"type\": \"REGEX\",\n                    \"value\": \"[.]nusoapwholesale[.](com|net)\",\n                    \"language\": null,\n                    \"operator\": null\n                },\n                {\n                    \"type\": \"REGEX\",\n                    \"value\": \".soapdailydeals.*\",\n                    \"language\": null,\n                    \"operator\": null\n                }\n            ]\n        }\n    ],\n    \"_metadata\": {\n        \"paging\": {\n            \"offset\": \"10\",\n            \"limit\": \"15\",\n            \"moreContent\": true,\n        }\n    }\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/tagRuleDefinitions?offset=3&limit=3&tagIds=996,1003,1010'
+        samples-languages:
+        - curl
+      tags:
+      - Conversation Tag Rules V2
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Surveys API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Surveys
+paths:
+  /surveys:
+    get:
+      summary: 'Surveys: List All Survey Data for a Set of Streams'
+      description: Returns a list of the available survey data for a given set of streams
+      operationId: surveys-list-all-survey-data-for-a-set-of-streams
+      parameters:
+      - name: start
+        in: query
+        description: Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)
+        schema:
+          type: string
+          default: '2016-01-01T00:00:00Z'
+      - name: stop
+        in: query
+        description: Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)
+        schema:
+          type: string
+          default: '2017-05-01T00:00:00Z'
+      - name: stream_ids
+        in: query
+        description: A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company) endpoint to get the appropriate stream IDs.
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Surveys
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

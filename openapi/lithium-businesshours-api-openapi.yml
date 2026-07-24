@@ -1,0 +1,54 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Businesshours API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Businesshours
+paths:
+  /businesshours:
+    get:
+      summary: Business Hours
+      description: Retrieve a list of configured business hours for your project using the Flow REST API.
+      operationId: business-hours
+      parameters:
+      - name: sync
+        in: query
+        description: Optional parameter for enabling sync mode
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"ok\",\n  \"businessHours\": [\n    {\n      \"weekdays\": [\n        {\n          \"weekday\": \"Monday\",\n          \"content\": [\n            {\n              \"from\": \"0:20\",\n              \"to\": \"4:19\"\n            },\n            {\n              \"from\": \"10:00\",\n              \"to\": \"22:22\"\n            },\n            ...\n          ]\n        },\n        ...\n      ],\n      \"holidays\": [\n        {\n          \"holiday\": \"New Year\",\n          \"date\": \"2019-12-31T00:00:00.000Z\"\n        },\n        ...\n      ],\n      \"label\": \"test BH\",\n      \"timezone\": \"(UTC+03:00) Minsk\"\n    },\n    ...\n  ]\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: http
+          code: 'GET rest/v1/businesshours?sync=true HTTP/1.1
+
+            Host: api.flow.ai
+
+            Content-Type: application/json
+
+            Authorization: MY_MESSAGING_API_KEY'
+        samples-languages:
+        - http
+      tags:
+      - Businesshours
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

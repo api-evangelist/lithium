@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Request API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Request
+paths:
+  /request/{requestId}:
+    get:
+      summary: Monitor request to Bot v3 API
+      description: Monitor a specific request to the Bot v3 API
+      operationId: requestrequestid
+      parameters:
+      - name: requestId
+        in: path
+        description: A string. The ID of a known request record received from a previous HTTP request. Do not expect any particular format for the ID.<br><br>Find request IDs in a callback request header and a response header named `x-amzn-RequestId`. You may note the ID and ask for information about the status of certain kinds of requests by using the `/request/[requestId}` endpoint.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{  \n  \"data\":{  \n    \"id\":\"03a913a3-552e-4e2a-8d23-d1e5257474bc\",\n    \"companyKey\":\"mycompany\",\n    \"externalId\":\"9876543211234567\",\n    \"networkKey\":\"facebook\",\n    \"appId\":\"company-bot\",\n    \"callbackUrl\":\"https://www.example.com/receive\",\n    \"origin\":\"BOT\",\n    \"details\":<map of details relevant to the request>,\n    \"state\":\"PENDING\",\n    \"payload\":<json payload given to or taken from bot>,\n    \"createdEpochMillis\":1551757370603,\n    \"completedEpochMillis\":1551757370707,\n    \"lastUpdatedEpochMillis\":1551757370707\n  }\n}"
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 404 Not Found{  \n  \"error\":{  \n    \"messages\":[  \n      \"03a913a3-552e-4e2a-8d23-d1e5257474b not found\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl GET \\\n  https://api.app.lithium.com/bots/v3/request/03a913a3-552e-4e2a-8d23-d1e5257474b \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Request
+  /request/appId/{appId})/:
+    get:
+      summary: Monitor requests by date range, state, and origin
+      description: Monitor requests to the Bot v3 API by date range, state, and origin
+      operationId: requestappidappid
+      parameters:
+      - name: appId
+        in: path
+        description: The bot identifier
+        schema:
+          type: string
+        required: true
+      - name: from
+        in: query
+        description: 'A string of the form “<quantity><unit>” indicating how far in the past to look for recent request records. For example: “30m”, “2h”, "3d” representing “30 minutes”, “2 hours”, or “3 days”, respectively.<br><br>Defaults to 1 day.<br><br>31 days is the current maximum'
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: 'A string indicating the state of the requests to return.<br><br>No default: if unspecified, all records from the period are returned.<br><br>Supported values: ERROR, PENDING, or SUCCESS<br><br>You may specify this parameter multiple times, as in: `/bots/v3/request/appId/mybot?from=6h&state=PENDING&state=ERROR`'
+        schema:
+          type: string
+      - name: origin
+        in: query
+        description: Optional. A string indicating that the query should return only request records of the specified origin.<br><br>Possible values are KHOROS or BOT<br><br>Khoros-originated records are those requests the bot framework made to your bot.<br><br>Bot-originated records are those requests your bot made to the bot framework.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{  \n  \"data\":[  \n    {  \n      \"id\":\"5f153108725b404b9aca71a4a5e17cb4\",\n      \"companyKey\":\"myco\",\n      \"externalId\":\"987654321234567890\",\n      \"networkKey\":\"facebook\",\n      \"appId\":\"myco-bot\",\n      \"callbackUrl\":\"https://www.example.com/receive\",\n      \"origin\":\"BOT\",\n      \"state\":\"PENDING\",\n      \"createdEpochMillis\":1551757840916,\n      \"completedEpochMillis\":1551757841000,\n      \"lastUpdatedEpochMillis\":1551757841000,\n      \"payload\":\"{\\\"coordinate\\\":{\\\"companyKey\\\":\\\"myco\\\",\\\"networkKey\\\":\\\"facebook\\\",\\\"externalId\\\":\\\"987654321234567890\\\",\\\"messageId\\\":\\\"superSpecialMessageId\\\",\\\"botId\\\":\\\"myco-bot\\\",\\\"scope\\\":\\\"PRIVATE\\\"},\\\"text\\\":\\\"I have a question that I need help with.\\\",\\\"author\\\":{\\\"id\\\":\\\"superSpecialAuthorId\\\",\\\"fullName\\\":\\\"Anonymous Coyote 2380\\\",\\\"properties\\\":{}},\\\"owner\\\":{\\\"type\\\":\\\"BOT\\\",\\\"appId\\\":\\\"myco-bot\\\"},\\\"publishedTS\\\":1555336064223,\\\"receivedTS\\\":1555336066071,\\\"properties\\\":{},\\\"type\\\":\\\"message\\\"}\"\n    },\n    {  \n      \"id\":\"c3e3c2570130410eadf7a04881dfbfe9\",\n      \"companyKey\":\"myco\",\n      \"externalId\":\"987654321234567890\",\n      \"networkKey\":\"facebook\",\n      \"appId\":\"myco-bot\",\n      \"callbackUrl\":\"https://www.example.com/receive\",\n      \"origin\":\"KHOROS\",\n      \"details\":{  \n        \"code\":\"403\",\n        \"message\":\"Forbidden\"\n      },\n      \"state\":\"ERROR\",\n      \"createdEpochMillis\":1551758199555,\n      \"completedEpochMillis\":1551758200801,\n      \"lastUpdatedEpochMillis\":1551758200804,\n      \"payload\":\"{... the json blob that Khoros sent to your bot ...}\"\n    }\n  ]\n}\n"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 5f153108725b404b9aca71a4a5e17cb4
+                        companyKey:
+                          type: string
+                          example: myco
+                        externalId:
+                          type: string
+                          example: '987654321234567890'
+                        networkKey:
+                          type: string
+                          example: facebook
+                        appId:
+                          type: string
+                          example: myco-bot
+                        callbackUrl:
+                          type: string
+                          example: https://www.example.com/receive
+                        origin:
+                          type: string
+                          example: BOT
+                        state:
+                          type: string
+                          example: PENDING
+                        createdEpochMillis:
+                          type: integer
+                          example: 1551757840916
+                          default: 0
+                        completedEpochMillis:
+                          type: integer
+                          example: 1551757841000
+                          default: 0
+                        lastUpdatedEpochMillis:
+                          type: integer
+                          example: 1551757841000
+                          default: 0
+                        payload:
+                          type: string
+                          example: '{"coordinate":{"companyKey":"myco","networkKey":"facebook","externalId":"987654321234567890","messageId":"superSpecialMessageId","botId":"myco-bot","scope":"PRIVATE"},"text":"I have a question that I need help with.","author":{"id":"superSpecialAuthorId","fullName":"Anonymous Coyote 2380","properties":{}},"owner":{"type":"BOT","appId":"myco-bot"},"publishedTS":1555336064223,"receivedTS":1555336066071,"properties":{},"type":"message"}'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Incorrect syntax in \\\"from\\\"\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl GET \\\n  \"https://api.app.lithium.com/bots/v3/request/appId/mybot?from=12h\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Request
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Smart Views Api V2 API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Smart Views Api V2
+paths:
+  /:
+    get:
+      summary: Get Smart View IDs
+      description: Get Smart View IDs
+      operationId: smartviews
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"description\": \"This is a test description to this smartview\",\n            \"id\": 4181,\n            \"name\": \"Test Smart View\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                          example: This is a test description to this smartview
+                        id:
+                          type: integer
+                          example: 4181
+                          default: 0
+                        name:
+                          type: string
+                          example: Test Smart View
+                  status:
+                    type: string
+                    example: success
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -L -u username:password 'https://your_social_response_app.com/api/v2/smartviews'
+        samples-languages:
+        - curl
+      tags:
+      - Smart Views Api V2
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

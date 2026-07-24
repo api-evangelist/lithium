@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Customer (COPY) API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Customer (COPY)
+paths:
+  /customer (COPY):
+    patch:
+      summary: updateCustomer
+      description: Update a customer’s details
+      operationId: updatecustomer
+      parameters:
+      - name: x-sf-user-email
+        in: header
+        description: The email id of the Khoros Care agent performing the action.
+        schema:
+          type: string
+      - name: x-sf-initiative
+        in: header
+        description: The id of the active Khoros Care Initiative the user is in when performing the action.
+        schema:
+          type: string
+      - name: x-sf-company-id
+        in: header
+        description: The Khoros Care id of the company the user is in when making the request.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customNonSearchableCustomerFieldOne:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": false`.'
+                customNonSearchableCustomerFieldTwo:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": false`.'
+                customSearchableCustomerFieldOne:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": true`.'
+                customSearchableCustomerFieldTwo:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": true`.'
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        '422':
+          description: '422'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+      deprecated: false
+      tags:
+      - Customer (COPY)
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

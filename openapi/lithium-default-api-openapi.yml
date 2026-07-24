@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: 'agent-states-api-v2 AccountSet # API'
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: '#'
+paths:
+  /#:
+    get:
+      summary: Get paginated list of authors
+      description: Get all authors in a paginated response
+      operationId: authors
+      parameters:
+      - name: offset
+        in: query
+        description: An integer specifying how many authors to look back, and the first response will start with that result and show the previous 10
+        schema:
+          type: string
+      - name: include_deleted_crm
+        in: query
+        description: When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"success\",\n    \"data\": {\n        \"nextPageUrl\": \"https://your_social_response_instance.lithium.com/api/v2/authors?offset=31\",\n        \"personList\": [\n            {\n                \"id\": \"46193948-5a3d-4836-bea8-e7a5070ab00d\",\n                \"displayNumber\": 4,\n                \"handles\": {\n                    \"lithium\": [\n                        {\n                            \"@class\": \"LithiumSpecificAuthorData\",\n                            \"lswUuid\": \"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\",\n                            \"displayNumber\": 4,\n                            \"profileUrl\": \"https://nusoap.stage.lithium.com/t5/user/viewprofilepage/user-id/23717\",\n                            \"providerInstanceId\": \"nusoap.stage.lithium.com/\",\n                            \"name\": \"LIA_auto_c90d75c1_9f26\",\n                            \"id\": \"23717\",\n                            \"registrationInstant\": 1516816834000,\n                            \"screenName\": \"LIA_auto_c90d75c1_9f26\",\n                            \"profileImageURL\": \"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\",\n                            \"networkinstance\": \"nusoap.stage.lithium.com/\",\n                            \"avatarUrl\": \"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\"\n                        }\n                    ]\n                },\n                \"tags\": [\n                \t\t{\n                        \"creator\": {\n                            \"type\": \"SYSTEM\"\n                        },\n                        \"tagId\": 1037,\n                        \"lswUuid\": \"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\"\n                    }\n                ],\n                \"\"notes\": [\n                    {\n                        \"note\": \"Test\",\n                        \"agent\": {\n                            \"name\": \"David Doe\",\n                            \"email\": \"dave.doe@example.com\",\n                            \"lswUuid\": \"9561f5b2-6e53-11e3-a5df-525422201fe1\"\n                        },\n                        \"createDate\": 1354600113000\n                    }\n                ]\n            }\n           ... \n        ]\n    }\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl -u [USERNAME]:[PASSWORD] ''https://your_social_response_instance.lithium.com/api/v2/authors?offset=1''
+
+            '
+        samples-languages:
+        - curl
+      tags:
+      - '#'
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

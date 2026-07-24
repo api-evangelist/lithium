@@ -1,0 +1,349 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Assets API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Assets
+paths:
+  /{environment}/v1/company/{companyId}/asset:
+    post:
+      tags:
+      - Assets
+      summary: Create a new Content Center Asset.
+      description: Create a new image/video Content Center Asset.
+      operationId: createAsset
+      parameters:
+      - $ref: '#/components/parameters/companyId'
+      - $ref: '#/components/parameters/environment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+        description: JSON object describing the asset.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAsset'
+  /{environment}/v1/company/{companyId}/asset?multipart:
+    post:
+      tags:
+      - Assets
+      summary: Create a new Content Center image/video Asset.
+      description: Create a new image/video Content Center Asset.
+      operationId: createMultiPartAsset
+      parameters:
+      - $ref: '#/components/parameters/companyId'
+      - $ref: '#/components/parameters/environment'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                asset:
+                  description: JSON object describing the asset.
+                  type: string
+                  x-multipart:
+                    schema:
+                      $ref: '#/components/schemas/AssetCreateMultipart'
+                image:
+                  type: string
+                  format: binary
+                video:
+                  type: string
+                  format: binary
+                videoSize:
+                  description: Video size in bytes.
+                  type: integer
+                  format: int64
+              required:
+              - asset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAsset'
+  /{environment}/v1/company/{companyId}/asset/{assetId}:
+    get:
+      tags:
+      - Assets
+      summary: Retrieve a Content Center Asset based by asset ID.
+      description: Gets a Content Center Asset based by asset ID (including content labels information).
+      operationId: findAsset
+      parameters:
+      - $ref: '#/components/parameters/companyId'
+      - name: assetId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/environment'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAsset'
+    put:
+      tags:
+      - Assets
+      summary: Update existing Content Center Asset.
+      description: Updates a Content Center Asset based on the JSON request body.
+      operationId: updateAsset
+      parameters:
+      - $ref: '#/components/parameters/companyId'
+      - name: assetId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: removeImage
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: removeVideo
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/environment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetCreate'
+        description: JSON object describing the asset.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponseAsset'
+components:
+  parameters:
+    environment:
+      in: path
+      required: true
+      name: environment
+      schema:
+        type: string
+        enum:
+        - Production
+        - VCP1
+        - APP3
+        - APP
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    AssetCreate:
+      type: object
+      required:
+      - sfEntityType
+      - folderId
+      properties:
+        folderId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        text:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - Asset
+    Asset:
+      type: object
+      required:
+      - name
+      - folderId
+      - sfEntityType
+      properties:
+        id:
+          type: string
+        companyId:
+          type: string
+        folderId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        text:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        services:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+            - FACEBOOK
+            - GOOGLEPLUS
+            - SINAWEIBO
+            - LINKEDIN
+            - PINTEREST
+            - YOUTUBE
+            - VK
+        intendedForPublishing:
+          type: boolean
+          default: false
+        intendedForModeration:
+          type: boolean
+          default: false
+        createdDate:
+          type: string
+          format: date-time
+        originSystem:
+          type: string
+        originId:
+          type: string
+        contentLabels:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        image:
+          type: string
+          format: uri
+        imageMedium:
+          type: string
+          format: uri
+          readOnly: true
+        imageThumb:
+          type: string
+          format: uri
+          readOnly: true
+        video:
+          type: string
+          format: uri
+        videoThumb:
+          type: string
+          format: uri
+          readOnly: true
+        sfEntityType:
+          type: string
+          enum:
+          - Asset
+        externalId:
+          type: string
+          description: External ID to represent the ID of the asset outside of the system
+      example:
+        folderId: '999'
+        name: asset_name
+        description: Cool new Asset!
+        text: Text body.
+        sfEntityType: Asset
+    EntityResponseAsset:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Asset'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    AssetCreateMultipart:
+      type: object
+      description: JSON describing the uploaded file.
+      required:
+      - sfEntityType
+      - folderId
+      properties:
+        folderId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        text:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - Asset
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

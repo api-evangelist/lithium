@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Agent States Api V2 API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Agent States Api V2
+paths:
+  /:
+    get:
+      summary: Retrieve Defined Agent States
+      description: Retrieves a list of defined agent states for the company.
+      operationId: retrieve-defined-agent-states
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"Offline\",\n            \"id\": \"f846cf43-5c3e-4c2f-8949-example\",\n            \"deleted\": false,\n            \"allowActions\": false,\n            \"visibleForAllTeams\": true,\n            \"keepAssignedConversations\": true,\n            \"type\": \"OFFLINE\",\n            \"lastUpdatedTimeInMillis\": 1570559212865\n        },\n        {\n            \"name\": \"Lunch\",\n            \"id\": \"37c03720-1fdf-4eb4-b46f-example\",\n            \"deleted\": false,\n            \"allowActions\": false,\n            \"visibleForAllTeams\": true,\n            \"keepAssignedConversations\": true,\n            \"type\": \"CUSTOM\",\n            \"lastUpdatedTimeInMillis\": 1588347349760\n        },\n        {\n            \"name\": \"Available\",\n            \"id\": \"c26df5d0-7e59-4d88-b563-example\",\n            \"deleted\": false,\n            \"allowActions\": true,\n            \"visibleForAllTeams\": true,\n            \"keepAssignedConversations\": true,\n            \"type\": \"AVAILABLE\",\n            \"lastUpdatedTimeInMillis\": 1568222746855\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: Offline
+                        id:
+                          type: string
+                          example: f846cf43-5c3e-4c2f-8949-example
+                        deleted:
+                          type: boolean
+                          example: false
+                          default: true
+                        allowActions:
+                          type: boolean
+                          example: false
+                          default: true
+                        visibleForAllTeams:
+                          type: boolean
+                          example: true
+                          default: true
+                        keepAssignedConversations:
+                          type: boolean
+                          example: true
+                          default: true
+                        type:
+                          type: string
+                          example: OFFLINE
+                        lastUpdatedTimeInMillis:
+                          type: integer
+                          example: 1570559212865
+                          default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -L -u username:password 'https://{care-instance}/api/v2/agentstate'
+        samples-languages:
+        - curl
+      tags:
+      - Agent States Api V2
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

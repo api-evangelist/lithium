@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Authors API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Authors
+paths:
+  /authors/attributes:
+    put:
+      summary: Update author's attributes
+      description: Use the Bot v3 API to have the bot update both the author CRM attributes and author attributes
+      operationId: author-put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: An `author` JSON payload. See payload details below.
+                  format: json
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/authors/attributes \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Authors
+  /authors/attributes (COPY):
+    put:
+      summary: Update author metadata
+      description: Use the Bot v3 API to have the bot update author metadata properties
+      operationId: authors-put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RAW_BODY:
+                  type: string
+                  description: An `author properties` JSON payload. See payload details above.
+                  format: json
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: HTTP/1.1 202 Accepted
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "HTTP/1.1 400 Bad Request{  \n  \"error\":{  \n    \"messages\":[  \n      \"Invalid networkKey farcebook\"\n    ]\n  }\n}"
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl PUT \\\n  https://api.app.lithium.com/bots/v3/authors/attributes \\\n  --data @/path/to/payload.json \\\n  -H \"Content-type: application/json; charset=utf-8\" \\\n  -H \"Authorization: Bearer [TOKEN]\"\n"
+        samples-languages:
+        - curl
+      tags:
+      - Authors
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

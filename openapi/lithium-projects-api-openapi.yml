@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Projects API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Projects
+paths:
+  /projects/{projectId}/flows:
+    get:
+      summary: List all flows
+      description: Retrieve a list of all flows using the Flow Management API.
+      operationId: list-all-flows
+      parameters:
+      - name: limit
+        in: query
+        description: Pagination option. Number of items per response. Optional.
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: Pagination option. Number of items to skip. Optional.
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        description: Project ID the Flow belongs to.
+        schema:
+          type: string
+        required: true
+      - name: flows
+        in: path
+        description: Indicates the flows
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[{\n    \"flowId\": \"FLOW-08e4-40bc-89b8-f7ea02ba6cd5\",\n    \"projectId\": \"PROJECT-fe06-4dcc-a7a0-35b0c0ec55c3\",\n    \"brainId\": \"BRAIN-25f7-4d3d-9dcf-eaa2a6f810b1\",\n    \"title\": \"Get started\",\n  \"group\": \"Weather\",\n    \"createdAt\": \"2018-10-24T06:45:03.828Z\",\n    \"disabled\": false,\n    \"steps\": [{\n        \"stepId\": \"EXAMPLE-ad8d-4bf8-8ff5-da9dd7cb5636\",\n        \"type\": \"INTENT\",\n        \"title\": \"Get started\",\n        \"contexts\": [],\n        \"actions\": [\"ACTIONSf0838670032b1aa11\"],\n        \"intent\": \"INTENT0838670032b1aa16\"\n    }]\n}, {\n    \"flowId\": \"FLOW-fa2b-4f67-a391-15b9e98d47ea\",\n    \"projectId\": \"PROJECT95-fe06-4dcc-a7a0-35b0c0ec55c3\",\n    \"brainId\": \"BRAIN0-25f7-4d3d-9dcf-eaa2a6f810b1\",\n    \"title\": \"Weather\",\n  \"group\": \"Weather\",\n    \"createdAt\": \"2018-10-24T06:45:03.820Z\",\n    \"disabled\": false,\n    \"steps\": [{\n        \"stepId\": \"STEP-eb07-4ad6-8df2-518c43c180e3\",\n        \"type\": \"INTENT\",\n        \"title\": \"What is the weather like\",\n        \"contexts\": [],\n        \"actions\": [\"ACTIONS0838670032b1aa13\"]\n    }, {\n        \"stepId\": \"STEPS-a51b-48f3-ab46-81ce10f05454\",\n        \"type\": \"SLOT\",\n        \"title\": \"SLOT\",\n        \"contexts\": [\"CONTEXT-eb07-4ad6-8df2-518c43c180e3\"],\n        \"actions\": [\"ACTIONS0838670032b1aa12\"],\n        \"slot\": {\n            \"validation\": \"REQUIRED\",\n            \"entityId\": \"system.query\",\n            \"label\": \"city\"\n        }\n    }]\n}]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    flowId:
+                      type: string
+                      example: FLOW-08e4-40bc-89b8-f7ea02ba6cd5
+                    projectId:
+                      type: string
+                      example: PROJECT-fe06-4dcc-a7a0-35b0c0ec55c3
+                    brainId:
+                      type: string
+                      example: BRAIN-25f7-4d3d-9dcf-eaa2a6f810b1
+                    title:
+                      type: string
+                      example: Get started
+                    group:
+                      type: string
+                      example: Weather
+                    createdAt:
+                      type: string
+                      example: '2018-10-24T06:45:03.828Z'
+                    disabled:
+                      type: boolean
+                      example: false
+                      default: true
+                    steps:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          stepId:
+                            type: string
+                            example: EXAMPLE-ad8d-4bf8-8ff5-da9dd7cb5636
+                          type:
+                            type: string
+                            example: INTENT
+                          title:
+                            type: string
+                            example: Get started
+                          contexts:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                          actions:
+                            type: array
+                            items:
+                              type: string
+                              example: ACTIONSf0838670032b1aa11
+                          intent:
+                            type: string
+                            example: INTENT0838670032b1aa16
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \"https://api.flow.ai/v1/projects/:projectId/flows\"\n  -H 'Authorization: Bearer MY_MANAGEMENT_API_KEY'"
+        samples-languages:
+        - curl
+      tags:
+      - Projects
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: agent-states-api-v2 AccountSet Report API
+  version: '1.1'
+servers:
+- url: https://{instance}.response.lithium.com/api/v2/agentstate
+  variables:
+    instance:
+      default: instance
+security:
+- {}
+tags:
+- name: Report
+paths:
+  /report/reports/{workflowId}/{runId}/status:
+    get:
+      summary: Get export job status
+      description: Check the status of an export job. This endpoint is returned in the `statusUrl` field of the response to a generate export requests (e.g., /reports/report/author).
+      operationId: reportsreportworkflowidrunidstatus
+      parameters:
+      - name: workflowId
+        in: path
+        description: 'The `workflowId` returned in the response to a export generation request (e.g., /reports/report/author).<br>Example: f71ccb0c-afdc-32c6-8bfd-443f8eabae87'
+        schema:
+          type: string
+        required: true
+      - name: runId
+        in: path
+        description: 'The `runId` returned in the response to a export generation request (e.g., /reports/report/author)<br>Example: 23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA='
+        schema:
+          type: string
+        required: true
+      - name: analyticsAccessToken
+        in: query
+        description: The access token returned in the `statusUrl` field of the response to a export generation request (e.g., /reports/report/author)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Report ready to download:
+                  value: "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": {\n    \"jobInfo\": {\n      \"workflowId\": \"f71ccb0c-afdc-32c6-8bfd-443f8eabae87\",\n      \"runId\": \"23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA=\",\n      \"downloadUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/download?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D\",\n      \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/status?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D\"\n    },\n    \"result\": {\n      \"runnerState\": \"CLOSED\",\n      \"reason\": null,\n      \"detail\": \"COMPLETED\",\n      \"currentCount\": null,\n      \"totalCount\": null,\n      \"lastAcknowledgeTime\": null\n    }\n  }\n}"
+                Export still running:
+                  value: "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": [\n    {\n      \"jobInfo\": {\n        \"workflowId\": \"57113d95-0745-320b-9269-00de3a9a3128\",\n        \"runId\": \"23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=\",\n        \"downloadUrl\": \"\",\n        \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D\"\n      },\n      \"result\": {\n        \"runnerState\": \"RUNNING\",\n        \"reason\": null,\n        \"detail\": \"\",\n        \"currentCount\": null,\n        \"totalCount\": null,\n        \"lastAcknowledgeTime\": null\n      }\n    }\n  ]\n}"
+                Export finished but failed:
+                  value: "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": [\n    {\n      \"jobInfo\": {\n        \"workflowId\": \"57113d95-0745-320b-9269-00de3a9a3128\",\n        \"runId\": \"23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=\",\n        \"downloadUrl\": \"\",\n        \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D\"\n      },\n      \"result\": {\n        \"runnerState\": \"CLOSED\",\n        \"reason\": null,\n        \"detail\": \"FAILED\",\n        \"currentCount\": null,\n        \"totalCount\": null,\n        \"lastAcknowledgeTime\": null\n      }\n    }\n  ]\n}"
+              schema:
+                oneOf:
+                - title: Report ready to download
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: PASS
+                    request: {}
+                    message: {}
+                    result:
+                      type: object
+                      properties:
+                        jobInfo:
+                          type: object
+                          properties:
+                            workflowId:
+                              type: string
+                              example: f71ccb0c-afdc-32c6-8bfd-443f8eabae87
+                            runId:
+                              type: string
+                              example: 23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA=
+                            downloadUrl:
+                              type: string
+                              example: https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/download?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D
+                            statusUrl:
+                              type: string
+                              example: https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/status?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D
+                        result:
+                          type: object
+                          properties:
+                            runnerState:
+                              type: string
+                              example: CLOSED
+                            reason: {}
+                            detail:
+                              type: string
+                              example: COMPLETED
+                            currentCount: {}
+                            totalCount: {}
+                            lastAcknowledgeTime: {}
+                - title: Export still running
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: PASS
+                    request: {}
+                    message: {}
+                    result:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          jobInfo:
+                            type: object
+                            properties:
+                              workflowId:
+                                type: string
+                                example: 57113d95-0745-320b-9269-00de3a9a3128
+                              runId:
+                                type: string
+                                example: 23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=
+                              downloadUrl:
+                                type: string
+                                example: ''
+                              statusUrl:
+                                type: string
+                                example: https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D
+                          result:
+                            type: object
+                            properties:
+                              runnerState:
+                                type: string
+                                example: RUNNING
+                              reason: {}
+                              detail:
+                                type: string
+                                example: ''
+                              currentCount: {}
+                              totalCount: {}
+                              lastAcknowledgeTime: {}
+                - title: Export finished but failed
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: PASS
+                    request: {}
+                    message: {}
+                    result:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          jobInfo:
+                            type: object
+                            properties:
+                              workflowId:
+                                type: string
+                                example: 57113d95-0745-320b-9269-00de3a9a3128
+                              runId:
+                                type: string
+                                example: 23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=
+                              downloadUrl:
+                                type: string
+                                example: ''
+                              statusUrl:
+                                type: string
+                                example: https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D
+                          result:
+                            type: object
+                            properties:
+                              runnerState:
+                                type: string
+                                example: CLOSED
+                              reason: {}
+                              detail:
+                                type: string
+                                example: FAILED
+                              currentCount: {}
+                              totalCount: {}
+                              lastAcknowledgeTime: {}
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl -u '[USERNAME]:[PASSWORD]' 'https://analytics-api.app.lithium.com/api/public/reports/report/<workflowId>/<runId>/status?analyticsAccessToken=[ACCESS_TOKEN]'
+        samples-languages:
+        - curl
+      tags:
+      - Report
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true
