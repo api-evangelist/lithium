@@ -1,0 +1,134 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  npm registry search + package metadata, the github.com/lithiumtech organization
+  (verified, display name "Khoros"), and PyPI. First-party status is asserted only where
+  the package repository or maintainer resolves to lithiumtech / flow-ai / an
+  eng-khoros / IgniteTech distribution account.
+description: >-
+  Client libraries and SDKs for the Lithium / Khoros platform. The Community plugin SDK
+  still ships under the original `lithium-sdk` name and carries the `li` CLI (see
+  ../cli/lithium-cli.yml). Brand Messenger ships native iOS, Android, React Native and
+  Flutter SDKs; Khoros Flow ships the flow.ai JavaScript SDK and message templates; the
+  Aurora community platform ships `khoros-aurora-sdk`.
+
+packages:
+  - language: javascript
+    registry: npm
+    name: lithium-sdk
+    url: https://www.npmjs.com/package/lithium-sdk
+    install: npm install -g lithium-sdk
+    repository: https://github.com/lithiumtech/lithium-sdk
+    version_seen: 1.11.0
+    first_published: '2015-05-15'
+    last_published: '2025-07-14'
+    official: true
+    provides_cli: li
+    description: >-
+      Lithium Community SDK — scaffolds, builds, previews and deploys Community plugins
+      (FreeMarker components, endpoints, skins, assets) against a community instance.
+
+  - language: javascript
+    registry: npm
+    name: khoros-aurora-sdk
+    url: https://www.npmjs.com/package/khoros-aurora-sdk
+    install: npm install khoros-aurora-sdk
+    version_seen: 26.3.5
+    first_published: '2024-03-26'
+    last_published: '2026-06-16'
+    official: true
+    description: >-
+      Aurora SDK — customize Aurora community plugin points from a Git repository and
+      preview changes against the community.
+
+  - language: javascript
+    registry: npm
+    name: flowai-js
+    url: https://www.npmjs.com/package/flowai-js
+    install: npm install flowai-js
+    repository: https://github.com/flow-ai/flowai-js
+    homepage: https://flow.ai
+    version_seen: 1.9.5
+    last_published: '2025-08-15'
+    official: true
+    description: The Khoros Flow (flow.ai) JavaScript SDK.
+
+  - language: javascript
+    registry: npm
+    name: flowai-js-templates
+    url: https://www.npmjs.com/package/flowai-js-templates
+    install: npm install flowai-js-templates
+    repository: https://github.com/flow-ai/flowai-js-templates
+    version_seen: 1.10.13
+    last_published: '2025-08-15'
+    official: true
+    description: Message response templates for Khoros Flow (flow.ai).
+
+  - language: javascript
+    registry: npm
+    name: react-native-brandmessenger-sdk
+    url: https://www.npmjs.com/package/react-native-brandmessenger-sdk
+    install: npm install react-native-brandmessenger-sdk
+    repository: https://github.com/lithiumtech/react-native-brandmessenger-sdk
+    version_seen: 1.3.2
+    last_published: '2025-08-29'
+    official: true
+    description: Official Khoros Brand Messenger React Native SDK.
+
+  - language: swift
+    registry: github
+    name: li-ios-sdk
+    url: https://github.com/lithiumtech/li-ios-sdk
+    official: true
+    description: Lithium Community iOS SDK.
+
+  - language: java
+    registry: github
+    name: li-android-sdk
+    url: https://github.com/lithiumtech/li-android-sdk
+    official: true
+    description: Lithium Community (LIA) Android SDK.
+
+  - language: objective-c
+    registry: github
+    name: ios-brandmessenger-sdk-dist
+    url: https://github.com/lithiumtech/ios-brandmessenger-sdk-dist
+    official: true
+    description: Khoros Brand Messenger iOS SDK distribution.
+
+  - language: kotlin
+    registry: github
+    name: android-brandmessenger-sdk-dist
+    url: https://github.com/lithiumtech/android-brandmessenger-sdk-dist
+    official: true
+    description: Khoros Brand Messenger Android SDK distribution.
+
+  - language: dart
+    registry: github
+    name: flutter_brandmessenger_sdk
+    url: https://github.com/lithiumtech/flutter_brandmessenger_sdk
+    official: true
+    description: Khoros Brand Messenger Flutter SDK.
+
+  - language: python
+    registry: pypi
+    name: khoros
+    url: https://pypi.org/project/khoros/
+    install: pip install khoros
+    version_seen: 5.4.0
+    repository: https://github.com/jeffshurtliff/khoros
+    official: false
+    author: Jeff Shurtliff
+    description: >-
+      Community-maintained (not first-party) Python library for managing a Khoros
+      Communities (formerly Lithium) environment. Widely used but published by an
+      individual, not by Khoros.
+
+notes:
+  - >-
+    No first-party package was found on Maven Central, NuGet, pkg.go.dev, RubyGems,
+    Packagist or crates.io for this provider; the native mobile SDKs are distributed via
+    GitHub repositories rather than language registries.
+  - >-
+    The github.com/lithiumtech organization is GitHub-verified and its display name is
+    "Khoros" — it is the surviving first-party code home for the Lithium lineage.

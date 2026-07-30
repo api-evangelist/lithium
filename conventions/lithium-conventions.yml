@@ -1,0 +1,176 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Derived from the 28 harvested definitions in ../openapi/ (parameters, security schemes,
+  response codes and media types) and confirmed against live probes of the Khoros Community
+  v2 and v1 endpoints on community.khoros.com plus the public Care/Marketing/Flow
+  documentation on developer.khoros.com.
+description: >-
+  Cross-cutting request/response semantics for the Lithium / Khoros API surface. There is no
+  single platform convention set — this is four separately-built product APIs (Care,
+  Marketing, Flow, Community) that were assembled through the Lithium/Spredfast/flow.ai
+  merger history, and they differ in authentication, tenancy, pagination and error shape.
+  Those differences are recorded per product below rather than smoothed over.
+
+api_style: REST over HTTPS, JSON responses (several Care/Marketing operations also declare text/plain)
+
+tenancy:
+  model: per-instance hostnames
+  detail: >-
+    Khoros Care and Community are addressed per customer instance —
+    https://{instance}.response.lithium.com/... for Care and
+    https://{community}/api/2.0 for Community. Khoros Marketing is a shared host
+    (api.spredfast.com) that identifies the tenant with request headers instead.
+  marketing_headers:
+    x-sf-company-id: Identifies the Khoros Marketing company/tenant. Present on 20 operations.
+    x-sf-initiative: Identifies the initiative (workspace) within the company.
+    x-sf-user-email: Identifies the acting user.
+    x-sf-email: Variant of x-sf-user-email on some operations.
+
+authentication:
+  summary: Four different models, one per product.
+  by_product:
+    care:
+      scheme: HTTP Basic (v1 and v2 APIs) and JWT (Bot API v3)
+      detail: >-
+        Care v1 and v2 APIs authenticate with HTTP Basic against the per-instance
+        response.lithium.com host. The Automation Framework's Bot API v3, on
+        api.app.lithium.com, authenticates with a signed JSON Web Token instead. The Care
+        Authentication API v2 (/api/v2/tokens) exchanges credentials for a token.
+      docs: https://developer.khoros.com/khoroscaredevdocs/docs/jwt-authentication
+      spec: ../openapi/lithium-care-authentication-api-v2-openapi.json
+    marketing:
+      scheme: OAuth 2.0
+      flows: [authorizationCode, clientCredentials]
+      authorization_url: https://login.spredfast.com/v3/oauth/authorize
+      token_url: https://login.spredfast.com/v3/oauth/token
+      scopes: {all: Read/write access for all endpoints.}
+      introspection: https://api.spredfast.com/v2/whoami
+      caveat: >-
+        Only the Conversations API v1 definition carries the real Spredfast OAuth URLs. The
+        other seven Marketing definitions declare a clientCredentials flow whose tokenUrl is
+        the ReadMe placeholder https://example.com/oauth2/token and whose scopes map is
+        empty — placeholders, not a real authorization server. Recorded as such, not
+        promoted.
+    community:
+      scheme: Session or API-app credentials
+      detail: >-
+        Community v2 rejects anonymous calls with a JSON error envelope (code 203, "You are
+        not authorized to make this request"). Credentials are provisioned through the
+        Community admin as API apps.
+      docs: https://developer.khoros.com/khorosauroradevdocs/docs/generating-api-credentials-with-api-apps
+    flow:
+      scheme: API key / token on the flow.ai REST API
+      spec: ../openapi/lithium-flow-flow-rest-api-openapi.json
+  detail: ../authentication/lithium-authentication.yml
+  scopes: ../scopes/lithium-scopes.yml
+
+idempotency:
+  supported: false
+  mechanism: null
+  evidence: >-
+    No Idempotency-Key header, parameter or documented replay contract appears anywhere in
+    the 28 harvested definitions or in the public Care/Marketing/Flow documentation. Retries
+    of non-GET operations are not deduplicated by the platform.
+
+pagination:
+  consistent: false
+  note: Pagination differs per API; there is no platform-wide convention.
+  styles:
+    - style: page-size
+      params: {pageSize: page size}
+      occurrences: 15
+      products: [marketing, care]
+    - style: limit-offset
+      params: {limit: max records, offset: records to skip}
+      occurrences: 7
+      products: [care, flow]
+    - style: page-number
+      params: {page: page index}
+      occurrences: 2
+    - style: cursor
+      params: {after: cursor token}
+      occurrences: 1
+    - style: liql
+      params: {LIMIT: LiQL LIMIT clause, OFFSET: LiQL OFFSET clause}
+      products: [community]
+      detail: >-
+        Community v2 paginates inside the LiQL query string itself
+        (SELECT ... FROM messages LIMIT 10 OFFSET 20) rather than with query parameters.
+
+query_language:
+  name: LiQL (Lithium Query Language)
+  products: [community]
+  description: >-
+    A SQL-like query language over community collections (messages, users, boards,
+    categories, replies). Queries are submitted as the `q` parameter to
+    /api/2.0/search. This is the defining Lithium API convention and has no equivalent in
+    the Care, Marketing or Flow APIs.
+  reference: https://developer.khoros.com/khoroscommunitydevdocs/docs/liql-collection-reference
+
+field_expansion:
+  supported: partial
+  detail: >-
+    LiQL SELECT clauses choose which fields and nested collections come back on Community
+    v2, which is the platform's closest equivalent to sparse fieldsets / expansion. The
+    Care, Marketing and Flow REST APIs return fixed representations.
+
+error_envelope:
+  consistent: false
+  formats:
+    - product: community-v2
+      media_type: application/json
+      shape:
+        status: '"error" | "success"'
+        message: Human-readable message
+        data: {type: error_data, code: Numeric Khoros error code, developer_message: '', more_info: ''}
+        metadata: {}
+      probed_example_status: 403
+      note: >-
+        The envelope is returned with a 4xx HTTP status and carries its own numeric code
+        (e.g. 203 for "You are not authorized to make this request").
+    - product: community-v1
+      media_type: text/xml
+      shape:
+        response: {'@status': 'error', error: {'@code': Numeric code, message: Human-readable message}}
+      probed_example_status: 200
+      note: >-
+        The legacy /restapi/vc/ API returns HTTP 200 with an XML error document — the HTTP
+        status does not reflect the outcome, so clients must inspect response/@status.
+    - product: care-marketing-flow
+      media_type: application/json
+      note: >-
+        Product-specific JSON error bodies. No shared schema is declared across the
+        definitions.
+  rfc9457: false
+  detail: ../errors/lithium-problem-types.yml
+
+rate_limiting:
+  documented: partial
+  headers: null
+  published_limits:
+    care_author_and_conversation: 60 calls per 60 seconds
+    care_analytics_reports: 20 requests per minute
+  note: >-
+    Khoros Care publishes numeric limits in prose; Marketing, Flow and Community publish
+    none. No X-RateLimit-* headers, Retry-After contract or 429 response appears in any
+    harvested definition, so remaining quota is not readable from a response.
+  detail: ../rate-limits/lithium-rate-limits.yml
+
+request_tracing:
+  request_id_header: null
+  note: No request-id or correlation header is declared in any harvested definition.
+
+versioning:
+  scheme: uri-path
+  detail: ../lifecycle/lithium-lifecycle.yml
+
+webhooks:
+  supported: true
+  detail: ../asyncapi/lithium-webhooks.yml
+
+related:
+  authentication: ../authentication/lithium-authentication.yml
+  errors: ../errors/lithium-problem-types.yml
+  lifecycle: ../lifecycle/lithium-lifecycle.yml
+  data_model: ../data-model/lithium-data-model.yml

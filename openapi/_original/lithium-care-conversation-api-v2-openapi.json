@@ -1,0 +1,341 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "conversation-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.response.lithium.com/api/v2/conversations",
+      "variables": {
+        "instance": {
+          "default": "instance"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/networks/{networktype}/instances/{networkinstance}/ids/{authorID}": {
+      "get": {
+        "summary": "Get conversation IDs by author and date",
+        "description": "Retrieve conversation IDs for a specified author within a 24-hour time period.",
+        "operationId": "conversationsnetworksnetworktypeinstancesnetworkinstanceidsauthorid",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values: twitter, instagram, facebook, googleplus, lithium, crm  For a networktype of value \"lithium\" or \"crm\" you must also pass the networkinstance, because these types of networks can have multiple instances as opposed to Twitter, Facebook, or Google+ that have only a single, default network.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a networktype. Use this path parameter with a networktype of \"lithium\" or \"crm\" only because other network types such as Facebook, Twitter, Instagram, and Google+ have only a single, default instance.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The ID of the author of the conversation",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "(Required) The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"921a2abd-6e53-11e3-a5df-525400201fe1\",\n        \"92113fe9-6e53-11e3-a5df-525400201fe1\",\n        \"921625e1-6e53-11e3-a5df-525400201fe1\",\n        \"9216c311-6e53-11e3-a5df-525400201fe1\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "921a2abd-6e53-11e3-a5df-525400201fe1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_app.com/api/v2/conversations/networks/lithium/instances/your_lithium_prod_instance.lithium.com/ids/2279?startEpochMillis=1396224000000&endEpochMillis=1396396800000'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/{lswUuid}": {
+      "get": {
+        "summary": "Get conversation details by unique ID",
+        "description": "Retrieve conversation details by unique ID",
+        "operationId": "lswuuid-1",
+        "parameters": [
+          {
+            "name": "lswUuid",
+            "in": "path",
+            "description": "The unique ID of the conversation",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/displayIds/{displayNumber}": {
+      "get": {
+        "summary": "Get conversation details by display ID",
+        "description": "Get conversation details by display ID",
+        "operationId": "displayidsdisplaynumber-1",
+        "parameters": [
+          {
+            "name": "displayNumber",
+            "in": "path",
+            "description": "One or more conversation IDs",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/bySourceDocumentId/networks/{network}/instances/{instance}/id/{source document id}": {
+      "get": {
+        "summary": "Get conversation details by document source ID",
+        "description": "Get conversation details by display ID",
+        "operationId": "get-conversation-details-by-document-source-id",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "description": "The unique name of the network serving as the source channel for the conversation.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "instance",
+            "in": "path",
+            "description": "The unique name of the Khoros Care instance through which the conversation is managed.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "source document id",
+            "in": "path",
+            "description": "This is the unique ID given by the source channel for the document. (i.e. Facebook post)",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\u00a0\"success\",\n  \"data\":\u00a0[\n    {\n      \"userHasPermissionToView\":\u00a0true,\n      \"displayNumber\":\u00a01878862,\n      \"primaryDocId\":\u00a03319840,\n      \"stateId\":\u00a02,\n      \"dispositionId\":\u00a019,\n      \"encodedCaseDisposition\":\u00a02579,\n      \"customDisposition\":\u00a0\"We love examples\",\n      \"status\":\u00a0\"CLOSED\",\n      \"assignedToAgent\":\u00a0{\n        \"name\":\u00a0\"John Doe\",\n        \"email\":\u00a0\"johndoe@example.com\",\n        \"lswUuid\":\u00a0\"401e017b-e98f-4eed-9345-3487ae9207cf\"\n      },\n      \"lswUuid\":\u00a0\"45cd7d6f-ca88-46ff-a71d-84859c94e420\",\n      \"ownerId\":\u00a01003043,\n      \"reviewOwnerId\":\u00a00,\n      \"createDate\":\u00a01592511678995,\n      \"tarStartDate\":\u00a01592435572000,\n      \"dueDate\":\u00a01592521972000,\n      \"closeDate\":\u00a01592918036137,\n      \"responsePortalLink\":\u00a0\"https://<your_care_url>/portal/conversation/1878862\",\n      \"primaryMessage\":\u00a0{\n        \"lakeProperties\":\u00a0[],\n        \"userHasPermissionToView\":\u00a0true,\n        \"isSourceHidden\":\u00a0false,\n        \"gdprdeleted\":\u00a0false,\n        \"documentId\":\u00a03319840,\n        \"conversationDisplayId\":\u00a01878862,\n        \"network\":\u00a0\"lithium\",\n        \"networkinstance\":\u00a0\"example.com/\",\n        \"id\":\u00a0\"example.com/:444\",\n        \"lswUuid\":\u00a0\"e1624458-361d-4072-b92c-03a98a6d8452\",\n        \"author\":\u00a0{\n          \"gdprMarked\":\u00a0false,\n          \"gdprScrubbed\":\u00a0false,\n          \"authorId\":\u00a0111327667,\n          \"lswUuid\":\u00a0\"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\",\n          \"name\":\u00a0\"DaveEvGUEST\",\n          \"screenName\":\u00a0\"DaveEvGUEST\",\n          \"network\":\u00a0\"lithium\",\n          \"networkinstance\":\u00a0\"example.com/\",\n          \"id\":\u00a0\"94\",\n          \"avatarUrl\":\u00a0\"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\",\n          \"personId\":\u00a0111549247,\n          \"tags\":\u00a0[\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a028724,\n              \"lswUuid\":\u00a0\"7b84200c-54fe-4a01-a7db-b1118b83bead\"\n            },\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a061719,\n              \"lswUuid\":\u00a0\"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\"\n            },\n            {\n              \"creator\":\u00a0{\n                 \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a060314,\n              \"lswUuid\":\u00a0\"a500a902-15c3-4b1b-b57f-39796f9c6392\"\n            },\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"AGENT\"\n              },\n              \"tagId\":\u00a016284,\n              \"lswUuid\":\u00a0\"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\"\n            },\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a059916,\n              \"lswUuid\":\u00a0\"3045f656-2938-4b85-8b43-cd358fc16f68\"\n            }\n          ]\n        },\n        \"receiveDate\":\u00a01592511678000,\n        \"publishDate\":\u00a01592435572000,\n        \"postContent\":\u00a0\"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\",\n        \"url\":\u00a0\"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\",\n        \"isPrivate\":\u00a0false,\n        \"isReferenceDoc\":\u00a0true,\n        \"tags\":\u00a0[\n          {\n            \"creator\":\u00a0{\n              \"type\":\u00a0\"SYSTEM\"\n            },\n            \"tagId\":\u00a012,\n            \"lswUuid\":\u00a0\"48a6df96-1f88-11e7-9247-99eedf934291\"\n          },\n          {\n            \"creator\":\u00a0{\n              \"type\":\u00a0\"SYSTEM\"\n            },\n            \"tagId\":\u00a03945,\n            \"lswUuid\":\u00a0\"240bf655-4728-11e8-84fc-0a0bfd34bea2\"\n          }\n        ],\n        \"docMeta\":\u00a0{\n          \"lang\":\u00a0\"en\"\n        },\n        \"urlRecords\":\u00a0[],\n        \"title\":\u00a0\"Need some advice\",\n        \"inReplySourceId\":\u00a0\"\",\n        \"text\":\u00a0\"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\",\n        \"documentType\":\u00a0\"LI_TOPIC\",\n        \"ingestMethod\":\u00a0\"UNKNOWN\",\n        \"createdDuringBusinessHours\":\u00a0false,\n        \"isSourceDeleted\":\u00a0false,\n        \"isSoftAttached\":\u00a0false,\n        \"media\":\u00a0[]\n      },\n      \"messages\":\u00a0[\n        {\n          \"lakeProperties\":\u00a0[],\n          \"userHasPermissionToView\":\u00a0true,\n          \"isSourceHidden\":\u00a0false,\n          \"gdprdeleted\":\u00a0false,\n          \"documentId\":\u00a03319840,\n          \"conversationDisplayId\":\u00a01878862,\n          \"network\":\u00a0\"lithium\",\n          \"networkinstance\":\u00a0\"example.com/\",\n          \"id\":\u00a0\"example.com/:444\",\n          \"lswUuid\":\u00a0\"e1624458-361d-4072-b92c-03a98a6d8452\",\n          \"author\":\u00a0{\n            \"gdprMarked\":\u00a0false,\n            \"gdprScrubbed\":\u00a0false,\n            \"authorId\":\u00a0111327667,\n            \"lswUuid\":\u00a0\"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\",\n            \"name\":\u00a0\"DaveEvGUEST\",\n            \"screenName\":\u00a0\"DaveEvGUEST\",\n            \"network\":\u00a0\"lithium\",\n            \"networkinstance\":\u00a0\"example.com/\",\n            \"id\":\u00a0\"94\",\n            \"avatarUrl\":\u00a0\"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\",\n            \"personId\":\u00a0111549247,\n            \"tags\":\u00a0[\n              {\n                \"creator\":\u00a0{\n                  \"type\":\u00a0\"SYSTEM\"\n                },\n                \"tagId\":\u00a028724,\n                \"lswUuid\":\u00a0\"7b84200c-54fe-4a01-a7db-b1118b83bead\"\n              },\n              {\n                \"creator\":\u00a0{\n                  \"type\":\u00a0\"SYSTEM\"\n                },\n                \"tagId\":\u00a061719,\n                \"lswUuid\":\u00a0\"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\"\n              },\n              {\n                \"creator\":\u00a0{\n                  \"type\":\u00a0\"SYSTEM\"\n                },\n                \"tagId\":\u00a060314,\n                \"lswUuid\":\u00a0\"a500a902-15c3-4b1b-b57f-39796f9c6392\"\n              },\n              {\n                \"creator\":\u00a0{\n                  \"type\":\u00a0\"AGENT\"\n                },\n                \"tagId\":\u00a016284,\n                \"lswUuid\":\u00a0\"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\"\n              },\n              {\n                \"creator\":\u00a0{\n                  \"type\":\u00a0\"SYSTEM\"\n                },\n                \"tagId\":\u00a059916,\n                \"lswUuid\":\u00a0\"3045f656-2938-4b85-8b43-cd358fc16f68\"\n              }\n            ]\n          },\n          \"receiveDate\":\u00a01592511678000,\n          \"publishDate\":\u00a01592435572000,\n          \"postContent\":\u00a0\"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\",\n          \"url\":\u00a0\"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\",\n          \"isPrivate\":\u00a0false,\n          \"isReferenceDoc\":\u00a0true,\n          \"tags\":\u00a0[\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a012,\n              \"lswUuid\":\u00a0\"48a6df96-1f88-11e7-9247-99eedf934291\"\n            },\n            {\n              \"creator\":\u00a0{\n                \"type\":\u00a0\"SYSTEM\"\n              },\n              \"tagId\":\u00a03945,\n              \"lswUuid\":\u00a0\"240bf655-4728-11e8-84fc-0a0bfd34bea2\"\n            }\n          ],\n          \"docMeta\":\u00a0{\n            \"lang\":\u00a0\"en\"\n          },\n          \"urlRecords\":\u00a0[],\n          \"title\":\u00a0\"Need some advice\",\n          \"inReplySourceId\":\u00a0\"\",\n          \"text\":\u00a0\"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\",\n          \"documentType\":\u00a0\"LI_TOPIC\",\n          \"ingestMethod\":\u00a0\"UNKNOWN\",\n          \"createdDuringBusinessHours\":\u00a0false,\n          \"isSourceDeleted\":\u00a0false,\n          \"isSoftAttached\":\u00a0false,\n          \"media\":\u00a0[]\n        }\n      ],\n      \"tags\":\u00a0[\n        {\n          \"creator\":\u00a0{\n            \"type\":\u00a0\"AGENT\"\n          },\n          \"tagId\":\u00a020545,\n          \"lswUuid\":\u00a0\"ec56355a-6628-4c11-865b-10adf01f7f71\"\n        },\n        {\n          \"creator\":\u00a0{\n            \"type\":\u00a0\"SYSTEM\"\n          },\n          \"tagId\":\u00a061987,\n          \"lswUuid\":\u00a0\"861038a4-9604-4920-9f12-952f1e04484f\"\n        }\n      ],\n      \"priority\":\u00a05,\n      \"workQueue\":\u00a0{\n        \"lswUuid\":\u00a0\"e00dd04f-a459-47d8-9d94-d368eaffedef\",\n        \"id\":\u00a0156\n      },\n      \"notes\":\u00a0[\n        {\n          \"source\":\u00a0\"UI\",\n          \"createDate\":\u00a01592918036000,\n          \"note\":\u00a0\"test\",\n          \"agent\":\u00a0{\n            \"name\":\u00a0\"John Doe\",\n            \"email\":\u00a0\"johndoe@example.com\",\n            \"lswUuid\":\u00a0\"401e017b-e98f-4eed-9345-3487ae9207cf\"\n          }\n        }\n      ],\n      \"needsAttention\":\u00a0false,\n      \"discussionStyle\":\u00a0\"LI_BLOG\",\n      \"snoozeExpiration\":\u00a0-1,\n      \"isUserWatching\":\u00a0false,\n      \"isUserHelping\":\u00a0false,\n      \"totalResponses\":\u00a00,\n      \"hasResponse\":\u00a0false\n    }\n  ]\n}\n404:\n\n\u00a0\n\n{\n  \"status\": \"fail\",\n  \"message\": \"No conversations found that contain document with id not_a_real_id\"\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"No conversations found that contain document with id not_a_real_id\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No conversations found that contain document with id not_a_real_id"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

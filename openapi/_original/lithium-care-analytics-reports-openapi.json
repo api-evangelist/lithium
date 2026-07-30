@@ -1,0 +1,3339 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "analytics-reports",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://analytics-api.app.lithium.com/api/public"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/config/timezones": {
+      "get": {
+        "summary": "Get time zone IDs for exports",
+        "description": "Get time zone IDs used to format time zones in exports",
+        "operationId": "configtimezones",
+        "parameters": [
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "A locale code to filter the response. Default is `en`",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[\n    {\n      \"id\":\"Etc/GMT+12\",\n      \"name\":\"GMT-12:00\",\n      \"shortName\":\"GMT-12:00\",\n      \"offsetString\":\"-12:00\",\n      \"offsetMillis\":-43200000\n    },\n    {\n      \"id\":\"Etc/GMT+11\",\n      \"name\":\"GMT-11:00\",\n      \"shortName\":\"GMT-11:00\",\n      \"offsetString\":\"-11:00\",\n      \"offsetMillis\":-39600000\n    },\n    ...\n    {\n      \"id\":\"Pacific/Apia\",\n      \"name\":\"Samoa Daylight Time\",\n      \"shortName\":\"SDT\",\n      \"offsetString\":\"+14:00\",\n      \"offsetMillis\":50400000\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/config/timezones?locale=en&companyKey=[COMPANY_KEY]'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/jobs": {
+      "get": {
+        "summary": "Get job status",
+        "description": "Retrieve the status of a job . This endpoint will be deprecated and removed in April 2020.",
+        "operationId": "jobs",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Job still running": {
+                    "value": "{  \n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[  \n    {  \n      \"jobInfo\":{  \n        \"workflowId\":\"0b485dbe-9c85-3700-b0b8-f864f80c452c\",\n        \"runId\":\"23ISbFVIyg0uqeXMD1/+UtZDfJAwfF+z53a/jSscKPVRk=\"\n      },\n      \"result\":{  \n        \"runnerState\":\"RUNNING\",\n        \"reason\":null,\n        \"details\":null,\n        \"currentCount\":null,\n        \"totalCount\":null,\n        \"lastAcknowledgeTime\":null\n      }\n    }\n  ]\n}"
+                  },
+                  "Job finished": {
+                    "value": "{  \n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[  \n    {  \n      \"jobInfo\":{  \n        \"workflowId\":\"b8520152-0f68-338e-8c49-db6190be58f9\",\n        \"runId\":\"233mkcTFbmE+40bqQ3db/4SnnqomXScvqbK/kdzMtD0qo=\",\n        \"downloadUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/b8520152-0f68-338e-8c49-db6190be58f9/233mkcTFbmE%2B40bqQ3db%2F4SnnqomXScvqbK%2FkdzMtD0qo%3D/download?companyKey=[company_key]\"\n      },\n      \"result\":{  \n        \"runnerState\":\"CLOSED\",\n        \"reason\":null,\n        \"details\":null,\n        \"currentCount\":null,\n        \"totalCount\":null,\n        \"lastAcknowledgeTime\":null\n      }\n    }\n  ]\n}"
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "title": "Job still running",
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "PASS"
+                        },
+                        "request": {},
+                        "message": {},
+                        "result": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "jobInfo": {
+                                "type": "object",
+                                "properties": {
+                                  "workflowId": {
+                                    "type": "string",
+                                    "example": "0b485dbe-9c85-3700-b0b8-f864f80c452c"
+                                  },
+                                  "runId": {
+                                    "type": "string",
+                                    "example": "23ISbFVIyg0uqeXMD1/+UtZDfJAwfF+z53a/jSscKPVRk="
+                                  }
+                                }
+                              },
+                              "result": {
+                                "type": "object",
+                                "properties": {
+                                  "runnerState": {
+                                    "type": "string",
+                                    "example": "RUNNING"
+                                  },
+                                  "reason": {},
+                                  "details": {},
+                                  "currentCount": {},
+                                  "totalCount": {},
+                                  "lastAcknowledgeTime": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "title": "Job finished",
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "PASS"
+                        },
+                        "request": {},
+                        "message": {},
+                        "result": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "jobInfo": {
+                                "type": "object",
+                                "properties": {
+                                  "workflowId": {
+                                    "type": "string",
+                                    "example": "b8520152-0f68-338e-8c49-db6190be58f9"
+                                  },
+                                  "runId": {
+                                    "type": "string",
+                                    "example": "233mkcTFbmE+40bqQ3db/4SnnqomXScvqbK/kdzMtD0qo="
+                                  },
+                                  "downloadUrl": {
+                                    "type": "string",
+                                    "example": "https://analytics-api.app.lithium.com/api/public/reports/report/b8520152-0f68-338e-8c49-db6190be58f9/233mkcTFbmE%2B40bqQ3db%2F4SnnqomXScvqbK%2FkdzMtD0qo%3D/download?companyKey=[company_key]"
+                                  }
+                                }
+                              },
+                              "result": {
+                                "type": "object",
+                                "properties": {
+                                  "runnerState": {
+                                    "type": "string",
+                                    "example": "CLOSED"
+                                  },
+                                  "reason": {},
+                                  "details": {},
+                                  "currentCount": {},
+                                  "totalCount": {},
+                                  "lastAcknowledgeTime": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u username:password \\\n  'https://analytics-api.app.lithium.com/api/public/reports/jobs?companyKey=[company_key]'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/conversation_actions": {
+      "get": {
+        "summary": "Create conversation actions report",
+        "description": "Generate a Conversation Actions export",
+        "operationId": "reportsreportconversation_actions",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\" target=\"_blank\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\" target=\"_blank\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "(Required) The end time in epoch milliseconds. This value will not be adjusted. includeDisabled",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the report. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "(Required) The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the report export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"2951efa0-ea55-3a74-8a60-66ea888bb83d\",\n    \"runId\":\"239cSQoLhKk0Z4YSzWvYX4Z92E9ybFgvwNcrbwc3O8Hms=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/2951efa0-ea55-3a74-8a60-66ea888bb83d/239cSQoLhKk0Z4YSzWvYX4Z92E9ybFgvwNcrbwc3O8Hms%3D/status?companyKey=manual-c01\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "2951efa0-ea55-3a74-8a60-66ea888bb83d"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "239cSQoLhKk0Z4YSzWvYX4Z92E9ybFgvwNcrbwc3O8Hms="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/2951efa0-ea55-3a74-8a60-66ea888bb83d/239cSQoLhKk0Z4YSzWvYX4Z92E9ybFgvwNcrbwc3O8Hms%3D/status?companyKey=manual-c01"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XGET \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/conversation_actions?companyKey=[COMPANY_KEY]&reportFormat=json&startTime=1561438800000&endTime=1561525199999&timezone=America%2FChicago'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "post": {
+        "summary": "Create conversation actions export",
+        "description": "Generate a Conversation Actions export",
+        "operationId": "reportsreportconversation_actions-1",
+        "parameters": [
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "endTime",
+                  "startTime"
+                ],
+                "properties": {
+                  "businessHourType": {
+                    "type": "boolean",
+                    "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+                  },
+                  "enableBusinessHour": {
+                    "type": "boolean",
+                    "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+                    "default": false
+                  },
+                  "endTime": {
+                    "type": "string",
+                    "description": "The end time in epoch milliseconds. This value will not be adjusted."
+                  },
+                  "locale": {
+                    "type": "string",
+                    "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+                  },
+                  "priorities": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+                  },
+                  "reportFormat": {
+                    "type": "string",
+                    "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format.",
+                    "default": "json"
+                  },
+                  "reportMetrics": {
+                    "type": "string",
+                    "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+                  },
+                  "smartViewId": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+                  },
+                  "startTime": {
+                    "type": "string",
+                    "description": "The start time in epoch milliseconds. This value will not be adjusted."
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+                  },
+                  "timezoneOffset": {
+                    "type": "string",
+                    "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+                  },
+                  "workqueueIds": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/conversation_actions?companyKey=[COMPANY_KEY]' \\\n    -d 'startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&timeInterval=86400000&timezone=America%2FChicago'",
+              "name": "cURL"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/user": {
+      "get": {
+        "summary": "Create user export",
+        "description": "Generate a User export",
+        "operationId": "reportsreportuser-get",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "query",
+            "description": "The ID of the agent. Use a separate instance of the `agentId` parameter for each agent to include. Example: `?agentId=1&agent=2&agentId=3`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "(Required) The end time in epoch milliseconds. This value will not be adjusted. includeDisabled",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeDisabled",
+            "in": "query",
+            "description": "Whether or not to include disabled agents in the report",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "(Required) The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "description": "The ID of the team used to filter the report. Find the team ID with the `/teams` endpoint. Example: `?teamId=1&teamId=2&teamId=3`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"PASS\",\n    \"request\": null,\n    \"message\": null,\n    \"result\": {\n        \"workflowId\": \"39b3a89d-1e79-3233-8127-8aa617f6f9d0\",\n        \"runId\": \"23evvPscL2zWpQgpSqGPu6H5B+rqoJ7YgYws8e96uMyRM=\",\n        \"downloadUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/39b3a89d-1e79-3233-8127-8aa617f6f9d0/23evvPscL2zWpQgpSqGPu6H5B%2BrqoJ7YgYws8e96uMyRM%3D/download?companyKey=[COMPANY KEY]\",\n        \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/39b3a89d-1e79-3233-8127-8aa617f6f9d0/23evvPscL2zWpQgpSqGPu6H5B%2BrqoJ7YgYws8e96uMyRM%3D/status?companyKey=[COMPANY KEY]\"\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "39b3a89d-1e79-3233-8127-8aa617f6f9d0"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23evvPscL2zWpQgpSqGPu6H5B+rqoJ7YgYws8e96uMyRM="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/39b3a89d-1e79-3233-8127-8aa617f6f9d0/23evvPscL2zWpQgpSqGPu6H5B%2BrqoJ7YgYws8e96uMyRM%3D/download?companyKey=[COMPANY KEY]"
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/39b3a89d-1e79-3233-8127-8aa617f6f9d0/23evvPscL2zWpQgpSqGPu6H5B%2BrqoJ7YgYws8e96uMyRM%3D/status?companyKey=[COMPANY KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XGET \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/user?startTime=1548979200000&endTime=1556668800000&companyKey=[COMPANY_KEY]&timeInterval=3600000000'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "post": {
+        "summary": "Create user export",
+        "description": "Generate a User export",
+        "operationId": "reportsreportuser-post",
+        "parameters": [
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "endTime",
+                  "startTime"
+                ],
+                "properties": {
+                  "agentId": {
+                    "type": "string",
+                    "description": "The ID of the agent. Use a separate instance of the `agentId` parameter for each agent to include. Example: `?agentId=1&agent=2&agentId=3`. See [Using agentId with teamId](ref:using-agentid-with-teamid) for more details."
+                  },
+                  "endTime": {
+                    "type": "string",
+                    "description": "The end time in epoch milliseconds. This value will not be adjusted. This parameter only affects the \"Total Time\" data."
+                  },
+                  "includeDisabled": {
+                    "type": "boolean",
+                    "description": "Whether or not to include disabled agents in the report.  Default is `false`.",
+                    "default": false
+                  },
+                  "locale": {
+                    "type": "string",
+                    "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+                  },
+                  "reportFormat": {
+                    "type": "string",
+                    "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+                    "default": "json"
+                  },
+                  "reportMetrics": {
+                    "type": "string",
+                    "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+                  },
+                  "startTime": {
+                    "type": "string",
+                    "description": "The start time in epoch milliseconds. This value will not be adjusted. This parameter only affects the \"Total Time\" data."
+                  },
+                  "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team used to filter the export. Find the team ID with the `/teams` endpoint. Example: `?teamId=1&teamId=2&teamId=3`"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{ \n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{ \n    \"workflowId\":\"ec76f5df-7687-39cd-bde7-9e096c274469\",\n    \"runId\":\"23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE+JOLNZM=\",\n    \"downloadUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/ec76f5df-7687-39cd-bde7-9e096c274469/23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE%2BJOLNZM%3D/download?[COMPANY KEY]\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/ec76f5df-7687-39cd-bde7-9e096c274469/23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE%2BJOLNZM%3D/status?companyKey=[COMPANY KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "ec76f5df-7687-39cd-bde7-9e096c274469"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE+JOLNZM="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/ec76f5df-7687-39cd-bde7-9e096c274469/23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE%2BJOLNZM%3D/download?[COMPANY KEY]"
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/ec76f5df-7687-39cd-bde7-9e096c274469/23LC2OQ4fUTembCkirAt5OinVWmrzWRb10mdJE%2BJOLNZM%3D/status?companyKey=[COMPANY KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/user?companyKey=[COMPANY KEY]' \\\n\t\t-d 'startTime=1682312400000' \\\n\t\t-d 'endTime=16823555400000' \\\n\t\t-d 'reportFormat=json'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/{workflowId}/{runId}/download": {
+      "get": {
+        "summary": "Download export by run ID",
+        "description": "Download an export",
+        "operationId": "reportworkflowidruniddownload",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "description": "The workflowId returned from a request to an export generation endpoint, such as `/reports/report/author`. Must be URL-encoded.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "runId",
+            "in": "path",
+            "description": "The runID returned from a request to an export generation endpoint like /reports/report/author. Must be URL-encoded.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n100   145  100   145    0     0    419      0 --:--:-- --:--:-- --:--:--   419"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/[workflowId]/[runId]/download?companyKey=[COMPANY_KEY]' \n  -o report.csv",
+              "name": "Download as CSV"
+            },
+            {
+              "language": "curl",
+              "code": "curl -L -u '[USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/88cfc7fe-dfde-3b7d-b201-ec48e640f349/23ojMp0U9YVNcR1JMV0FMLctcCMGPxBlDqA%2FexQnahUI8%3D/status?companyKey=[COMPANY_KEY]' \\\n  -o report2.json",
+              "name": "Download as JSON"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/report/reports/{workflowId}/{runId}/status": {
+      "get": {
+        "summary": "Get export job status",
+        "description": "Check the status of an export job. This endpoint is returned in the `statusUrl` field of the response to a generate export requests (e.g., /reports/report/author).",
+        "operationId": "reportsreportworkflowidrunidstatus",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "description": "The `workflowId` returned in the response to a export generation request (e.g., /reports/report/author).<br>Example: f71ccb0c-afdc-32c6-8bfd-443f8eabae87",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "runId",
+            "in": "path",
+            "description": "The `runId` returned in the response to a export generation request (e.g., /reports/report/author)<br>Example: 23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA=",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "analyticsAccessToken",
+            "in": "query",
+            "description": "The access token returned in the `statusUrl` field of the response to a export generation request (e.g., /reports/report/author)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Report ready to download": {
+                    "value": "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": {\n    \"jobInfo\": {\n      \"workflowId\": \"f71ccb0c-afdc-32c6-8bfd-443f8eabae87\",\n      \"runId\": \"23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA=\",\n      \"downloadUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/download?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D\",\n      \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/status?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D\"\n    },\n    \"result\": {\n      \"runnerState\": \"CLOSED\",\n      \"reason\": null,\n      \"detail\": \"COMPLETED\",\n      \"currentCount\": null,\n      \"totalCount\": null,\n      \"lastAcknowledgeTime\": null\n    }\n  }\n}"
+                  },
+                  "Export still running": {
+                    "value": "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": [\n    {\n      \"jobInfo\": {\n        \"workflowId\": \"57113d95-0745-320b-9269-00de3a9a3128\",\n        \"runId\": \"23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=\",\n        \"downloadUrl\": \"\",\n        \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D\"\n      },\n      \"result\": {\n        \"runnerState\": \"RUNNING\",\n        \"reason\": null,\n        \"detail\": \"\",\n        \"currentCount\": null,\n        \"totalCount\": null,\n        \"lastAcknowledgeTime\": null\n      }\n    }\n  ]\n}"
+                  },
+                  "Export finished but failed": {
+                    "value": "{\n  \"status\": \"PASS\",\n  \"request\": null,\n  \"message\": null,\n  \"result\": [\n    {\n      \"jobInfo\": {\n        \"workflowId\": \"57113d95-0745-320b-9269-00de3a9a3128\",\n        \"runId\": \"23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ=\",\n        \"downloadUrl\": \"\",\n        \"statusUrl\": \"https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D\"\n      },\n      \"result\": {\n        \"runnerState\": \"CLOSED\",\n        \"reason\": null,\n        \"detail\": \"FAILED\",\n        \"currentCount\": null,\n        \"totalCount\": null,\n        \"lastAcknowledgeTime\": null\n      }\n    }\n  ]\n}"
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "title": "Report ready to download",
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "PASS"
+                        },
+                        "request": {},
+                        "message": {},
+                        "result": {
+                          "type": "object",
+                          "properties": {
+                            "jobInfo": {
+                              "type": "object",
+                              "properties": {
+                                "workflowId": {
+                                  "type": "string",
+                                  "example": "f71ccb0c-afdc-32c6-8bfd-443f8eabae87"
+                                },
+                                "runId": {
+                                  "type": "string",
+                                  "example": "23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA="
+                                },
+                                "downloadUrl": {
+                                  "type": "string",
+                                  "example": "https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/download?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D"
+                                },
+                                "statusUrl": {
+                                  "type": "string",
+                                  "example": "https://analytics-api.app.lithium.com/api/public/reports/report/f71ccb0c-afdc-32c6-8bfd-443f8eabae87/23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0%2BpkHA%3D/status?analyticsAccessToken=oMqgB5T7BikRH3ISPxlqIw%3D%3D"
+                                }
+                              }
+                            },
+                            "result": {
+                              "type": "object",
+                              "properties": {
+                                "runnerState": {
+                                  "type": "string",
+                                  "example": "CLOSED"
+                                },
+                                "reason": {},
+                                "detail": {
+                                  "type": "string",
+                                  "example": "COMPLETED"
+                                },
+                                "currentCount": {},
+                                "totalCount": {},
+                                "lastAcknowledgeTime": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "title": "Export still running",
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "PASS"
+                        },
+                        "request": {},
+                        "message": {},
+                        "result": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "jobInfo": {
+                                "type": "object",
+                                "properties": {
+                                  "workflowId": {
+                                    "type": "string",
+                                    "example": "57113d95-0745-320b-9269-00de3a9a3128"
+                                  },
+                                  "runId": {
+                                    "type": "string",
+                                    "example": "23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ="
+                                  },
+                                  "downloadUrl": {
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "statusUrl": {
+                                    "type": "string",
+                                    "example": "https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D"
+                                  }
+                                }
+                              },
+                              "result": {
+                                "type": "object",
+                                "properties": {
+                                  "runnerState": {
+                                    "type": "string",
+                                    "example": "RUNNING"
+                                  },
+                                  "reason": {},
+                                  "detail": {
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "currentCount": {},
+                                  "totalCount": {},
+                                  "lastAcknowledgeTime": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "title": "Export finished but failed",
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "PASS"
+                        },
+                        "request": {},
+                        "message": {},
+                        "result": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "jobInfo": {
+                                "type": "object",
+                                "properties": {
+                                  "workflowId": {
+                                    "type": "string",
+                                    "example": "57113d95-0745-320b-9269-00de3a9a3128"
+                                  },
+                                  "runId": {
+                                    "type": "string",
+                                    "example": "23g+OxKtvHZugyyn1PN+0y5u7EFFtnRDBbyRjEeXWSRcQ="
+                                  },
+                                  "downloadUrl": {
+                                    "type": "string",
+                                    "example": ""
+                                  },
+                                  "statusUrl": {
+                                    "type": "string",
+                                    "example": "https://analytics-api.app.lithium.com/api/public/reports/report/57113d95-0745-320b-9269-00de3a9a3128/23g%2BOxKtvHZugyyn1PN%2B0y5u7EFFtnRDBbyRjEeXWSRcQ%3D/status?analyticsAccessToken=53u6j8zjSLAe6e%2F8s80LtA%3D%3D"
+                                  }
+                                }
+                              },
+                              "result": {
+                                "type": "object",
+                                "properties": {
+                                  "runnerState": {
+                                    "type": "string",
+                                    "example": "CLOSED"
+                                  },
+                                  "reason": {},
+                                  "detail": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                  },
+                                  "currentCount": {},
+                                  "totalCount": {},
+                                  "lastAcknowledgeTime": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u '[USERNAME]:[PASSWORD]' 'https://analytics-api.app.lithium.com/api/public/reports/report/<workflowId>/<runId>/status?analyticsAccessToken=[ACCESS_TOKEN]'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/teams": {
+      "get": {
+        "summary": "Get team IDs",
+        "description": "Get team IDs",
+        "operationId": "teams",
+        "parameters": [
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "Formatted JSON Data\n{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":[\n    {\n      \"uuid\":\"4c1d5194-8946-4e7f-aa8e-6315b3379bf3\",\n      \"teamId\":6222,\n      \"name\":\"North West\",\n      \"description\":null,\n      \"numberOfMembers\":3\n    },\n    {\n      \"uuid\":\"6af42c52-ff19-4b3b-bd0c-d4cf617f27f8\",\n      \"teamId\":7031,\n      \"name\":\"South West\",\n      \"description\":null,\n      \"numberOfMembers\":3\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] \\\n  'https://analytics-api.app.lithium.com/api/public/teams?companyKey=[COMPANY_KEY]"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/author": {
+      "post": {
+        "summary": "Create raw author export",
+        "description": "Genearate a Raw Author export",
+        "operationId": "reportsreportauthor",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"88cfc7fe-dfde-3b7d-b201-ec48e640f349\",\n    \"runId\":\"23ycjuGsfv/xWjagJgnWRp8uV6mZHF3aSNmIivNLM1TyM=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.qa.aws.lcloud.com/api/public/reports/report/88cfc7fe-dfde-3b7d-b201-ec48e640f349/23ycjuGsfv%2FxWjagJgnWRp8uV6mZHF3aSNmIivNLM1TyM%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "88cfc7fe-dfde-3b7d-b201-ec48e640f349"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23ycjuGsfv/xWjagJgnWRp8uV6mZHF3aSNmIivNLM1TyM="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.qa.aws.lcloud.com/api/public/reports/report/88cfc7fe-dfde-3b7d-b201-ec48e640f349/23ycjuGsfv%2FxWjagJgnWRp8uV6mZHF3aSNmIivNLM1TyM%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/author?companyKey=[COMPANY_KEY]&startTime=1481212789920&endTime=1481817589920&timezoneOffset=-21600000& enableBusinessHour=true&locale=en'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/combined": {
+      "post": {
+        "summary": "Create raw combined export",
+        "description": "Generate a Raw Combined export",
+        "operationId": "reportsreportcombined",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/combined?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000& enableBusinessHour=true&locale=en&timeInterval=86400000'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/conversation": {
+      "post": {
+        "summary": "Create raw conversations export",
+        "description": "Generate a Raw Conversations export",
+        "operationId": "reportsreportconversation",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "conversationReportType",
+            "in": "query",
+            "description": "_Used only for the Raw Conversation export._ Pass one of the following to specify which conversations to include in the export. If not specified, defaults to OPEN_AT_END:<br><br> OPEN_AT_END - get all conversations that were Open at the end of the interval set by `startTime` and `endTime`<br>CLOSED - get all conversations that were Closed during the interval set by `startTime` and `endTime`<br> CREATED - get all conversations that were created during the interval set by `startTime` and `endTime`",
+            "schema": {
+              "type": "string",
+              "default": "OPEN_AT_END"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://aanalytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://aanalytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/conversation?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&timeInterval=86400000&conversationReportType=CLOSED'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/conversation_history_action": {
+      "post": {
+        "summary": "Create conversation action history export",
+        "description": "Generate a Conversation Action History export",
+        "operationId": "create-conversation-action-history-export",
+        "parameters": [
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raiselimit",
+            "in": "query",
+            "description": "Enables an increase in the limit on the number of actions per conversation allowed in the export. By default, the limit in the export is 500 actions per single conversation that appears in the export. Using `raiselimit=true` will increase the limit to 2,000 actions per conversation.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "startTime",
+                  "endTime"
+                ],
+                "properties": {
+                  "startTime": {
+                    "type": "string",
+                    "description": "The start time in epoch milliseconds. This value will not be adjusted."
+                  },
+                  "endTime": {
+                    "type": "string",
+                    "description": "The end time in epoch milliseconds. This value will not be adjusted."
+                  },
+                  "businessHourType": {
+                    "type": "boolean",
+                    "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+                  },
+                  "enableBusinessHour": {
+                    "type": "boolean",
+                    "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+                    "default": false
+                  },
+                  "locale": {
+                    "type": "string",
+                    "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+                  },
+                  "priorities": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+                  },
+                  "reportFormat": {
+                    "type": "string",
+                    "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format.",
+                    "default": "json"
+                  },
+                  "reportMetrics": {
+                    "type": "string",
+                    "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+                  },
+                  "smartViewId": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+                  },
+                  "timezoneOffset": {
+                    "type": "string",
+                    "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+                  },
+                  "workqueueIds": {
+                    "type": "string",
+                    "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"example-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"examplenp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/example-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "example-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "examplenp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/example-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/conversation_history_action?companyKey=[COMPANY_KEY]' \\\n    -d 'startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&timeInterval=86400000&timezone=America%2FChicago'",
+              "name": "cURL"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/incoming_post": {
+      "post": {
+        "summary": "Create raw incoming post export",
+        "description": "Generate a Raw Incoming Post export",
+        "operationId": "incoming_post",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/incoming_post?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/raw_agent_states": {
+      "post": {
+        "summary": "Create agent state export",
+        "description": "Genereate an Agent State Export export",
+        "operationId": "reportsreportraw_agent_states",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified team ID.<br><br>You must use the ID of the team for this parameter. Use `/api/v2/public/teams` to find IDs for your existing teams.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/raw_agent_states?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/raw_expert_help": {
+      "post": {
+        "summary": "Create raw help request export",
+        "description": "Generate a Raw Help Request export",
+        "operationId": "reportsreportraw_expert_help",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/raw_expert_help?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&&locale=en_US'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/response": {
+      "post": {
+        "summary": "Create raw response export",
+        "description": "Generate a Raw Response export",
+        "operationId": "reportsreportresponse",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/response?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/response_approval": {
+      "post": {
+        "summary": "Create raw response approval export",
+        "description": "Generate a Raw Response Approval export",
+        "operationId": "reportsreportresponse_approval",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeDisabled",
+            "in": "query",
+            "description": "Whether or not to include disabled agents in the report.",
+            "schema": {
+              "type": "string",
+              "default": "false"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/response_approval?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/team_performance": {
+      "post": {
+        "summary": "Create raw team performance export",
+        "description": "Generate a Raw Team Performance export",
+        "operationId": "reportsreportteam_performance",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeDisabled",
+            "in": "query",
+            "description": "Whether or not to include disabled agents in the report.",
+            "schema": {
+              "type": "string",
+              "default": "false"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamIds",
+            "in": "query",
+            "description": "The ID of the team used to filter the export. Find the team ID with the `/teams` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/team_performance?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&teamIds=175%2C154%2C151%2C128%2C42%2C155%2C210%2C71%2C15%2C63%2C192%2C32%2C153%2C69%2C65&includeDisabled=true'"
+            },
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/raw_agent_states?startTime=1538782436000&endTime=1544052836000&timezone=America%2fChicago&reportFormat=json&locale=en&companyKey=[COMPANY_KEY]&reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id'",
+              "name": "Example with reportMetrics"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/team_performance_interval": {
+      "post": {
+        "summary": "Run team performance interval export",
+        "description": "Run a Team Performance Interval export",
+        "operationId": "reportsreportteam_performance_interval",
+        "parameters": [
+          {
+            "name": "businessHourType",
+            "in": "query",
+            "description": "Sets the business hour type. `true` means \u201cwithin business hours\u201d, `false` means \u201coutside of business hours\u201d, and null/missing means \u201cNo Business Hours, aka 24/7\u201d.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enableBusinessHour",
+            "in": "query",
+            "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view\u2019s settings (as defined in Response\u2019s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeDisabled",
+            "in": "query",
+            "description": "Whether or not to include disabled agents in the report.",
+            "schema": {
+              "type": "string",
+              "default": "false"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the export. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timeInterval",
+            "in": "query",
+            "description": "The interval period for the team performance report. Supported values include:<br><br>300000 => 5 minute<br>600000 => 10 minutes<br> 900000 => 15 minutes<br> 1800000 => 30 minutes<br> 3600000 => 1 hour<br> 7200000 => 2 hours<br> 14400000 => 4 hours<br> 28800000 => 8 hours<br> 43200000 => 12 hours<br> 86400000 => 1 day<br> 604800000 => 1 week<br><br> Anything greater than 1 week is interpreted as monthly intervals. Anything less than 1 week, and not one of the supported values listed above, will result in an error.<br><br>For a date range of 1 month, the allowed `timeInterval` values are:<br> 86400000 => 1 day<br>604800000 => 1 week<br><br>For a date range of 1 week, the allowed timeInterval values are:<br>28800000 => 8 hours<br>43200000 => 12 hours<br>86400000 => 1 day<br><br>If a timeInterval value specified is not one of the allowed values, the Analytics API will respond with the following:<br>`\"result\": \"Unable to hydrate filter for export info: com.lithium.socialweb.analytics.webapp.models.filter.HydrationException: Too many buckets (745) requested. Select a larger interval?\"`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{\n    \"workflowId\":\"cc645bd3-9def-3d5c-bf05-20efeb11f453\",\n    \"runId\":\"23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI=\",\n    \"downloadUrl\":\"\",\n    \"statusUrl\":\"https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "cc645bd3-9def-3d5c-bf05-20efeb11f453"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23IS1+Anp9mm9Bl+C2VZV3UY2T6g4H6eoODJUFQPVpvlI="
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "statusUrl": {
+                          "type": "string",
+                          "example": "https://analytics-api.app.lithium.com/api/public/reports/report/cc645bd3-9def-3d5c-bf05-20efeb11f453/23IS1%2BAnp9mm9Bl%2BC2VZV3UY2T6g4H6eoODJUFQPVpvlI%3D/status?companyKey=[COMPANY_KEY]"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/team_performance_interval?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&teamIds=175%2C154%2C151%2C128%2C42%2C155%2C210%2C71%2C15%2C63%2C192%2C32%2C153%2C69%2C65&timeInterval=86400000&includeDisabled=true'"
+            },
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/raw_agent_states?companyKey=[COMPANY_KEY]&startTime=1548979200000&endTime=1556668800000&timezoneOffset=-21600000&enableBusinessHour=true&locale=en&teamIds=175%2C154%2C151%2C128%2C42%2C155%2C210%2C71%2C15%2C63%2C192%2C32%2C153%2C69%2C65&timeInterval=86400000&includeDisabled=true&reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id'",
+              "name": "Example with reportMetrics"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/reports/report/{report_type}": {
+      "post": {
+        "summary": "Run care analytics report",
+        "description": "Run a Care Analytics report",
+        "operationId": "reportreport_type",
+        "parameters": [
+          {
+            "name": "report_type",
+            "in": "path",
+            "description": "Supported values: <br>author<br>combined<br>conversation<br>incoming_post<br>raw_expert_help<br>raw_agent_states<br>response_approval<br>team_performance<br>team_performance_interval",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "companyKey",
+            "in": "query",
+            "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "conversationReportType",
+            "in": "query",
+            "description": "_Used only for the Raw Conversation export._ Pass one of the following to specify which conversations to include in the report. If not specified, defaults to OPEN_AT_END:<br><br> OPEN_AT_END - get all conversations that were Open at the end of the interval set by `startTime` and `endTime`<br>CLOSED - get all conversations that were Closed during the interval set by `startTime` and `endTime`<br> CREATED - get all conversations that were created during the interval set by `startTime` and `endTime`",
+            "schema": {
+              "type": "string",
+              "default": "OPEN_AT_END"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "The end time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeDisabled",
+            "in": "query",
+            "description": "_Used with Team Performance, Team Performance Interval, and Raw Response Approvals._ Whether or not to include disabled agents in the report.  Default is `false`.",
+            "schema": {
+              "type": "string",
+              "default": "false"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "The locale to use for the report. Supported values: en, es, fr, de, tr",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "Filters the reports to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reportFormat",
+            "in": "query",
+            "description": "The format of the export. Possible values: json or csv. Default is `json`.",
+            "schema": {
+              "type": "string",
+              "default": "json"
+            }
+          },
+          {
+            "name": "reportMetrics",
+            "in": "query",
+            "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the report. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "Filters the reports to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "The start time in epoch milliseconds. This value will not be adjusted.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "A time zone ID to specify in which time zone to format dates in the report export. Find supported time zone IDs using the `/config/timezones` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezoneOffset",
+            "in": "query",
+            "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamIds",
+            "in": "query",
+            "description": "_Used only with Raw Team Performance, Team Performance Interval, and Raw Response Approval_ The ID of the team used to filter the report. Find the team ID with the `/teams` endpoint.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timeInterval",
+            "in": "query",
+            "description": "_Used only with Team Performance Interval._ The interval period for the team performance report. Supported values are:<br><br>300000 => 5 minute<br>600000 => 10 minutes<br> 900000 => 15 minutes<br> 1800000 => 30 minutes<br> 3600000 => 1 hour<br> 7200000 => 2 hours<br> 14400000 => 4 hours<br> 28800000 => 8 hours<br> 43200000 => 12 hours<br> 86400000 => 1 day<br> 604800000 => 1 week<br><br> Anything greater than 1 week is interpreted as monthly intervals. Anything less than 1 week, and not one of the supported values listed above, will result in an error.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "Filters the reports to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{  \n  \"status\":\"PASS\",\n  \"request\":null,\n  \"message\":null,\n  \"result\":{  \n    \"workflowId\":\"54e567db-997a-363b-8512-951ea98cf84a\",\n    \"runId\":\"23Sh5Bd9Y9UAehNOtA\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "PASS"
+                    },
+                    "request": {},
+                    "message": {},
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "workflowId": {
+                          "type": "string",
+                          "example": "54e567db-997a-363b-8512-951ea98cf84a"
+                        },
+                        "runId": {
+                          "type": "string",
+                          "example": "23Sh5Bd9Y9UAehNOtA"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u username:password -XPOST \\\n  'https://analytics-api.app.lithium.com/api/public/reports/report/team_performance_interval?companyKey=[company_key]&startTime=1481212789920&endTime=1481817589920&timezoneOffset=-21600000& enableBusinessHour=true&reportFormat=CSV&locale=en&teamIds=175%2C154%2C151%2C128%2C42%2C155%2C210%2C71%2C15%2C63%2C192%2C32%2C153%2C69%2C65&timeInterval=86400000&includeDisabled=true'"
+            },
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] -XPOST \\\n'https://analytics-api.app.lithium.com/api/public/reports/report/raw_agent_states?startTime=1538782436000&endTime=1544052836000&timezone=America%2fChicago&reportFormat=json&locale=en&companyKey=[COMPANY KEY]&reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id'",
+              "name": "Example with reportMetrics"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": false
+  },
+  "x-readme-fauxas": true
+}

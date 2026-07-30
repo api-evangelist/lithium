@@ -1,0 +1,2466 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "author-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.response.lithium.com/api/v2/authors",
+      "variables": {
+        "instance": {
+          "default": "instance"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/{lswUuid}": {
+      "get": {
+        "summary": "Get author details by ID",
+        "description": "Get author details by the unique Care author ID",
+        "operationId": "authorslswuuid",
+        "parameters": [
+          {
+            "name": "lswUuid",
+            "in": "path",
+            "description": "The unique Care author ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{  \n  \"status\":\"success\",\n  \"data\":[  \n    {  \n      \"id\":\"2134086e-9024-4c3b-ab3b-afc6a36ea61c\",\n      \"displayNumber\":13366,\n      \"handles\":{  \n        \"external\":[  \n          {  \n            \"@class\":\"ExternalSpecificAuthorData\",\n            \"lswUuid\":\"edce6d32-ee19-4740-87b8-a9b69afd677d\",\n            \"displayNumber\":77285,\n            \"profileUrl\":\"\",\n            \"id\":\"73292839-fb73-4b2c-b7b6-32db4b2f855a\",\n            \"name\":\"Anusuya_user\",\n            \"screenName\":\"Anusuya_user\",\n            \"providerInstanceId\":\"smooch\",\n            \"profileImageURL\":\"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\",\n            \"networkinstance\":\"smooch\",\n            \"avatarUrl\":\"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\"\n          }\n        ],\n        \"twitter\":[  \n          {  \n            \"@class\":\"ScrubbedProviderSpecificAuthorData\",\n            \"id\":\"16148233\",\n            \"lswUuid\":\"b20dc99d-144a-4942-92a9-215e3f2ff864\",\n            \"networkinstance\":\"twitter\",\n          }\n        ]\n      },\n      \"tags\":[  \n        {  \n          \"creator\":{  \n            \"type\":\"AGENT\"\n          },\n          \"tagId\":14865,\n          \"lswUuid\":\"b8fee328-3676-4dd8-bab5-162c2417650e\"\n        }\n      ],\n      \"notes\":[  \n\n      ],\n      \"timezone\":[  \n        \"-21600\"\n      ]\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/edce6d32-ee19-4740-87b8-a9b69afd677d'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "put": {
+        "summary": "Update or merge author handles by Care author ID",
+        "description": "Update or merge existing author handles for the specified Care author ID",
+        "operationId": "authorslswuuid-1",
+        "parameters": [
+          {
+            "name": "lswUuid",
+            "in": "path",
+            "description": "The unique Care author ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "RAW_BODY"
+                ],
+                "properties": {
+                  "RAW_BODY": {
+                    "type": "string",
+                    "description": "{      \"attribute_name1\":\"value1\" }",
+                    "format": "json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/changed": {
+      "get": {
+        "summary": "List author records changed today",
+        "description": "Get a list of author records that have changed in a 24-hour period",
+        "operationId": "authorschanged",
+        "parameters": [
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{  \n  \"status\":\"success\",\n  \"data\":[  \n    \"2b1a0c87-d1c7-43bb-970c-6a7cdaf97ecd\",\n    \"20f6b1e8-ac3e-464b-9dd5-214ab6535aa1\",\n    \"a5cd888e-82b2-478d-a5ef-7352f3ac70c8\",\n    \"30823836-7a91-4fb2-a0ef-a0a0fe2d97fc\",\n    \"24e66ed6-6ac9-4110-84ab-e7f1ddeb7a7f\",\n    \"99c095b7-1bc0-4e30-a1c3-8dd7db520025\",\n    \"072fef63-6b81-4b9f-889d-ded192058f71\",\n    \"f7136383-cc61-4f58-9a38-68b3abcc0f21\",\n    \"95414533-7202-41a7-bbbb-b4c3bd587de4\",\n    \"33191153-bdd0-4618-85ba-ab1e06ffceba\",\n    \"bc1329d4-9b85-4afa-ad3f-bde2751c7e82\",\n    \"6ea89640-226e-11e9-83d2-0242ac110006\",\n    \"3b862966-64d9-4ba1-87b0-164aaa56e4be\",\n    \"145fc1b2-4b1a-4272-aea9-4580a1fa7034\",\n    \"f69c80b0-2ce7-11e9-bffb-0242ac110006\",\n    \"cc2804c7-c123-4d56-9629-66e392b54f76\",\n    \"630207c1-e58f-4098-aab6-658f63903669\",\n    \"c7e4deb7-29c0-4601-8348-b7b4d415ac5f\",\n    \"26de6eae-5bca-4015-825c-4d8602d4cc99\",\n    \"678f6e28-d92c-48d8-90ff-5375a8790f9e\",\n    \"2bde4007-b6c7-4d31-8a52-ad25b4c87ada\",\n    \"294ffa6f-5f1d-44e6-a5a0-5283c8462570\",\n    \"100ef826-4a82-4a93-8fd7-9c6c4cb8b2bd\",\n    \"73292839-fb73-4b2c-b7b6-32db4b2f855a\",\n    \"6a6c1936-0b57-475e-b1f9-2276d3b784ec\",\n    \"37ba7f8a-af0a-404c-bfa2-1f625b0b484e\",\n    \"a508eba0-28f3-11e9-add0-0242ac110004\",\n    \"30e3fe36-a970-451f-a479-2cc47ad1b9a0\",\n    \"8896205e-4777-42f5-bdb3-80bf4aa18b16\",\n    \"129381ed-4e24-4757-a4ba-81bfc881468d\",\n    \"3100aec4-fe37-4b4c-9768-a4b1b5c3ebf0\",\n    \"a4921959-5b88-423d-848a-7a2710623538\",\n    \"630207c1-e58f-4098-aab6-658f63903669\",\n    \"9b749c34-7a58-4979-9637-234783b9db32\"\n  ]\n}\n"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "2b1a0c87-d1c7-43bb-970c-6a7cdaf97ecd"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_intance.lithium.com/api/v2/authors/changed'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/ids/{networkid}": {
+      "get": {
+        "summary": "Get author by source network ID",
+        "description": "Get a single author by source network ID where the source network has only a single, default instance, such as Facebook or Instagram",
+        "operationId": "authorsnetworksnetworktypeidsnetworkid",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a networktype of value \"lithium\" or \"crm\" you must also pass the networkinstance, because these types of networks can have multiple instances as opposed to, Facebook, Instagram or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"lithium\", and \"crm\" only as values for networktype.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used networkhandle. The network ID must be unique to a given networkinstance.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"1af519d7-7638-4f50-9276-a020f845bac1\",\n            \"displayNumber\": 31199,\n            \"handles\": {\n                \"facebook\": [\n                    {\n                        \"@class\": \"FacebookSpecificAuthorData\",\n                        \"lswUuid\": \"30e3fe36-a970-451f-a479-2cc47ad1b9a0\",\n                        \"displayNumber\": 30025,\n                        \"profileUrl\": \"\",\n                        \"name\": \"1219614414830744\",\n                        \"scopedIds\": [\n                            {\n                                \"id\": \"1219614414830744\",\n                                \"instance\": \"1009123765820374\",\n                                \"scope\": \"PAGE\"\n                            }\n                        ],\n                        \"id\": \"227560774117552\",\n                        \"screenName\": \"Violet Estabrook\",\n                        \"providerInstanceId\": \"facebook\",\n                        \"profileImageURL\": \"https://graph.facebook.com/227560774117552/picture\",\n                        \"networkinstance\": \"facebook\",\n                        \"avatarUrl\": \"https://graph.facebook.com/227560774117552/picture\"\n                    }\n                ],\n                \"external\": [\n                    {\n                        \"@class\": \"ExternalSpecificAuthorData\",\n                        \"lswUuid\": \"91c84858-f62a-430e-9d5d-3f9ef876f0a4\",\n                        \"displayNumber\": 100738623,\n                        \"profileUrl\": \"\",\n                        \"id\": \"30e3fe36-a970-451f-a479-2cc47ad1b9a0\",\n                        \"name\": \"1219614414830744\",\n                        \"providerInstanceId\": \"smooch\",\n                        \"profileImageURL\": \"https://graph.facebook.com/227560774117552/picture\",\n                        \"networkinstance\": \"smooch\",\n                        \"avatarUrl\": \"https://graph.facebook.com/227560774117552/picture\"\n                    }\n                ]\n            },\n            \"tags\": [\n                {\n                    \"creator\": {\n                        \"type\": \"AGENT\"\n                    },\n                    \"tagId\": 28724,\n                    \"lswUuid\": \"7b84200c-54fe-4a01-a7db-b1118b83bead\"\n                }\n            ],\n            \"notes\": []\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "1af519d7-7638-4f50-9276-a020f845bac1"
+                          },
+                          "displayNumber": {
+                            "type": "integer",
+                            "example": 31199,
+                            "default": 0
+                          },
+                          "handles": {
+                            "type": "object",
+                            "properties": {
+                              "facebook": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "FacebookSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "30e3fe36-a970-451f-a479-2cc47ad1b9a0"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 30025,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": ""
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "1219614414830744"
+                                    },
+                                    "scopedIds": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "example": "1219614414830744"
+                                          },
+                                          "instance": {
+                                            "type": "string",
+                                            "example": "1009123765820374"
+                                          },
+                                          "scope": {
+                                            "type": "string",
+                                            "example": "PAGE"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "227560774117552"
+                                    },
+                                    "screenName": {
+                                      "type": "string",
+                                      "example": "Violet Estabrook"
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "facebook"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "https://graph.facebook.com/227560774117552/picture"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "facebook"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "https://graph.facebook.com/227560774117552/picture"
+                                    }
+                                  }
+                                }
+                              },
+                              "external": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "ExternalSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "91c84858-f62a-430e-9d5d-3f9ef876f0a4"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 100738623,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": ""
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "30e3fe36-a970-451f-a479-2cc47ad1b9a0"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "1219614414830744"
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "smooch"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "https://graph.facebook.com/227560774117552/picture"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "smooch"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "https://graph.facebook.com/227560774117552/picture"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "creator": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "AGENT"
+                                    }
+                                  }
+                                },
+                                "tagId": {
+                                  "type": "integer",
+                                  "example": 28724,
+                                  "default": 0
+                                },
+                                "lswUuid": {
+                                  "type": "string",
+                                  "example": "7b84200c-54fe-4a01-a7db-b1118b83bead"
+                                }
+                              }
+                            }
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/facebook/ids/1219614414830744'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "put": {
+        "summary": "Update author by source network ID",
+        "description": "Update a single author by source network ID on the default instance of the source network",
+        "operationId": "authorsnetworksnetworktypeidsnetworkid-1",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "https://your_social_response_instance.lithium.com/api/v2/authors/networks/twitter/ids/15165502"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/ids/{networkid}": {
+      "get": {
+        "summary": "Get author by source network ID per instance",
+        "description": "Get a single author by the source network ID on a specific instance of the network",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-1",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"c1ee6be0-07b4-4828-8699-7c96ed34e6e8\",\n            \"displayNumber\": 5265,\n            \"handles\": {\n                \"lithium\": [\n                    {\n                        \"@class\": \"LithiumSpecificAuthorData\",\n                        \"lswUuid\": \"e662a2c8-1cfb-43e1-879d-0bf33f4a62a7\",\n                        \"displayNumber\": 5090,\n                        \"profileUrl\": \"https://brand_community.lithium.com/t5/user/viewprofilepage/user-id/2281\",\n                        \"acceptedSolutionsCount\": 3,\n                        \"providerInstanceId\": \"liaresponse.stage.lithium.com/\",\n                        \"kudosCount\": 24,\n                        \"name\": \"Mark_Erickson\",\n                        \"netOverallPosts\": 299,\n                        \"id\": \"2281\",\n                        \"rankName\": \"Regular Responder\",\n                        \"registrationInstant\": 1361820315000,\n                        \"screenName\": \"Mark_Erickson\",\n                        \"profileImageURL\": \"https://brand_community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0\",\n                        \"networkinstance\": \"liaresponse.stage.lithium.com/\",\n                        \"avatarUrl\": \"https://brand_community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0\"\n                    }\n                ]\n            },\n            \"tags\": [],\n            \"notes\": []\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "c1ee6be0-07b4-4828-8699-7c96ed34e6e8"
+                          },
+                          "displayNumber": {
+                            "type": "integer",
+                            "example": 5265,
+                            "default": 0
+                          },
+                          "handles": {
+                            "type": "object",
+                            "properties": {
+                              "lithium": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "LithiumSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "e662a2c8-1cfb-43e1-879d-0bf33f4a62a7"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 5090,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": "https://brand_community.lithium.com/t5/user/viewprofilepage/user-id/2281"
+                                    },
+                                    "acceptedSolutionsCount": {
+                                      "type": "integer",
+                                      "example": 3,
+                                      "default": 0
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "liaresponse.stage.lithium.com/"
+                                    },
+                                    "kudosCount": {
+                                      "type": "integer",
+                                      "example": 24,
+                                      "default": 0
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Mark_Erickson"
+                                    },
+                                    "netOverallPosts": {
+                                      "type": "integer",
+                                      "example": 299,
+                                      "default": 0
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "2281"
+                                    },
+                                    "rankName": {
+                                      "type": "string",
+                                      "example": "Regular Responder"
+                                    },
+                                    "registrationInstant": {
+                                      "type": "integer",
+                                      "example": 1361820315000,
+                                      "default": 0
+                                    },
+                                    "screenName": {
+                                      "type": "string",
+                                      "example": "Mark_Erickson"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "https://brand_community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "liaresponse.stage.lithium.com/"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "https://brand_community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/lithium/instances/liaresponse.stage.lithium.com%2F/ids/2281'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "put": {
+        "summary": "Update author by network ID and instance",
+        "description": "Update a single author by network ID on a specific instance of that network",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-2",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/networks/{networktype}/handles/{networkhandle}": {
+      "get": {
+        "summary": "Get author(s) by network handle",
+        "description": "Get one or more authors by the `networkhandle` passed in for the specified source channel",
+        "operationId": "authorsnetworks_networktype_handles_networkhandle",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkhandle",
+            "in": "path",
+            "description": "The external identification for the author, such as a Community or a Instagram handle. This is different than the `networkid` generated by a network for internal use. Note that `networkhandle` is not used with Facebook in POST calls.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"2134086e-9024-4c3b-ab3b-afc6a36ea61c\",\n            \"displayNumber\": 13366,\n            \"handles\": {\n                \"external\": [\n                    {\n                        \"@class\": \"ExternalSpecificAuthorData\",\n                        \"lswUuid\": \"edce6d32-ee19-4740-87b8-a9b69afd677d\",\n                        \"displayNumber\": 77285,\n                        \"profileUrl\": \"\",\n                        \"id\": \"73292839-fb73-4b2c-b7b6-32db4b2f855a\",\n                        \"name\": \"Anusuya_user\",\n                        \"screenName\": \"Anusuya_user\",\n                        \"providerInstanceId\": \"smooch\",\n                        \"profileImageURL\": \"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\",\n                        \"networkinstance\": \"smooch\",\n                        \"avatarUrl\": \"http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\"\n                    }\n                ],\n                \"twitter\": [\n                    {\n                        \"@class\": \"TwitterSpecificAuthorData\",\n                        \"lswUuid\": \"73292839-fb73-4b2c-b7b6-32db4b2f855a\",\n                        \"displayNumber\": 12833,\n                        \"profileUrl\": \"http://twitter.com/anusuya_user\",\n                        \"id\": \"768360234377064449\",\n                        \"location\": \"India\",\n                        \"name\": \"Anusuya_user\",\n                        \"screenName\": \"anusuya_user\",\n                        \"following\": 5,\n                        \"followers\": 5,\n                        \"verified\": false,\n                        \"joinDate\": 1472026330163,\n                        \"updatesCount\": 194,\n                        \"languages\": \"en\",\n                        \"timezone\": \"null\",\n                        \"klout_score\": 19.737528730467623,\n                        \"providerInstanceId\": \"twitter\",\n                        \"profileImageURL\": \"https://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\",\n                        \"networkinstance\": \"twitter\",\n                        \"avatarUrl\": \"https://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg\"\n                    }\n                ]\n            },\n            \"tags\": [\n                {\n                    \"creator\": {\n                        \"type\": \"AGENT\"\n                    },\n                    \"tagId\": 14865,\n                    \"lswUuid\": \"b8fee328-3676-4dd8-bab5-162c2417650e\"\n                }\n            ],\n            \"notes\": [],\n            \"timezone\": [\n                \"-21600\"\n            ]\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "2134086e-9024-4c3b-ab3b-afc6a36ea61c"
+                          },
+                          "displayNumber": {
+                            "type": "integer",
+                            "example": 13366,
+                            "default": 0
+                          },
+                          "handles": {
+                            "type": "object",
+                            "properties": {
+                              "external": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "ExternalSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "edce6d32-ee19-4740-87b8-a9b69afd677d"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 77285,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": ""
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "73292839-fb73-4b2c-b7b6-32db4b2f855a"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Anusuya_user"
+                                    },
+                                    "screenName": {
+                                      "type": "string",
+                                      "example": "Anusuya_user"
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "smooch"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "smooch"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "http://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg"
+                                    }
+                                  }
+                                }
+                              },
+                              "twitter": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "TwitterSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "73292839-fb73-4b2c-b7b6-32db4b2f855a"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 12833,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": "http://twitter.com/anusuya_user"
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "768360234377064449"
+                                    },
+                                    "location": {
+                                      "type": "string",
+                                      "example": "India"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Anusuya_user"
+                                    },
+                                    "screenName": {
+                                      "type": "string",
+                                      "example": "anusuya_user"
+                                    },
+                                    "following": {
+                                      "type": "integer",
+                                      "example": 5,
+                                      "default": 0
+                                    },
+                                    "followers": {
+                                      "type": "integer",
+                                      "example": 5,
+                                      "default": 0
+                                    },
+                                    "verified": {
+                                      "type": "boolean",
+                                      "example": false,
+                                      "default": true
+                                    },
+                                    "joinDate": {
+                                      "type": "integer",
+                                      "example": 1472026330163,
+                                      "default": 0
+                                    },
+                                    "updatesCount": {
+                                      "type": "integer",
+                                      "example": 194,
+                                      "default": 0
+                                    },
+                                    "languages": {
+                                      "type": "string",
+                                      "example": "en"
+                                    },
+                                    "timezone": {
+                                      "type": "string",
+                                      "example": "null"
+                                    },
+                                    "klout_score": {
+                                      "type": "number",
+                                      "example": 19.737528730467623,
+                                      "default": 0
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "twitter"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "https://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "twitter"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "https://pbs.twimg.com/profile_images/768361121761722368/5yZ2HHxu_normal.jpg"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "creator": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "AGENT"
+                                    }
+                                  }
+                                },
+                                "tagId": {
+                                  "type": "integer",
+                                  "example": 14865,
+                                  "default": 0
+                                },
+                                "lswUuid": {
+                                  "type": "string",
+                                  "example": "b8fee328-3676-4dd8-bab5-162c2417650e"
+                                }
+                              }
+                            }
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "timezone": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "-21600"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance/api/v2/authors/networks/instagram/handles/Anusuya_user '"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}": {
+      "get": {
+        "summary": "Get author(s) by network handle and instance",
+        "description": "",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandle",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkhandle",
+            "in": "path",
+            "description": "The external identification for the author, such as a Community or an Instagram handle. This is different than the `networkid` generated by a network for internal use.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"c1ee6be0-07b4-4828-8699-7c96ed34e6e8\",\n            \"displayNumber\": 5265,\n            \"handles\": {\n                \"lithium\": [\n                    {\n                        \"@class\": \"LithiumSpecificAuthorData\",\n                        \"lswUuid\": \"e662a2c8-1cfb-43e1-879d-0bf33f4a62a7\",\n                        \"displayNumber\": 5090,\n                        \"profileUrl\": \"https://brand.community.lithium.com/t5/user/viewprofilepage/user-id/2281\",\n                        \"acceptedSolutionsCount\": 3,\n                        \"providerInstanceId\": \"liaresponse.stage.lithium.com/\",\n                        \"kudosCount\": 24,\n                        \"name\": \"Mark_Erickson\",\n                        \"netOverallPosts\": 299,\n                        \"id\": \"2281\",\n                        \"rankName\": \"Regular Responder\",\n                        \"registrationInstant\": 1361820315000,\n                        \"screenName\": \"Mark_Erickson\",\n                        \"profileImageURL\": \"https://brand.community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0\",\n                        \"networkinstance\": \"liaresponse.stage.lithium.com/\",\n                        \"avatarUrl\": \"https://brand.community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0\"\n                    }\n                ]\n            },\n            \"tags\": [],\n            \"notes\": []\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "c1ee6be0-07b4-4828-8699-7c96ed34e6e8"
+                          },
+                          "displayNumber": {
+                            "type": "integer",
+                            "example": 5265,
+                            "default": 0
+                          },
+                          "handles": {
+                            "type": "object",
+                            "properties": {
+                              "lithium": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@class": {
+                                      "type": "string",
+                                      "example": "LithiumSpecificAuthorData"
+                                    },
+                                    "lswUuid": {
+                                      "type": "string",
+                                      "example": "e662a2c8-1cfb-43e1-879d-0bf33f4a62a7"
+                                    },
+                                    "displayNumber": {
+                                      "type": "integer",
+                                      "example": 5090,
+                                      "default": 0
+                                    },
+                                    "profileUrl": {
+                                      "type": "string",
+                                      "example": "https://brand.community.lithium.com/t5/user/viewprofilepage/user-id/2281"
+                                    },
+                                    "acceptedSolutionsCount": {
+                                      "type": "integer",
+                                      "example": 3,
+                                      "default": 0
+                                    },
+                                    "providerInstanceId": {
+                                      "type": "string",
+                                      "example": "liaresponse.stage.lithium.com/"
+                                    },
+                                    "kudosCount": {
+                                      "type": "integer",
+                                      "example": 24,
+                                      "default": 0
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "Mark_Erickson"
+                                    },
+                                    "netOverallPosts": {
+                                      "type": "integer",
+                                      "example": 299,
+                                      "default": 0
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "2281"
+                                    },
+                                    "rankName": {
+                                      "type": "string",
+                                      "example": "Regular Responder"
+                                    },
+                                    "registrationInstant": {
+                                      "type": "integer",
+                                      "example": 1361820315000,
+                                      "default": 0
+                                    },
+                                    "screenName": {
+                                      "type": "string",
+                                      "example": "Mark_Erickson"
+                                    },
+                                    "profileImageURL": {
+                                      "type": "string",
+                                      "example": "https://brand.community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0"
+                                    },
+                                    "networkinstance": {
+                                      "type": "string",
+                                      "example": "liaresponse.stage.lithium.com/"
+                                    },
+                                    "avatarUrl": {
+                                      "type": "string",
+                                      "example": "https://brand.community.lithium.com/t5/image/serverpage/avatar-name/mexican/avatar-theme/2delicious/avatar-collection/food/avatar-display-size/profile/version/2?xdesc=1.0"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_response_instance.lithium.com/api/v2/authors/networks/lithium/instances/brand_community.lithium.com/handles/Mark_Erickson'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/{lswUuid}/conversations": {
+      "get": {
+        "summary": "Get conversation IDs by Care author and day",
+        "description": "Get IDs for conversations associated with the specified author by unique Care author ID for a 24-hour period",
+        "operationId": "authors_lswuuid_conversations",
+        "parameters": [
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "lswUuid",
+            "in": "path",
+            "description": "The unique Care author ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"c2b2bd52-368e-4bf5-af68-d1fbd852053d\",\n        \"29cf6f90-5001-4650-ad29-4756ccfb9252\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "c2b2bd52-368e-4bf5-af68-d1fbd852053d"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/129381ed-4e24-4757-a4ba-81bfc881468d/conversations?startEpochMillis=1550230533000&endEpochMillis=1550273593000'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/ids/{networkid}/conversations": {
+      "get": {
+        "summary": "Get conversation IDs by author, network ID, and day",
+        "description": "Get IDs for conversations associated with the specified author by source network ID for a 24-hour period",
+        "operationId": "authorsnetworksnetworktypeidsnetworkidconversations",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"d0e1745d-2c38-49ff-9905-c37c6e008c80\",\n        \"9593762f-461c-4537-af18-48044b143e8a\",\n        \"c5b077dc-76cf-48a0-aab6-94fec51d209d\",\n        \"c74894ae-c161-4832-ae5e-f27406d3bae8\",\n        \"2c133059-9542-47af-b2f2-bb7f0ffe6eeb\",\n        \"7a86edf1-bda0-488b-be45-04a10ebfc30c\",\n        \"44a47724-b695-4334-ab31-bdc4038171de\",\n        \"c8a1f46a-9304-4cec-abf5-fd1cae124d0a\",\n        \"ade54a9e-2ccc-4931-bec0-fa05017e0d3a\",\n        \"eb43d363-39b7-4478-94f8-c99b9f1a0ec1\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "d0e1745d-2c38-49ff-9905-c37c6e008c80"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/facebook/ids/1219614414830744/conversations'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/ids/{networkid}/conversations": {
+      "get": {
+        "summary": "Get conversation IDs by author network ID, instance, and day",
+        "description": "Get the IDs for conversations associated with the specified author by source network ID for a 24-hour period",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversations",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"c39d9b88-feab-4dba-b255-1e965694c5a3\",\n        \"fbf7ddce-0093-43d0-80b8-814e7d8d0d0c\",\n        \"d887e63b-0b57-4a57-824a-e84ac883d9a3\",\n        \"f3f43ea0-3368-4df8-a3e0-26f67a712df4\",\n        \"617ebc16-abd6-436f-a8f9-1f0bd3991a58\",\n        \"1dd07997-6d83-4f64-8870-ce6e81927570\",\n        \"6024dffe-9d9e-48ab-a7bf-766e5c51b1e6\",\n        \"3afae9c9-2be9-449a-a4db-5de7863a8aa0\",\n        \"5b2bfb16-5825-4771-83e7-48173d364d0f\",\n        \"9e95c6fa-0464-41ea-a7eb-06fa39ed68a8\",\n        \"96752737-bb4d-49cb-b072-dd92193f48e7\",\n        \"26ed8efc-249a-4719-95a0-8b96afd43f6f\",\n        \"23786908-f571-4e4b-9713-a7c2e29affc9\",\n        \"618320f6-6e55-46fc-88e5-68db9c3eedc6\",\n        \"a79ca32a-bf45-4be8-9964-9d8367eba99e\",\n        \"0df39969-c3f0-4139-b9a0-4fe0685bfd5b\",\n        \"b2e41807-b407-4082-9115-a1c89b60cf13\",\n        \"e42e860a-4e9a-4702-ba93-e9ef657a6151\",\n        \"c95484a3-b1c6-47a0-afb7-2a1240e01fe5\",\n        \"b279ded4-14e5-4231-a3bc-fe27e4a777d2\",\n        \"a603d184-35d0-4106-be5e-4339233a5bf5\",\n        \"1656975a-7c1d-4e6d-9921-5e8da0ca8d4d\",\n        \"036b1929-31dc-4159-aaea-8e17135ce0a5\",\n        \"d3563681-8db2-4ea7-9334-7d0b1d91433d\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "c39d9b88-feab-4dba-b255-1e965694c5a3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/lithium/instances/liaresponse.stage.lithium.com%2F/ids/2281/conversations'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/handles/{networkhandle}/conversations": {
+      "get": {
+        "summary": "Get conversation IDs by author network handle and network",
+        "description": "Get the IDs for conversations associated with the specified author by the `networkhandle` passed in for the specified source network",
+        "operationId": "authorsnetworksnetworktypehandlesnetworkhandleconversations",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkhandle",
+            "in": "path",
+            "description": "The external identification for the author, such as a Community or a Instagram handle. This is different than the `networkid` generated by a network for internal use.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"c2ff4ee1-3e22-47f2-8369-92d53a82078b\",\n        \"f6e1be9b-261b-470f-a148-b80d2b31b2d1\",\n        \"7a021890-7545-441a-b4e0-b35af56f255a\",\n        \"afd4c477-a13e-4982-a871-9835b3669d43\",\n        \"56e83284-f64b-4eb3-b89b-828757d086de\",\n        \"8d03b794-6956-4319-996d-9213420f0c4e\",\n        \"4f4a033d-55e1-4103-b471-55aaa9a6f2c3\",\n        \"9edc56ac-7783-4479-8466-c9f3dcc6012b\",\n        \"81fa55f5-a601-4086-a0d6-a3442e89f35a\",\n        \"6faa6c82-51d9-4259-b7cc-f7769881da72\",\n        \"b99cc560-af41-4ec8-8991-9aab260ec064\",\n        \"7d5bbbf4-03d0-4876-b731-9c520b99c1b7\",\n        \"f3b229fb-871a-4898-a1b1-4fa0f59fd064\",\n        \"accd94e3-a8e1-405b-b06b-d79abe12cc0e\",\n        \"1311f6e0-0e3f-4d84-8b30-5c5061b26837\",\n        \"fd2f5e75-bdc5-43b7-a530-9a6f1e0cfb70\",\n        \"09b599b2-3bef-4284-b690-98761582703d\",\n        \"46716f94-7c43-49c4-b18c-2bd79a865044\",\n        \"5814ac2d-f29e-412f-8ab1-c9d23d7450b7\",\n        \"d4e973e5-3363-4512-bb2a-0d813dd63220\",\n        \"9c7dabf6-f28f-4c8d-93eb-bb5af1a92580\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "c2ff4ee1-3e22-47f2-8369-92d53a82078b"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/instagram/handles/Anusuya_user/conversations'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}/conversations": {
+      "get": {
+        "summary": "Get conversation IDs by author network handle and instance",
+        "description": "Get the IDs for conversations associated with the specified author by the `networkhandle` passed in for the specified instance of a network",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandleconversations",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Instagram, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkhandle",
+            "in": "path",
+            "description": "The external identification for the author, such as a Community or a Instagram handle. This is different than the `networkid` generated by a network for internal use. Note that `networkhandle` is not used with Facebook in POST calls.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "startEpochMillis",
+            "in": "query",
+            "description": "The start time of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "endEpochMillis",
+            "in": "query",
+            "description": "The end of of the query period specified as milliseconds since the UNIX Epoch",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        \"c39d9b88-feab-4dba-b255-1e965694c5a3\",\n        \"fbf7ddce-0093-43d0-80b8-814e7d8d0d0c\",\n        \"d887e63b-0b57-4a57-824a-e84ac883d9a3\",\n        \"f3f43ea0-3368-4df8-a3e0-26f67a712df4\",\n        \"617ebc16-abd6-436f-a8f9-1f0bd3991a58\",\n        \"1dd07997-6d83-4f64-8870-ce6e81927570\",\n        \"6024dffe-9d9e-48ab-a7bf-766e5c51b1e6\",\n        \"3afae9c9-2be9-449a-a4db-5de7863a8aa0\",\n        \"5b2bfb16-5825-4771-83e7-48173d364d0f\",\n        \"9e95c6fa-0464-41ea-a7eb-06fa39ed68a8\",\n        \"96752737-bb4d-49cb-b072-dd92193f48e7\",\n        \"26ed8efc-249a-4719-95a0-8b96afd43f6f\",\n        \"23786908-f571-4e4b-9713-a7c2e29affc9\",\n        \"618320f6-6e55-46fc-88e5-68db9c3eedc6\",\n        \"a79ca32a-bf45-4be8-9964-9d8367eba99e\",\n        \"0df39969-c3f0-4139-b9a0-4fe0685bfd5b\",\n        \"b2e41807-b407-4082-9115-a1c89b60cf13\",\n        \"e42e860a-4e9a-4702-ba93-e9ef657a6151\",\n        \"c95484a3-b1c6-47a0-afb7-2a1240e01fe5\",\n        \"b279ded4-14e5-4231-a3bc-fe27e4a777d2\",\n        \"a603d184-35d0-4106-be5e-4339233a5bf5\",\n        \"1656975a-7c1d-4e6d-9921-5e8da0ca8d4d\",\n        \"036b1929-31dc-4159-aaea-8e17135ce0a5\",\n        \"d3563681-8db2-4ea7-9334-7d0b1d91433d\"\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "c39d9b88-feab-4dba-b255-1e965694c5a3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unsupported network type": {
+                    "value": "{\n  \"status\": \"fail\",\n  \"message\": \"Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\\\"handles\\\"])\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error parsing HTTP body. Error details: Unsupported author data container format! (through reference chain: Person[\"handles\"])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors/networks/lithium/instances/brand.community.lithium.com/handles/Mark_Erickson/conversations' "
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "summary": "Create Care author",
+        "description": "Add an author to Care",
+        "operationId": "authors-1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "networkinstance": {
+                    "type": "string",
+                    "description": "The specific instance of the CRM system. The value of `networkinstance` is the value of a key that you give to Khoros Support or Khoros Services during author integration configuration. **The `networkinstance` field is required in the JSON body for POST with CRM and Khoros Community network types that can have multiple instances** (as opposed to network types like Instagram and Facebook that have only a single, default network)"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "The author's ID in the CRM system to join with the new Author resource being created. The ID must be unique within the CRM instance."
+                  },
+                  "customFieldName": {
+                    "type": "string",
+                    "description": "Maps to an internal attribute name (key) provided to Khoros for the custom CRM author attribute associated with the CRM instance"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Author already exists in the system": {
+                    "value": "\"message\": \"Author entry already exists\",\n\"status\": \"fail\""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "put": {
+        "summary": "Batch update author records by author",
+        "description": "Batch update author records associated with a single author",
+        "operationId": "authors-2",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "https://your_social_response_instance.lithium.com/api/v2/authors/"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/ids/{networkid}/split": {
+      "post": {
+        "summary": "Remove Person attributes by network ID and instance",
+        "description": "Remove attributes from the Person associated with the network ID passed in the URL",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidsplit",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"twitter\", \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Twitter, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"twitter\", \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Twitter, Instagram, and Google+ have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \u201cstatus\u201d: \u201csuccess\u201d,\n    \u201cdata\u201d: [\n        {\n            \u201cid\u201d: \u201c4f4e914b-d6b5-4f92-b337-0217a8a321cc\u201d,\n            \u201cdisplayNumber\u201d: 203507,\n            \u201chandles\u201d: {\n                \u201clithium\u201d: [\n                    {\n                      \u201c@class\u201d: \u201cLithiumSpecificAuthorData\u201d,\n                      \u201clswUuid\u201d: \u201c946bd191-6e53-11e3-a5df-525400201fe1\",\n                      \u201cdisplayNumber\u201d: 45330,\n                      \u201cprofileUrl\u201d: \u201chttps://mycommunity.lithium.com/t5/user/viewprofilepage/user-id/2279\u201c,\n                      \u201cacceptedSolutionsCount\u201d: 9,\n                      \u201cproviderInstanceId\u201d: \u201cmycommunity.lithium.com/\u201c,\n                      \u201ckudosCount\u201d: 11,\n                      \u201cname\u201d: \u201cAmy_Jenkins\u201d,\n                      \u201cnetOverallPosts\u201d: 201,\n                      \u201cid\u201d: \u201c2279\",\n                      \u201crankImageLeftUrl\u201d: \u201chttp://icons.iconarchive.com/icons/yusuke-kamiyamane/fugue/16/user-pencil-icon-icon.png\u201d,\n                      \u201crankName\u201d: \u201cModerator\u201d,\n                      \u201cregistrationInstant\u201d: 1361820232000,\n                      \u201cscreenName\u201d: \u201cAmy_Jenkins\u201d,\n                      \u201cprofileImageURL\u201d: \u201chttps://mycommunity.lithium.com/t5/image/serverpage/avatar-name/cd/avatar-theme/2delicious/avatar-collection/technology/avatar-display-size/profile/version/2?xdesc=1.0\u201d,\n                      \u201cavatarUrl\u201d: \u201chttps://mycommunity.lithium.com/t5/image/serverpage/avatar-name/cd/avatar-theme/2delicious/avatar-collection/technology/avatar-display-size/profile/version/2?xdesc=1.0\u201d,\n                      \u201cnetworkinstance\u201d: \u201cmycommunity.lithium.com/\u201d\n                    }\n                ]\n            },\n            \u201ctags\u201d: [],\n            \u201cnotes\u201d: []\n        },\n        {\n            \u201cid\u201d: \u201c94be4045-af60-4291-9825-56f9d321afb8\u201d,\n            \u201cdisplayNumber\u201d: 203423,\n            \u201chandles\u201d: {\n                \u201cfacebook\u201d: [\n                    {\n                      \u201c@class\u201d: \u201cScrubbedFacebookSpecificAuthorData\u201d,\n                      \u201clswUuid\u201d: \u201cfd86fa8e-395a-4d3c-bed6-d56b149a2624\",\n                      \u201cscreenName\u201d: \u201cAmy Jenkins\u201d,\n                      \u201cproviderInstanceId\u201d: \u201cfacebook\u201d,\n                      \u201cavatarUrl\u201d: \u201chttps://graph.facebook.com/478385502293019/picture\u201d,\n                      \u201cprofileImageURL\u201d: \u201chttps://graph.facebook.com/478385502293019/picture\u201d,\n                      \u201cnetworkinstance\u201d: \u201cfacebook\u201d\n                    }\n                ],\n                \u201cexternal\u201d: [\n                    {\n                      \u201c@class\u201d: \u201cScrubbedProviderSpecificAuthorData\u201d,\n                      \u201clswUuid\u201d: \u201cce38d348-ae2d-4462-8822-0e8289218de9\u201d,\n                      \u201cid\u201d: \u201cfd86fa8e-395a-4d3c-bed6-d56b149a2624\u201d,\n                      \u201cnetworkinstance\u201d: \u201csmooch\u201d\n                    }\n                ]\n            },\n            \u201ctags\u201d: [\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cAGENT\u201d\n                    },\n                    \u201ctagId\u201d: 1,\n                    \u201clswUuid\u201d: \u201c304f5c94-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cAGENT\u201d\n                    },\n                    \u201ctagId\u201d: 4,\n                    \u201clswUuid\u201d: \u201c304f6a86-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 1043,\n                    \u201clswUuid\u201d: \u201c305dadd1-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 1046,\n                    \u201clswUuid\u201d: \u201c305dc8a2-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 1459,\n                    \u201clswUuid\u201d: \u201c3061ce85-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 1464,\n                    \u201clswUuid\u201d: \u201c3061d4f8-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 2023,\n                    \u201clswUuid\u201d: \u201c306777b9-f03f-11e3-a5df-525400201fe1\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 2798,\n                    \u201clswUuid\u201d: \u201cb9c2e7a3-f34b-4f69-afee-e704103ef3b2\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 2808,\n                    \u201clswUuid\u201d: \u201c46d0f72d-b7d8-42cb-a111-acb6e6a0bed0\"\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 2810,\n                    \u201clswUuid\u201d: \u201cc72316e8-14da-4808-96d2-f3705d643b1c\u201d\n                },\n                {\n                    \u201ccreator\u201d: {\n                        \u201ctype\u201d: \u201cSYSTEM\u201d\n                    },\n                    \u201ctagId\u201d: 2812,\n                    \u201clswUuid\u201d: \u201c51de99b2-1638-4597-8a64-a6c10869a87d\u201d\n                }\n            ],\n            \u201cnotes\u201d: [\n                {\n                    \u201cnote\u201d: \u201cThis is a note\u201d,\n                    \u201cagent\u201d: {\n                        \u201cname\u201d: \u201cLuis Agent \u201c,\n                        \u201cemail\u201d: \u201clvalencia+agent@itexico.net\u201d,\n                        \u201clswUuid\u201d: \u201c2d03c4b1-4003-4f6d-b883-269062eca7de\u201d\n                    },\n                    \u201ccreateDate\u201d: 1398691332000\n                },\n                {\n                    \u201cnote\u201d: \u201cRomulus LIA note.\u201c,\n                    \u201cagent\u201d: {\n                        \u201cname\u201d: \u201cAndrew Mgr\u201d,\n                        \u201cemail\u201d: \u201candrew.brock+mgr@socialdynamx.com\u201d,\n                        \u201clswUuid\u201d: \u201c95637b61-6e53-11e3-a5df-525400201fe1\u201d\n                    },\n                    \u201ccreateDate\u201d: 1394639113000\n                }\n            ]\n        }\n    ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/networks/networktype/ids/networkid/conversations/reactivate": {
+      "put": {
+        "summary": "Reactivate author conversations",
+        "description": "Reactivate an author's conversations",
+        "operationId": "authorsnetworksnetworktypeidsnetworkidconversationsreactivate",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"twitter\", \"instagram\", \"facebook\", \"googleplus\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Twitter, Facebook, or Google+ that have only a single, default network.<br><br>The Author API supports \"twitter\", \"instagram\", \"facebook\", \"googleplus\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "description": "An internal (URI-encoded) note about the conversation<br><br>Example: `A%20space%21%0AAnother%20line`<br><br>would result in the following comment added to the conversation:<br><br>A Space<br>Another line",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageId",
+            "in": "query",
+            "description": "The page ID of the Facebook page associated with the author\u2019s PSID you are passing in. (Used only with Facebook.<br><br>**Note:** Facebook states that the PSID is globally unique, but as a best practice, we recommend including the associated pageId in order to make author identification as specific as possible.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"status\": \"success\",\n   \"data\": [\n       12745258\n   ]\n}\n"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "example": 12745258,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -X PUT --user [USERNAME]:[PASSWORD] \u2018https://your_care_instance/api/v2/authors/networks/facebook/ids/32031810236844413/conversations/reactivate?comment=my%20note&pageId=354241721305178\u2019",
+              "name": "Reactivates conversations of a Facebook author and add a comment"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/networks/{networktype}/instances/{networkinstance}/ids/{networkId}/conversations/reactivate": {
+      "put": {
+        "summary": "Reactivate instance author conversations",
+        "description": "Reactivate an author's conversations",
+        "operationId": "authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversationsreactivate",
+        "parameters": [
+          {
+            "name": "networktype",
+            "in": "path",
+            "description": "The type of network that manages content created by or about an author. Supported values are: \"twitter\", \"instagram\", \"facebook\", \"lithium\", \"crm\"<br><br>For a `networktype` of value \"lithium\" or \"crm\" you must also pass the `networkinstance`, because these types of networks can have multiple instances as opposed to Twitter, or Facebook that have only a single, default network.<br><br>The Author API supports \"twitter\", \"instagram\", \"facebook\", \"lithium\", and \"crm\" only as values for `networktype`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkinstance",
+            "in": "path",
+            "description": "The specific, uniquely-identifiable instance of a `networktype`. Use this argument with a `networktype` of \"lithium\" or \"crm\" only because other network types such as Facebook, Twitter, and Instagram have only a single, default instance.<br><br>If you wanted to PUT or GET author data by passing in a CRM author ID, for example, you would need to specify which CRM instance the CRM author ID is associated with.<br><br>Example: \"sfdc_1\"<br><br>The value to pass for `networkinstance` is either the instance of your Lithium community (example: https://my_community_instance.com) or the key you defined for the CRM author integration for this CRM (example: \"sfdc_1\").",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networkid",
+            "in": "path",
+            "description": "The internal ID of the author generated by the network. For Facebook, this is the PSID. Compare this to the the externally used `networkhandle`. The network ID must be unique to a given `networkinstance`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "description": "An internal (URI-encoded) note about the conversation<br><br>Example: `A%20space%21%0AAnother%20line`<br><br>would result in the following comment added to the conversation:<br><br>A Space<br>Another line",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageId",
+            "in": "query",
+            "description": "The page ID of the Facebook page associated with the author\u2019s PSID you are passing in. (Used only with Facebook.<br><br>**Note:** Facebook states that the PSID is globally unique, but as a best practice, we recommend including the associated pageId in order to make author identification as specific as possible.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"status\": \"success\",\n   \"data\": [\n       12745258\n   ]\n}\n"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "example": 12745258,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -X PUT --user [USERNAME]:[PASSWORD] \u2018https://your_care_instance/api/v2/authors/networks/smooch/instances/default/ids/573948029/conversations/reactivate?comment=my%20note\u2019",
+              "name": "Reactivate conversations from a Khoros Brand Messenger author and add a comment"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    },
+    "/#": {
+      "get": {
+        "summary": "Get paginated list of authors",
+        "description": "Get all authors in a paginated response",
+        "operationId": "authors",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An integer specifying how many authors to look back, and the first response will start with that result and show the previous 10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include_deleted_crm",
+            "in": "query",
+            "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "RAW_BODY": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"nextPageUrl\": \"https://your_social_response_instance.lithium.com/api/v2/authors?offset=31\",\n        \"personList\": [\n            {\n                \"id\": \"46193948-5a3d-4836-bea8-e7a5070ab00d\",\n                \"displayNumber\": 4,\n                \"handles\": {\n                    \"lithium\": [\n                        {\n                            \"@class\": \"LithiumSpecificAuthorData\",\n                            \"lswUuid\": \"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\",\n                            \"displayNumber\": 4,\n                            \"profileUrl\": \"https://nusoap.stage.lithium.com/t5/user/viewprofilepage/user-id/23717\",\n                            \"providerInstanceId\": \"nusoap.stage.lithium.com/\",\n                            \"name\": \"LIA_auto_c90d75c1_9f26\",\n                            \"id\": \"23717\",\n                            \"registrationInstant\": 1516816834000,\n                            \"screenName\": \"LIA_auto_c90d75c1_9f26\",\n                            \"profileImageURL\": \"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\",\n                            \"networkinstance\": \"nusoap.stage.lithium.com/\",\n                            \"avatarUrl\": \"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\"\n                        }\n                    ]\n                },\n                \"tags\": [\n                \t\t{\n                        \"creator\": {\n                            \"type\": \"SYSTEM\"\n                        },\n                        \"tagId\": 1037,\n                        \"lswUuid\": \"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\"\n                    }\n                ],\n                \"\"notes\": [\n                    {\n                        \"note\": \"Test\",\n                        \"agent\": {\n                            \"name\": \"David Doe\",\n                            \"email\": \"dave.doe@example.com\",\n                            \"lswUuid\": \"9561f5b2-6e53-11e3-a5df-525422201fe1\"\n                        },\n                        \"createDate\": 1354600113000\n                    }\n                ]\n            }\n           ... \n        ]\n    }\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -u [USERNAME]:[PASSWORD] 'https://your_social_response_instance.lithium.com/api/v2/authors?offset=1'\n"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

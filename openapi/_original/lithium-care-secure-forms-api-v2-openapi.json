@@ -1,0 +1,82 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "secure-forms-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.app.lithium.com/engage/api/v2/secureForms"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/getForms": {
+      "get": {
+        "summary": "Get Secure Forms",
+        "description": "Retrieve the secure forms.",
+        "operationId": "get-secure-forms",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"AABBCCDD-1122-4A5B-A12R-123456DDD789\",\n            \"name\": \"ABC\",\n            \"description\": null,\n            \"enabled\": true,\n            \"deleted\": false,\n            \"applyTagIdsToRequest\": null,\n            \"applyTagIdsToResponse\": null,\n            \"fields\": [\n                {\n                    \"id\": \"CCCDDD-4ABC-1BC2-7777-STUVWXYZ123\",\n                    \"settings\": {\n                        \"type\": \"HEADER\",\n                        \"required\": true,\n                        \"label\": null,\n                        \"subtext\": \"\",\n                        \"headerText\": \"Class\",\n                        \"icon\": null\n                    },\n                    \"authorProfileMapping\": null,\n                    \"authorMetadataMapping\": false,\n                    \"orderIndex\": 0\n                },\n                {\n                    \"id\": \"EEEFFFG1-3567-88HH-67U8-ZYXWTER2\",\n                    \"settings\": {\n                        \"type\": \"SHORT_TEXT\",\n                        \"required\": false,\n                        \"label\": \"Students\",\n                        \"subtext\": \"\",\n                        \"value\": \"\",\n                        \"canExpire\": false,\n                        \"expirationType\": \"NONE\",\n                        \"maxLength\": null,\n                        \"hintText\": \"Enter a student name\",\n                        \"customValidationEnabled\": false,\n                        \"customValidation\": null,\n                        \"customValidationMessage\": null\n                    },\n                    \"authorProfileMapping\": null,\n                    \"authorMetadataMapping\": false,\n                    \"orderIndex\": 0\n                },\n                {\n                    \"id\": \"HHHHJKL-1234-5678-9012-234TYUIOP\",\n                    \"settings\": {\n                        \"type\": \"SHORT_TEXT\",\n                        \"required\": false,\n                        \"label\": \"Subject\",\n                        \"subtext\": \"\",\n                        \"value\": \"\",\n                        \"canExpire\": false,\n                        \"expirationType\": \"NONE\",\n                        \"maxLength\": null,\n                        \"hintText\": \"Enter the subject\",\n                        \"customValidationEnabled\": false,\n                        \"customValidation\": null,\n                        \"customValidationMessage\": null\n                    },\n                    \"authorProfileMapping\": null,\n                    \"authorMetadataMapping\": false,\n                    \"orderIndex\": 0\n                },\n                {\n                    \"id\": \"MMMNNNOOOP-QRS1-1234-5678-789OIPLKJ\",\n                    \"settings\": {\n                        \"type\": \"NUMBER\",\n                        \"required\": false,\n                        \"label\": \"Marks\",\n                        \"subtext\": \"\",\n                        \"value\": \"\",\n                        \"canExpire\": false,\n                        \"expirationType\": \"NONE\",\n                        \"maxValue\": 100,\n                        \"minValue\": 0,\n                        \"hintText\": \"Enter marks of that subject\",\n                        \"customValidationEnabled\": false,\n                        \"customValidation\": null,\n                        \"customValidationMessage\": null\n                    },\n                    \"authorProfileMapping\": null,\n                    \"authorMetadataMapping\": false,\n                    \"orderIndex\": 0\n                }\n            ],\n            \"expirationInMilli\": 600000,\n            \"expirationTimeUnit\": \"MINUTES\",\n            \"linkExpirationInMilli\": 86400000,\n            \"linkExpirationTimeUnit\": \"HOURS\",\n            \"languageCode\": null,\n            \"confirmationMessage\": null,\n            \"privacyPolicyUrl\": null,\n            \"termsConditionsUrl\": null,\n            \"teamIds\": null,\n            \"version\": null,\n            \"channels\": [\n                {\n                    \"network\": \"facebook\",\n                    \"networkInstance\": \"facebook\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"twitter\",\n                    \"networkInstance\": \"twitter\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"apple\",\n                    \"networkInstance\": \"apple\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"email\",\n                    \"networkInstance\": \"email\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"instagram\",\n                    \"networkInstance\": \"instagram\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"googlemessages\",\n                    \"networkInstance\": \"googlemessages\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"whatsapp\",\n                    \"networkInstance\": \"whatsapp\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"sms\",\n                    \"networkInstance\": \"sms\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                },\n                {\n                    \"network\": \"brandmessenger\",\n                    \"networkInstance\": \"brandmessenger\",\n                    \"externalId\": null,\n                    \"filters\": [\n                        {\n                            \"type\": \"ANY_ID\"\n                        }\n                    ]\n                }\n            ],\n            \"cnameDefinition\": null,\n            \"headerHtml\": {\n                \"enabled\": true,\n                \"injectableStyle\": null\n            },\n            \"footerHtml\": {\n                \"enabled\": true,\n                \"injectableStyle\": null\n            },\n            \"customCss\": {\n                \"enabled\": true,\n                \"injectableStyle\": null\n            },\n            \"alwaysShowInWebview\": false,\n            \"blockChatInput\": false,\n            \"authorProfileMapping\": null,\n            \"authorMetadataMapping\": false,\n            \"addResponsesToMetadata\": false\n        },\n          ....\n          \n            \"alwaysShowInWebview\": false,\n            \"blockChatInput\": false,\n            \"authorProfileMapping\": null,\n            \"authorMetadataMapping\": false,\n            \"addResponsesToMetadata\": false\n        }\n    ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u username:password 'https://api.app.lithium.com/engage/api/v2/secureForm/getForms'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

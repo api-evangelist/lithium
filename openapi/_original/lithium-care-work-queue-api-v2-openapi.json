@@ -1,0 +1,112 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "work-queue-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.response.lithium.com/api/v2/workqueues",
+      "variables": {
+        "instance": {
+          "default": "instance"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/active": {
+      "get": {
+        "summary": "Get work queue IDs",
+        "description": "Returns work queue IDs",
+        "operationId": "active-1",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"data\": [\n        {\n            \"archived\": false,\n            \"description\": null,\n            \"id\": 5016,\n            \"name\": \"Default Work Queue\",\n            \"uuid\": \"8c2063ef-6362-11e3-a5df-525400201fe1\"\n        },\n        {\n            \"archived\": false,\n            \"description\": \"API Work Queue from OpenConversationReport\",\n            \"id\": 13194,\n            \"name\": \"Twitter Mentions\",\n            \"uuid\": \"1252d4bd-be75-4b65-8762-c44f515e8317\"\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "archived": {
+                            "type": "boolean",
+                            "example": false,
+                            "default": true
+                          },
+                          "description": {},
+                          "id": {
+                            "type": "integer",
+                            "example": 5016,
+                            "default": 0
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Default Work Queue"
+                          },
+                          "uuid": {
+                            "type": "string",
+                            "example": "8c2063ef-6362-11e3-a5df-525400201fe1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -L -u username:password 'https://your_social_response_app.com/api/v2/workqueues/active'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

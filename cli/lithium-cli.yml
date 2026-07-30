@@ -1,0 +1,67 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://github.com/lithiumtech/lithium-sdk (package.json bin + the published gulp/ task
+  modules) and https://www.npmjs.com/package/lithium-sdk
+description: >-
+  `li` is the first-party command-line tool for the Lithium / Khoros Community platform,
+  distributed as the npm package `lithium-sdk`. It scaffolds a Community plugin project,
+  builds and validates the plugin (FreeMarker components, endpoints, skins, scripts, text
+  keys), serves it locally, and submits it to a community instance. It is the surviving
+  Lithium-branded developer tool and is still receiving releases (1.11.0, July 2025).
+
+name: li
+package: lithium-sdk
+repository: https://github.com/lithiumtech/lithium-sdk
+license: Apache-2.0
+
+install:
+  - method: npm
+    command: npm install -g lithium-sdk
+  - method: npx
+    command: npx lithium-sdk
+  - method: project-local
+    command: npm install --save-dev lithium-sdk
+runtime: Node.js (the repo pins a version via .nvmrc)
+
+command_surface:
+  note: >-
+    The `li` binary dispatches gulp task modules published in the repository's gulp/
+    directory; the groups below are those task modules, not an invented command tree.
+  groups:
+    - group: project
+      tasks: [project, generate, createskin, plugin]
+      purpose: Scaffold and generate a Community plugin project and skins.
+    - group: build
+      tasks: [scripts, skins, text, includes, responsiveoptions, checkThemes]
+      purpose: >-
+        Build and validate plugin assets — JavaScript, skins/CSS, text (localization) keys,
+        FreeMarker includes, responsive options, and theme checks.
+    - group: serve
+      tasks: [local-server, watch, sandbox]
+      purpose: Run the plugin locally against a community and rebuild on change.
+    - group: release
+      tasks: [release, versioncheck]
+      purpose: Version and publish a plugin release.
+    - group: export
+      tasks: [exportcore, exportsdk, exportstudio]
+      purpose: Export core, SDK and Studio plugin content from a community.
+    - group: clean
+      tasks: [clean, clearsdk, clearstudio]
+      purpose: Clear generated output and SDK/Studio state.
+    - group: test
+      tasks: [test]
+      purpose: Run the plugin test suite.
+
+related:
+  packages: ../packages/lithium-packages.yml
+  components: ../components/lithium-components.yml
+
+caveats:
+  - >-
+    The npm README still carries the original "Lithium-Klout SDK" heading and links to
+    retired community.lithium.com and sdk-docs.lithium.com URLs; the current documentation
+    lives behind the Atlas login at developer.khoros.com/khoroscommunitydevdocs.
+  - >-
+    Khoros Care, Marketing and Flow ship no first-party CLI — this tool is
+    Community/Aurora only.

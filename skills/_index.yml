@@ -1,0 +1,62 @@
+generated: '2026-07-19'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the harvested definitions in ../openapi/. Every
+  operationId cited in a skill was verified verbatim against the specs; cross-cutting rules
+  cite ../conventions/, ../errors/, ../authentication/ and ../rate-limits/. Searched
+  developer.khoros.com (800 URLs) and the github.com/lithiumtech organization first — Khoros
+  publishes no AGENTS.md or agent skill files.
+description: >-
+  Five skills covering the marquee flows of the four Lithium / Khoros product APIs. Each one
+  carries the same three warnings, because they are true across the whole platform: there is
+  no idempotency contract, authentication differs per product, and the only OAuth scope is
+  read/write.
+skills:
+  - file: lithium-register-and-run-a-care-bot.md
+    name: Register and run a Khoros Care bot
+    api: openapi/lithium-care-bot-api-v3-openapi.json
+    operations:
+      - registrations-post
+      - respond-post
+      - note-put
+      - tag-put
+      - control-put
+      - workqueue-put
+      - resolve-put
+      - tokensappid-put
+  - file: lithium-look-up-a-care-author.md
+    name: Look up a Khoros Care author and their conversations
+    api: openapi/lithium-care-author-api-v2-openapi.json
+    operations:
+      - authorsnetworks_networktype_handles_networkhandle
+      - authorslswuuid
+      - authors_lswuuid_conversations
+      - authors-1
+      - authorschanged
+  - file: lithium-subscribe-to-marketing-events.md
+    name: Subscribe to Khoros Marketing events
+    api: openapi/lithium-marketing-notification-service-openapi.json
+    operations:
+      - create-a-subscription
+      - list-subscriptions
+      - retrieve-subscription-details
+      - update-a-subscription
+      - delete-a-subscription
+      - retrieve-subscription-events
+  - file: lithium-handle-a-flow-conversation.md
+    name: Handle a Khoros Flow conversation
+    api: openapi/lithium-flow-flow-rest-api-openapi.json
+    operations:
+      - generate-a-thread-id
+      - create-a-text-message
+      - get-a-list-of-messages
+      - handover-action
+      - resolve-action
+      - pause-a-bot
+      - resume-a-bot
+  - file: lithium-process-a-gdpr-request.md
+    name: Process a GDPR data-subject request in Khoros Care
+    api: openapi/lithium-care-gdpr-api-v2-openapi.json
+    operations:
+      - requests
+      - requestsrequestuuid

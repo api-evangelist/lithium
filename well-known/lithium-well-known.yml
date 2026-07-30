@@ -1,0 +1,72 @@
+generated: '2026-07-19'
+method: probed
+source: >-
+  Live HTTP probes of the /.well-known/ discovery surface on every host in ../apis.yml
+  (Website, DeveloperPortal, Documentation) and every OpenAPI servers[] host that is not
+  an instance-templated placeholder.
+description: >-
+  Khoros publishes no /.well-known/ discovery documents. Two hosts return HTTP 200 for
+  every path — khoros.ai / www.khoros.com is a WordPress catch-all that renders the
+  homepage, and developer.khoros.com is a ReadMe single-page app that renders the docs
+  shell — so those 200s are soft-404s, recorded here as such rather than as hits. No
+  security.txt, no OpenID/OAuth discovery, no api-catalog, no ai-plugin.json. The one real
+  machine-readable document at the root of the marketing host is llms.txt, captured
+  verbatim at ../llms/lithium-llms.txt.
+
+hosts:
+  - host: https://khoros.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 200, file: ../llms/lithium-llms.txt, real: true}
+
+  - host: https://www.khoros.com
+    note: Redirects to khoros.ai; WordPress catch-all returns 200 with homepage HTML.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 200, soft_404: true}
+      - {path: /.well-known/oauth-authorization-server, status: 200, soft_404: true}
+      - {path: /.well-known/api-catalog, status: 200, soft_404: true}
+      - {path: /.well-known/ai-plugin.json, status: 200, soft_404: true}
+      - {path: /llms.txt, status: 200, real: true}
+
+  - host: https://developer.khoros.com
+    note: ReadMe-hosted developer portal; unknown paths return the SPA shell with HTTP 200.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, soft_404: true}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 200, soft_404: true}
+      - {path: /llms.txt, status: 404}
+      - {path: /sitemap.xml, status: 200, real: true, note: '800 URLs across four doc projects'}
+
+  - host: https://community.khoros.com
+    note: Atlas community; /.well-known/* is blocked by the platform (403 for all paths).
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+
+  - host: https://api.lithium.com
+    note: >-
+      The legacy Lithium API apex still resolves and answers, but returns HTTP 500 for
+      every path probed — it is not a working discovery surface.
+    documents:
+      - {path: /.well-known/security.txt, status: 500}
+      - {path: /.well-known/openid-configuration, status: 500}
+      - {path: /.well-known/oauth-authorization-server, status: 500}
+      - {path: /.well-known/api-catalog, status: 500}
+      - {path: /.well-known/ai-plugin.json, status: 500}
+
+security_txt:
+  present: false
+  note: >-
+    No RFC 9116 security.txt on any Khoros or Lithium host. The security-contact path the
+    company does publish is the Trust Center and Khoros Security pages
+    (see ../security/lithium-vulnerability-disclosure.yml).

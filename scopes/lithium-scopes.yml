@@ -1,0 +1,81 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/lithium-marketing-beta-analytics-api-openapi.json, openapi/lithium-marketing-conversations-api-v1-openapi.json,
+  openapi/lithium-marketing-conversations-openapi.json, openapi/lithium-marketing-crm-openapi.json,
+  openapi/lithium-marketing-introspection-api-openapi.json, openapi/lithium-marketing-labelsets-api-openapi.json,
+  openapi/lithium-marketing-notification-service-openapi.json, openapi/lithium-marketing-stream-api-openapi.json
+schemes:
+- name: sec0
+  source: openapi/lithium-marketing-beta-analytics-api-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: oauth2
+  source: openapi/lithium-marketing-conversations-api-v1-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+    tokenUrl: https://login.spredfast.com/v3/oauth/token
+- name: sec0
+  source: openapi/lithium-marketing-conversations-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: sec0
+  source: openapi/lithium-marketing-crm-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: sec0
+  source: openapi/lithium-marketing-introspection-api-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: sec0
+  source: openapi/lithium-marketing-labelsets-api-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: sec0
+  source: openapi/lithium-marketing-notification-service-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+- name: sec0
+  source: openapi/lithium-marketing-stream-api-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+scopes:
+- scope: all
+  description: Read/write access for all endpoints.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/lithium-marketing-conversations-api-v1-openapi.json
+
+docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+introspection_endpoint: https://api.spredfast.com/v2/whoami
+description: >-
+  Khoros Marketing is the only product in the Lithium/Khoros surface with an OAuth 2.0
+  authorization server, and it publishes a single coarse scope. There is no granular
+  read/write or per-resource scope model: `all` grants read/write across every endpoint.
+  Access is narrowed by the tenant headers (x-sf-company-id, x-sf-initiative,
+  x-sf-user-email) and by the permissions of the authorizing user, not by scope.
+
+scope_model:
+  granularity: coarse
+  scope_count: 1
+  least_privilege_supported: false
+  note: >-
+    An agent or integration cannot be issued a read-only Khoros Marketing token. Any token
+    that works is a read/write token for all endpoints the user can reach.
+
+caveats:
+  - >-
+    The clientCredentials schemes on seven Marketing definitions carry an empty scopes map
+    and the placeholder tokenUrl https://example.com/oauth2/token (a ReadMe API-designer
+    default). They are not evidence of a second, scopeless authorization server.
+  - >-
+    Khoros Care, Khoros Flow and Khoros Community do not use OAuth 2.0 and therefore have
+    no scope surface — see ../authentication/lithium-authentication.yml.

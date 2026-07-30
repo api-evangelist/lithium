@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.khoros.com/khoroscaredevdocs/docs/rate-limits
+description: >-
+  Khoros publishes rate limits for the Khoros Care APIs only. No limits are documented for
+  Khoros Marketing, Khoros Flow or the Community APIs, and no rate-limit response headers or
+  429 responses appear in any of the harvested definitions in ../openapi/ — clients cannot
+  read remaining quota from a response.
+
+rate_limits:
+  - api: Khoros Care Author API
+    spec: ../openapi/lithium-care-author-api-v2-openapi.json
+    limit_count: 60
+    window: 60 seconds
+    description: 60 calls in 60 seconds.
+    docs: https://developer.khoros.com/khoroscaredevdocs/docs/rate-limits
+  - api: Khoros Care Conversation API
+    spec: ../openapi/lithium-care-conversation-api-v2-openapi.json
+    limit_count: 60
+    window: 60 seconds
+    description: 60 calls in 60 seconds.
+    docs: https://developer.khoros.com/khoroscaredevdocs/docs/rate-limits
+  - api: Khoros Care Analytics Reports API
+    spec: ../openapi/lithium-care-analytics-reports-openapi.json
+    limit_count: 20
+    window: 1 minute
+    description: 20 requests per minute.
+    docs: https://developer.khoros.com/khoroscaredevdocs/docs/rate-limits
+
+signaling:
+  response_headers: []
+  status_code_429_documented: false
+  note: >-
+    Rate limits are documented in prose only. No X-RateLimit-* headers, Retry-After
+    contract, or 429 response is declared in the OpenAPI definitions.
+
+undocumented:
+  - Khoros Marketing (api.spredfast.com)
+  - Khoros Flow (api.flow.ai)
+  - Khoros Community v1 and v2 (per-instance limits set by community administrators)

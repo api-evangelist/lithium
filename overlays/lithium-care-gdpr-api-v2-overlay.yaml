@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for gdpr-api-v2
+  version: 1.0.0
+extends: openapi/lithium-care-gdpr-api-v2-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: lithium
+    x-apievangelist-provider-name: Lithium (Khoros)
+    x-apievangelist-harvested-from: https://developer.khoros.com/
+    x-apievangelist-harvest-method: searched
+    x-apievangelist-harvest-date: '2026-07-19'
+    x-apievangelist-operation-count: 2
+- target: $.info
+  update:
+    x-apievangelist-conventions: conventions/lithium-conventions.yml
+    x-apievangelist-authentication: authentication/lithium-authentication.yml
+    x-apievangelist-errors: errors/lithium-problem-types.yml
+    x-apievangelist-rate-limits: rate-limits/lithium-rate-limits.yml
+    x-apievangelist-lifecycle: lifecycle/lithium-lifecycle.yml
+- target: $
+  update:
+    x-apievangelist-gaps:
+    - No components.schemas declared — request and response shapes are inline.
+    - No RFC 9457 problem+json error responses.
+    - No idempotency contract on write operations.
+    - No rate-limit response headers or 429 responses declared.

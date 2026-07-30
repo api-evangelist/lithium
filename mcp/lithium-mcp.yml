@@ -1,0 +1,1677 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: Derived from the 273 operations across the 28 harvested definitions in ../openapi/. Searched npm, the official
+  MCP registry and the Khoros developer documentation first — Khoros publishes no MCP server.
+description: 'Khoros does not ship an MCP server. This is a candidate tool surface derived from the published operations,
+  not a Khoros product. Anyone building it should note three things from ../conventions/lithium-conventions.yml:
+  there is no idempotency contract, so write tools must not be retried blindly; authentication differs per product
+  (Basic and JWT for Care, OAuth 2.0 for Marketing, API app credentials for Community); and the only OAuth scope
+  available is `all`, which is read/write, so a read-only agent cannot be enforced at the token level and must be
+  constrained by tool selection instead.'
+server:
+  name: lithium
+  published: false
+  transport: null
+  url: null
+searched:
+- source: https://registry.modelcontextprotocol.io/v0/servers?search=khoros
+  result: 0 servers
+- source: npm registry search "khoros mcp"
+  result: no first-party package
+- source: developer.khoros.com sitemap (800 URLs)
+  result: no MCP or Model Context Protocol page
+tool_summary:
+  total: 273
+  read_only_get: 155
+  write: 118
+  by_product:
+    Khoros Care: 108
+    Khoros Flow: 16
+    Khoros Marketing: 149
+safety_notes:
+- 'No Idempotency-Key support: a retried write tool call can duplicate a message, tag or subscription.'
+- Khoros Care rate limits are 60 calls per 60 seconds (Author/Conversation) and 20 per minute (Analytics Reports)
+  with no rate-limit response headers, so a client must throttle itself.
+- Marketing tools act on a tenant identified by the x-sf-company-id / x-sf-initiative / x-sf-user-email headers
+  — these must be bound per connection, not chosen by the agent.
+- The GDPR API performs data-subject erasure; it should be gated behind explicit human approval.
+tools:
+- name: retrieve_defined_agent_states
+  description: Retrieve Defined Agent States
+  product: Khoros Care
+  method: GET
+  path: /
+  source_operation: openapi/lithium-care-agent-states-api-v2-openapi.json#retrieve-defined-agent-states
+- name: configtimezones
+  description: Get time zone IDs for exports
+  product: Khoros Care
+  method: GET
+  path: /config/timezones
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#configtimezones
+- name: jobs
+  description: Get job status
+  product: Khoros Care
+  method: GET
+  path: /reports/jobs
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#jobs
+- name: reportsreportconversation_actions
+  description: Create conversation actions report
+  product: Khoros Care
+  method: GET
+  path: /reports/report/conversation_actions
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportconversation_actions
+- name: reportsreportconversation_actions_1
+  description: Create conversation actions export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/conversation_actions
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportconversation_actions-1
+- name: reportsreportuser_get
+  description: Create user export
+  product: Khoros Care
+  method: GET
+  path: /reports/report/user
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportuser-get
+- name: reportsreportuser_post
+  description: Create user export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/user
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportuser-post
+- name: reportworkflowidruniddownload
+  description: Download export by run ID
+  product: Khoros Care
+  method: GET
+  path: /reports/report/{workflowId}/{runId}/download
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportworkflowidruniddownload
+- name: reportsreportworkflowidrunidstatus
+  description: Get export job status
+  product: Khoros Care
+  method: GET
+  path: /report/reports/{workflowId}/{runId}/status
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportworkflowidrunidstatus
+- name: teams
+  description: Get team IDs
+  product: Khoros Care
+  method: GET
+  path: /teams
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#teams
+- name: reportsreportauthor
+  description: Create raw author export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/author
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportauthor
+- name: reportsreportcombined
+  description: Create raw combined export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/combined
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportcombined
+- name: reportsreportconversation
+  description: Create raw conversations export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/conversation
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportconversation
+- name: create_conversation_action_history_export
+  description: Create conversation action history export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/conversation_history_action
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#create-conversation-action-history-export
+- name: incoming_post
+  description: Create raw incoming post export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/incoming_post
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#incoming_post
+- name: reportsreportraw_agent_states
+  description: Create agent state export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/raw_agent_states
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportraw_agent_states
+- name: reportsreportraw_expert_help
+  description: Create raw help request export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/raw_expert_help
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportraw_expert_help
+- name: reportsreportresponse
+  description: Create raw response export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/response
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportresponse
+- name: reportsreportresponse_approval
+  description: Create raw response approval export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/response_approval
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportresponse_approval
+- name: reportsreportteam_performance
+  description: Create raw team performance export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/team_performance
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportteam_performance
+- name: reportsreportteam_performance_interval
+  description: Run team performance interval export
+  product: Khoros Care
+  method: POST
+  path: /reports/report/team_performance_interval
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportsreportteam_performance_interval
+- name: reportreport_type
+  description: Run care analytics report
+  product: Khoros Care
+  method: POST
+  path: /reports/report/{report_type}
+  source_operation: openapi/lithium-care-analytics-reports-openapi.json#reportreport_type
+- name: createcase
+  description: createCase
+  product: Khoros Care
+  method: POST
+  path: /case
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#createcase
+- name: lookupcase
+  description: lookupCase
+  product: Khoros Care
+  method: GET
+  path: /case/{id}
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#lookupcase
+- name: updatecase
+  description: updateCase
+  product: Khoros Care
+  method: PATCH
+  path: /case/{id}
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#updatecase
+- name: searchcustomers
+  description: searchCustomers
+  product: Khoros Care
+  method: POST
+  path: /customers
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#searchcustomers
+- name: bestmatchcustomers
+  description: bestmatchCustomers
+  product: Khoros Care
+  method: POST
+  path: /customer/bestmatch
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#bestmatchcustomers
+- name: createcustomer
+  description: createCustomer
+  product: Khoros Care
+  method: POST
+  path: /customer
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#createcustomer
+- name: findcustomer
+  description: findCustomer
+  product: Khoros Care
+  method: GET
+  path: /customer/{id}
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#findcustomer
+- name: updatecustomer
+  description: updateCustomer
+  product: Khoros Care
+  method: PATCH
+  path: /customer (COPY)
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#updatecustomer
+- name: findcases
+  description: findCases
+  product: Khoros Care
+  method: GET
+  path: /customer/{id}/cases
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#findcases
+- name: define_object_structures
+  description: Define Object Structures
+  product: Khoros Care
+  method: GET
+  path: /meta/object/{type}
+  source_operation: openapi/lithium-care-api-specifications-openapi.json#define-object-structures
+- name: tokenskhorosapiowneridownerid_get
+  description: Return entity JWT status
+  product: Khoros Care
+  method: GET
+  path: /khorosapi/ownerId/{ownerId}
+  source_operation: openapi/lithium-care-authentication-api-v2-openapi.json#tokenskhorosapiowneridownerid-get
+- name: tokenskhorosapiowneridownerid_post
+  description: Create JWT token
+  product: Khoros Care
+  method: POST
+  path: /khorosapi/ownerId/{ownerId}
+  source_operation: openapi/lithium-care-authentication-api-v2-openapi.json#tokenskhorosapiowneridownerid-post
+- name: authorslswuuid
+  description: Get author details by ID
+  product: Khoros Care
+  method: GET
+  path: /{lswUuid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorslswuuid
+- name: authorslswuuid_1
+  description: Update or merge author handles by Care author ID
+  product: Khoros Care
+  method: PUT
+  path: /{lswUuid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorslswuuid-1
+- name: authorschanged
+  description: List author records changed today
+  product: Khoros Care
+  method: GET
+  path: /changed
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorschanged
+- name: authorsnetworksnetworktypeidsnetworkid
+  description: Get author by source network ID
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/ids/{networkid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeidsnetworkid
+- name: authorsnetworksnetworktypeidsnetworkid_1
+  description: Update author by source network ID
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networktype}/ids/{networkid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeidsnetworkid-1
+- name: authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid_1
+  description: Get author by source network ID per instance
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{networkid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-1
+- name: authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid_2
+  description: Update author by network ID and instance
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{networkid}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-2
+- name: authorsnetworks_networktype_handles_networkhandle
+  description: Get author(s) by network handle
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/handles/{networkhandle}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworks_networktype_handles_networkhandle
+- name: authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandle
+  description: Get author(s) by network handle and instance
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandle
+- name: authors_lswuuid_conversations
+  description: Get conversation IDs by Care author and day
+  product: Khoros Care
+  method: GET
+  path: /{lswUuid}/conversations
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authors_lswuuid_conversations
+- name: authorsnetworksnetworktypeidsnetworkidconversations
+  description: Get conversation IDs by author, network ID, and day
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/ids/{networkid}/conversations
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeidsnetworkidconversations
+- name: authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversations
+  description: Get conversation IDs by author network ID, instance, and day
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{networkid}/conversations
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversations
+- name: authorsnetworksnetworktypehandlesnetworkhandleconversations
+  description: Get conversation IDs by author network handle and network
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/handles/{networkhandle}/conversations
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypehandlesnetworkhandleconversations
+- name: authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandleconversations
+  description: Get conversation IDs by author network handle and instance
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}/conversations
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandleconversations
+- name: authors_1
+  description: Create Care author
+  product: Khoros Care
+  method: POST
+  path: /
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authors-1
+- name: authors_2
+  description: Batch update author records by author
+  product: Khoros Care
+  method: PUT
+  path: /
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authors-2
+- name: authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidsplit
+  description: Remove Person attributes by network ID and instance
+  product: Khoros Care
+  method: POST
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{networkid}/split
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidsplit
+- name: authorsnetworksnetworktypeidsnetworkidconversationsreactivate
+  description: Reactivate author conversations
+  product: Khoros Care
+  method: PUT
+  path: /networks/networktype/ids/networkid/conversations/reactivate
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeidsnetworkidconversationsreactivate
+- name: authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversationsreactivate
+  description: Reactivate instance author conversations
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{networkId}/conversations/reactivate
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversationsreactivate
+- name: authors
+  description: Get paginated list of authors
+  product: Khoros Care
+  method: GET
+  path: /#
+  source_operation: openapi/lithium-care-author-api-v2-openapi.json#authors
+- name: networksnetworktyperegistrations
+  description: Get bot registration details
+  product: Khoros Care
+  method: GET
+  path: /networks/{networkType}/registrations
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktyperegistrations
+- name: networksnetworktyperegistrations_1
+  description: Register bot with Khoros Care
+  product: Khoros Care
+  method: POST
+  path: /networks/{networkType}/registrations
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktyperegistrations-1
+- name: networksnetworktyperegistrations_2
+  description: Register bot with Khoros Care or update registration
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networkType}/registrations
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktyperegistrations-2
+- name: networksnetworktyperegistrations_3
+  description: Delete bot registration
+  product: Khoros Care
+  method: DELETE
+  path: /networks/{networkType}/registrations
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktyperegistrations-3
+- name: networksnetworktypeallregistrations
+  description: Get registrations by external ID
+  product: Khoros Care
+  method: GET
+  path: /networks/{networkType}/allRegistrations
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktypeallregistrations
+- name: currenttar
+  description: Get current time to agent response (TAR)
+  product: Khoros Care
+  method: GET
+  path: /currentTAR
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#currenttar
+- name: networksnetworktypeauthorsauthoridhandoff
+  description: Hand conversation to Care agent
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networkType}/authors/{authorId}/handoff
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktypeauthorsauthoridhandoff
+- name: networksnetworktypeauthorsauthoridresolve
+  description: Mark conversation resolved for bot
+  product: Khoros Care
+  method: PUT
+  path: /networks/{networkType}/authors/{authorId}/resolve
+  source_operation: openapi/lithium-care-bot-api-v2-openapi.json#networksnetworktypeauthorsauthoridresolve
+- name: controlnetworknetworkkeyexternalidexternalidauthorauthorid_get
+  description: Get entity currently controlling conversation by author and network
+  product: Khoros Care
+  method: GET
+  path: /control/network/{networkKey}/externalId/{externalId}/author/{authorId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#controlnetworknetworkkeyexternalidexternalidauthorauthorid-get
+- name: healthappidappid
+  description: Get bot health status by app ID
+  product: Khoros Care
+  method: GET
+  path: /health/appId/{appId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#healthappidappid
+- name: botsv3registrations
+  description: Get registrations using valid JWT token
+  product: Khoros Care
+  method: GET
+  path: /registrations
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#botsv3registrations
+- name: registrations_post
+  description: Register bot with Khoros Care and the Automation Framework
+  product: Khoros Care
+  method: POST
+  path: /registrations
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#registrations-post
+- name: registrations_put
+  description: Edit bot registration
+  product: Khoros Care
+  method: PUT
+  path: /registrations
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#registrations-put
+- name: registrationsnetworknetworkkeyexternalidexternalid_get
+  description: Get bot registrations by source channel
+  product: Khoros Care
+  method: GET
+  path: /registrations/network/{networkKey}/externalId/{externalId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#registrationsnetworknetworkkeyexternalidexternalid-get
+- name: networknetworkkeyexternalidexternalidappidappid_get
+  description: Get bot registration details
+  product: Khoros Care
+  method: GET
+  path: /registrations/network/{networkKey}/externalId/{externalId}/appId/{appId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#networknetworkkeyexternalidexternalidappidappid-get
+- name: registrations_delete
+  description: Delete bot registration
+  product: Khoros Care
+  method: DELETE
+  path: /registrations/network/{networkKey}/externalId/{externalId}/appId/{appId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#registrations-delete
+- name: requestrequestid
+  description: Monitor request to Bot v3 API
+  product: Khoros Care
+  method: GET
+  path: /request/{requestId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#requestrequestid
+- name: requestappidappid
+  description: Monitor requests by date range, state, and origin
+  product: Khoros Care
+  method: GET
+  path: /request/appId/{appId})/
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#requestappidappid
+- name: respond_post
+  description: Respond to incoming message (bot to channel)
+  product: Khoros Care
+  method: POST
+  path: /respond
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#respond-post
+- name: author_put
+  description: Update author's attributes
+  product: Khoros Care
+  method: PUT
+  path: /authors/attributes
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#author-put
+- name: authors_put
+  description: Update author metadata
+  product: Khoros Care
+  method: PUT
+  path: /authors/attributes (COPY)
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#authors-put
+- name: control_put
+  description: Pass conversation control
+  product: Khoros Care
+  method: PUT
+  path: /control
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#control-put
+- name: note_put
+  description: Add internal note to bot conversation
+  product: Khoros Care
+  method: PUT
+  path: /note
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#note-put
+- name: priority_put
+  description: Change conversation priority
+  product: Khoros Care
+  method: PUT
+  path: /priority
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#priority-put
+- name: registrationsnetworknetworkkeyexternalidexternalidappidappidmodemode_put
+  description: Change bot operating mode
+  product: Khoros Care
+  method: PUT
+  path: /registrations/network/{networkKey}/externalId/{externalId}/appId/{appId}/mode/{mode}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#registrationsnetworknetworkkeyexternalidexternalidappidappidmodemode-put
+- name: resolve_put
+  description: Mark conversation resolved
+  product: Khoros Care
+  method: PUT
+  path: /resolve
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#resolve-put
+- name: tag_put
+  description: Tag message by Care tag ID
+  product: Khoros Care
+  method: PUT
+  path: /tag
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#tag-put
+- name: untag_message_by_care_tag_id
+  description: Untag message by Care tag ID
+  product: Khoros Care
+  method: PUT
+  path: /tag/remove
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#untag-message-by-care-tag-id
+- name: tokensappid_put
+  description: Refresh JWT
+  product: Khoros Care
+  method: PUT
+  path: /tokens/appId/{appId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#tokensappid-put
+- name: tokensappid_delete
+  description: Invalidate JWT
+  product: Khoros Care
+  method: DELETE
+  path: /tokens/appId/{appId}
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#tokensappid-delete
+- name: workqueue_put
+  description: Move conversation to specified workqueue
+  product: Khoros Care
+  method: PUT
+  path: /workqueue
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#workqueue-put
+- name: send_a_bot_response_with_a_secure_form
+  description: Send a bot response with a secure form
+  product: Khoros Care
+  method: POST
+  path: /form
+  source_operation: openapi/lithium-care-bot-api-v3-openapi.json#send-a-bot-response-with-a-secure-form
+- name: conversationsnetworksnetworktypeinstancesnetworkinstanceidsauthorid
+  description: Get conversation IDs by author and date
+  product: Khoros Care
+  method: GET
+  path: /networks/{networktype}/instances/{networkinstance}/ids/{authorID}
+  source_operation: openapi/lithium-care-conversation-api-v2-openapi.json#conversationsnetworksnetworktypeinstancesnetworkinstanceidsauthorid
+- name: lswuuid_1
+  description: Get conversation details by unique ID
+  product: Khoros Care
+  method: GET
+  path: /{lswUuid}
+  source_operation: openapi/lithium-care-conversation-api-v2-openapi.json#lswuuid-1
+- name: displayidsdisplaynumber_1
+  description: Get conversation details by display ID
+  product: Khoros Care
+  method: GET
+  path: /displayIds/{displayNumber}
+  source_operation: openapi/lithium-care-conversation-api-v2-openapi.json#displayidsdisplaynumber-1
+- name: get_conversation_details_by_document_source_id
+  description: Get conversation details by document source ID
+  product: Khoros Care
+  method: GET
+  path: /bySourceDocumentId/networks/{network}/instances/{instance}/id/{source document id}
+  source_operation: openapi/lithium-care-conversation-api-v2-openapi.json#get-conversation-details-by-document-source-id
+- name: tagruledefinitions_1
+  description: Get conversation tag rule definitions
+  product: Khoros Care
+  method: GET
+  path: /
+  source_operation: openapi/lithium-care-conversation-tag-rules-v2-openapi.json#tagruledefinitions-1
+- name: requests
+  description: Create GDPR request
+  product: Khoros Care
+  method: POST
+  path: /requests
+  source_operation: openapi/lithium-care-gdpr-api-v2-openapi.json#requests
+- name: requestsrequestuuid
+  description: Get GDPR request status
+  product: Khoros Care
+  method: GET
+  path: /requests/{requestUUID}
+  source_operation: openapi/lithium-care-gdpr-api-v2-openapi.json#requestsrequestuuid
+- name: integrationuuidmessagesvalidation
+  description: Validate JSON request of inbound messages
+  product: Khoros Care
+  method: POST
+  path: /{integrationUuid}/messages/validation
+  source_operation: openapi/lithium-care-listening-api-v2-openapi.json#integrationuuidmessagesvalidation
+- name: integrationuuiddiscussion
+  description: Create inbound messages
+  product: Khoros Care
+  method: POST
+  path: /{integrationUuid}/messages
+  source_operation: openapi/lithium-care-listening-api-v2-openapi.json#integrationuuiddiscussion
+- name: integrationuuidmessages_1
+  description: Delete messages
+  product: Khoros Care
+  method: DELETE
+  path: /{integrationUuid}/messages
+  source_operation: openapi/lithium-care-listening-api-v2-openapi.json#integrationuuidmessages-1
+- name: integrationuuidmessages
+  description: Send batch(es) of messages to be assembled into a case by reference message
+  product: Khoros Care
+  method: POST
+  path: /{integrationUuid}/discussion
+  source_operation: openapi/lithium-care-listening-api-v2-openapi.json#integrationuuidmessages
+- name: get_secure_forms
+  description: Get Secure Forms
+  product: Khoros Care
+  method: GET
+  path: /getForms
+  source_operation: openapi/lithium-care-secure-forms-api-v2-openapi.json#get-secure-forms
+- name: smartviews
+  description: Get Smart View IDs
+  product: Khoros Care
+  method: GET
+  path: /
+  source_operation: openapi/lithium-care-smart-views-api-v2-openapi.json#smartviews
+- name: csvreportname_deprecated
+  description: Create CSV export for download
+  product: Khoros Care
+  method: GET
+  path: /csv/{reportName}
+  source_operation: openapi/lithium-care-supervisor-reports-api-openapi.json#csvreportname-deprecated
+- name: csv_longreportname_deprecated
+  description: Create CSV export for download by date(s)
+  product: Khoros Care
+  method: GET
+  path: /csv_long/{reportName}
+  source_operation: openapi/lithium-care-supervisor-reports-api-openapi.json#csv_longreportname-deprecated
+- name: list_deprecated
+  description: List available report names
+  product: Khoros Care
+  method: GET
+  path: /list
+  source_operation: openapi/lithium-care-supervisor-reports-api-openapi.json#list-deprecated
+- name: tags
+  description: Get tag details
+  product: Khoros Care
+  method: GET
+  path: /
+  source_operation: openapi/lithium-care-tag-api-v2-openapi.json#tags
+- name: change_agent_state_by_email
+  description: Set Agent State by Email
+  product: Khoros Care
+  method: PUT
+  path: /email/{userEmail}/state
+  source_operation: openapi/lithium-care-users-api-v2-openapi.json#change-agent-state-by-email
+- name: change_agent_state_by_uuid
+  description: Set Agent State by UUID
+  product: Khoros Care
+  method: PUT
+  path: /uuid/{userUUID}/state
+  source_operation: openapi/lithium-care-users-api-v2-openapi.json#change-agent-state-by-uuid
+- name: change_agent_state_by_sso_id
+  description: Set Agent State by SSO ID
+  product: Khoros Care
+  method: PUT
+  path: /ssoId/{ssoId}/state
+  source_operation: openapi/lithium-care-users-api-v2-openapi.json#change-agent-state-by-sso-id
+- name: workqueues
+  description: Get work queues details
+  product: Khoros Care
+  method: GET
+  path: /workqueues
+  source_operation: openapi/lithium-care-work-queue-api-v1-openapi.json#workqueues
+- name: active_1
+  description: Get work queue IDs
+  product: Khoros Care
+  method: GET
+  path: /active
+  source_operation: openapi/lithium-care-work-queue-api-v2-openapi.json#active-1
+- name: generate_a_thread_id
+  description: Generate a Thread ID
+  product: Khoros Flow
+  method: POST
+  path: /messages
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#generate-a-thread-id
+- name: create_a_text_message
+  description: Create a Text Message
+  product: Khoros Flow
+  method: POST
+  path: /messages/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#create-a-text-message
+- name: get_a_list_of_messages
+  description: Retrieve a list of messages
+  product: Khoros Flow
+  method: GET
+  path: /messages/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#get-a-list-of-messages
+- name: get_a_list_of_threads
+  description: Retrieve a list of threads
+  product: Khoros Flow
+  method: GET
+  path: /threads
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#get-a-list-of-threads
+- name: handover_action
+  description: Handover action
+  product: Khoros Flow
+  method: POST
+  path: /handover/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#handover-action
+- name: resolve_action
+  description: Resolve Action
+  product: Khoros Flow
+  method: POST
+  path: /resolve/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#resolve-action
+- name: get_a_list_of_events
+  description: Retrieve a list of events
+  product: Khoros Flow
+  method: GET
+  path: /trigger/event
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#get-a-list-of-events
+- name: trigger_an_event
+  description: Trigger an event
+  product: Khoros Flow
+  method: POST
+  path: /{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#trigger-an-event
+- name: business_hours
+  description: Business Hours
+  product: Khoros Flow
+  method: GET
+  path: /businesshours
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#business-hours
+- name: pause_a_bot
+  description: Pause a bot
+  product: Khoros Flow
+  method: POST
+  path: /pause/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#pause-a-bot
+- name: resume_a_bot
+  description: Resume a bot
+  product: Khoros Flow
+  method: DELETE
+  path: /pause/{threadId}
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#resume-a-bot
+- name: get_bot_status
+  description: Retrieve a bot's status
+  product: Khoros Flow
+  method: GET
+  path: /
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#get-bot-status
+- name: broadcast_to_msisdn
+  description: Broadcast to MSISDN
+  product: Khoros Flow
+  method: POST
+  path: /broadcast/instant
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#broadcast-to-msisdn
+- name: broadcast_to_segments
+  description: Broadcast to Segments
+  product: Khoros Flow
+  method: POST
+  path: /broadcast/instant/segment
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#broadcast-to-segments
+- name: get_audience_segments
+  description: Retrieve audience segments
+  product: Khoros Flow
+  method: GET
+  path: /broadcast/segments
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#get-audience-segments
+- name: list_all_flows
+  description: List all flows
+  product: Khoros Flow
+  method: GET
+  path: /projects/{projectId}/flows
+  source_operation: openapi/lithium-flow-flow-rest-api-openapi.json#list-all-flows
+- name: createcase
+  description: createCase
+  product: Khoros Marketing
+  method: POST
+  path: /case
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#createcase
+- name: lookupcase
+  description: lookupCase
+  product: Khoros Marketing
+  method: GET
+  path: /case/{id}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#lookupcase
+- name: updatecase
+  description: updateCase
+  product: Khoros Marketing
+  method: PATCH
+  path: /case/{id}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#updatecase
+- name: searchcustomers
+  description: searchCustomers
+  product: Khoros Marketing
+  method: POST
+  path: /customers
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#searchcustomers
+- name: bestmatchcustomers
+  description: bestmatchCustomers
+  product: Khoros Marketing
+  method: POST
+  path: /customer/bestmatch
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#bestmatchcustomers
+- name: createcustomer
+  description: createCustomer
+  product: Khoros Marketing
+  method: POST
+  path: /customer
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#createcustomer
+- name: findcustomer
+  description: findCustomer
+  product: Khoros Marketing
+  method: GET
+  path: /customer/{id}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#findcustomer
+- name: updatecustomer
+  description: updateCustomer
+  product: Khoros Marketing
+  method: PATCH
+  path: /customer/{id}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#updatecustomer
+- name: findcases
+  description: findCases
+  product: Khoros Marketing
+  method: GET
+  path: /customer/{id}/cases
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#findcases
+- name: define_object_structures
+  description: Define Object Structures
+  product: Khoros Marketing
+  method: GET
+  path: /meta/object/{type}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#define-object-structures
+- name: list_a_specific_directory
+  description: List a specific directory
+  product: Khoros Marketing
+  method: GET
+  path: /list/{resourcePath}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#list-a-specific-directory
+- name: list_the_root_directory
+  description: List the root directory
+  product: Khoros Marketing
+  method: GET
+  path: /list
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#list-the-root-directory
+- name: get_an_asset
+  description: Get an asset
+  product: Khoros Marketing
+  method: GET
+  path: /asset/{assetPath}
+  source_operation: openapi/lithium-marketing-api-specifications-openapi.json#get-an-asset
+- name: published_post
+  description: Published Posts
+  product: Khoros Marketing
+  method: POST
+  path: /export/posts
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#published-post
+- name: daily_account_level_metrics
+  description: Daily Account Level Metrics
+  product: Khoros Marketing
+  method: POST
+  path: /export/accounts
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#daily-account-level-metrics
+- name: daily_post_summary
+  description: Daily Post Summary
+  product: Khoros Marketing
+  method: POST
+  path: /export/daily_post_summary
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#daily-post-summary
+- name: ads_net_values
+  description: Ads Net Values
+  product: Khoros Marketing
+  method: POST
+  path: /export/net_ads
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#ads-net-values
+- name: stream_item_data
+  description: Stream Item Data
+  product: Khoros Marketing
+  method: POST
+  path: /export/stream_items
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#stream-item-data
+- name: stream_item_action_data
+  description: Stream Item Action Data
+  product: Khoros Marketing
+  method: POST
+  path: /export/stream_item_actions
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#stream-item-action-data
+- name: custom_feedback
+  description: Customer Feedback
+  product: Khoros Marketing
+  method: POST
+  path: /export/customer_feedback
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#custom-feedback
+- name: profiles
+  description: Profiles
+  product: Khoros Marketing
+  method: POST
+  path: /export/profiles
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#profiles
+- name: retrieve_export_status
+  description: Retrieve Export Status
+  product: Khoros Marketing
+  method: GET
+  path: /export/{id}/status
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#retrieve-export-status
+- name: get_available_report_fields
+  description: Get Available Report Fields
+  product: Khoros Marketing
+  method: GET
+  path: /export/{export_type}/fields
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#get-available-report-fields
+- name: surveys_list_all_survey_data_for_a_set_of_streams
+  description: 'Surveys: List All Survey Data for a Set of Streams'
+  product: Khoros Marketing
+  method: GET
+  path: /surveys
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#surveys-list-all-survey-data-for-a-set-of-streams
+- name: list_all_available_streams_for_a_company
+  description: 'Streams: List All Available Streams for a Company'
+  product: Khoros Marketing
+  method: GET
+  path: /streams
+  source_operation: openapi/lithium-marketing-beta-analytics-api-openapi.json#list-all-available-streams-for-a-company
+- name: me
+  description: List of your companies with this app enabled
+  product: Khoros Marketing
+  method: GET
+  path: /v1/me
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#me
+- name: createAsset
+  description: Create a new Content Center Asset.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/asset
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#createAsset
+- name: createMultiPartAsset
+  description: Create a new Content Center image/video Asset.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/asset?multipart
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#createMultiPartAsset
+- name: findAsset
+  description: Retrieve a Content Center Asset based by asset ID.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/asset/{assetId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#findAsset
+- name: updateAsset
+  description: Update existing Content Center Asset.
+  product: Khoros Marketing
+  method: PUT
+  path: /{environment}/v1/company/{companyId}/asset/{assetId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#updateAsset
+- name: listFolders
+  description: Retrieve a list of folders.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/folder
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#listFolders
+- name: createFolder
+  description: Create a new Content Center Asset Folder.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/folder
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#createFolder
+- name: findFolder
+  description: Retrieve a specific Content Center Asset Folder by ID.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#findFolder
+- name: updateFolder
+  description: Updates an existing Content Center Asset Folder.
+  product: Khoros Marketing
+  method: PUT
+  path: /{environment}/v1/company/{companyId}/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#updateFolder
+- name: deleteFolder
+  description: Deletes an existing Content Center Asset Folder.
+  product: Khoros Marketing
+  method: DELETE
+  path: /{environment}/v1/company/{companyId}/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#deleteFolder
+- name: listFolderAssets
+  description: Retrieve a list of assets in a folder.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/folder/{folderId}/assets
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#listFolderAssets
+- name: listInitiatives
+  description: Retrieve a list of available initiatives.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#listInitiatives
+- name: getInitiative
+  description: Retrieve a single initiative by ID.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#getInitiative
+- name: findContentLabelsForCompany
+  description: Retrieve paged labels.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/contentLabel
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#findContentLabelsForCompany
+- name: publishMessage
+  description: Publish a new message.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#publishMessage
+- name: getMessage
+  description: Retrieve an existing message.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#getMessage
+- name: editMessage
+  description: Update an existing multi-part message.
+  product: Khoros Marketing
+  method: PUT
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#editMessage
+- name: deleteMessage
+  description: Delete an existing message.
+  product: Khoros Marketing
+  method: DELETE
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#deleteMessage
+- name: getMultiChannelMessage
+  description: Retrieve an existing multi-channel message.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/multiChannelMessage/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#getMultiChannelMessage
+- name: listPlans
+  description: Retrieve a list of Plans.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/plan
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#listPlans
+- name: getPrivileges
+  description: Retrieve permissions for current user.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/privilege
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#getPrivileges
+- name: publishMultiPartMessage
+  description: Publish a new message.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?multipart
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#publishMultiPartMessage
+- name: publishImageSetMessage
+  description: Publish a new message.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?imageset
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#publishImageSetMessage
+- name: publishMultiPartVideoMessage
+  description: Publish a new message.
+  product: Khoros Marketing
+  method: POST
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?video
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#publishMultiPartVideoMessage
+- name: editMultiPartMessage
+  description: Update an existing multi-part message.
+  product: Khoros Marketing
+  method: PUT
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}?multipart
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#editMultiPartMessage
+- name: accountSet
+  description: Lists all accounts sets and corresponding accounts available to the user.
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#accountSet
+- name: publishers
+  description: Retrieve a list of Conversations users
+  product: Khoros Marketing
+  method: GET
+  path: /{environment}/v1/company/{companyId}/users/initiative/{initiativeId}/publishers
+  source_operation: openapi/lithium-marketing-conversations-api-v1-openapi.json#publishers
+- name: accountset
+  description: Retrieve All Account Sets & Accounts Available
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiative-id}/accountset
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#accountset
+- name: assets_create_text_asset
+  description: Create Text Asset
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/asset
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#assets-create-text-asset
+- name: assets_create_image_or_video
+  description: Create Image or Video
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/asset?multipart
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#assets-create-image-or-video
+- name: assets_retrieve_a_content_center_asset_by_id
+  description: Retrieve a Content Center Asset by ID
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/asset/{assetId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#assets-retrieve-a-content-center-asset-by-id
+- name: assets_update_existing_content_center_asset
+  description: Update Existing Content Center Asset
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/asset/{assetId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#assets-update-existing-content-center-asset
+- name: create_a_new_content_asset_folder
+  description: Create a New Content Asset Folder
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/folder
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#create-a-new-content-asset-folder
+- name: retrieve_a_list_of_folders
+  description: Retrieve a list of folders
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/folder
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-list-of-folders
+- name: retrieve_a_content_asset_folder_by_id
+  description: Retrieve a Content Asset Folder by ID
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-content-asset-folder-by-id
+- name: update_existing_content_center_asset_folder
+  description: Update Existing Content Center Asset Folder
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#update-existing-content-center-asset-folder
+- name: delete_a_content_asset_folder_by_id
+  description: Delete a Content Asset Folder by ID
+  product: Khoros Marketing
+  method: DELETE
+  path: /conversations/folder/{folderId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#delete-a-content-asset-folder-by-id
+- name: retrieve_a_list_of_assets_in_a_folder
+  description: Retrieve a List of Assets in a Folder
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/folder/{folderId}/assets
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-list-of-assets-in-a-folder
+- name: list_customchannels
+  description: List CustomChannels
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/calendar/customChannel
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#list-customchannels
+- name: create_a_customchannel
+  description: Create a CustomChannel
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/calendar/customChannel
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#create-a-customchannel
+- name: get_a_customchannel_based_on_id
+  description: Get a CustomChannel based on ID
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/calendar/customChannel/{customChannelId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#get-a-customchannel-based-on-id
+- name: update_a_customchannel
+  description: Update a CustomChannel
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/calendar/customChannel/{customChannelId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#update-a-customchannel
+- name: create_a_customchannelitem
+  description: Create a CustomChannelItem
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/initiative/{initiativeId}/calendar/customChannelItem/{customChannelItemId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#create-a-customchannelitem
+- name: update_a_customchannelitem
+  description: Update a CustomChannelItem
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/initiative/{initiativeId}/calendar/customChannelItem/{customChannelItemId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#update-a-customchannelitem
+- name: get_a_customchannelitem_by_id
+  description: Get a CustomChannelItem by ID
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}/calendar/customChannelItem/{customChannelItemId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#get-a-customchannelitem-by-id
+- name: get_messages
+  description: Get Messages
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/calendar/messages
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#get-messages
+- name: retrieve_a_list_of_available_initiatives
+  description: Retrieve a List of Available Initiatives
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-list-of-available-initiatives
+- name: retrieve_a_single_initiative
+  description: Retrieve a Single Initiative
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-single-initiative
+- name: retrieve_paged_labels
+  description: Retrieve Paged Labels
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}/contentLabel
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-paged-labels
+- name: retrieve_a_list_companies_with_this_app_enabled
+  description: Retrieve a List of Companies with this App Enabled
+  product: Khoros Marketing
+  method: GET
+  path: /me
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-list-companies-with-this-app-enabled
+- name: publish_a_new_message_imageset
+  description: Publish a New Message (imageset)
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/initiative/{initiativeId}/message
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#publish-a-new-message-imageset
+- name: update_a_message
+  description: Update a Message
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#update-a-message
+- name: retrieve_an_existing_message
+  description: Retrieve an Existing Message
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-an-existing-message
+- name: delete_an_existing_message
+  description: Delete an Existing Message
+  product: Khoros Marketing
+  method: DELETE
+  path: /conversations/initiative/{initiativeId}/message/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#delete-an-existing-message
+- name: publish_a_new_message_multipart
+  description: Publish a New Message (multipart)
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/initiative/{initiativeId}/message?multipart
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#publish-a-new-message-multipart
+- name: update_a_multipart_message
+  description: Update a Multipart Message
+  product: Khoros Marketing
+  method: PUT
+  path: /conversations/initiative/{initiativeId}/message/{messageId}?multipart
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#update-a-multipart-message
+- name: retrieve_an_existing_multi_channel_message
+  description: Retrieve an Existing Multi-channel Message
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}/multiChannelMessage/{messageId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-an-existing-multi-channel-message
+- name: retrieve_permissions_for_current_user
+  description: Retrieve Permissions for Current User
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/privilege
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-permissions-for-current-user
+- name: retrieve_a_list_of_plans
+  description: Retrieve a List of Plans
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/initiative/{initiativeId}/plan
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#retrieve-a-list-of-plans
+- name: list_roles_for_the_company
+  description: List Roles for the Company
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/roles
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#list-roles-for-the-company
+- name: list_conversations_publishers
+  description: List Conversations Publishers
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/users/initiative/{initiativeId}/publishers
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#list-conversations-publishers
+- name: delete_a_conversations_user
+  description: Delete a Conversations User
+  product: Khoros Marketing
+  method: DELETE
+  path: /conversations/user/{userId}
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#delete-a-conversations-user
+- name: create_a_conversations_user
+  description: Create a Conversations User
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/user
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#create-a-conversations-user
+- name: list_conversations_users
+  description: List Conversations Users
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/users
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#list-conversations-users
+- name: create_a_video_captions
+  description: Create a Video Captions
+  product: Khoros Marketing
+  method: POST
+  path: /conversations/initiative/{initiativeId}/video/captions
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#create-a-video-captions
+- name: list_workspaces_for_the_company
+  description: List Workspaces for the Company
+  product: Khoros Marketing
+  method: GET
+  path: /conversations/workspaces
+  source_operation: openapi/lithium-marketing-conversations-openapi.json#list-workspaces-for-the-company
+- name: register_a_custom_crm
+  description: Register a Custom CRM
+  product: Khoros Marketing
+  method: POST
+  path: /admin/custom
+  source_operation: openapi/lithium-marketing-crm-openapi.json#register-a-custom-crm
+- name: register_a_custom_crm_1
+  description: Register a Custom CRM
+  product: Khoros Marketing
+  method: PATCH
+  path: /admin/custom/{crmId}
+  source_operation: openapi/lithium-marketing-crm-openapi.json#register-a-custom-crm-1
+- name: current_user_details
+  description: Current User Details
+  product: Khoros Marketing
+  method: GET
+  path: /
+  source_operation: openapi/lithium-marketing-introspection-api-openapi.json#current-user-details
+- name: retrieve_a_page_of_labels_nested_within_sets
+  description: Retrieve a Page of Labels Nested within Sets
+  product: Khoros Marketing
+  method: GET
+  path: /
+  source_operation: openapi/lithium-marketing-labelsets-api-openapi.json#retrieve-a-page-of-labels-nested-within-sets
+- name: retrieve_subscription_events
+  description: Retrieve Subscription Events
+  product: Khoros Marketing
+  method: GET
+  path: /data/{subscriptionId}
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#retrieve-subscription-events
+- name: list_subscriptions
+  description: List Subscriptions
+  product: Khoros Marketing
+  method: GET
+  path: /subscription
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#list-subscriptions
+- name: create_a_subscription
+  description: Create a Subscription
+  product: Khoros Marketing
+  method: POST
+  path: /subscription
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#create-a-subscription
+- name: retrieve_subscription_details
+  description: Retrieve Subscription Details
+  product: Khoros Marketing
+  method: GET
+  path: /subscription/{id}
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#retrieve-subscription-details
+- name: delete_a_subscription
+  description: Delete a Subscription
+  product: Khoros Marketing
+  method: DELETE
+  path: /subscription/{id}
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#delete-a-subscription
+- name: update_a_subscription
+  description: Update a Subscription
+  product: Khoros Marketing
+  method: PUT
+  path: /subscription/{id}/{status}
+  source_operation: openapi/lithium-marketing-notification-service-openapi.json#update-a-subscription
+- name: retrieve_streams_approved_content
+  description: Retrieve Stream's Approved Content
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#retrieve-streams-approved-content
+- name: specify_amount_of_content_to_pull
+  description: Specify amount of content to pull
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?limit
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#specify-amount-of-content-to-pull
+- name: gather_content_after_specific_entity
+  description: Gather content after specific entity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?since_id
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#gather-content-after-specific-entity
+- name: gather_content_after_included_entity
+  description: Gather content after included entity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?from_id
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#gather-content-after-included-entity
+- name: gather_content_after_included_entity_1
+  description: Gather content before included entity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?start_id
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#gather-content-after-included-entity-1
+- name: enable_jsonp_support
+  description: Enable JSONP support
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?callback
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#enable-jsonp-support
+- name: enable_geohinting_data
+  description: Enable geohinting data
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?geo_hint
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#enable-geohinting-data
+- name: enable_product_hinting_for_each_entity
+  description: Enable product hinting for each entity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?page_links
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#enable-product-hinting-for-each-entity
+- name: enable_replies_to_entities
+  description: Enable replies to entities
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?replies
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#enable-replies-to-entities
+- name: specify_social_network_to_gather_entities
+  description: Specify Social Network to gather entities
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?network
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#specify-social-network-to-gather-entities
+- name: included_entity_object_on_tweets
+  description: Included entity object on tweets
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?include_entities
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#included-entity-object-on-tweets
+- name: reverse_order_of_status_entities
+  description: Reverse order of status entities
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?reverse
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#reverse-order-of-status-entities
+- name: remove_trailing_links_1
+  description: Remove trailing links
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?strip_links
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#remove-trailing-links-1
+- name: remove_trailing_links
+  description: Gather specific entities containing keywords
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?keywords
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#remove-trailing-links
+- name: return_entities_from_specific_user
+  description: Return entities from specific user
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?from
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#return-entities-from-specific-user
+- name: return_entities_after_a_specific_time
+  description: Return entities after a specific time
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?timeframe[start]
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#return-entities-after-a-specific-time
+- name: return_entities_before_a_specific_time
+  description: Return entities before a specific time
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}?timeframe[finish]
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#return-entities-before-a-specific-time
+- name: get_entity_information
+  description: Get entity information
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-entity-information
+- name: get_minutes_of_activity
+  description: Get minutes of activity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_minutes
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-minutes-of-activity
+- name: get_minutes_of_activity_1
+  description: Get hours of activity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_hours
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-minutes-of-activity-1
+- name: get_days_of_activity
+  description: Get days of activity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_days
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-days-of-activity
+- name: get_activity_and_count_props
+  description: Get activity and count props
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?activity
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-activity-and-count-props
+- name: get_last_item_of_activity
+  description: Get last item of activity
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?finish
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-last-item-of-activity
+- name: get_networks_in_meta_response_1
+  description: Get networks in meta response
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json? networks
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-networks-in-meta-response-1
+- name: get_networks_in_meta_response
+  description: Get top retweets in specified hours
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?top_periods
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-networks-in-meta-response
+- name: get_top_retweets_hourly_from_now_1
+  description: Get top retweets hourly from now
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?top_periods_relative
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-top-retweets-hourly-from-now-1
+- name: get_top_retweets_hourly_from_now
+  description: Get tweets per period
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?top_count
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-top-retweets-hourly-from-now
+- name: get_number_of_hashtags_returned_1
+  description: Get number of hashtags returned
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_hashtags
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-number-of-hashtags-returned-1
+- name: get_number_of_topics
+  description: Get number of contributors
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_contributors
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-number-of-topics
+- name: get_number_of_hashtags_returned
+  description: Get number of topics
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?num_trends
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-number-of-hashtags-returned
+- name: get_specified_sort_order
+  description: Get Specified Sort Order
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?sort
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specified-sort-order
+- name: get_all_topics
+  description: Get all topics
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?all_topics
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-all-topics
+- name: get_percentages_in_buckets
+  description: Get percentages in buckets
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?percent
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-percentages-in-buckets
+- name: get_specific_decimals_in_percent_return
+  description: Get specific decimals in percent return
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?precision
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specific-decimals-in-percent-return
+- name: get_excluded_trends_from_values
+  description: Get excluded trends from values
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/meta.json?disregard
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-excluded-trends-from-values
+- name: get_specific_entities
+  description: Get specific entities
+  product: Khoros Marketing
+  method: GET
+  path: /{account}/{streamName}/entities.json?entity_ids
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specific-entities
+- name: get_meta_account_information
+  description: Get meta account information
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-meta-account-information
+- name: get_meta_info_of_accounts_streams
+  description: Get meta info of account's streams
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?streams
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-meta-info-of-accounts-streams
+- name: get_minutes_of_activity_from_account
+  description: Get minutes of activity from account
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?num_minutes
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-minutes-of-activity-from-account
+- name: get_trends_in_response_per_account
+  description: Get trends in response per account
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?num_trends
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-trends-in-response-per-account
+- name: exclude_specified_trends
+  description: Exclude specified trends
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?disregard
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#exclude-specified-trends
+- name: get_activity_data_from_specific_time
+  description: Get activity data from specific time
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?start
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-activity-data-from-specific-time
+- name: get_activity_data_ending_at_specific_time
+  description: Get activity data ending at specific time
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?finish
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-activity-data-ending-at-specific-time
+- name: get_streams_withwithout_topics
+  description: Get streams with/without topics
+  product: Khoros Marketing
+  method: GET
+  path: /{account}.json?streams_with_topics
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-streams-withwithout-topics
+- name: compare_stream_volumes
+  description: Compare stream volumes
+  product: Khoros Marketing
+  method: GET
+  path: /compare.json?streams
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#compare-stream-volumes
+- name: get_percentage_towards_target
+  description: Get percentage towards target
+  product: Khoros Marketing
+  method: GET
+  path: /compare.json?streams={content}&target
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-percentage-towards-target
+- name: get_specific_decimals_in_percent_return_1
+  description: Get specific decimals in percent return
+  product: Khoros Marketing
+  method: GET
+  path: /compare.json?streams={content}&target={number}&precision
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specific-decimals-in-percent-return-1
+- name: get_specified_sort_order_1
+  description: Get specified sort order
+  product: Khoros Marketing
+  method: GET
+  path: /compare.json?streams={content}&sort
+  source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specified-sort-order-1

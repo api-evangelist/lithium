@@ -1,0 +1,907 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "bot-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.response.lithium.com/api/v2/bots",
+      "variables": {
+        "instance": {
+          "default": "instance"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/networks/{networkType}/registrations": {
+      "get": {
+        "summary": "Get bot registration details",
+        "description": "Retrieve registration details for a bot",
+        "operationId": "networksnetworktyperegistrations",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of source network. Supported values: `facebook`, `twitter`",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the social network (i.e., the brand page ID on Facebook or the brand).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"network\": \"facebook\",\n        \"networkinstance\": \"www.facebook.com\",\n        \"externalId\": \"123456789\",\n        \"appId\": \"321123\",\n        \"callbackUrl\": \"https://www.test.com\",\n        \"authenticationType\": \"BASIC_AUTH\",\n        \"username\": \"user\",\n        \"createdEpochMillis\": 1493828573286,\n        \"lastUpdatedEpochMillis\": 1493828573286\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "network": {
+                          "type": "string",
+                          "example": "facebook"
+                        },
+                        "networkinstance": {
+                          "type": "string",
+                          "example": "www.facebook.com"
+                        },
+                        "externalId": {
+                          "type": "string",
+                          "example": "123456789"
+                        },
+                        "appId": {
+                          "type": "string",
+                          "example": "321123"
+                        },
+                        "callbackUrl": {
+                          "type": "string",
+                          "example": "https://www.test.com"
+                        },
+                        "authenticationType": {
+                          "type": "string",
+                          "example": "BASIC_AUTH"
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "createdEpochMillis": {
+                          "type": "integer",
+                          "example": 1493828573286,
+                          "default": 0
+                        },
+                        "lastUpdatedEpochMillis": {
+                          "type": "integer",
+                          "example": 1493828573286,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "post": {
+        "summary": "Register bot with Khoros Care",
+        "description": "Register a bot with Khoros Care",
+        "operationId": "networksnetworktyperegistrations-1",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of source channel. Supported values: facebook, twitter",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "externalId",
+                  "appId",
+                  "callbackUrl",
+                  "authenticationType",
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "externalId": {
+                    "type": "string",
+                    "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the source channel (i.e., the brand page ID on Facebook or the brand). Only one bot registration per external ID is allowed."
+                  },
+                  "appId": {
+                    "type": "string",
+                    "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response."
+                  },
+                  "callbackUrl": {
+                    "type": "string",
+                    "description": "(Required) A URL that will be used to make callback to the bot from Lithium. The value must be URL-encoded and use HTTPS. If HTTPS is not used for the callback URL, the call will fail. See API callbacks to bots for more information. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "authenticationType": {
+                    "type": "string",
+                    "description": "(Required) The authentication type to be used when Response performs a callback to the bot. The value is always BASIC_AUTH. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "(Required) The user name used to authenticate the callback to the bot via Basic Auth. The user name is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "(Required) The password used to authenticate the callback to the bot. The password is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "externalId",
+                  "appId",
+                  "callbackUrl",
+                  "authenticationType",
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "externalId": {
+                    "type": "string",
+                    "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the source channel (i.e., the brand page ID on Facebook or the brand). Only one bot registration per external ID is allowed."
+                  },
+                  "appId": {
+                    "type": "string",
+                    "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response."
+                  },
+                  "callbackUrl": {
+                    "type": "string",
+                    "description": "(Required) A URL that will be used to make callback to the bot from Lithium. The value must be URL-encoded and use HTTPS. If HTTPS is not used for the callback URL, the call will fail. See API callbacks to bots for more information. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "authenticationType": {
+                    "type": "string",
+                    "description": "(Required) The authentication type to be used when Response performs a callback to the bot. The value is always BASIC_AUTH. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "(Required) The user name used to authenticate the callback to the bot via Basic Auth. The user name is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "(Required) The password used to authenticate the callback to the bot. The password is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl -X POST \\\n'https://mycompany.response.lithium.com/api/v2/bots/networks/twitter/registrations' \\\n\t-F 'externalId=12345678909876' \\\n\t-F 'appId=abc123' \\\n\t-F 'authenticationType=BASIC_AUTH' \\\n\t-F 'username=foo' \\\n\t-F 'password=bar'\n\t-F 'callbackUrl=https://dummy.example.com' "
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      },
+      "put": {
+        "summary": "Register bot with Khoros Care or update registration",
+        "description": "Registers a bot with Khoros Care or updates a bot registration.",
+        "operationId": "networksnetworktyperegistrations-2",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of source channel. Supported values: `facebook`, `twitter`",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "externalId",
+                  "appId",
+                  "callbackUrl",
+                  "authenticationType",
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "externalId": {
+                    "type": "string",
+                    "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the source channel (i.e., the brand page ID on Facebook or the brand). Only one bot registration per external ID is allowed."
+                  },
+                  "appId": {
+                    "type": "string",
+                    "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response."
+                  },
+                  "callbackUrl": {
+                    "type": "string",
+                    "description": "(Required) A URL that will be used to make callback to the bot from Lithium. The value must be URL-encoded and use HTTPS. If HTTPS is not used for the callback URL, the call will fail. See API callbacks to bots for more information. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "authenticationType": {
+                    "type": "string",
+                    "description": "(Required) The authentication type to be used when Response performs a callback to the bot. The value is always BASIC_AUTH. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "(Required) The user name used to authenticate the callback to the bot via Basic Auth. The user name is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "(Required) The password used to authenticate the callback to the bot. The password is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "externalId",
+                  "appId",
+                  "callbackUrl",
+                  "authenticationType",
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "externalId": {
+                    "type": "string",
+                    "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the source channel (i.e., the brand page ID on Facebook or the brand). Only one bot registration per external ID is allowed."
+                  },
+                  "appId": {
+                    "type": "string",
+                    "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response."
+                  },
+                  "callbackUrl": {
+                    "type": "string",
+                    "description": "(Required) A URL that will be used to make callback to the bot from Lithium. The value must be URL-encoded and use HTTPS. If HTTPS is not used for the callback URL, the call will fail. See API callbacks to bots for more information. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "authenticationType": {
+                    "type": "string",
+                    "description": "(Required) The authentication type to be used when Response performs a callback to the bot. The value is always BASIC_AUTH. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "(Required) The user name used to authenticate the callback to the bot via Basic Auth. The user name is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "(Required) The password used to authenticate the callback to the bot. The password is part of the credentials that correspond to an entity on the bot. Note: If using the Facebook Handover Protocol, enter a dummy value. This field is not used by the Facebook Handover Protocol, but is still required by the call."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete bot registration",
+        "description": "Delete a bot registration.",
+        "operationId": "networksnetworktyperegistrations-3",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of social network. Supported values: facebook, twitter",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the social network (i.e., the brand page ID on Facebook or the brand).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "(Required) The app ID of the associated social network app that is used by the bot. This is used as the unique identifier for the bot in Response.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/networks/{networkType}/allRegistrations": {
+      "get": {
+        "summary": "Get registrations by external ID",
+        "description": "Retrieve registrations by passing only the external ID",
+        "operationId": "networksnetworktypeallregistrations",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of source network. Supported values: `facebook`, `twitter`",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the source network (i.e., the brand page ID on Facebook or the brand).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"network\": \"facebook\",\n        \"networkinstance\": \"www.facebook.com\",\n        \"externalId\": \"123456789\",\n        \"appId\": \"321123\",\n        \"callbackUrl\": \"https://www.test.com\",\n        \"authenticationType\": \"BASIC_AUTH\",\n        \"username\": \"user\",\n        \"createdEpochMillis\": 1493828573286,\n        \"lastUpdatedEpochMillis\": 1493828573286\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "network": {
+                          "type": "string",
+                          "example": "facebook"
+                        },
+                        "networkinstance": {
+                          "type": "string",
+                          "example": "www.facebook.com"
+                        },
+                        "externalId": {
+                          "type": "string",
+                          "example": "123456789"
+                        },
+                        "appId": {
+                          "type": "string",
+                          "example": "321123"
+                        },
+                        "callbackUrl": {
+                          "type": "string",
+                          "example": "https://www.test.com"
+                        },
+                        "authenticationType": {
+                          "type": "string",
+                          "example": "BASIC_AUTH"
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "createdEpochMillis": {
+                          "type": "integer",
+                          "example": 1493828573286,
+                          "default": 0
+                        },
+                        "lastUpdatedEpochMillis": {
+                          "type": "integer",
+                          "example": 1493828573286,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/currentTAR": {
+      "get": {
+        "summary": "Get current time to agent response (TAR)",
+        "description": "Retrieves the current Time to Agent Response (TAR)",
+        "operationId": "currenttar",
+        "parameters": [
+          {
+            "name": "timeRangeInMillis",
+            "in": "query",
+            "description": "(Required) The time range (in milliseconds) to collect TAR data. The time range starts from the time the call is made and runs back to the number of milliseconds passed. This is similar to selecting a Live range in the Analytics UI. Max value is one year (31556952000 milliseconds).",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "priorities",
+            "in": "query",
+            "description": "A comma-separated list of case priorities used to filter the TAR data. For example, passing '0,1,2' indicates to include only cases with priorities of 0,1, and 2.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workqueueIds",
+            "in": "query",
+            "description": "A comma-separated list of long workqueueIds used to filter the TAR data. For example, passing '1001,1002,2340' filters the data to include only those work queues.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responseType",
+            "in": "query",
+            "description": "Response types to query for. Supported values: 'FIRST' or 'SUBSEQUENT' (case-insensitive). Omitting the query parameter returns all response types. This query parameters is equivalent to the \"Response Type\" filter used in the Analytics UI when adding a Response widget to a dashboard.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "smartViewId",
+            "in": "query",
+            "description": "A single smart View ID by which to filter the TAR data.<br/><br/>If the smart view ID passed includes priority and/or work queue definitions, the priorities and work queues defined in the smart view will override values passed with priorities and workqueueIds parameters. <br/><br/>For example, suppose Smart View 102 includes priorities 0 and 5 and work queues 10,11, and, 12. Making a call with timeRangeInMillis=3600000&priorities=1,2,3&workqueueIds=1001,1002,1003&smartViewId=102 will result in data matching the definition defined for Smart View 102 only. The priorities and workqueueIds parameters will be ignored.<br/><br/>On the other hand, if smart view 102 defines a series of tags and has no definitions for priorities or work queues, then that same call would result in matching the tags from smart view 102 and filtering to priorities 1,2, and 3 in work queues 1001,1002, and 1003.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"avgTarTimeInMillis\": 1076043325,\n    \"medianTarTimeInMillis\": 5660000\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "avgTarTimeInMillis": {
+                          "type": "integer",
+                          "example": 1076043325,
+                          "default": 0
+                        },
+                        "medianTarTimeInMillis": {
+                          "type": "integer",
+                          "example": 5660000,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/networks/{networkType}/authors/{authorId}/handoff": {
+      "put": {
+        "summary": "Hand conversation to Care agent",
+        "description": "Hand a conversation initiated with a bot over to a Care agent.",
+        "operationId": "networksnetworktypeauthorsauthoridhandoff",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of social network. Supported values: facebook, twitter",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The social network ID for the author communicating with by the bot (i.e. the ID of the user on the social network). For Twitter, this is the numeric user ID. For Facebook, this is the page-scoped ID (PSID).",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the social network (i.e., the brand page ID on Facebook or the brand).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"conversationDisplayId\": 5050505,\n        \"authorId\": 9090909,\n        \"externalId\": 123456789\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "conversationDisplayId": {
+                          "type": "integer",
+                          "example": 5050505,
+                          "default": 0
+                        },
+                        "authorId": {
+                          "type": "integer",
+                          "example": 9090909,
+                          "default": 0
+                        },
+                        "externalId": {
+                          "type": "integer",
+                          "example": 123456789,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/networks/{networkType}/authors/{authorId}/resolve": {
+      "put": {
+        "summary": "Mark conversation resolved for bot",
+        "description": "Mark the conversation as resolved on behalf of the bot.",
+        "operationId": "networksnetworktypeauthorsauthoridresolve",
+        "parameters": [
+          {
+            "name": "networkType",
+            "in": "path",
+            "description": "The type of source network. Supported values: facebook, twitter",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The source network ID for the author communicating with by the bot (i.e. the ID of the user on the social network). For Twitter, this is the numeric user ID. For Facebook, this is the page-scoped ID (PSID).",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "(Required) The numeric ID of the entity the bot will communicate on behalf of on the social network (i.e., the brand page ID on Facebook or the brand).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

@@ -1,0 +1,1711 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "flow-rest-api",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.flow.ai/rest/v1/"
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/messages": {
+      "post": {
+        "summary": "Generate a Thread ID",
+        "description": "Generate a thread ID for various REST API usages.",
+        "operationId": "generate-a-thread-id",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"ok\",\n    \"threadId\": \"1f85dbe7-fc0a-4f43-a1a0-87216587ab7b|w_caRv6my_8\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "threadId": {
+                      "type": "string",
+                      "example": "1f85dbe7-fc0a-4f43-a1a0-87216587ab7b|w_caRv6my_8"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/messages HTTP/1.1\nHOST: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            },
+            {
+              "language": "javascript",
+              "code": "import request from \"async-request\";\nconst result = await request({\n  method: 'POST',\n  url: 'https://api.flow.ai/rest/v1/messages',\n  headers: {\n    'Authorization': 'MY_MESSAGING_API_KEY',\n    'Content-Type': 'application/json'\n  },\n  json: true\n})"
+            }
+          ],
+          "samples-languages": [
+            "http",
+            "javascript"
+          ]
+        }
+      }
+    },
+    "/messages/{threadId}": {
+      "post": {
+        "summary": "Create a Text Message",
+        "description": "Send a text message with the Flow REST API.",
+        "operationId": "create-a-text-message",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "Unique identifier of the thread",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Indicates that this message should be processed in sync mode.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "writeConcern",
+            "in": "query",
+            "description": "Indicates that this message should be processed in writeConcern mode.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payload": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "traceId": {
+                          "type": "integer",
+                          "description": "Optional unique number that is passed along to identify the message. Use this to verify message delivery.",
+                          "format": "int32"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Indicates the type of message. Should be `text`"
+                        },
+                        "speech": {
+                          "type": "string",
+                          "description": "The text or speech message to process. The maximum length of a message is 255 characters."
+                        },
+                        "originator": {
+                          "type": "object",
+                          "description": "Indicates the information about the sender.",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name representing the originator"
+                            },
+                            "role": {
+                              "type": "string",
+                              "description": "Either `external` or `moderator`"
+                            },
+                            "profile": {
+                              "type": "object",
+                              "description": "Optional Profile object. An originator can contain additional profile information using the profile object.",
+                              "properties": {
+                                "fullName": {
+                                  "type": "string",
+                                  "description": "Complete name"
+                                },
+                                "firstName": {
+                                  "type": "string",
+                                  "description": "First name"
+                                },
+                                "lastName": {
+                                  "type": "string",
+                                  "description": "Family name"
+                                },
+                                "gender": {
+                                  "type": "string",
+                                  "description": "Gender - M, F or U"
+                                },
+                                "language": {
+                                  "type": "string",
+                                  "description": "Two letter [language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for example `fr`"
+                                },
+                                "country": {
+                                  "type": "string",
+                                  "description": "Lowercase, two letter [country code](https://en.wikipedia.org/wiki/ISO_639-1)"
+                                },
+                                "locale": {
+                                  "type": "string",
+                                  "description": "Locale code that combines the language and country code for example `en-GB`"
+                                },
+                                "timezone": {
+                                  "type": "integer",
+                                  "description": "Number of hours of UTC",
+                                  "format": "int32"
+                                },
+                                "email": {
+                                  "type": "string",
+                                  "description": "Email address"
+                                },
+                                "phoneNumber": {
+                                  "type": "string",
+                                  "description": "Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164)"
+                                },
+                                "picture": {
+                                  "type": "string",
+                                  "description": "URL to profile picture"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "The metadata is dynamic in nature and contains key value pairs with additional info. This is optional.",
+                          "properties": {}
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\",\n  \"activityId\": \"EXAMPLE-46b1-42b5-aefb-81856a7680bd\",\n  \"agentId\": \"a_EbAZzSW\",\n  \"channelId\": \"a_EbAZzSW\",\n  \"channelName\": \"gateway\",\n  \"threadId\": \"EXAMPLE-79b4-4543-9373-053924209cc7\",\n  \"messages\": [\n    {\n      \"fallback\": \"Hello\",\n      \"silent\": false,\n      \"replyTo\": \"hi\",\n      \"originator\": {\n        \"userId\": \"flowai|system\",\n        \"name\": \"system\",\n        \"role\": \"bot\",\n        \"profile\": {\n          \"picture\": \"https://flow.ai/img/EXAMPLES/flowai.svg\"\n        }\n      },\n      \"actions\": [],\n      \"responses\": [\n        {\n          \"type\": \"text\",\n          \"payload\": {\n            \"text\": \"Hello\"\n          }\n        }\n      ],\n      \"intents\": [],\n      \"entities\": [],\n      \"flow\": {\n        \"flowId\": \"fF5gEqEko\",\n        \"title\": \"Untitled\",\n        \"group\": \"Default\",\n        \"metadata\": []\n      },\n      \"step\": {\n        \"stepId\": \"sXaM8etEl\",\n        \"title\": \"Hi\",\n        \"type\": \"INTENT\"\n      },\n      \"slot\": false,\n      \"params\": {},\n      \"contexts\": [],\n      \"meta\": {\n        \"msgId\": \"EXAMPLE-6b60-47fd-950c-16634d3f2eef\",\n        \"prevMsgId\": null,\n        \"childMsgId\": \"EXAMPLE-29b7-4768-832d-56a6d1eaa8c6\",\n        \"prevChildMsgId\": null,\n        \"createdAt\": 1632166271745,\n        \"keepTyping\": false\n      }\n    }\n  ],\n  \"sentiment\": 0,\n  \"accuracy\": 0,\n  \"originator\": {\n    \"userId\": \"flowai|system\",\n    \"name\": \"system\",\n    \"role\": \"bot\",\n    \"profile\": {\n      \"picture\": \"https://flow.ai/img/EXAMPLE/flowai.svg\"\n    }\n  },\n  \"traceId\": \"EXAMPLE487a59c:23cab391bd64d5f1:6beafa70c487a59c:1\",\n  \"createdAt\": \"2021-09-20T19:31:12.031Z\",\n  \"replyTo\": \"hi\",\n  \"user\": {\n    \"name\": \"M B\",\n    \"role\": \"external\",\n    \"profile\": {\n      \"fullName\": \"M B\",\n      \"firstName\": \"M\",\n      \"lastName\": \"B\",\n      \"email\": \"EXAMPLE@mail.com\",\n      \"locale\": \"en\",\n      \"timezone\": 3,\n      \"gender\": \"U\"\n    }\n  },\n  \"metadata\": {\n    \"params\": {}\n  },\n  \"connectionKey\": \"EXAMPLE-cebd-428c-b3e8-8689bd42d842\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "activityId": {
+                      "type": "string",
+                      "example": "EXAMPLE-46b1-42b5-aefb-81856a7680bd"
+                    },
+                    "agentId": {
+                      "type": "string",
+                      "example": "a_EbAZzSW"
+                    },
+                    "channelId": {
+                      "type": "string",
+                      "example": "a_EbAZzSW"
+                    },
+                    "channelName": {
+                      "type": "string",
+                      "example": "gateway"
+                    },
+                    "threadId": {
+                      "type": "string",
+                      "example": "EXAMPLE-79b4-4543-9373-053924209cc7"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fallback": {
+                            "type": "string",
+                            "example": "Hello"
+                          },
+                          "silent": {
+                            "type": "boolean",
+                            "example": false,
+                            "default": true
+                          },
+                          "replyTo": {
+                            "type": "string",
+                            "example": "hi"
+                          },
+                          "originator": {
+                            "type": "object",
+                            "properties": {
+                              "userId": {
+                                "type": "string",
+                                "example": "flowai|system"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "system"
+                              },
+                              "role": {
+                                "type": "string",
+                                "example": "bot"
+                              },
+                              "profile": {
+                                "type": "object",
+                                "properties": {
+                                  "picture": {
+                                    "type": "string",
+                                    "example": "https://flow.ai/img/EXAMPLES/flowai.svg"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "actions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "responses": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "example": "text"
+                                },
+                                "payload": {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string",
+                                      "example": "Hello"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "intents": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "entities": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "flow": {
+                            "type": "object",
+                            "properties": {
+                              "flowId": {
+                                "type": "string",
+                                "example": "fF5gEqEko"
+                              },
+                              "title": {
+                                "type": "string",
+                                "example": "Untitled"
+                              },
+                              "group": {
+                                "type": "string",
+                                "example": "Default"
+                              },
+                              "metadata": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          },
+                          "step": {
+                            "type": "object",
+                            "properties": {
+                              "stepId": {
+                                "type": "string",
+                                "example": "sXaM8etEl"
+                              },
+                              "title": {
+                                "type": "string",
+                                "example": "Hi"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "INTENT"
+                              }
+                            }
+                          },
+                          "slot": {
+                            "type": "boolean",
+                            "example": false,
+                            "default": true
+                          },
+                          "params": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "contexts": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "msgId": {
+                                "type": "string",
+                                "example": "EXAMPLE-6b60-47fd-950c-16634d3f2eef"
+                              },
+                              "prevMsgId": {},
+                              "childMsgId": {
+                                "type": "string",
+                                "example": "EXAMPLE-29b7-4768-832d-56a6d1eaa8c6"
+                              },
+                              "prevChildMsgId": {},
+                              "createdAt": {
+                                "type": "integer",
+                                "example": 1632166271745,
+                                "default": 0
+                              },
+                              "keepTyping": {
+                                "type": "boolean",
+                                "example": false,
+                                "default": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "sentiment": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "accuracy": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "originator": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "example": "flowai|system"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "system"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "bot"
+                        },
+                        "profile": {
+                          "type": "object",
+                          "properties": {
+                            "picture": {
+                              "type": "string",
+                              "example": "https://flow.ai/img/EXAMPLE/flowai.svg"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "traceId": {
+                      "type": "string",
+                      "example": "EXAMPLE487a59c:23cab391bd64d5f1:6beafa70c487a59c:1"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2021-09-20T19:31:12.031Z"
+                    },
+                    "replyTo": {
+                      "type": "string",
+                      "example": "hi"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "M B"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "external"
+                        },
+                        "profile": {
+                          "type": "object",
+                          "properties": {
+                            "fullName": {
+                              "type": "string",
+                              "example": "M B"
+                            },
+                            "firstName": {
+                              "type": "string",
+                              "example": "M"
+                            },
+                            "lastName": {
+                              "type": "string",
+                              "example": "B"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "EXAMPLE@mail.com"
+                            },
+                            "locale": {
+                              "type": "string",
+                              "example": "en"
+                            },
+                            "timezone": {
+                              "type": "integer",
+                              "example": 3,
+                              "default": 0
+                            },
+                            "gender": {
+                              "type": "string",
+                              "example": "U"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "params": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      }
+                    },
+                    "connectionKey": {
+                      "type": "string",
+                      "example": "EXAMPLE-cebd-428c-b3e8-8689bd42d842"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/messages/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"payload\": {\n    \"type\": \"text\",\n    \"speech\": \"hello\",\n    \"originator\": {\n      \"name\": \"John Doe\",\n      \"role\": \"external\",\n      \"profile\": {\n        \"fullName\": \"John Doe\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"gender\": \"M\",\n        \"locale\": \"en-US\",\n        \"timezone\": -5,\n        \"country\": \"us\",\n        \"email\": \"EXAMPLE@dmail.com\",\n        \"picture\": \"https://...\"\n      }  \n    },\n    \"metadata\": {\n      \"language\": \"en\",\n      \"timezone\": 5,\n      \"params\": {\n        \"product\": [{\n          \"value\": \"Dish washer\"\n        }],\n        \"problems\": [{\n          \"value\": \"Noise\"\n        }, {\n          \"value\": \"Leaks\"\n        }]\n      }\n    }\n  }\n}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      },
+      "get": {
+        "summary": "Retrieve a list of messages",
+        "description": "Fetches a list of messages using the Flow REST API.",
+        "operationId": "get-a-list-of-messages",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional parameter for pagination",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "A unique identifier of the thread. This is a required field.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "event",
+            "in": "query",
+            "description": "Optional parameter to enable to retrieve the history of triggered events. Default value is `false`",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\",\n  \"result\": {\n    \"history\": [\n\n      {\n        \"originator\": {\n          \"name\": \"Anonymous\",\n          \"role\": \"external\",\n          \"profile\": {\n            \"fullName\": \"Anonymous\"\n          }\n        },\n        \"messages\": [\n          {\n            \"fallback\": \"Test Event\",\n            \"replyTo\": null,\n            \"contexts\": [],\n            \"params\": {},\n            \"intents\": [],\n            \"createdAt\": \"2021-09-14T13:45:08.516Z\",\n            \"meta\": {\n              \"msgId\": \"EXAMPLE-da4b-45aa-bf7a-2556a6ad073d\"\n            },\n            \"responses\": [\n              {\n                \"type\": \"event\",\n                \"payload\": {\n                  \"lat\": null,\n                  \"long\": null,\n                  \"name\": \"Selection\",\n                  \"title\": null,\n                  \"url\": null\n                }\n              }\n            ]\n          }\n        ],\n        \"interactionId\": \"EXAMPLE-bc7e-4ddf-a3bf-ea9c069602fb\"\n      }\n     \n    ],\n    \"threadId\": \"EXAMPLE-853a-448f-9f91-ef397588ff87\",\n    \"page\": 3,\n    \"pages\": 5\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "history": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "originator": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "example": "Anonymous"
+                                  },
+                                  "role": {
+                                    "type": "string",
+                                    "example": "external"
+                                  },
+                                  "profile": {
+                                    "type": "object",
+                                    "properties": {
+                                      "fullName": {
+                                        "type": "string",
+                                        "example": "Anonymous"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "messages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "fallback": {
+                                      "type": "string",
+                                      "example": "Test Event"
+                                    },
+                                    "replyTo": {},
+                                    "contexts": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {}
+                                      }
+                                    },
+                                    "params": {
+                                      "type": "object",
+                                      "properties": {}
+                                    },
+                                    "intents": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {}
+                                      }
+                                    },
+                                    "createdAt": {
+                                      "type": "string",
+                                      "example": "2021-09-14T13:45:08.516Z"
+                                    },
+                                    "meta": {
+                                      "type": "object",
+                                      "properties": {
+                                        "msgId": {
+                                          "type": "string",
+                                          "example": "EXAMPLE-da4b-45aa-bf7a-2556a6ad073d"
+                                        }
+                                      }
+                                    },
+                                    "responses": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "example": "event"
+                                          },
+                                          "payload": {
+                                            "type": "object",
+                                            "properties": {
+                                              "lat": {},
+                                              "long": {},
+                                              "name": {
+                                                "type": "string",
+                                                "example": "Selection"
+                                              },
+                                              "title": {},
+                                              "url": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "interactionId": {
+                                "type": "string",
+                                "example": "EXAMPLE-bc7e-4ddf-a3bf-ea9c069602fb"
+                              }
+                            }
+                          }
+                        },
+                        "threadId": {
+                          "type": "string",
+                          "example": "EXAMPLE-853a-448f-9f91-ef397588ff87"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "example": 3,
+                          "default": 0
+                        },
+                        "pages": {
+                          "type": "integer",
+                          "example": 5,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/messages/EXAMPLE-853a-448f-9f91-ef397588ff87?sync=true&page=3&events=true HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/threads": {
+      "get": {
+        "summary": "Retrieve a list of threads",
+        "description": "Fetches a list of threads using the Flow REST API.",
+        "operationId": "get-a-list-of-threads",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Required parameter for pagination",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "threads",
+            "in": "path",
+            "description": "A list of threads",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"ok\",\n    \"result\": {\n        \"threads\": [\n            \"EXAMPLE-afa7-45ed-a3db-42c4b538d42c|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            \"EXAMPLE-133b-4d92-84e8-005d5350ca2e|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            \"EXAMPLE-1647-42db-bbb5-9d835f53ee95|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\",\n            ...\n        ],\n        \"page\": \"1\",\n        \"pages\": 100\n    }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/threads?sync=true&page=1 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/handover/{threadId}": {
+      "post": {
+        "summary": "Handover action",
+        "description": "Use the Flow REST API to create a handover action to pause a bot.",
+        "operationId": "handover-action",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "The unique threadId. This is a required field.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "secondsToPause": {
+                    "type": "integer",
+                    "description": "The number of seconds to pause the bot.",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/handover/EXAMPLE63451da6f15f2b50991651|o_21361542-a262-4aaa-8edb-0f8f88e07d89 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  {\n    \"secondsToPause\": 600\n  }\n}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/resolve/{threadId}": {
+      "post": {
+        "summary": "Resolve Action",
+        "description": "Use the Flow REST API to send a resolution action for a specific thread ID.",
+        "operationId": "resolve-action",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "Unique threadId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/resolve/EXAMPLE25763451da6f15f2b50991651|o_21361542-a262-4aaa-8edb-0f8f88e07d89 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/trigger/event": {
+      "get": {
+        "summary": "Retrieve a list of events",
+        "description": "Retrieve a list of events.",
+        "operationId": "get-a-list-of-events",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"ok\",\n    \"result\": {\n        \"items\": [\n            \"EVENT 1\",\n            \"EVENT 2\",\n            \"EVENT 3\"\n        ]\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "EVENT 1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/trigger/event?sync=true HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/{threadId}": {
+      "post": {
+        "summary": "Trigger an event",
+        "description": "",
+        "operationId": "trigger-an-event",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "A unique identifier of the thread. This is a required field.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "eventName",
+            "in": "query",
+            "description": "Required parameter. The event name.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/trigger/event/EXAMPLE-853a-448f-9f91-ef397588ff87?eventName=MY_EVENT HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/businesshours": {
+      "get": {
+        "summary": "Business Hours",
+        "description": "Retrieve a list of configured business hours for your project using the Flow REST API.",
+        "operationId": "business-hours",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\",\n  \"businessHours\": [\n    {\n      \"weekdays\": [\n        {\n          \"weekday\": \"Monday\",\n          \"content\": [\n            {\n              \"from\": \"0:20\",\n              \"to\": \"4:19\"\n            },\n            {\n              \"from\": \"10:00\",\n              \"to\": \"22:22\"\n            },\n            ...\n          ]\n        },\n        ...\n      ],\n      \"holidays\": [\n        {\n          \"holiday\": \"New Year\",\n          \"date\": \"2019-12-31T00:00:00.000Z\"\n        },\n        ...\n      ],\n      \"label\": \"test BH\",\n      \"timezone\": \"(UTC+03:00) Minsk\"\n    },\n    ...\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/businesshours?sync=true HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/pause/{threadId}": {
+      "post": {
+        "summary": "Pause a bot",
+        "description": "Pause a bot for a specific thread with the Flow REST API.",
+        "operationId": "pause-a-bot",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "A unique identifier of a thread",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      },
+      "delete": {
+        "summary": "Resume a bot",
+        "description": "Resume a bot for a specific thread using the Flow REST API.",
+        "operationId": "resume-a-bot",
+        "parameters": [
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "A unique identifier of a thread",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "DELETE rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87 HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Retrieve a bot's status",
+        "description": "Retrieve the status of a bot (whether it's paused or active) for a specific `threadId`.",
+        "operationId": "get-bot-status",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "{threadId}",
+            "in": "path",
+            "description": "Unique identifier of the thread",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\",\n  \"isPaued\": false,\n  \"threadId\": \"EXAMPLE-853a-448f-9f91-ef397588ff87\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "isPaued": {
+                      "type": "boolean",
+                      "example": false,
+                      "default": true
+                    },
+                    "threadId": {
+                      "type": "string",
+                      "example": "EXAMPLE-853a-448f-9f91-ef397588ff87"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/pause/EXAMPLE-853a-448f-9f91-ef397588ff87?sync=true HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/broadcast/instant": {
+      "post": {
+        "summary": "Broadcast to MSISDN",
+        "description": "Broadcasts to a mobile subscriber ISDN (MSISDN) number with the Flow REST API.",
+        "operationId": "broadcast-to-msisdn",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audience": {
+                    "type": "array",
+                    "description": "A list of originator objects. The intended audience to whom to send a message to. See the originator format for more details. Either the `phoneNumber` or `identifier` needs to be provided.",
+                    "items": {
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Mandatory name, for example `Anonymous`"
+                        },
+                        "phoneNumber": {
+                          "type": "string",
+                          "description": "Mandatory^1^ MSISDN (phone number in [E164](https://en.wikipedia.org/wiki/E.164) format)"
+                        },
+                        "identifier": {
+                          "type": "string",
+                          "description": "Mandatory^1^ identifier"
+                        },
+                        "profile": {
+                          "type": "string",
+                          "description": "Optional [profile](ref:create-a-text-message) data"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "channel": {
+                    "type": "object",
+                    "description": "Information about the Flow integration used to send a message from.",
+                    "properties": {
+                      "channelName": {
+                        "type": "string",
+                        "description": "Type of channel to send the message, see the reference table below"
+                      },
+                      "externalId": {
+                        "type": "string",
+                        "description": "Identifier of the channel to send the message, see the table below where to find this."
+                      }
+                    }
+                  },
+                  "payload": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Should be `event` or `text`"
+                      },
+                      "eventName": {
+                        "type": "string",
+                        "description": "Mandatory if type is event. This is the name of the [event](ref:trigger-an-event) to trigger"
+                      },
+                      "speech": {
+                        "type": "string",
+                        "description": "Mandatory if type is `text`. Use this to run text classification."
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "language": {
+                            "type": "object",
+                            "description": "Optional language to use",
+                            "properties": {}
+                          },
+                          "timezone": {
+                            "type": "object",
+                            "description": "Optional UTC timezone offset to use",
+                            "properties": {}
+                          },
+                          "params": {
+                            "type": "object",
+                            "description": "Optional params to use",
+                            "properties": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/broadcast/instant HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"audience\": [{\n    \"name\": \"John Doe\",\n    \"phoneNumber\": \"+12345678901\",\n    \"profile\": {}\n  }],\n  \"channel\": {\n    \"channelName\": \"whatsapp\",\n    \"externalId\": \"+12345678902\"\n  },\n  \"payload\": {\n    \"type\": \"text\",\n    \"speech\": \"I'm searching for the address of your store in New York\"\n  }\n}",
+              "name": "Example of TEXT type"
+            },
+            {
+              "language": "http",
+              "code": "POST rest/v1/broadcast/instant HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n  \"audience\": [{\n    \"name\": \"John Doe\",\n    \"phoneNumber\": \"+12345678901\",\n    \"profile\": {}\n  }],\n  \"channel\": {\n    \"channelName\": \"whatsapp\",\n    \"externalId\": \"+10987654321\"\n  },\n  \"payload\": {\n    \"type\": \"event\",\n    \"eventName\": \"Send template\"\n  }\n}",
+              "name": "Example of EVENT type"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/broadcast/instant/segment": {
+      "post": {
+        "summary": "Broadcast to Segments",
+        "description": "Broadcast to segments with the Flow REST API.",
+        "operationId": "broadcast-to-segments",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audience": {
+                    "type": "array",
+                    "description": "The segment to trigger event for. A list of segment objects. Either the `name` or `id` needs to be provided.",
+                    "items": {
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Name of your segment, for example `MY_SEGMENT_1`."
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "ID of your segment. Can be obtained [here](ref:get-audience-segments)."
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "payload": {
+                    "type": "object",
+                    "description": "A list of event objects",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "event",
+                          "location",
+                          "media"
+                        ]
+                      },
+                      "speech": {
+                        "type": "string",
+                        "description": "used for text message type"
+                      },
+                      "url": {
+                        "type": "string",
+                        "description": "used for media message type"
+                      },
+                      "lat": {
+                        "type": "string",
+                        "description": "used for location message type"
+                      },
+                      "eventName": {
+                        "type": "string",
+                        "description": "Name of the [event](https://community.khoros.com/t5/Triggers-Replies/Trigger-event/ta-p/635479) to trigger. For example, `MY_EVENT`"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": \"ok\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "POST rest/v1/broadcast/instant/segment HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY\n{\n    \"audience\": [{\n        \"name\": \"MY_SEGMENT_1\"\n    }, {\n        \"id\": \"ID_OF_MY_SEGMENT_2\"\n    }, {\n        \"name\": \"MY_SEGMENT_3\",\n        \"id\": \"ID_OF_MY_SEGMENT_3\"\n    }],\n    \"payload\": {\n        \"type\": \"event\",\n        \"eventName\": \"EVENT_NAME\"\n    }\n}"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/broadcast/segments": {
+      "get": {
+        "summary": "Retrieve audience segments",
+        "description": "Retrieve audience segments with the Flow REST API.",
+        "operationId": "get-audience-segments",
+        "parameters": [
+          {
+            "name": "sync",
+            "in": "query",
+            "description": "Optional parameter for enabling sync mode",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n{\n  \"status\": \"ok\",\n  \"segments\": [{\n      \"agentId\": \"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\",\n      \"audienceId\": \"EXAMPLE-7a3e-40fb-8b44-4de3688509f8\",\n      \"channels\": [\n        \"eazy\"\n      ],\n      \"conditions\": [],\n      \"contact\": \"all\",\n      \"createdAfterCondition\": \"2020-07-14T21:00:00.000Z\",\n      \"createdAt\": \"2020-07-15T15:44:05.831Z\",\n      \"createdBeforeCondition\": \"2020-07-15T21:00:00.000Z\",\n      \"importCondition\": \"all_contacts\",\n      \"title\": \"Created on 15th of July (Eazy)\",\n      \"type\": \"segment\",\n      \"updatedAt\": \"2020-07-15T15:44:05.828Z\"\n    },\n    {\n      \"agentId\": \"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\",\n      \"audienceId\": \"EXAMPLE-db65-4aaf-9b07-9eab3b4ff459\",\n      \"channels\": [\n        \"messenger\"\n      ],\n      \"conditions\": [{\n        \"condition\": \"has_tag_name\",\n        \"conditionValue\": \"OPTIN\"\n      }],\n      \"contact\": \"messenger\",\n      \"createdAfterCondition\": null,\n      \"createdAt\": \"2020-07-15T15:44:37.013Z\",\n      \"createdBeforeCondition\": null,\n      \"importCondition\": \"all_contacts\",\n      \"title\": \"OPTIN tag (Messenger)\",\n      \"type\": \"segment\",\n      \"updatedAt\": \"2020-07-15T15:44:37.012Z\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "http",
+              "code": "GET rest/v1/broadcast/segments?sync=true HTTP/1.1\nHost: api.flow.ai\nContent-Type: application/json\nAuthorization: MY_MESSAGING_API_KEY"
+            }
+          ],
+          "samples-languages": [
+            "http"
+          ]
+        }
+      }
+    },
+    "/projects/{projectId}/flows": {
+      "get": {
+        "summary": "List all flows",
+        "description": "Retrieve a list of all flows using the Flow Management API.",
+        "operationId": "list-all-flows",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Pagination option. Number of items per response. Optional.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "Pagination option. Number of items to skip. Optional.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "Project ID the Flow belongs to.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "flows",
+            "in": "path",
+            "description": "Indicates the flows",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[{\n    \"flowId\": \"FLOW-08e4-40bc-89b8-f7ea02ba6cd5\",\n    \"projectId\": \"PROJECT-fe06-4dcc-a7a0-35b0c0ec55c3\",\n    \"brainId\": \"BRAIN-25f7-4d3d-9dcf-eaa2a6f810b1\",\n    \"title\": \"Get started\",\n  \"group\": \"Weather\",\n    \"createdAt\": \"2018-10-24T06:45:03.828Z\",\n    \"disabled\": false,\n    \"steps\": [{\n        \"stepId\": \"EXAMPLE-ad8d-4bf8-8ff5-da9dd7cb5636\",\n        \"type\": \"INTENT\",\n        \"title\": \"Get started\",\n        \"contexts\": [],\n        \"actions\": [\"ACTIONSf0838670032b1aa11\"],\n        \"intent\": \"INTENT0838670032b1aa16\"\n    }]\n}, {\n    \"flowId\": \"FLOW-fa2b-4f67-a391-15b9e98d47ea\",\n    \"projectId\": \"PROJECT95-fe06-4dcc-a7a0-35b0c0ec55c3\",\n    \"brainId\": \"BRAIN0-25f7-4d3d-9dcf-eaa2a6f810b1\",\n    \"title\": \"Weather\",\n  \"group\": \"Weather\",\n    \"createdAt\": \"2018-10-24T06:45:03.820Z\",\n    \"disabled\": false,\n    \"steps\": [{\n        \"stepId\": \"STEP-eb07-4ad6-8df2-518c43c180e3\",\n        \"type\": \"INTENT\",\n        \"title\": \"What is the weather like\",\n        \"contexts\": [],\n        \"actions\": [\"ACTIONS0838670032b1aa13\"]\n    }, {\n        \"stepId\": \"STEPS-a51b-48f3-ab46-81ce10f05454\",\n        \"type\": \"SLOT\",\n        \"title\": \"SLOT\",\n        \"contexts\": [\"CONTEXT-eb07-4ad6-8df2-518c43c180e3\"],\n        \"actions\": [\"ACTIONS0838670032b1aa12\"],\n        \"slot\": {\n            \"validation\": \"REQUIRED\",\n            \"entityId\": \"system.query\",\n            \"label\": \"city\"\n        }\n    }]\n}]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "flowId": {
+                        "type": "string",
+                        "example": "FLOW-08e4-40bc-89b8-f7ea02ba6cd5"
+                      },
+                      "projectId": {
+                        "type": "string",
+                        "example": "PROJECT-fe06-4dcc-a7a0-35b0c0ec55c3"
+                      },
+                      "brainId": {
+                        "type": "string",
+                        "example": "BRAIN-25f7-4d3d-9dcf-eaa2a6f810b1"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Get started"
+                      },
+                      "group": {
+                        "type": "string",
+                        "example": "Weather"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2018-10-24T06:45:03.828Z"
+                      },
+                      "disabled": {
+                        "type": "boolean",
+                        "example": false,
+                        "default": true
+                      },
+                      "steps": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "stepId": {
+                              "type": "string",
+                              "example": "EXAMPLE-ad8d-4bf8-8ff5-da9dd7cb5636"
+                            },
+                            "type": {
+                              "type": "string",
+                              "example": "INTENT"
+                            },
+                            "title": {
+                              "type": "string",
+                              "example": "Get started"
+                            },
+                            "contexts": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            },
+                            "actions": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "ACTIONSf0838670032b1aa11"
+                              }
+                            },
+                            "intent": {
+                              "type": "string",
+                              "example": "INTENT0838670032b1aa16"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "curl",
+              "code": "curl \"https://api.flow.ai/v1/projects/:projectId/flows\"\n  -H 'Authorization: Bearer MY_MANAGEMENT_API_KEY'"
+            }
+          ],
+          "samples-languages": [
+            "curl"
+          ]
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

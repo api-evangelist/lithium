@@ -1,0 +1,132 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: khoros.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  3 05:48:31 2026 GMT
+  hsts: false
+- host: developer.khoros.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 20:18:28 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.app.lithium.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 24 23:59:59 2027 GMT
+  hsts: null
+- host: www.lithium.com
+  https: true
+  tls_version: null
+  cert_expires: Jan  3 19:44:37 2026 GMT
+  cert_expired: true
+  hsts: true
+  hsts_max_age: 31536000
+  note: Certificate expired 2026-01-03; TLS handshake fails certificate validation. Serves the Khoros
+    marketing site when validation is bypassed.
+- host: lithium.com
+  https: true
+  tls_version: null
+  cert_expires: Jan  3 19:44:37 2026 GMT
+  cert_expired: true
+  hsts: true
+  hsts_max_age: 31536000
+  note: Same expired certificate as www.lithium.com. HSTS is asserted, which makes the failure non-bypassable
+    in browsers.
+- host: community.khoros.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 25 18:51:00 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+- host: api.spredfast.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 17 23:59:59 2026 GMT
+  hsts: false
+- host: login.spredfast.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 17 23:59:59 2026 GMT
+  hsts: false
+  note: Khoros Marketing OAuth authorization server — no HSTS.
+- host: api.flow.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 13 15:18:06 2026 GMT
+  hsts: false
+- host: api.massrelevance.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 28 23:59:59 2026 GMT
+  hsts: false
+  note: Khoros Marketing Stream API host.
+domains:
+- domain: khoros.ai
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: khoros.com
+  dnssec: false
+  caa:
+  - 0 issue "sectigo.com"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issue "globalsign.com"
+  - 0 issue "digicert.com"
+  - 0 issue "amazon.com"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: lithium.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+  note: DMARC reporting handled by Proofpoint. No CAA records.
+- domain: spredfast.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+  note: DMARC reporting handled by Proofpoint. No CAA records.
+- domain: flow.ai
+  dnssec: false
+  caa:
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com; cansignhttpexchanges=yes"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issue "ssl.com"
+  - 0 issuewild "comodoca.com"
+  - 0 issuewild "digicert.com; cansignhttpexchanges=yes"
+  - 0 issuewild "letsencrypt.org"
+  - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+  - 0 issuewild "ssl.com"
+  - 0 iodef "mailto:max@flow.ai"
+  - 0 iodef "mailto:gijs@flow.ai"
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+description: Live TLS/DNS posture across the Khoros, Lithium, Spredfast and flow.ai hosts this provider
+  spans. The headline finding is that the legacy lithium.com apex — still the company's original domain
+  and still serving the Khoros marketing site — presents a TLS certificate that expired on 3 January 2026,
+  so every modern client refuses the connection. HSTS coverage is inconsistent and no domain in the estate
+  is DNSSEC-signed.
+findings:
+- lithium.com and www.lithium.com serve an expired TLS certificate (expired 2026-01-03) while asserting
+  HSTS with a one-year max-age — browsers that have seen the header cannot click through.
+- No domain in the estate (khoros.ai, khoros.com, lithium.com, spredfast.com, flow.ai) is DNSSEC-signed.
+- CAA records exist only on khoros.com and flow.ai; khoros.ai, lithium.com and spredfast.com publish none.
+- khoros.ai DMARC policy is p=none (monitor only) while khoros.com, lithium.com and spredfast.com are
+  p=reject — the primary brand domain is the weakest of the set.
+- HSTS is absent on every API host except community.khoros.com, including the OAuth authorization server
+  login.spredfast.com.

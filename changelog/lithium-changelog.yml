@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  The three public ReadMe changelogs on developer.khoros.com — Khoros Care, Khoros Flow and
+  Khoros Brand Messenger. Entry dates are the publication timestamps carried in each
+  changelog index.
+description: >-
+  Khoros publishes a per-product changelog rather than one platform-wide release feed. Three
+  of the four public developer projects have a dated changelog; Khoros Marketing does not
+  publish one. Cadence is uneven — Brand Messenger releases on an SDK-version cadence, Care
+  and Flow publish occasional dated release notes, and the most recent entry across all
+  three is December 2024, so this is a slow-moving surface.
+
+changelogs:
+  - product: Khoros Care
+    url: https://developer.khoros.com/khoroscaredevdocs/changelog
+    scheme: dated (month-year)
+    latest_entry: '2024-12-05'
+    entries:
+      - {title: December 2024, date: '2024-12-05'}
+      - {title: February 2024, date: '2024-02-20'}
+      - {title: January 2024, date: '2024-01-08'}
+      - {title: October 2021, date: '2021-11-09'}
+      - {title: January 2020, date: '2020-01-03'}
+      - {title: November 2019, date: '2019-11-08', kind: Added}
+
+  - product: Khoros Flow
+    url: https://developer.khoros.com/khoros-flow/changelog
+    scheme: calendar-version release notes (YY.MM.N)
+    current_version: 24.05.1
+    latest_entry: '2024-05-08'
+    entries:
+      - {title: 'Khoros Flow Release Notes, 24.05.1', version: 24.05.1, date: '2024-05-08'}
+      - {title: 'Khoros Flow Release Notes, September 20, 2023', date: '2023-09-20'}
+      - {title: 'Khoros Flow Release Notes, August 29, 2023', date: '2023-08-29'}
+      - {title: 'Khoros Flow Release Notes, April 10th 2023', date: '2023-04-10'}
+      - {title: 'Khoros Flow Release Notes, December 21st 2022', date: '2022-12-21'}
+
+  - product: Khoros Brand Messenger
+    url: https://developer.khoros.com/khorosbrandmessengerdocs/changelog
+    scheme: semver per mobile SDK (iOS / Android / React Native)
+    latest_entry: '2024-10-18'
+    current_versions:
+      ios: 1.16.2
+      android: 1.16.1
+      react_native: 1.2.0
+    entries:
+      - {title: Brand Messenger iOS SDK 1.16.2, version: 1.16.2, platform: ios}
+      - {title: Brand Messenger iOS SDK 1.16.1, version: 1.16.1, platform: ios}
+      - {title: Brand Messenger Android SDK 1.16.1, version: 1.16.1, platform: android}
+      - {title: Brand Messenger Android SDK 1.15.4, version: 1.15.4, platform: android}
+      - {title: BrandMessenger React Native SDK 1.2.0, version: 1.2.0, platform: react-native}
+
+  - product: Khoros Marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs
+    publishes_changelog: false
+    note: >-
+      No changelog project exists for Khoros Marketing; version movement is visible only in
+      the API path versions (Conversations v1 vs v2).
+
+breaking_change_signal:
+  mechanism: URI-path major versioning (v1 -> v2 -> v3 run in parallel)
+  note: >-
+    Khoros does not publish a machine-readable breaking-change feed. Major versions are
+    introduced as new path segments and older majors continue to be documented alongside
+    them — see ../lifecycle/lithium-lifecycle.yml.

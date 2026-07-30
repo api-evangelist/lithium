@@ -1,0 +1,78 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  developer.khoros.com reference and changelog projects, https://status.khoros.com/,
+  https://khoros.ai/customer-agreements/, and the harvested specs in ../openapi/.
+description: >-
+  How the Lithium / Khoros API surface versions, ages out and reports health. Versioning is
+  URI-path major versioning with majors running in parallel (Care work queues expose v1 and
+  v2; Care bots expose v2 and v3; Marketing Conversations exposes v1 and v2). Individual
+  endpoints are retired by labelling them "deprecated" in the reference, but Khoros
+  publishes no deprecation policy, no notice period and no Sunset/Deprecation header
+  support. A public status page and a contractual SLA both exist.
+
+versioning:
+  scheme: uri-path
+  examples:
+    - https://api.app.lithium.com/bots/v3
+    - https://{instance}.response.lithium.com/api/v2/conversations
+    - https://{instance}.response.lithium.com/api/v1/
+    - https://api.spredfast.com/v2
+    - https://api.flow.ai/rest/v1
+    - https://community.khoros.com/api/2.0
+  parallel_majors: true
+  note: >-
+    Older majors remain documented and served alongside newer ones; there is no published
+    migration deadline.
+
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  notice_period: null
+  mechanism: >-
+    Retired endpoints are marked "(deprecated)" in the Khoros Care API reference. None of
+    the harvested OpenAPI definitions set `deprecated: true`, so the signal exists only in
+    the human documentation, not in the machine-readable contract.
+  deprecated_documented:
+    - url: https://developer.khoros.com/khoroscaredevdocs/reference/supervisor-reports-api-deprecated
+      subject: Supervisor Reports API
+    - url: https://developer.khoros.com/khoroscaredevdocs/reference/generating-a-csv-export-deprecated
+      subject: CSV export generation
+    - url: https://developer.khoros.com/khoroscaredevdocs/reference/csvreportname-deprecated
+      subject: CSV report name endpoint
+    - url: https://developer.khoros.com/khoroscaredevdocs/reference/csv_longreportname-deprecated
+      subject: CSV long report name endpoint
+    - url: https://developer.khoros.com/khoroscaredevdocs/reference/list-deprecated
+      subject: List endpoint
+  deprecated_operations: []
+
+status_page:
+  url: https://status.khoros.com/
+  status: 200
+  subscriptions: [email, sms]
+  incident_reporting: https://khoros.ai/lets-connect/
+  note: Hosted status page with incident history and subscribe-to-updates.
+
+sla:
+  url: https://khoros.ai/customer-agreements/
+  published: true
+  uptime_target: null
+  note: >-
+    A Service Level Agreement defining uptime commitments, performance standards and
+    remedies is incorporated into every Master Services Agreement. The numeric uptime
+    target is not published on the public page.
+
+support_lifecycle:
+  platform_transition:
+    from: Khoros Classic (Lithium Community)
+    to: Aurora
+    policy: >-
+      Khoros publishes a no-forced-migration position — Classic customers are supported
+      alongside Aurora with shared backend and data model, per
+      https://khoros.ai/aurora/aurora-vs-classic/.
+
+related:
+  changelog: ../changelog/lithium-changelog.yml
+  conventions: ../conventions/lithium-conventions.yml

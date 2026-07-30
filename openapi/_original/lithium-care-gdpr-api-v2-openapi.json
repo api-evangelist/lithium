@@ -1,0 +1,207 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "gdpr-api-v2",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{instance}.response.lithium.com/api/v2/gdpr",
+      "variables": {
+        "instance": {
+          "default": "instance"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/requests": {
+      "post": {
+        "summary": "Create GDPR request",
+        "description": "Create a GDPR request",
+        "operationId": "requests",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "authorUUID"
+                ],
+                "properties": {
+                  "authorUUID": {
+                    "type": "string",
+                    "description": "The the `lswUuid` returned from other Care APIs"
+                  },
+                  "includeResponses": {
+                    "type": "boolean",
+                    "description": "Set to `true` to delete brand responses within the conversations with the user specified by `authorUUID`."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"requestID\": \"c3731601-b387-406b-8472-fb97ea6a9f08\",\n        \"requestStatus\": \"https://your_social_response_instance/api/v2/gdpr/requests/c3731601-b387-406b-8472-fb97ea6a9f08\",\n        \"remainingTokens\": 29 // Number of actions remaining before rate limits are enforced\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "requestID": {
+                          "type": "string",
+                          "example": "c3731601-b387-406b-8472-fb97ea6a9f08"
+                        },
+                        "requestStatus": {
+                          "type": "string",
+                          "example": "https://your_social_response_instance/api/v2/gdpr/requests/c3731601-b387-406b-8472-fb97ea6a9f08"
+                        },
+                        "remainingTokens": {
+                          "type": "integer",
+                          "example": 29,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-readme": {
+          "code-samples": [
+            {
+              "language": "python",
+              "code": "import requests\nurl = \"https://instance.response.lithium.com/api/v2/gdpr/requests\"\npayload = {\n     \"authorUUID\": \"string\"\n}\nresponse = requests.post(url, params=payload, auth=HTTPBasicAuth(\"username\", \"password\"))\nprint(response.text) "
+            }
+          ],
+          "samples-languages": [
+            "python"
+          ]
+        }
+      }
+    },
+    "/requests/{requestUUID}": {
+      "get": {
+        "summary": "Get GDPR request status",
+        "description": "Check the status of a GDPR request",
+        "operationId": "requestsrequestuuid",
+        "parameters": [
+          {
+            "name": "requestUUID",
+            "in": "path",
+            "description": "The `requestUUID` returned from your original GDPR request",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"requestUUID\": \"fb30a719-04b2-446f-8185-bb171b7703fd\",\n        \"status\": \"COMPLETED\",\n        \"remainingTokens\": -1 // Number of actions remaining before rate limits are enforced\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "requestUUID": {
+                          "type": "string",
+                          "example": "fb30a719-04b2-446f-8185-bb171b7703fd"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "COMPLETED"
+                        },
+                        "remainingTokens": {
+                          "type": "integer",
+                          "example": -1,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

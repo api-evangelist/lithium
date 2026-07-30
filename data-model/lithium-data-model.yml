@@ -1,0 +1,1133 @@
+generated: '2026-07-19'
+method: derived
+source: Derived from the path structure, path parameters and server base URLs of the 28 harvested definitions
+  in ../openapi/.
+description: The Lithium / Khoros surface has no single data model. It is four product APIs with separate
+  object graphs — Care is built around conversations, authors and work queues; Marketing around conversations,
+  streams and CRM records; Flow around threads, messages and flows; Community around the LiQL collections
+  (messages, users, boards, categories, replies). Because most Care definitions are single-resource specs
+  served from a resource-specific host, entity boundaries are derived from server base URLs and path structure
+  rather than from shared components.schemas — only securitySchemes are declared in components across
+  the whole set, so there is no $ref graph to walk.
+caveats:
+- None of the 28 definitions declares components.schemas, so no schema $ref graph exists to derive from.
+  Request and response shapes are declared inline.
+- Relationships below are inferred from path nesting and id parameter naming, not from a published object
+  reference.
+- The Community v2 object model (the LiQL collections) is documented behind the Atlas login and could
+  not be harvested.
+products:
+  care: Conversations, authors, agent states, tags and tag rules, smart views, work queues, bots, listening,
+    secure forms, GDPR requests, analytics reports.
+  marketing: Conversations, CRM records, label sets, streams, event subscriptions, analytics.
+  flow: Flows, threads, messages, events, broadcasts, audience segments, business hours.
+  community: LiQL collections — messages, users, boards, categories, replies (documentation login-gated).
+entities:
+- entity: agentstate
+  product: care
+  specs:
+  - lithium-care-agent-states-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - retrieve-defined-agent-states
+- entity: config
+  product: care
+  specs:
+  - lithium-care-analytics-reports-openapi.json
+  id_parameters: []
+  sub_resources:
+  - timezones
+  sample_operations:
+  - configtimezones
+- entity: reports
+  product: care
+  specs:
+  - lithium-care-analytics-reports-openapi.json
+  id_parameters:
+  - report_type
+  - runId
+  - workflowId
+  sub_resources:
+  - jobs
+  - report
+  sample_operations:
+  - jobs
+  - reportsreportconversation_actions
+  - reportsreportconversation_actions-1
+  - reportsreportuser-get
+  - reportsreportuser-post
+  - reportworkflowidruniddownload
+  - reportsreportauthor
+  - reportsreportcombined
+- entity: report
+  product: care
+  specs:
+  - lithium-care-analytics-reports-openapi.json
+  id_parameters:
+  - runId
+  - workflowId
+  sub_resources:
+  - reports
+  sample_operations:
+  - reportsreportworkflowidrunidstatus
+- entity: teams
+  product: care
+  specs:
+  - lithium-care-analytics-reports-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - teams
+- entity: case
+  product: care
+  specs:
+  - lithium-care-api-specifications-openapi.json
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters:
+  - id
+  sub_resources: []
+  sample_operations:
+  - createcase
+  - lookupcase
+  - updatecase
+  - createcase
+  - lookupcase
+  - updatecase
+- entity: customers
+  product: care
+  specs:
+  - lithium-care-api-specifications-openapi.json
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - searchcustomers
+  - searchcustomers
+- entity: customer
+  product: care
+  specs:
+  - lithium-care-api-specifications-openapi.json
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters:
+  - id
+  sub_resources:
+  - bestmatch
+  - cases
+  sample_operations:
+  - bestmatchcustomers
+  - createcustomer
+  - findcustomer
+  - findcases
+  - bestmatchcustomers
+  - createcustomer
+  - findcustomer
+  - updatecustomer
+- entity: customer (COPY)
+  product: care
+  specs:
+  - lithium-care-api-specifications-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - updatecustomer
+- entity: meta
+  product: care
+  specs:
+  - lithium-care-api-specifications-openapi.json
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters:
+  - type
+  sub_resources:
+  - object
+  sample_operations:
+  - define-object-structures
+  - define-object-structures
+- entity: khorosapi
+  product: care
+  specs:
+  - lithium-care-authentication-api-v2-openapi.json
+  id_parameters:
+  - ownerId
+  sub_resources:
+  - ownerId
+  sample_operations:
+  - tokenskhorosapiowneridownerid-get
+  - tokenskhorosapiowneridownerid-post
+- entity: authors
+  product: care
+  specs:
+  - lithium-care-author-api-v2-openapi.json
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - lswUuid
+  sub_resources:
+  - attributes
+  - attributes (COPY)
+  sample_operations:
+  - authorslswuuid
+  - authorslswuuid-1
+  - authors-1
+  - authors-2
+  - author-put
+  - authors-put
+- entity: changed
+  product: care
+  specs:
+  - lithium-care-author-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - authorschanged
+- entity: networks
+  product: care
+  specs:
+  - lithium-care-author-api-v2-openapi.json
+  - lithium-care-bot-api-v2-openapi.json
+  - lithium-care-conversation-api-v2-openapi.json
+  id_parameters:
+  - authorID
+  - authorId
+  - networkId
+  - networkType
+  - networkhandle
+  - networkid
+  - networkinstance
+  - networktype
+  sub_resources:
+  - allRegistrations
+  - authors
+  - handles
+  - ids
+  - instances
+  - networktype
+  - registrations
+  sample_operations:
+  - authorsnetworksnetworktypeidsnetworkid
+  - authorsnetworksnetworktypeidsnetworkid-1
+  - authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-1
+  - authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkid-2
+  - authorsnetworks_networktype_handles_networkhandle
+  - authorsnetworksnetworktypeinstancesnetworkinstancehandlesnetworkhandle
+  - authorsnetworksnetworktypeidsnetworkidconversations
+  - authorsnetworksnetworktypeinstancesnetworkinstanceidsnetworkidconversations
+- entity: conversations
+  product: care
+  specs:
+  - lithium-care-author-api-v2-openapi.json
+  - lithium-care-conversation-api-v2-openapi.json
+  - lithium-marketing-conversations-openapi.json
+  id_parameters:
+  - assetId
+  - customChannelId
+  - customChannelItemId
+  - folderId
+  - initiative-id
+  - initiativeId
+  - lswUuid
+  - messageId
+  - userId
+  sub_resources:
+  - asset
+  - asset?multipart
+  - calendar
+  - folder
+  - initiative
+  - privilege
+  - roles
+  - user
+  - users
+  - workspaces
+  sample_operations:
+  - authors_lswuuid_conversations
+  - lswuuid-1
+  - accountset
+  - assets-create-text-asset
+  - assets-create-image-or-video
+  - assets-retrieve-a-content-center-asset-by-id
+  - assets-update-existing-content-center-asset
+  - create-a-new-content-asset-folder
+- entity: '#'
+  product: care
+  specs:
+  - lithium-care-author-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - authors
+- entity: currentTAR
+  product: care
+  specs:
+  - lithium-care-bot-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - currenttar
+- entity: control
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - authorId
+  - externalId
+  - networkKey
+  sub_resources:
+  - network
+  sample_operations:
+  - controlnetworknetworkkeyexternalidexternalidauthorauthorid-get
+  - control-put
+- entity: health
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - appId
+  sub_resources:
+  - appId
+  sample_operations:
+  - healthappidappid
+- entity: registrations
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - appId
+  - externalId
+  - mode
+  - networkKey
+  sub_resources:
+  - network
+  sample_operations:
+  - botsv3registrations
+  - registrations-post
+  - registrations-put
+  - registrationsnetworknetworkkeyexternalidexternalid-get
+  - networknetworkkeyexternalidexternalidappidappid-get
+  - registrations-delete
+  - registrationsnetworknetworkkeyexternalidexternalidappidappidmodemode-put
+- entity: request
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - appId
+  - requestId
+  sub_resources:
+  - appId
+  sample_operations:
+  - requestrequestid
+  - requestappidappid
+- entity: respond
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - respond-post
+- entity: note
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - note-put
+- entity: priority
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - priority-put
+- entity: resolve
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters:
+  - threadId
+  sub_resources: []
+  sample_operations:
+  - resolve-put
+  - resolve-action
+- entity: tag
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources:
+  - remove
+  sample_operations:
+  - tag-put
+  - untag-message-by-care-tag-id
+- entity: tokens
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters:
+  - appId
+  sub_resources:
+  - appId
+  sample_operations:
+  - tokensappid-put
+  - tokensappid-delete
+- entity: workqueue
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - workqueue-put
+- entity: form
+  product: care
+  specs:
+  - lithium-care-bot-api-v3-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - send-a-bot-response-with-a-secure-form
+- entity: displayIds
+  product: care
+  specs:
+  - lithium-care-conversation-api-v2-openapi.json
+  id_parameters:
+  - displayNumber
+  sub_resources: []
+  sample_operations:
+  - displayidsdisplaynumber-1
+- entity: bySourceDocumentId
+  product: care
+  specs:
+  - lithium-care-conversation-api-v2-openapi.json
+  id_parameters:
+  - instance
+  - network
+  - source document id
+  sub_resources:
+  - networks
+  sample_operations:
+  - get-conversation-details-by-document-source-id
+- entity: tagRuleDefinitions
+  product: care
+  specs:
+  - lithium-care-conversation-tag-rules-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - tagruledefinitions-1
+- entity: requests
+  product: care
+  specs:
+  - lithium-care-gdpr-api-v2-openapi.json
+  id_parameters:
+  - requestUUID
+  sub_resources: []
+  sample_operations:
+  - requests
+  - requestsrequestuuid
+- entity: messages
+  product: care
+  specs:
+  - lithium-care-listening-api-v2-openapi.json
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters:
+  - integrationUuid
+  - threadId
+  sub_resources:
+  - validation
+  sample_operations:
+  - integrationuuidmessagesvalidation
+  - integrationuuiddiscussion
+  - integrationuuidmessages-1
+  - generate-a-thread-id
+  - create-a-text-message
+  - get-a-list-of-messages
+- entity: discussion
+  product: care
+  specs:
+  - lithium-care-listening-api-v2-openapi.json
+  id_parameters:
+  - integrationUuid
+  sub_resources: []
+  sample_operations:
+  - integrationuuidmessages
+- entity: getForms
+  product: care
+  specs:
+  - lithium-care-secure-forms-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - get-secure-forms
+- entity: smartviews
+  product: care
+  specs:
+  - lithium-care-smart-views-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - smartviews
+- entity: csv
+  product: care
+  specs:
+  - lithium-care-supervisor-reports-api-openapi.json
+  id_parameters:
+  - reportName
+  sub_resources: []
+  sample_operations:
+  - csvreportname-deprecated
+- entity: csv_long
+  product: care
+  specs:
+  - lithium-care-supervisor-reports-api-openapi.json
+  id_parameters:
+  - reportName
+  sub_resources: []
+  sample_operations:
+  - csv_longreportname-deprecated
+- entity: list
+  product: care
+  specs:
+  - lithium-care-supervisor-reports-api-openapi.json
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters:
+  - resourcePath
+  sub_resources: []
+  sample_operations:
+  - list-deprecated
+  - list-a-specific-directory
+  - list-the-root-directory
+- entity: tags
+  product: care
+  specs:
+  - lithium-care-tag-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - tags
+- entity: email
+  product: care
+  specs:
+  - lithium-care-users-api-v2-openapi.json
+  id_parameters:
+  - userEmail
+  sub_resources:
+  - state
+  sample_operations:
+  - change-agent-state-by-email
+- entity: uuid
+  product: care
+  specs:
+  - lithium-care-users-api-v2-openapi.json
+  id_parameters:
+  - userUUID
+  sub_resources:
+  - state
+  sample_operations:
+  - change-agent-state-by-uuid
+- entity: ssoId
+  product: care
+  specs:
+  - lithium-care-users-api-v2-openapi.json
+  id_parameters:
+  - ssoId
+  sub_resources:
+  - state
+  sample_operations:
+  - change-agent-state-by-sso-id
+- entity: workqueues
+  product: care
+  specs:
+  - lithium-care-work-queue-api-v1-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - workqueues
+- entity: active
+  product: care
+  specs:
+  - lithium-care-work-queue-api-v2-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - active-1
+- entity: threads
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - get-a-list-of-threads
+- entity: handover
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters:
+  - threadId
+  sub_resources: []
+  sample_operations:
+  - handover-action
+- entity: trigger
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters: []
+  sub_resources:
+  - event
+  sample_operations:
+  - get-a-list-of-events
+- entity: v1
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  - lithium-marketing-conversations-api-v1-openapi.json
+  id_parameters:
+  - assetId
+  - companyId
+  - environment
+  - folderId
+  - initiativeId
+  - messageId
+  - threadId
+  sub_resources:
+  - company
+  - me
+  sample_operations:
+  - trigger-an-event
+  - get-bot-status
+  - me
+  - createAsset
+  - createMultiPartAsset
+  - findAsset
+  - updateAsset
+  - listFolders
+- entity: businesshours
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - business-hours
+- entity: pause
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters:
+  - threadId
+  sub_resources: []
+  sample_operations:
+  - pause-a-bot
+  - resume-a-bot
+- entity: broadcast
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters: []
+  sub_resources:
+  - instant
+  - segments
+  sample_operations:
+  - broadcast-to-msisdn
+  - broadcast-to-segments
+  - get-audience-segments
+- entity: projects
+  product: flow
+  specs:
+  - lithium-flow-flow-rest-api-openapi.json
+  id_parameters:
+  - projectId
+  sub_resources:
+  - flows
+  sample_operations:
+  - list-all-flows
+- entity: asset
+  product: marketing
+  specs:
+  - lithium-marketing-api-specifications-openapi.json
+  id_parameters:
+  - assetPath
+  sub_resources: []
+  sample_operations:
+  - get-an-asset
+- entity: export
+  product: marketing
+  specs:
+  - lithium-marketing-beta-analytics-api-openapi.json
+  id_parameters:
+  - export_type
+  - id
+  sub_resources:
+  - accounts
+  - customer_feedback
+  - daily_post_summary
+  - fields
+  - net_ads
+  - posts
+  - profiles
+  - status
+  - stream_item_actions
+  - stream_items
+  sample_operations:
+  - published-post
+  - daily-account-level-metrics
+  - daily-post-summary
+  - ads-net-values
+  - stream-item-data
+  - stream-item-action-data
+  - custom-feedback
+  - profiles
+- entity: surveys
+  product: marketing
+  specs:
+  - lithium-marketing-beta-analytics-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - surveys-list-all-survey-data-for-a-set-of-streams
+- entity: streams
+  product: marketing
+  specs:
+  - lithium-marketing-beta-analytics-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - list-all-available-streams-for-a-company
+- entity: me
+  product: marketing
+  specs:
+  - lithium-marketing-conversations-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - retrieve-a-list-companies-with-this-app-enabled
+- entity: admin
+  product: marketing
+  specs:
+  - lithium-marketing-crm-openapi.json
+  id_parameters:
+  - crmId
+  sub_resources:
+  - custom
+  sample_operations:
+  - register-a-custom-crm
+  - register-a-custom-crm-1
+- entity: whoami
+  product: marketing
+  specs:
+  - lithium-marketing-introspection-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - current-user-details
+- entity: labelsets
+  product: marketing
+  specs:
+  - lithium-marketing-labelsets-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - retrieve-a-page-of-labels-nested-within-sets
+- entity: data
+  product: marketing
+  specs:
+  - lithium-marketing-notification-service-openapi.json
+  id_parameters:
+  - subscriptionId
+  sub_resources: []
+  sample_operations:
+  - retrieve-subscription-events
+- entity: subscription
+  product: marketing
+  specs:
+  - lithium-marketing-notification-service-openapi.json
+  id_parameters:
+  - id
+  - status
+  sub_resources: []
+  sample_operations:
+  - list-subscriptions
+  - create-a-subscription
+  - retrieve-subscription-details
+  - delete-a-subscription
+  - update-a-subscription
+- entity: api.massrelevance.com
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - retrieve-streams-approved-content
+  - specify-amount-of-content-to-pull
+  - gather-content-after-specific-entity
+  - gather-content-after-included-entity
+  - gather-content-after-included-entity-1
+  - enable-jsonp-support
+  - enable-geohinting-data
+  - enable-product-hinting-for-each-entity
+- entity: meta.json
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-entity-information
+- entity: meta.json?num_minutes
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-minutes-of-activity
+- entity: meta.json?num_hours
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-minutes-of-activity-1
+- entity: meta.json?num_days
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-days-of-activity
+- entity: meta.json?activity
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-activity-and-count-props
+- entity: meta.json?finish
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-last-item-of-activity
+- entity: meta.json? networks
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-networks-in-meta-response-1
+- entity: meta.json?top_periods
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-networks-in-meta-response
+- entity: meta.json?top_periods_relative
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-top-retweets-hourly-from-now-1
+- entity: meta.json?top_count
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-top-retweets-hourly-from-now
+- entity: meta.json?num_hashtags
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-number-of-hashtags-returned-1
+- entity: meta.json?num_contributors
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-number-of-topics
+- entity: meta.json?num_trends
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-number-of-hashtags-returned
+- entity: meta.json?sort
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-specified-sort-order
+- entity: meta.json?all_topics
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-all-topics
+- entity: meta.json?percent
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-percentages-in-buckets
+- entity: meta.json?precision
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-specific-decimals-in-percent-return
+- entity: meta.json?disregard
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-excluded-trends-from-values
+- entity: entities.json?entity_ids
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - account
+  - streamName
+  sub_resources: []
+  sample_operations:
+  - get-specific-entities
+- entity: compare.json?streams
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters: []
+  sub_resources: []
+  sample_operations:
+  - compare-stream-volumes
+- entity: compare.json?streams={content}&target
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - content
+  sub_resources: []
+  sample_operations:
+  - get-percentage-towards-target
+- entity: compare.json?streams={content}&target={number}&precision
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - content
+  - number
+  sub_resources: []
+  sample_operations:
+  - get-specific-decimals-in-percent-return-1
+- entity: compare.json?streams={content}&sort
+  product: marketing
+  specs:
+  - lithium-marketing-stream-api-openapi.json
+  id_parameters:
+  - content
+  sub_resources: []
+  sample_operations:
+  - get-specified-sort-order-1
+relationships:
+- from: reports
+  to: report
+  type: has_many
+  via: /reports/.../report
+  evidence: path nesting
+- from: report
+  to: reports
+  type: has_many
+  via: /report/.../reports
+  evidence: path nesting
+- from: networks
+  to: authors
+  type: has_many
+  via: /networks/.../authors
+  evidence: path nesting
+- from: networks
+  to: registrations
+  type: has_many
+  via: /networks/.../registrations
+  evidence: path nesting
+- from: networks
+  to: authors
+  type: belongs_to
+  via: authorID
+  evidence: id path parameter
+- from: networks
+  to: authors
+  type: belongs_to
+  via: authorId
+  evidence: id path parameter
+- from: conversations
+  to: asset
+  type: has_many
+  via: /conversations/.../asset
+  evidence: path nesting
+- from: conversations
+  to: asset
+  type: belongs_to
+  via: assetId
+  evidence: id path parameter
+- from: conversations
+  to: messages
+  type: belongs_to
+  via: messageId
+  evidence: id path parameter
+- from: conversations
+  to: me
+  type: belongs_to
+  via: messageId
+  evidence: id path parameter
+- from: control
+  to: authors
+  type: belongs_to
+  via: authorId
+  evidence: id path parameter
+- from: request
+  to: requests
+  type: belongs_to
+  via: requestId
+  evidence: id path parameter
+- from: resolve
+  to: threads
+  type: belongs_to
+  via: threadId
+  evidence: id path parameter
+- from: bySourceDocumentId
+  to: networks
+  type: has_many
+  via: /bySourceDocumentId/.../networks
+  evidence: path nesting
+- from: requests
+  to: request
+  type: belongs_to
+  via: requestUUID
+  evidence: id path parameter
+- from: messages
+  to: threads
+  type: belongs_to
+  via: threadId
+  evidence: id path parameter
+- from: handover
+  to: threads
+  type: belongs_to
+  via: threadId
+  evidence: id path parameter
+- from: v1
+  to: me
+  type: has_many
+  via: /v1/.../me
+  evidence: path nesting
+- from: v1
+  to: asset
+  type: belongs_to
+  via: assetId
+  evidence: id path parameter
+- from: v1
+  to: messages
+  type: belongs_to
+  via: messageId
+  evidence: id path parameter
+- from: v1
+  to: me
+  type: belongs_to
+  via: messageId
+  evidence: id path parameter
+- from: v1
+  to: threads
+  type: belongs_to
+  via: threadId
+  evidence: id path parameter
+- from: pause
+  to: threads
+  type: belongs_to
+  via: threadId
+  evidence: id path parameter
+- from: data
+  to: subscription
+  type: belongs_to
+  via: subscriptionId
+  evidence: id path parameter
+community_liql_collections:
+  verified:
+  - messages
+  - users
+  - boards
+  - categories
+  note: The full LiQL collection list is published at https://developer.khoros.com/khoroscommunitydevdocs/docs/liql-collection-reference,
+    which requires an Atlas login and could not be harvested. Only the collections named in publicly reachable
+    material are listed here.
+related:
+  conventions: ../conventions/lithium-conventions.yml
+  errors: ../errors/lithium-problem-types.yml

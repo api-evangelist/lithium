@@ -1,0 +1,101 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://developer.khoros.com/khorosmarketingdevdocs (Events / Notification Service docs
+  and reference), https://developer.khoros.com/khoroscaredevdocs/docs/working-with-webhooks,
+  https://developer.khoros.com/khoros-flow/docs/overview-of-webhook-actions, and the
+  harvested definition ../openapi/lithium-marketing-notification-service-openapi.json.
+spec_type: Webhooks
+description: >-
+  Khoros publishes no AsyncAPI document, but it does run a real event surface. Khoros
+  Marketing exposes a first-class Notification Service — a REST API for creating and managing
+  event subscriptions, each of which posts to a caller-supplied notificationUri. Khoros Care
+  uses webhooks to drive the Automation Framework (bot) integration, and Khoros Flow supports
+  webhook actions inside a flow. There is no platform-wide event catalog and no published
+  message schemas, so what follows is the subscription contract plus the event families the
+  documentation names.
+
+asyncapi_document: null
+
+subscription_api:
+  product: Khoros Marketing
+  spec: ../openapi/lithium-marketing-notification-service-openapi.json
+  base_url: https://api.spredfast.com/v2/events
+  reference: https://developer.khoros.com/khorosmarketingdevdocs/reference/create-a-subscription
+  model: >-
+    A subscription binds one eventName (at a given version) to a delivery target. Khoros
+    POSTs the event to notificationUri; an optional bearerToken is presented on the delivery
+    call so the receiver can authenticate Khoros. An optional regex `query` filters which
+    events fire.
+  operations:
+    - {operationId: create-a-subscription, method: POST, path: '/subscription'}
+    - {operationId: list-subscriptions, method: GET, path: '/subscription'}
+    - {operationId: retrieve-subscription-details, method: GET, path: '/subscription/{id}'}
+    - {operationId: update-a-subscription, method: PUT, path: '/subscription/{id}/{status}'}
+    - {operationId: delete-a-subscription, method: DELETE, path: '/subscription/{id}'}
+    - {operationId: retrieve-subscription-events, method: GET, path: '/data/{subscriptionId}'}
+  subscription_object:
+    uuid: Globally unique subscription identifier (read-only).
+    externalId: Caller's own identifier for the subscription.
+    companyId: Khoros Marketing company/tenant id (read-only).
+    userId: Owning user id (read-only).
+    eventName: Name of the event to listen for.
+    version: Version of the event payload to deliver.
+    notificationUri: URL Khoros calls when the event occurs.
+    bearerToken: Optional token delivered as a bearer token on notification calls.
+    query: Optional regex filter over events.
+    status: 'ACTIVE | DISABLED | PAUSED'
+    createdDate: Subscription creation timestamp (read-only).
+  replay:
+    supported: true
+    mechanism: >-
+      GET /data/{subscriptionId} retrieves events for a subscription, so a receiver that
+      missed deliveries can pull them rather than relying solely on push.
+
+event_families:
+  - product: Khoros Marketing
+    events:
+      - name: message
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-message
+      - name: rule applied
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/event-rule-applied
+      - name: label applied to stream item
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-label-applied-to-stream-item
+      - name: bots pass conversation control
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-bots-pass-conversation-control
+      - name: errors
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors
+      - name: de-authorization
+        docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/receive-de-auth-events-in-email-and-slack
+        note: Channel de-auth events, deliverable to email and Slack.
+    authentication:
+      docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+
+  - product: Khoros Care
+    docs: https://developer.khoros.com/khoroscaredevdocs/docs/working-with-webhooks
+    description: >-
+      Webhooks deliver conversation activity to a registered bot in the Automation
+      Framework, which then acts through the Bot API v3.
+    related_spec: ../openapi/lithium-care-bot-api-v3-openapi.json
+
+  - product: Khoros Flow
+    docs: https://developer.khoros.com/khoros-flow/docs/overview-of-webhook-actions
+    reference: https://developer.khoros.com/khoros-flow/reference/webhooks
+    description: >-
+      Webhook actions call out to an external service from within a flow; the Flow REST API
+      also exposes an event trigger (POST /trigger/event) for driving flows inbound.
+    related_spec: ../openapi/lithium-flow-flow-rest-api-openapi.json
+
+streaming:
+  - product: Khoros Marketing
+    name: Stream API
+    spec: ../openapi/lithium-marketing-stream-api-openapi.json
+    base_url: https://api.massrelevance.com
+    description: >-
+      The former Mass Relevance real-time social curation product, 48 operations covering
+      streams, filters and curated content delivery.
+
+gaps:
+  - No AsyncAPI (or CloudEvents) document is published for any product.
+  - No message schemas are published for the event payloads; the docs describe them in prose.
+  - No delivery-retry, signature-verification or ordering contract is documented.

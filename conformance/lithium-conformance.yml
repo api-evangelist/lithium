@@ -1,0 +1,113 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Derived from the security schemes, media types, parameters and response declarations of the
+  28 harvested definitions in ../openapi/, plus the compliance claims published at
+  https://khoros.ai/khoros-security/ and https://khoros.ai/trust-center/.
+description: >-
+  Which cross-cutting standards the Lithium / Khoros API surface actually conforms to. The
+  compliance posture (ISO 27001, SOC 2 Type II, FedRAMP, FISMA, GDPR) is genuine and named on
+  the company's own pages. The API-level conformance is thin: OAuth 2.0 on one product only,
+  no OpenID Connect, no RFC 9457, no RFC 8594, no standard pagination or idempotency
+  contract. The defining interface convention is proprietary — LiQL.
+
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: All 28 harvested definitions declare openapi 3.1.0.
+  - id: oauth2
+    conforms: partial
+    evidence: >-
+      Khoros Marketing declares OAuth 2.0 with a real authorizationCode flow against
+      login.spredfast.com. Khoros Care uses HTTP Basic and JWT, Khoros Flow uses an API key,
+      and Khoros Community uses API app credentials — none of them OAuth.
+    detail: ../authentication/lithium-authentication.yml
+  - id: oauth2-scopes-least-privilege
+    conforms: false
+    evidence: >-
+      A single scope, `all`, granting read/write across every endpoint. No read-only or
+      per-resource scope exists.
+  - id: oidc
+    conforms: false
+    evidence: No openIdConnect security scheme and no /.well-known/openid-configuration.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server returns 404 on every host probed.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: No security.txt on any host in the estate.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No application/problem+json in any definition. Error bodies are product-specific JSON,
+      text/plain, or (on Community v1) XML.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation header support; deprecated endpoints are labelled in prose in
+      the reference only.
+  - id: rfc7807-style-error-registry
+    conforms: false
+    evidence: No published error-code registry.
+  - id: json-api
+    conforms: false
+    evidence: Responses are plain product-specific JSON, not JSON:API documents.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header or parameter in any definition and no documented replay
+      contract.
+  - id: cursor-pagination
+    conforms: partial
+    evidence: >-
+      Four different pagination styles across the surface (pageSize, limit/offset, page,
+      and one `after` cursor), plus LiQL LIMIT/OFFSET on Community. No single convention.
+  - id: webhooks
+    conforms: true
+    evidence: >-
+      Khoros Marketing runs a Notification Service with a documented subscription object
+      (eventName, notificationUri, bearerToken, status) and event replay via
+      GET /data/{subscriptionId}.
+    detail: ../asyncapi/lithium-webhooks.yml
+  - id: asyncapi
+    conforms: false
+    evidence: No AsyncAPI document is published for any product.
+  - id: graphql
+    conforms: partial
+    evidence: >-
+      The Aurora community platform exposes a GraphQL API, documented at
+      developer.khoros.com/khorosauroradevdocs/graphql — behind an Atlas login, so no schema
+      could be harvested.
+  - id: scim
+    conforms: false
+    evidence: No /scim/v2 paths; user provisioning is product-specific.
+  - id: odata
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: fapi
+    conforms: false
+
+proprietary_conventions:
+  - id: liql
+    name: Lithium Query Language
+    description: >-
+      A SQL-like query language over Community collections, submitted as the `q` parameter to
+      /api/2.0/search. The signature Lithium interface convention; it has no standards-body
+      equivalent and no counterpart in the Care, Marketing or Flow APIs.
+    reference: https://developer.khoros.com/khoroscommunitydevdocs/docs/liql-collection-reference
+  - id: freemarker-plugin-model
+    name: FreeMarker component and context-object model
+    description: Server-rendered Community customization surface deployed with the `li` CLI.
+
+compliance_program:
+  published: true
+  url: https://khoros.ai/khoros-security/
+  trust_center: https://khoros.ai/trust-center/
+  certifications: [ISO 27001, SOC 2 Type II, FedRAMP, FISMA]
+  regulations:
+    - {name: GDPR, evidence: 'Data Protection Agreement plus a dedicated GDPR API (../openapi/lithium-care-gdpr-api-v2-openapi.json) for data-subject requests.'}
+    - {name: CCPA, evidence: Covered by the Data Protection Agreement.}
+  detail: ../security/lithium-trust-center.yml

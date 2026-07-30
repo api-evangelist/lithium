@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+url: https://khoros.ai/trust-center/
+source: https://khoros.ai/trust-center/ and https://khoros.ai/khoros-security/
+description: >-
+  Khoros runs a public Trust Center covering security capabilities, privacy, compliance and
+  the pathway to customer security documentation, backed by a more detailed Khoros Security
+  page. Certifications are named in prose on both pages; Khoros does not operate a
+  self-service trust portal with downloadable evidence, so reports are obtained through the
+  compliance contact.
+
+certifications:
+  - ISO 27001
+  - SOC 2 Type II
+  - FedRAMP
+  - FISMA
+
+compliance_programs:
+  - {name: GDPR, evidence: Data Protection Agreement covers GDPR obligations; a GDPR API is published for data-subject requests.}
+  - {name: CCPA, evidence: Data Protection Agreement covers CCPA provisions.}
+
+capabilities:
+  - Security operations — proactive monitoring, encryption at rest and in transit, vulnerability management, intrusion detection and prevention, data retention and destruction
+  - Secure application development — secure SDLC, code reviews, security testing before deployment, regular penetration testing
+  - Physical security — products primarily hosted in Amazon Web Services
+  - Incident response
+  - Business continuity and disaster recovery
+  - Risk management
+  - Vendor management
+  - Privacy
+
+evidence_access:
+  self_service_portal: false
+  contact: compliance@khoros.com
+  note: >-
+    Customer security documentation is requested through the compliance contact rather than
+    downloaded from a portal.
+
+related:
+  security_page: https://khoros.ai/khoros-security/
+  customer_agreements: https://khoros.ai/customer-agreements/
+  gdpr_api: ../openapi/lithium-care-gdpr-api-v2-openapi.json
+  vulnerability_disclosure: lithium-vulnerability-disclosure.yml

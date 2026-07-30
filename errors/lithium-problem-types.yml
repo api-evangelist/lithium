@@ -1,0 +1,150 @@
+generated: '2026-07-19'
+method: derived
+source: Derived from the 4xx/5xx responses declared across the 28 harvested definitions in ../openapi/,
+  cross-checked against live error responses probed from the Khoros Community v1 and v2 APIs.
+format: vendor-specific
+rfc9457: false
+description: Khoros does not use RFC 9457 problem+json anywhere. Error responses are declared as application/json
+  or text/plain with product-specific bodies, and the two Community APIs use two different envelopes again
+  — a JSON envelope with its own numeric code on v2, and an XML document returned under HTTP 200 on v1.
+  The table below is what the machine-readable contracts actually declare; there is no published platform-wide
+  error-code registry.
+envelopes:
+- product: Khoros Community v2
+  media_type: application/json
+  example:
+    status: error
+    message: You are not authorized to make this request
+    data:
+      type: error_data
+      code: 203
+      developer_message: ''
+      more_info: ''
+    metadata: {}
+  probed: GET https://community.khoros.com/api/2.0/search (anonymous) -> HTTP 403
+  code_field: data.code
+  note: Carries a Khoros-specific numeric code independent of the HTTP status.
+- product: Khoros Community v1
+  media_type: text/xml
+  example: <response status="error"><error code="501"><message>Unknown path element at node 'community.messages'.</message></error></response>
+  probed: GET https://community.khoros.com/restapi/vc/messages/count -> HTTP 200
+  code_field: response/error/@code
+  note: Returned with HTTP 200 — the transport status does not reflect the outcome, so clients must parse
+    response/@status.
+problems:
+- status: 400
+  title: Bad Request
+  occurrences: 109
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-agent-states-api-v2-openapi.json#retrieve-defined-agent-states
+  - openapi/lithium-care-analytics-reports-openapi.json#reportreport_type
+  - openapi/lithium-care-api-specifications-openapi.json#createcase
+  - openapi/lithium-care-api-specifications-openapi.json#lookupcase
+  - openapi/lithium-care-api-specifications-openapi.json#updatecase
+  - openapi/lithium-care-api-specifications-openapi.json#searchcustomers
+- status: 401
+  title: Unauthorized
+  occurrences: 23
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-api-specifications-openapi.json#createcase
+  - openapi/lithium-care-api-specifications-openapi.json#lookupcase
+  - openapi/lithium-care-api-specifications-openapi.json#updatecase
+  - openapi/lithium-care-api-specifications-openapi.json#searchcustomers
+  - openapi/lithium-care-api-specifications-openapi.json#bestmatchcustomers
+  - openapi/lithium-care-api-specifications-openapi.json#createcustomer
+- status: 403
+  title: Forbidden
+  occurrences: 3
+  media_types:
+  - application/json
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-bot-api-v3-openapi.json#respond-post
+  - openapi/lithium-marketing-beta-analytics-api-openapi.json#surveys-list-all-survey-data-for-a-set-of-streams
+  - openapi/lithium-marketing-beta-analytics-api-openapi.json#list-all-available-streams-for-a-company
+- status: 404
+  title: Not Found
+  occurrences: 17
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-api-specifications-openapi.json#findcustomer
+  - openapi/lithium-care-api-specifications-openapi.json#findcases
+  - openapi/lithium-care-bot-api-v3-openapi.json#registrationsnetworknetworkkeyexternalidexternalid-get
+  - openapi/lithium-care-bot-api-v3-openapi.json#networknetworkkeyexternalidexternalidappidappid-get
+  - openapi/lithium-care-bot-api-v3-openapi.json#requestrequestid
+  - openapi/lithium-care-bot-api-v3-openapi.json#registrationsnetworknetworkkeyexternalidexternalidappidappidmodemode-put
+- status: 406
+  title: Not Acceptable
+  occurrences: 3
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-marketing-conversations-openapi.json#assets-create-text-asset
+  - openapi/lithium-marketing-conversations-openapi.json#create-a-conversations-user
+  - openapi/lithium-marketing-conversations-openapi.json#create-a-video-captions
+- status: 409
+  title: Conflict
+  occurrences: 2
+  media_types:
+  - application/json
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-authentication-api-v2-openapi.json#tokenskhorosapiowneridownerid-post
+  - openapi/lithium-care-bot-api-v3-openapi.json#control-put
+- status: 422
+  title: Unprocessable Entity
+  occurrences: 12
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-api-specifications-openapi.json#createcase
+  - openapi/lithium-care-api-specifications-openapi.json#lookupcase
+  - openapi/lithium-care-api-specifications-openapi.json#updatecase
+  - openapi/lithium-care-api-specifications-openapi.json#createcustomer
+  - openapi/lithium-care-api-specifications-openapi.json#updatecustomer
+  - openapi/lithium-care-bot-api-v3-openapi.json#registrations-post
+- status: 4XX
+  title: Client Error (unspecified)
+  occurrences: 1
+  media_types:
+  - application/json
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-bot-api-v3-openapi.json#registrations-put
+- status: 500
+  title: Internal Server Error
+  occurrences: 25
+  media_types:
+  - application/json
+  - text/plain
+  documented_descriptions: []
+  source_operations:
+  - openapi/lithium-care-api-specifications-openapi.json#createcase
+  - openapi/lithium-care-api-specifications-openapi.json#lookupcase
+  - openapi/lithium-care-api-specifications-openapi.json#updatecase
+  - openapi/lithium-care-api-specifications-openapi.json#searchcustomers
+  - openapi/lithium-care-api-specifications-openapi.json#bestmatchcustomers
+  - openapi/lithium-care-api-specifications-openapi.json#createcustomer
+gaps:
+- No application/problem+json anywhere in the surface.
+- No published error-code registry mapping Khoros numeric codes to causes and remediation.
+- No 429 response is declared on any operation despite Khoros Care publishing rate limits.
+- 170 of the declared responses use text/plain, so several error bodies are not machine-parseable.
+related:
+  conventions: ../conventions/lithium-conventions.yml
+  rate_limits: ../rate-limits/lithium-rate-limits.yml
