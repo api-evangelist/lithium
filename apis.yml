@@ -40,7 +40,7 @@ x-also-known-as:
 x-current-owner: IgniteTech
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-13'
 tags:
 - Company
 - Martech
@@ -78,7 +78,7 @@ apis:
   name: Lithium AccountSet API
   description: The AccountSet API from Lithium — 1 operation(s) for accountset.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - AccountSet
   properties:
@@ -112,7 +112,7 @@ apis:
   name: Lithium Admin API
   description: The Admin API from Lithium — 2 operation(s) for admin.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/crm
   tags:
   - Admin
   properties:
@@ -163,7 +163,7 @@ apis:
   name: Lithium Assets API
   description: The Assets API from Lithium — 3 operation(s) for assets.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Assets
   properties:
@@ -214,7 +214,7 @@ apis:
   name: Lithium Broadcast API
   description: The Broadcast API from Lithium — 3 operation(s) for broadcast.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Broadcast
   properties:
@@ -231,7 +231,7 @@ apis:
   name: Lithium Businesshours API
   description: The Businesshours API from Lithium — 1 operation(s) for businesshours.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Businesshours
   properties:
@@ -299,7 +299,7 @@ apis:
   name: Lithium Compare.json?streams API
   description: The Compare.json?streams API from Lithium — 1 operation(s) for compare.json?streams.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Compare.json?streams
   properties:
@@ -317,7 +317,7 @@ apis:
   description: >-
     The Compare.json?streams={content}&sort API from Lithium — 1 operation(s) for compare.json?streams={content}&sort.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Compare.json?streams={content}&sort
   properties:
@@ -335,7 +335,7 @@ apis:
   description: >-
     The Compare.json?streams={content}&target API from Lithium — 1 operation(s) for compare.json?streams={content}&target.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Compare.json?streams={content}&target
   properties:
@@ -354,7 +354,7 @@ apis:
     The Compare.json?streams={content}&target={number}&precision API from Lithium — 1 operation(s) for
     compare.json?streams={content}&target={number}&precision.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Compare.json?streams={content}&target={number}&precision
   properties:
@@ -371,7 +371,7 @@ apis:
   name: Lithium Config API
   description: The Config API from Lithium — 1 operation(s) for config.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://analytics-api.app.lithium.com/api/public
   tags:
   - Config
   properties:
@@ -440,7 +440,7 @@ apis:
   name: Lithium Conversations API
   description: The Conversations API from Lithium — 29 operation(s) for conversations.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2
   tags:
   - Conversations
   properties:
@@ -559,7 +559,7 @@ apis:
   name: Lithium Data API
   description: The Data API from Lithium — 1 operation(s) for data.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/events
   tags:
   - Data
   properties:
@@ -645,7 +645,7 @@ apis:
   description: >-
     The Entities.json?entity Ids API from Lithium — 1 operation(s) for entities.json?entity ids.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Entities.json?entity Ids
   properties:
@@ -662,7 +662,7 @@ apis:
   name: Lithium Export API
   description: The Export API from Lithium — 10 operation(s) for export.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/analytics
   tags:
   - Export
   properties:
@@ -679,7 +679,7 @@ apis:
   name: Lithium Flow Rest Api API
   description: The Flow Rest Api API from Lithium — 2 operation(s) for flow rest api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Flow Rest Api
   properties:
@@ -696,7 +696,7 @@ apis:
   name: Lithium Folder API
   description: The Folder API from Lithium — 3 operation(s) for folder.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Folder
   properties:
@@ -747,7 +747,7 @@ apis:
   name: Lithium Handover API
   description: The Handover API from Lithium — 1 operation(s) for handover.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Handover
   properties:
@@ -781,7 +781,7 @@ apis:
   name: Lithium Initiatives API
   description: The Initiatives API from Lithium — 2 operation(s) for initiatives.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Initiatives
   properties:
@@ -798,7 +798,7 @@ apis:
   name: Lithium Introspection Api API
   description: The Introspection Api API from Lithium — 1 operation(s) for introspection api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/whoami
   tags:
   - Introspection Api
   properties:
@@ -832,7 +832,7 @@ apis:
   name: Lithium Labels API
   description: The Labels API from Lithium — 1 operation(s) for labels.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Labels
   properties:
@@ -849,7 +849,7 @@ apis:
   name: Lithium Labelsets Api API
   description: The Labelsets Api API from Lithium — 1 operation(s) for labelsets api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/labelsets
   tags:
   - Labelsets Api
   properties:
@@ -883,7 +883,7 @@ apis:
   name: Lithium Me API
   description: The Me API from Lithium — 2 operation(s) for me.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Me
   properties:
@@ -900,7 +900,7 @@ apis:
   name: Lithium Messages API
   description: The Messages API from Lithium — 10 operation(s) for messages.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Messages
   properties:
@@ -934,7 +934,7 @@ apis:
   name: Lithium Meta.json?activity API
   description: The Meta.json?activity API from Lithium — 1 operation(s) for meta.json?activity.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?activity
   properties:
@@ -951,7 +951,7 @@ apis:
   name: Lithium Meta.json?all Topics API
   description: The Meta.json?all Topics API from Lithium — 1 operation(s) for meta.json?all topics.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?all Topics
   properties:
@@ -968,7 +968,7 @@ apis:
   name: Lithium Meta.json API
   description: The Meta.json API from Lithium — 1 operation(s) for meta.json.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json
   properties:
@@ -985,7 +985,7 @@ apis:
   name: Lithium Meta.json?disregard API
   description: The Meta.json?disregard API from Lithium — 1 operation(s) for meta.json?disregard.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?disregard
   properties:
@@ -1002,7 +1002,7 @@ apis:
   name: Lithium Meta.json?finish API
   description: The Meta.json?finish API from Lithium — 1 operation(s) for meta.json?finish.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?finish
   properties:
@@ -1019,7 +1019,7 @@ apis:
   name: Lithium Meta.json? Networks API
   description: The Meta.json? Networks API from Lithium — 1 operation(s) for meta.json? networks.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json? Networks
   properties:
@@ -1037,7 +1037,7 @@ apis:
   description: >-
     The Meta.json?num Contributors API from Lithium — 1 operation(s) for meta.json?num contributors.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Contributors
   properties:
@@ -1054,7 +1054,7 @@ apis:
   name: Lithium Meta.json?num Days API
   description: The Meta.json?num Days API from Lithium — 1 operation(s) for meta.json?num days.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Days
   properties:
@@ -1071,7 +1071,7 @@ apis:
   name: Lithium Meta.json?num Hashtags API
   description: The Meta.json?num Hashtags API from Lithium — 1 operation(s) for meta.json?num hashtags.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Hashtags
   properties:
@@ -1088,7 +1088,7 @@ apis:
   name: Lithium Meta.json?num Hours API
   description: The Meta.json?num Hours API from Lithium — 1 operation(s) for meta.json?num hours.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Hours
   properties:
@@ -1105,7 +1105,7 @@ apis:
   name: Lithium Meta.json?num Minutes API
   description: The Meta.json?num Minutes API from Lithium — 1 operation(s) for meta.json?num minutes.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Minutes
   properties:
@@ -1122,7 +1122,7 @@ apis:
   name: Lithium Meta.json?num Trends API
   description: The Meta.json?num Trends API from Lithium — 1 operation(s) for meta.json?num trends.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?num Trends
   properties:
@@ -1139,7 +1139,7 @@ apis:
   name: Lithium Meta.json?percent API
   description: The Meta.json?percent API from Lithium — 1 operation(s) for meta.json?percent.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?percent
   properties:
@@ -1156,7 +1156,7 @@ apis:
   name: Lithium Meta.json?precision API
   description: The Meta.json?precision API from Lithium — 1 operation(s) for meta.json?precision.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?precision
   properties:
@@ -1173,7 +1173,7 @@ apis:
   name: Lithium Meta.json?sort API
   description: The Meta.json?sort API from Lithium — 1 operation(s) for meta.json?sort.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?sort
   properties:
@@ -1190,7 +1190,7 @@ apis:
   name: Lithium Meta.json?top Count API
   description: The Meta.json?top Count API from Lithium — 1 operation(s) for meta.json?top count.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?top Count
   properties:
@@ -1207,7 +1207,7 @@ apis:
   name: Lithium Meta.json?top Periods API
   description: The Meta.json?top Periods API from Lithium — 1 operation(s) for meta.json?top periods.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?top Periods
   properties:
@@ -1225,7 +1225,7 @@ apis:
   description: >-
     The Meta.json?top Periods Relative API from Lithium — 1 operation(s) for meta.json?top periods relative.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Meta.json?top Periods Relative
   properties:
@@ -1242,7 +1242,7 @@ apis:
   name: Lithium MultiChannelMessages API
   description: The MultiChannelMessages API from Lithium — 1 operation(s) for multichannelmessages.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - MultiChannelMessages
   properties:
@@ -1293,7 +1293,7 @@ apis:
   name: Lithium Pause API
   description: The Pause API from Lithium — 1 operation(s) for pause.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Pause
   properties:
@@ -1310,7 +1310,7 @@ apis:
   name: Lithium Permissions API
   description: The Permissions API from Lithium — 1 operation(s) for permissions.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Permissions
   properties:
@@ -1327,7 +1327,7 @@ apis:
   name: Lithium Plans API
   description: The Plans API from Lithium — 1 operation(s) for plans.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Plans
   properties:
@@ -1361,7 +1361,7 @@ apis:
   name: Lithium Projects API
   description: The Projects API from Lithium — 1 operation(s) for projects.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Projects
   properties:
@@ -1395,7 +1395,7 @@ apis:
   name: Lithium Report API
   description: The Report API from Lithium — 1 operation(s) for report.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://analytics-api.app.lithium.com/api/public
   tags:
   - Report
   properties:
@@ -1412,7 +1412,7 @@ apis:
   name: Lithium Reports API
   description: The Reports API from Lithium — 16 operation(s) for reports.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://analytics-api.app.lithium.com/api/public
   tags:
   - Reports
   properties:
@@ -1531,7 +1531,7 @@ apis:
   name: Lithium Stream Api API
   description: The Stream Api API from Lithium — 25 operation(s) for stream api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.massrelevance.com
   tags:
   - Stream Api
   properties:
@@ -1548,7 +1548,7 @@ apis:
   name: Lithium Streams API
   description: The Streams API from Lithium — 1 operation(s) for streams.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/analytics
   tags:
   - Streams
   properties:
@@ -1565,7 +1565,7 @@ apis:
   name: Lithium Subscription API
   description: The Subscription API from Lithium — 3 operation(s) for subscription.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/events
   tags:
   - Subscription
   properties:
@@ -1582,7 +1582,7 @@ apis:
   name: Lithium Surveys API
   description: The Surveys API from Lithium — 1 operation(s) for surveys.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com/v2/analytics
   tags:
   - Surveys
   properties:
@@ -1633,7 +1633,7 @@ apis:
   name: Lithium Teams API
   description: The Teams API from Lithium — 1 operation(s) for teams.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://analytics-api.app.lithium.com/api/public
   tags:
   - Teams
   properties:
@@ -1650,7 +1650,7 @@ apis:
   name: Lithium Threads API
   description: The Threads API from Lithium — 1 operation(s) for threads.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Threads
   properties:
@@ -1684,7 +1684,7 @@ apis:
   name: Lithium Trigger API
   description: The Trigger API from Lithium — 1 operation(s) for trigger.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.flow.ai/rest/v1
   tags:
   - Trigger
   properties:
@@ -1701,7 +1701,7 @@ apis:
   name: Lithium Users API
   description: The Users API from Lithium — 1 operation(s) for users.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+  baseURL: https://api.spredfast.com
   tags:
   - Users
   properties:
@@ -1849,6 +1849,10 @@ common:
   url: rate-limits/lithium-rate-limits.yml
 - type: VulnerabilityDisclosure
   url: security/lithium-vulnerability-disclosure.yml
+- type: Plans
+  url: plans/lithium-plans-pricing.yml
+- type: APICatalog
+  url: https://developer.khoros.com/.well-known/api-catalog
 - type: AgentSkill
   name: Register and run a Khoros Care bot
   url: skills/lithium-register-and-run-a-care-bot.md
@@ -1865,7 +1869,13 @@ common:
   name: Process a GDPR data-subject request in Khoros Care
   url: skills/lithium-process-a-gdpr-request.md
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 2. Resolved the multi-product baseURL disagreement (56 of 100 apis[] entries were
+    pointed at the Khoros Care gateway when their operations belong to Khoros Marketing,
+    the Marketing Stream API or Khoros Flow); found a real RFC 9727 api-catalog linkset at
+    developer.khoros.com; found api.massrelevance.com dead (502 on every path); refreshed
+    package currency from live registry metadata.
