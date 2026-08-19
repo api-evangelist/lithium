@@ -1,0 +1,718 @@
+{
+  "item": [
+    {
+      "id": "d67bad12-205d-4729-9be0-2bf102cf8232",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bf9f5c3-f40e-4af5-84cb-8cab555737ec",
+          "name": "Create a new Content Center Asset.",
+          "request": {
+            "name": "Create a new Content Center Asset.",
+            "description": {
+              "content": "Create a new image/video Content Center Asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"intendedForPublishing\": false,\n  \"intendedForModeration\": false,\n  \"createdDate\": \"<dateTime>\",\n  \"originSystem\": \"<string>\",\n  \"originId\": \"<string>\",\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image\": \"<uri>\",\n  \"video\": \"<uri>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4736afff-a40c-492e-b037-81ab26a2ec38",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"folderId\": \"999\",\n  \"name\": \"asset_name\",\n  \"description\": \"Cool new Asset!\",\n  \"text\": \"Text body.\",\n  \"sfEntityType\": \"Asset\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"NOT_IN_PRE_PUBLISH_STATE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d9342e2-0671-4374-85c9-8c741ca7384d",
+          "name": "Create a new Content Center image/video Asset.",
+          "request": {
+            "name": "Create a new Content Center image/video Asset.",
+            "description": {
+              "content": "Create a new image/video Content Center Asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "multipart",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "asset",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) JSON object describing the asset."
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "videoSize",
+                  "value": "<long>",
+                  "type": "text",
+                  "description": "Video size in bytes."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26ddd8aa-c473-48a8-aae3-45b4cfad6a43",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON object describing the asset.",
+                        "type": "text/plain"
+                      },
+                      "key": "asset",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "video",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Video size in bytes.",
+                        "type": "text/plain"
+                      },
+                      "key": "videoSize",
+                      "value": "<long>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"NOT_IN_PRE_PUBLISH_STATE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78ec986c-fea4-4aa3-b6f7-ffd38bfafb6e",
+          "name": "Retrieve a Content Center Asset based by asset ID.",
+          "request": {
+            "name": "Retrieve a Content Center Asset based by asset ID.",
+            "description": {
+              "content": "Gets a Content Center Asset based by asset ID (including content labels information).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b52e8fa6-3c81-4bc8-8028-c079330ba2e9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"NOT_IN_PRE_PUBLISH_STATE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3dcb33d-9082-4bef-905c-f3b152c4cb71",
+          "name": "Update existing Content Center Asset.",
+          "request": {
+            "name": "Update existing Content Center Asset.",
+            "description": {
+              "content": "Updates a Content Center Asset based on the JSON request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "removeImage",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "removeVideo",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "288c4207-ecd0-415c-bb78-c145a26a5bf0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "removeImage",
+                      "value": "false"
+                    },
+                    {
+                      "key": "removeVideo",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"NOT_IN_PRE_PUBLISH_STATE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "0c78469f-4207-4119-88a3-3ed9c452ed78",
+    "name": "agent-states-api-v2 AccountSet Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

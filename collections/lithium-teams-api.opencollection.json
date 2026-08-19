@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Teams API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get team IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/teams",
+            "params": [
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              }
+            ]
+          },
+          "docs": "Get team IDs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

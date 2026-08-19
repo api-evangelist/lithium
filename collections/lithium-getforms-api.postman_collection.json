@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "d5ac9e11-a975-4c02-8f98-cbb8c0f26e5e",
+      "name": "GetForms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3009a982-7e8d-48a0-8379-302b0c972ab7",
+          "name": "Get Secure Forms",
+          "request": {
+            "name": "Get Secure Forms",
+            "description": {
+              "content": "Retrieve the secure forms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getForms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "824e1857-76bc-431d-a9fc-321cc67d2af1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getForms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": [\\n        {\\n            \\\"id\\\": \\\"AABBCCDD-1122-4A5B-A12R-123456DDD789\\\",\\n            \\\"name\\\": \\\"ABC\\\",\\n            \\\"description\\\": null,\\n            \\\"enabled\\\": true,\\n            \\\"deleted\\\": false,\\n            \\\"applyTagIdsToRequest\\\": null,\\n            \\\"applyTagIdsToResponse\\\": null,\\n            \\\"fields\\\": [\\n                {\\n                    \\\"id\\\": \\\"CCCDDD-4ABC-1BC2-7777-STUVWXYZ123\\\",\\n                    \\\"settings\\\": {\\n                        \\\"type\\\": \\\"HEADER\\\",\\n                        \\\"required\\\": true,\\n                        \\\"label\\\": null,\\n                        \\\"subtext\\\": \\\"\\\",\\n                        \\\"headerText\\\": \\\"Class\\\",\\n                        \\\"icon\\\": null\\n                    },\\n                    \\\"authorProfileMapping\\\": null,\\n                    \\\"authorMetadataMapping\\\": false,\\n                    \\\"orderIndex\\\": 0\\n                },\\n                {\\n                    \\\"id\\\": \\\"EEEFFFG1-3567-88HH-67U8-ZYXWTER2\\\",\\n                    \\\"settings\\\": {\\n                        \\\"type\\\": \\\"SHORT_TEXT\\\",\\n                        \\\"required\\\": false,\\n                        \\\"label\\\": \\\"Students\\\",\\n                        \\\"subtext\\\": \\\"\\\",\\n                        \\\"value\\\": \\\"\\\",\\n                        \\\"canExpire\\\": false,\\n                        \\\"expirationType\\\": \\\"NONE\\\",\\n                        \\\"maxLength\\\": null,\\n                        \\\"hintText\\\": \\\"Enter a student name\\\",\\n                        \\\"customValidationEnabled\\\": false,\\n                        \\\"customValidation\\\": null,\\n                        \\\"customValidationMessage\\\": null\\n                    },\\n                    \\\"authorProfileMapping\\\": null,\\n                    \\\"authorMetadataMapping\\\": false,\\n                    \\\"orderIndex\\\": 0\\n                },\\n                {\\n                    \\\"id\\\": \\\"HHHHJKL-1234-5678-9012-234TYUIOP\\\",\\n                    \\\"settings\\\": {\\n                        \\\"type\\\": \\\"SHORT_TEXT\\\",\\n                        \\\"required\\\": false,\\n                        \\\"label\\\": \\\"Subject\\\",\\n                        \\\"subtext\\\": \\\"\\\",\\n                        \\\"value\\\": \\\"\\\",\\n                        \\\"canExpire\\\": false,\\n                        \\\"expirationType\\\": \\\"NONE\\\",\\n                        \\\"maxLength\\\": null,\\n                        \\\"hintText\\\": \\\"Enter the subject\\\",\\n                        \\\"customValidationEnabled\\\": false,\\n                        \\\"customValidation\\\": null,\\n                        \\\"customValidationMessage\\\": null\\n                    },\\n                    \\\"authorProfileMapping\\\": null,\\n                    \\\"authorMetadataMapping\\\": false,\\n                    \\\"orderIndex\\\": 0\\n                },\\n                {\\n                    \\\"id\\\": \\\"MMMNNNOOOP-QRS1-1234-5678-789OIPLKJ\\\",\\n                    \\\"settings\\\": {\\n                        \\\"type\\\": \\\"NUMBER\\\",\\n                        \\\"required\\\": false,\\n                        \\\"label\\\": \\\"Marks\\\",\\n                        \\\"subtext\\\": \\\"\\\",\\n                        \\\"value\\\": \\\"\\\",\\n                        \\\"canExpire\\\": false,\\n                        \\\"expirationType\\\": \\\"NONE\\\",\\n                        \\\"maxValue\\\": 100,\\n                        \\\"minValue\\\": 0,\\n                        \\\"hintText\\\": \\\"Enter marks of that subject\\\",\\n                        \\\"customValidationEnabled\\\": false,\\n                        \\\"customValidation\\\": null,\\n                        \\\"customValidationMessage\\\": null\\n                    },\\n                    \\\"authorProfileMapping\\\": null,\\n                    \\\"authorMetadataMapping\\\": false,\\n                    \\\"orderIndex\\\": 0\\n                }\\n            ],\\n            \\\"expirationInMilli\\\": 600000,\\n            \\\"expirationTimeUnit\\\": \\\"MINUTES\\\",\\n            \\\"linkExpirationInMilli\\\": 86400000,\\n            \\\"linkExpirationTimeUnit\\\": \\\"HOURS\\\",\\n            \\\"languageCode\\\": null,\\n            \\\"confirmationMessage\\\": null,\\n            \\\"privacyPolicyUrl\\\": null,\\n            \\\"termsConditionsUrl\\\": null,\\n            \\\"teamIds\\\": null,\\n            \\\"version\\\": null,\\n            \\\"channels\\\": [\\n                {\\n                    \\\"network\\\": \\\"facebook\\\",\\n                    \\\"networkInstance\\\": \\\"facebook\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"twitter\\\",\\n                    \\\"networkInstance\\\": \\\"twitter\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"apple\\\",\\n                    \\\"networkInstance\\\": \\\"apple\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"email\\\",\\n                    \\\"networkInstance\\\": \\\"email\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"instagram\\\",\\n                    \\\"networkInstance\\\": \\\"instagram\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"googlemessages\\\",\\n                    \\\"networkInstance\\\": \\\"googlemessages\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"whatsapp\\\",\\n                    \\\"networkInstance\\\": \\\"whatsapp\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"sms\\\",\\n                    \\\"networkInstance\\\": \\\"sms\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                },\\n                {\\n                    \\\"network\\\": \\\"brandmessenger\\\",\\n                    \\\"networkInstance\\\": \\\"brandmessenger\\\",\\n                    \\\"externalId\\\": null,\\n                    \\\"filters\\\": [\\n                        {\\n                            \\\"type\\\": \\\"ANY_ID\\\"\\n                        }\\n                    ]\\n                }\\n            ],\\n            \\\"cnameDefinition\\\": null,\\n            \\\"headerHtml\\\": {\\n                \\\"enabled\\\": true,\\n                \\\"injectableStyle\\\": null\\n            },\\n            \\\"footerHtml\\\": {\\n                \\\"enabled\\\": true,\\n                \\\"injectableStyle\\\": null\\n            },\\n            \\\"customCss\\\": {\\n                \\\"enabled\\\": true,\\n                \\\"injectableStyle\\\": null\\n            },\\n            \\\"alwaysShowInWebview\\\": false,\\n            \\\"blockChatInput\\\": false,\\n            \\\"authorProfileMapping\\\": null,\\n            \\\"authorMetadataMapping\\\": false,\\n            \\\"addResponsesToMetadata\\\": false\\n        },\\n          ....\\n          \\n            \\\"alwaysShowInWebview\\\": false,\\n            \\\"blockChatInput\\\": false,\\n            \\\"authorProfileMapping\\\": null,\\n            \\\"authorMetadataMapping\\\": false,\\n            \\\"addResponsesToMetadata\\\": false\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ffbeb6e-30c1-48bd-8c75-73465cb3b5a5",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getForms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "3ec5554e-f09a-4b74-b31c-d3cad6bdd0ae",
+    "name": "agent-states-api-v2 AccountSet GetForms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

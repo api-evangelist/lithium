@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Folder API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of folders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nameFilter",
+                "value": "",
+                "type": "query",
+                "description": "If present, filter the results by the provided \"nameFilter\" string"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders."
+        },
+        {
+          "info": {
+            "name": "Create a new Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific Content Center Asset Folder by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific Content Center Asset Folder by ID."
+        },
+        {
+          "info": {
+            "name": "Updates an existing Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Deletes an existing Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of assets in a folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/folder/:folderId/assets",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of assets in a folder."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?top Count API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?top Count",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tweets per period",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?top_count",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "top_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Number of tweets to include per period"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet BySourceDocumentId API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BySourceDocumentId",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation details by document source ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/bySourceDocumentId/networks/:network/instances/:instance/id/:source document id",
+            "params": [
+              {
+                "name": "network",
+                "value": "",
+                "type": "path",
+                "description": "The unique name of the network serving as the source channel for the conversation."
+              },
+              {
+                "name": "instance",
+                "value": "",
+                "type": "path",
+                "description": "The unique name of the Khoros Care instance through which the conversation is managed."
+              },
+              {
+                "name": "source document id",
+                "value": "",
+                "type": "path",
+                "description": "This is the unique ID given by the source channel for the document. (i.e. Facebook post)"
+              }
+            ]
+          },
+          "docs": "Get conversation details by display ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

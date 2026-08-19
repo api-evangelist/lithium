@@ -64,6 +64,38 @@ sla:
     remedies is incorporated into every Master Services Agreement. The numeric uptime
     target is not published on the public page.
 
+dead_hosts:
+  - host: api.massrelevance.com
+    product: Khoros Marketing Stream API
+    spec: ../openapi/_original/lithium-marketing-stream-api-openapi.json
+    published_server: https://api.massrelevance.com
+    status: 502
+    probed: '2026-08-13'
+    evidence:
+      - {url: 'https://api.massrelevance.com/', status: 502}
+      - {url: 'https://api.massrelevance.com/meta.json', status: 502}
+      - {url: 'http://api.massrelevance.com/', status: 502}
+      - {url: 'https://www.massrelevance.com/', status: 404}
+    dns: dnrm287fziwlb.cloudfront.net (resolves)
+    note: >-
+      The Stream API is the Mass Relevance lineage that Spredfast acquired in 2014 and Khoros
+      inherited through the 2018 merger. Its published host answers HTTP 502 Bad Gateway from
+      an nginx front end on every path, over both HTTP and HTTPS, while DNS still resolves to
+      a CloudFront distribution — the name and the CDN edge survive, the origin does not. 25
+      operations across 24 apis.yml entries are described against this host and none of them
+      is callable. Khoros has not marked the Stream API deprecated anywhere in the
+      documentation, so this is a silent retirement, not an announced one.
+
+undocumented_retirement:
+  observed: true
+  note: >-
+    Khoros retires surfaces without announcing them. The Stream API host above is dead with no
+    deprecation notice; the Care changelog's most recent entry is 2024-12-05 while the Brand
+    Messenger Android SDK has shipped v2.0.1 (2026-01-01); and the RFC 9727 API catalog at
+    developer.khoros.com/.well-known/api-catalog advertises three service-desc descriptors that
+    all return 404. Consumers cannot distinguish a live surface from a retired one by reading
+    the documentation.
+
 support_lifecycle:
   platform_transition:
     from: Khoros Classic (Lithium Community)

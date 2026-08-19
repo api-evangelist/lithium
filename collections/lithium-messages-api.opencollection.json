@@ -1,0 +1,477 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Messages API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate JSON request of inbound messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:integrationUuid/messages/validation",
+            "params": [
+              {
+                "name": "integrationUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the social integration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate the JSON request of inbound messages"
+        },
+        {
+          "info": {
+            "name": "Create inbound messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:integrationUuid/messages",
+            "params": [
+              {
+                "name": "integrationUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the social integration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create inbound messages"
+        },
+        {
+          "info": {
+            "name": "Delete messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:integrationUuid/messages",
+            "params": [
+              {
+                "name": "integrationUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the social integration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete messages"
+        },
+        {
+          "info": {
+            "name": "Generate a Thread ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/messages"
+          },
+          "docs": "Generate a thread ID for various REST API usages."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/messages/:threadId",
+            "params": [
+              {
+                "name": "sync",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter for enabling sync mode."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter for pagination"
+              },
+              {
+                "name": "{threadId}",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier of the thread. This is a required field."
+              },
+              {
+                "name": "event",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to enable to retrieve the history of triggered events. Default value is `false`"
+              }
+            ]
+          },
+          "docs": "Fetches a list of messages using the Flow REST API."
+        },
+        {
+          "info": {
+            "name": "Create a Text Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/messages/:threadId",
+            "params": [
+              {
+                "name": "{threadId}",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the thread"
+              },
+              {
+                "name": "sync",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that this message should be processed in sync mode."
+              },
+              {
+                "name": "writeConcern",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that this message should be processed in writeConcern mode."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a text message with the Flow REST API."
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Retrieve an existing message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Update an existing multi-part message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to update an existing multi-part *Spredfast* Message."
+        },
+        {
+          "info": {
+            "name": "Delete an existing message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This endpoint is used to delete an existing *Spredfast* Message."
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message?imageset",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEn"
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message?video",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Update an existing multi-part message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "This endpoint is used to update an existing multi-part *Spredfast* Message."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

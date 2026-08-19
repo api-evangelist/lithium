@@ -1,0 +1,367 @@
+{
+  "item": [
+    {
+      "id": "0fcf3675-bbb5-49de-ad53-1f13c232108c",
+      "name": "Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bda31d65-a543-430c-ae89-8cf22f468582",
+          "name": "Create GDPR request",
+          "request": {
+            "name": "Create GDPR request",
+            "description": {
+              "content": "Create a GDPR request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorUUID\": \"<string>\",\n  \"includeResponses\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43f5ac94-8550-4701-bc52-42644d9f9d29",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorUUID\": \"<string>\",\n  \"includeResponses\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": {\\n        \\\"requestID\\\": \\\"c3731601-b387-406b-8472-fb97ea6a9f08\\\",\\n        \\\"requestStatus\\\": \\\"https://your_social_response_instance/api/v2/gdpr/requests/c3731601-b387-406b-8472-fb97ea6a9f08\\\",\\n        \\\"remainingTokens\\\": 29 // Number of actions remaining before rate limits are enforced\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9a568e1-6642-40c8-8e3c-d055963cab7b",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorUUID\": \"<string>\",\n  \"includeResponses\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bf8b188-6cfb-40bc-981b-9abb61f51b5b",
+          "name": "Get GDPR request status",
+          "request": {
+            "name": "Get GDPR request status",
+            "description": {
+              "content": "Check the status of a GDPR request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":requestUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestUUID",
+                  "description": "(Required) The `requestUUID` returned from your original GDPR request"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6f2a84a-3c50-4fca-85c7-0ab6f008057a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":requestUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestUUID",
+                      "description": "(Required) The `requestUUID` returned from your original GDPR request"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": {\\n        \\\"requestUUID\\\": \\\"fb30a719-04b2-446f-8185-bb171b7703fd\\\",\\n        \\\"status\\\": \\\"COMPLETED\\\",\\n        \\\"remainingTokens\\\": -1 // Number of actions remaining before rate limits are enforced\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "754f4141-aa55-4f25-917f-22e522217463",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":requestUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestUUID",
+                      "description": "(Required) The `requestUUID` returned from your original GDPR request"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "d3cd9dd8-a57e-45e4-8ccf-863b23985761",
+    "name": "agent-states-api-v2 AccountSet Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

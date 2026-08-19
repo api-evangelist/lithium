@@ -1,0 +1,985 @@
+{
+  "item": [
+    {
+      "id": "d112b8d1-0ff9-4698-9298-8270b23025ad",
+      "name": "Folder",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8f3e508-1f60-450f-a880-ee187a702979",
+          "name": "Retrieve a list of folders.",
+          "request": {
+            "name": "Retrieve a list of folders.",
+            "description": {
+              "content": "This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nameFilter",
+                  "value": "<string>",
+                  "description": "If present, filter the results by the provided \"nameFilter\" string"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "999e7f7d-bbbc-474e-aba0-b9450ece2b16",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nameFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"companyId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"1971-07-14T00:36:09.425Z\",\n      \"metrics\": {\n        \"assetCount\": 470,\n        \"lastModifiedAssetImageThumb\": \"https://rjsPuSJZbeqrKDOXuh.ssbluSiniZt+wu90XKykZuVlgs-yZq.dEcDIi6cirXYtCEMeDttLQ+xsPGi,\"\n      },\n      \"sfEntityType\": \"AssetFolder\"\n    },\n    {\n      \"id\": \"string\",\n      \"companyId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"1978-06-11T13:24:21.971Z\",\n      \"metrics\": {\n        \"assetCount\": 7912,\n        \"lastModifiedAssetImageThumb\": \"http://dPqqLehqdguMyyliABbemyCiMPfLiOqw.gejMr8Z.45SS.SUEockO+RM21U9fkdnKrJQ\"\n      },\n      \"sfEntityType\": \"AssetFolder\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PUBLISH_POST_UPDATE_NOT_ALLOWED\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 4309\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf893f04-8209-4f02-896e-25f30e178d41",
+          "name": "Create a new Content Center Asset Folder.",
+          "request": {
+            "name": "Create a new Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e33e257-34b3-4df1-8c1d-5205208081aa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"1972-09-28T01:12:03.317Z\",\n    \"metrics\": {\n      \"assetCount\": 4852,\n      \"lastModifiedAssetImageThumb\": \"https://xZNVtnAaGECPwxyqnGLdyshunTfNkTlN.irtlWJwVsEsilTnpWF4+CcVHiRnN4UxIZEmGXAPSnRaiCuIwE.05HoISOI,OIGLusACekp\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de4f5754-a299-4b89-a557-fffc5b433962",
+          "name": "Retrieve a specific Content Center Asset Folder by ID.",
+          "request": {
+            "name": "Retrieve a specific Content Center Asset Folder by ID.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb5616ee-9af5-4dde-a6b3-4c878159fe46",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"1972-09-28T01:12:03.317Z\",\n    \"metrics\": {\n      \"assetCount\": 4852,\n      \"lastModifiedAssetImageThumb\": \"https://xZNVtnAaGECPwxyqnGLdyshunTfNkTlN.irtlWJwVsEsilTnpWF4+CcVHiRnN4UxIZEmGXAPSnRaiCuIwE.05HoISOI,OIGLusACekp\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41a2149f-2742-44f9-9709-d0fc77075b23",
+          "name": "Updates an existing Content Center Asset Folder.",
+          "request": {
+            "name": "Updates an existing Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43ad4395-8778-44c7-ae7c-3e1f4398ed62",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"1972-09-28T01:12:03.317Z\",\n    \"metrics\": {\n      \"assetCount\": 4852,\n      \"lastModifiedAssetImageThumb\": \"https://xZNVtnAaGECPwxyqnGLdyshunTfNkTlN.irtlWJwVsEsilTnpWF4+CcVHiRnN4UxIZEmGXAPSnRaiCuIwE.05HoISOI,OIGLusACekp\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35920a6a-26b2-40bd-96b9-354c20832d13",
+          "name": "Deletes an existing Content Center Asset Folder.",
+          "request": {
+            "name": "Deletes an existing Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4c076f8-cdc4-488b-80e0-8c6bfc2310fb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": 4316,\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PUBLISH_INVALID_ACCOUNT_FOR_SERVICE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e37f6503-1083-4074-b163-18f3aeb3916c",
+          "name": "Retrieve a list of assets in a folder.",
+          "request": {
+            "name": "Retrieve a list of assets in a folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "ASCENDING"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff5745dd-73e8-4898-b9e4-b3a83325e8b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"folderId\": \"999\",\n      \"name\": \"asset_name\",\n      \"description\": \"Cool new Asset!\",\n      \"text\": \"Text body.\",\n      \"sfEntityType\": \"Asset\"\n    },\n    {\n      \"folderId\": \"999\",\n      \"name\": \"asset_name\",\n      \"description\": \"Cool new Asset!\",\n      \"text\": \"Text body.\",\n      \"sfEntityType\": \"Asset\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 2972\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "35204a3a-2f0d-472d-9ff0-d19705cd014f",
+    "name": "agent-states-api-v2 AccountSet Folder API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

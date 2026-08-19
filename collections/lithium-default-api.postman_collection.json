@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "2ef8df7a-5d5f-4bec-bc5b-9a08fd2a8391",
+      "name": "#",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f32b463-a252-45e3-b8d4-cbbc5b206b79",
+          "name": "Get paginated list of authors",
+          "request": {
+            "name": "Get paginated list of authors",
+            "description": {
+              "content": "Get all authors in a paginated response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "An integer specifying how many authors to look back, and the first response will start with that result and show the previous 10"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_deleted_crm",
+                  "value": "false",
+                  "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "daf89494-d848-4f5e-80f7-d540d0924fbc",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_deleted_crm",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": {\\n        \\\"nextPageUrl\\\": \\\"https://your_social_response_instance.lithium.com/api/v2/authors?offset=31\\\",\\n        \\\"personList\\\": [\\n            {\\n                \\\"id\\\": \\\"46193948-5a3d-4836-bea8-e7a5070ab00d\\\",\\n                \\\"displayNumber\\\": 4,\\n                \\\"handles\\\": {\\n                    \\\"lithium\\\": [\\n                        {\\n                            \\\"@class\\\": \\\"LithiumSpecificAuthorData\\\",\\n                            \\\"lswUuid\\\": \\\"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\\\",\\n                            \\\"displayNumber\\\": 4,\\n                            \\\"profileUrl\\\": \\\"https://nusoap.stage.lithium.com/t5/user/viewprofilepage/user-id/23717\\\",\\n                            \\\"providerInstanceId\\\": \\\"nusoap.stage.lithium.com/\\\",\\n                            \\\"name\\\": \\\"LIA_auto_c90d75c1_9f26\\\",\\n                            \\\"id\\\": \\\"23717\\\",\\n                            \\\"registrationInstant\\\": 1516816834000,\\n                            \\\"screenName\\\": \\\"LIA_auto_c90d75c1_9f26\\\",\\n                            \\\"profileImageURL\\\": \\\"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\\\",\\n                            \\\"networkinstance\\\": \\\"nusoap.stage.lithium.com/\\\",\\n                            \\\"avatarUrl\\\": \\\"https://some.community.lithium.com/t5/image/serverpage/avatar-name/dessert/avatar-theme/candy/avatar-collection/food/avatar-display-size/message?xdesc=1.0\\\"\\n                        }\\n                    ]\\n                },\\n                \\\"tags\\\": [\\n                \\t\\t{\\n                        \\\"creator\\\": {\\n                            \\\"type\\\": \\\"SYSTEM\\\"\\n                        },\\n                        \\\"tagId\\\": 1037,\\n                        \\\"lswUuid\\\": \\\"f169ce75-82c8-4f5b-8e9b-b99ea64fbdaa\\\"\\n                    }\\n                ],\\n                \\\"\\\"notes\\\": [\\n                    {\\n                        \\\"note\\\": \\\"Test\\\",\\n                        \\\"agent\\\": {\\n                            \\\"name\\\": \\\"David Doe\\\",\\n                            \\\"email\\\": \\\"dave.doe@example.com\\\",\\n                            \\\"lswUuid\\\": \\\"9561f5b2-6e53-11e3-a5df-525422201fe1\\\"\\n                        },\\n                        \\\"createDate\\\": 1354600113000\\n                    }\\n                ]\\n            }\\n           ... \\n        ]\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc175183-8920-4253-8a5f-edcca93bc491",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_deleted_crm",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "1d4a2192-b01b-44d7-b7bb-272969aaa18b",
+    "name": "agent-states-api-v2 AccountSet # API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

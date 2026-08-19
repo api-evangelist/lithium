@@ -1,0 +1,53 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://khoros.ai/ site probes for a pricing surface (/pricing/, /pricing, /plans/ — all
+  HTTP 404), the developer.khoros.com sitemap (800 URLs across the four doc projects — no
+  pricing, plans, quota or billing page), and the Khoros "Let's connect" contact form which
+  is the only route the company publishes to a price.
+plan_count: 0
+description: >-
+  Khoros publishes no plans, no tiers and no prices. There is no pricing page on khoros.ai,
+  no pricing or quota page anywhere in the developer documentation, and no machine-readable
+  pricing or catalog endpoint. Every route to a number ends at a sales conversation. The
+  commercial model reported by resellers and buyers is per-seat enterprise licensing —
+  Khoros Care priced per agent seat, Communities and Marketing priced per user seat with
+  volume discounts and annual commitments — but Khoros itself states none of that publicly,
+  so nothing here is recorded as a published plan.
+
+plans: []
+
+pricing_model:
+  published: false
+  form: contact-sales
+  contact_url: https://khoros.ai/lets-connect/
+  self_serve_signup: false
+  free_tier: false
+  trial: false
+  note: >-
+    There is no self-serve signup, no free tier and no published trial for any of the four
+    developer surfaces (Care, Marketing, Flow, Community). API access is a function of an
+    existing customer contract: credentials are provisioned inside a customer's Khoros
+    instance (Care Account Admin, Marketing app credentials, Community API app), not issued
+    from a public developer portal.
+
+api_pricing:
+  metered: false
+  overage: null
+  quota_published: false
+  note: >-
+    No per-call pricing, credit pack, overage rate or included-call quota is published for
+    any API. The only published usage ceilings are rate limits on the Khoros Care APIs
+    (60 calls / 60 seconds, 20 requests / minute for Analytics Reports) — see
+    ../rate-limits/lithium-rate-limits.yml — and those are throttles, not billing units.
+
+evidence:
+  - {url: 'https://khoros.ai/pricing/', status: 404}
+  - {url: 'https://khoros.ai/pricing', status: 404}
+  - {url: 'https://khoros.ai/plans/', status: 404}
+  - {url: 'https://khoros.ai/lets-connect/', status: 200, kind: contact-sales-form}
+  - {url: 'https://developer.khoros.com/sitemap.xml', status: 200, kind: sitemap, note: 'no pricing/plans/quota/billing URL among 800 entries'}
+
+related:
+  rate_limits: ../rate-limits/lithium-rate-limits.yml
+  lifecycle: ../lifecycle/lithium-lifecycle.yml

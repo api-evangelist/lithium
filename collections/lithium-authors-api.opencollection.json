@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Authors API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update author's attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/authors/attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use the Bot v3 API to have the bot update both the author CRM attributes and author attributes"
+        },
+        {
+          "info": {
+            "name": "Update author metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/authors/attributes (COPY)",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use the Bot v3 API to have the bot update author metadata properties"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

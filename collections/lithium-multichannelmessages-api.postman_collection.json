@@ -1,0 +1,204 @@
+{
+  "item": [
+    {
+      "id": "a75bb102-65ac-469f-ba71-0cea3920d85c",
+      "name": "MultiChannelMessages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "836cf2c7-3b58-4aa3-adeb-acac7754d866",
+          "name": "Retrieve an existing multi-channel message.",
+          "request": {
+            "name": "Retrieve an existing multi-channel message.",
+            "description": {
+              "content": "The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "multiChannelMessage",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "messageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36325e4b-a414-4e00-9bc5-da84a5b0cf8e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "multiChannelMessage",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "messageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"MultiChannelMessage\",\n  \"messageService\": \"MULTI_CHANNEL\",\n  \"channelMessages\": [\n    {\n      \"sfEntityType\": \"SingleChannelMessage\",\n      \"service\": \"FACEBOOK\",\n      \"targetAccountIds\": [\n        \"4\"\n      ],\n      \"content\": {\n        \"sfEntityType\": \"Status\",\n        \"text\": \"Status Update\"\n      }\n    },\n    {\n      \"sfEntityType\": \"SingleChannelMessage\",\n      \"service\": \"FACEBOOK\",\n      \"targetAccountIds\": [\n        \"5\"\n      ],\n      \"content\": {\n        \"sfEntityType\": \"Status\",\n        \"text\": \"Facebook test post\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "73c325b8-4b19-418e-ba6e-debd3cbb5b62",
+    "name": "agent-states-api-v2 AccountSet MultiChannelMessages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

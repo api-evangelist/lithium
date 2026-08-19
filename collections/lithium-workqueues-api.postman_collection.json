@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "420cefcc-b283-4d2d-9402-5881627273d6",
+      "name": "Workqueues",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c233ac8-02c9-495a-99cb-7e8e88040832",
+          "name": "Get work queues details",
+          "request": {
+            "name": "Get work queues details",
+            "description": {
+              "content": "Returns details about work queues in  Care",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workqueues"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "843a1b04-41dd-4ed3-af2d-ffd978f76818",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workqueues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n   \\\"status\\\": \\\"success\\\",\\n   \\\"data\\\": [\\n       {\\n          \\\"id\\\": \\\"f0aac89c-8479-49d0-b331-472722e0334e\\\",\\n           \\\"name\\\": \\\"Default Work Queue\\\",\\n           \\\"description\\\": null,\\n           \\\"archived\\\": false\\n       },\\n       {\\n           \\\"id\\\": \\\"8380c937-37bb-4cd3-aef4-b850ff5499b1\\\",\\n           \\\"name\\\": \\\"Hardware\\\",\\n           \\\"description\\\": null,\\n           \\\"archived\\\": false\\n       },\\n       {\\n           \\\"id\\\": \\\"586d0003-4e09-46d9-9492-4fe884fd00f6\\\",\\n           \\\"name\\\": \\\"Services\\\",\\n           \\\"description\\\": null,\\n           \\\"archived\\\": false\\n       },\\n       {\\n          \\\"id\\\": \\\"980f06b2-e3d4-4aed-90ed-a62a9dd06e38\\\",\\n          \\\"name\\\": \\\"Software\\\",\\n           \\\"description\\\": null,\\n           \\\"archived\\\": false\\n       }\\n   ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9262665c-31fb-491d-ae6d-53074bcd2f1f",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workqueues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "094729a4-289b-45dc-aaa9-542b057e6cb1",
+    "name": "agent-states-api-v2 AccountSet Workqueues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

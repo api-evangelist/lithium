@@ -1,29 +1,65 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: probed
 source: >-
   Live HTTP probes of the /.well-known/ discovery surface on every host in ../apis.yml
-  (Website, DeveloperPortal, Documentation) and every OpenAPI servers[] host that is not
-  an instance-templated placeholder.
+  (Website, DeveloperPortal, Documentation, and every corrected apis[].baseURL) plus every
+  OpenAPI servers[] host that is not an instance-templated placeholder. Re-probed
+  2026-08-13; the 2026-07-19 round is superseded.
 description: >-
-  Khoros publishes no /.well-known/ discovery documents. Two hosts return HTTP 200 for
-  every path — khoros.ai / www.khoros.com is a WordPress catch-all that renders the
-  homepage, and developer.khoros.com is a ReadMe single-page app that renders the docs
-  shell — so those 200s are soft-404s, recorded here as such rather than as hits. No
-  security.txt, no OpenID/OAuth discovery, no api-catalog, no ai-plugin.json. The one real
-  machine-readable document at the root of the marketing host is llms.txt, captured
-  verbatim at ../llms/lithium-llms.txt.
+  Khoros publishes exactly one real /.well-known/ document: an RFC 9727 API catalog linkset
+  at https://developer.khoros.com/.well-known/api-catalog, which returns HTTP 200 with
+  content-type application/linkset+json and enumerates the Care, Marketing and Flow doc
+  projects. It is a real document, not an SPA shell — but every `service-desc` link inside it
+  (the machine-readable descriptor for each project) returns 404, so the catalog advertises
+  three API descriptions that do not exist. Only the `service-doc` HTML reference links
+  resolve. Nothing else is served: no security.txt, no OpenID/OAuth discovery, no
+  ai-plugin.json, and no A2A agent card on any host. Two hosts return HTTP 200 for arbitrary
+  paths — khoros.ai / www.khoros.com is a WordPress catch-all and developer.khoros.com is a
+  ReadMe single-page app — so those 200s are recorded as soft-404s, not hits.
+
+hits:
+  - path: /.well-known/api-catalog
+    host: developer.khoros.com
+    status: 200
+    content_type: application/linkset+json; charset=utf-8
+    file: lithium-api-catalog.json
+    spec: RFC 9727 (API catalog / linkset)
+    real: true
+    entries: 3
+    anchors:
+      - https://developer.khoros.com/khoroscaredevdocs
+      - https://developer.khoros.com/khorosmarketingdevdocs
+      - https://developer.khoros.com/khoros-flow
+    defect: >-
+      All three advertised service-desc URLs
+      (https://developer.khoros.com/{project}/.well-known/api-catalog) return HTTP 404. The
+      catalog is well-formed and correctly typed but points at machine-readable descriptors
+      that are not served. The service-doc HTML links (/{project}/reference) return 301 and
+      resolve.
+    missing_projects:
+      - khoroscommunitydevdocs
+      - khorosbrandmessengerdocs
+    note: >-
+      Two of the five published doc projects — Community and Brand Messenger — are absent
+      from the catalog, so it under-describes the estate as well as over-promising the
+      descriptors.
 
 hosts:
   - host: https://khoros.ai
+    role: website
     documents:
       - {path: /.well-known/security.txt, status: 404}
       - {path: /.well-known/openid-configuration, status: 404}
       - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
       - {path: /.well-known/api-catalog, status: 404}
       - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
       - {path: /llms.txt, status: 200, file: ../llms/lithium-llms.txt, real: true}
 
   - host: https://www.khoros.com
+    role: website-alias
     note: Redirects to khoros.ai; WordPress catch-all returns 200 with homepage HTML.
     documents:
       - {path: /.well-known/security.txt, status: 404}
@@ -31,38 +67,112 @@ hosts:
       - {path: /.well-known/oauth-authorization-server, status: 200, soft_404: true}
       - {path: /.well-known/api-catalog, status: 200, soft_404: true}
       - {path: /.well-known/ai-plugin.json, status: 200, soft_404: true}
+      - {path: /.well-known/agent-card.json, status: 302}
+      - {path: /.well-known/agent.json, status: 302}
       - {path: /llms.txt, status: 200, real: true}
 
   - host: https://developer.khoros.com
-    note: ReadMe-hosted developer portal; unknown paths return the SPA shell with HTTP 200.
+    role: developer-portal
+    note: ReadMe-hosted developer portal; unknown paths return the SPA shell or a 302 to /.
     documents:
-      - {path: /.well-known/security.txt, status: 200, soft_404: true}
+      - {path: /.well-known/api-catalog, status: 200, real: true, file: lithium-api-catalog.json}
+      - {path: /.well-known/security.txt, status: 302}
       - {path: /.well-known/openid-configuration, status: 404}
       - {path: /.well-known/oauth-authorization-server, status: 404}
-      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
       - {path: /.well-known/ai-plugin.json, status: 200, soft_404: true}
+      - {path: /.well-known/agent-card.json, status: 302}
+      - {path: /.well-known/agent.json, status: 302}
       - {path: /llms.txt, status: 404}
-      - {path: /sitemap.xml, status: 200, real: true, note: '800 URLs across four doc projects'}
+      - {path: /sitemap.xml, status: 200, real: true, note: '800 URLs across five doc projects'}
 
   - host: https://community.khoros.com
-    note: Atlas community; /.well-known/* is blocked by the platform (403 for all paths).
+    role: community-api
+    note: Atlas community behind Cloudflare; /.well-known/* is challenged (403 for all paths).
     documents:
       - {path: /.well-known/security.txt, status: 403}
       - {path: /.well-known/openid-configuration, status: 403}
       - {path: /.well-known/oauth-authorization-server, status: 403}
       - {path: /.well-known/api-catalog, status: 403}
       - {path: /.well-known/ai-plugin.json, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+
+  - host: https://api.app.lithium.com
+    role: care-api-gateway-us
+    note: >-
+      Khoros Care US gateway. Returns {"message":"Forbidden"} with HTTP 403 to every
+      unauthenticated path, including /.well-known/*. Sibling regional gateways
+      api-eu.app.lithium.com and api-ap.app.lithium.com behave identically.
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/oauth-protected-resource, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+
+  - host: https://analytics-api.app.lithium.com
+    role: care-analytics-api
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+
+  - host: https://api.spredfast.com
+    role: marketing-api
+    note: >-
+      Khoros Marketing (Spredfast lineage). Answers every path with HTTP 401
+      {"code":"unauthenticated"} — the host is alive and gates anonymous discovery.
+    documents:
+      - {path: /.well-known/security.txt, status: 401}
+      - {path: /.well-known/oauth-authorization-server, status: 401}
+      - {path: /.well-known/oauth-protected-resource, status: 401}
+      - {path: /.well-known/api-catalog, status: 401}
+      - {path: /.well-known/agent-card.json, status: 401}
+      - {path: /.well-known/agent.json, status: 401}
+
+  - host: https://api.flow.ai
+    role: flow-api
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+
+  - host: https://api.massrelevance.com
+    role: marketing-stream-api
+    dead: true
+    note: >-
+      The host published in the Khoros Marketing Stream API specification. Every path — root,
+      /meta.json and all /.well-known/* — returns HTTP 502 Bad Gateway from an nginx front
+      end, over both HTTP and HTTPS. DNS resolves (CloudFront, dnrm287fziwlb.cloudfront.net)
+      so the name is still registered and fronted, but no origin answers. See
+      ../lifecycle/lithium-lifecycle.yml.
+    documents:
+      - {path: /, status: 502}
+      - {path: /.well-known/security.txt, status: 502}
+      - {path: /.well-known/oauth-authorization-server, status: 502}
+      - {path: /.well-known/api-catalog, status: 502}
 
   - host: https://api.lithium.com
+    role: legacy-apex
     note: >-
-      The legacy Lithium API apex still resolves and answers, but returns HTTP 500 for
-      every path probed — it is not a working discovery surface.
+      The legacy Lithium API apex still resolves and answers, but returns HTTP 500 for every
+      path probed — it is not a working discovery surface.
     documents:
       - {path: /.well-known/security.txt, status: 500}
       - {path: /.well-known/openid-configuration, status: 500}
       - {path: /.well-known/oauth-authorization-server, status: 500}
       - {path: /.well-known/api-catalog, status: 500}
       - {path: /.well-known/ai-plugin.json, status: 500}
+      - {path: /.well-known/agent-card.json, status: 500}
+      - {path: /.well-known/agent.json, status: 500}
 
 security_txt:
   present: false
@@ -70,3 +180,11 @@ security_txt:
     No RFC 9116 security.txt on any Khoros or Lithium host. The security-contact path the
     company does publish is the Trust Center and Khoros Security pages
     (see ../security/lithium-vulnerability-disclosure.yml).
+
+agent_card:
+  present: false
+  note: >-
+    Probed /.well-known/agent-card.json and the legacy /.well-known/agent.json on all nine
+    hosts above on 2026-08-13. Not one returned a JSON object with AgentCard shape — the
+    results were 404, 302, 403, 401, 500 and 502. No a2a/ artifact is written; an agent card
+    is search-only and must never be authored on a provider's behalf.

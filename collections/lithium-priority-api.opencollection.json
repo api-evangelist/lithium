@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Priority API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Priority",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Change conversation priority",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/priority",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use the Bot v3 API to change the conversation priority"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

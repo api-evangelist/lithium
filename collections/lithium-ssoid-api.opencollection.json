@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet SsoId API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SsoId",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Set Agent State by SSO ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/ssoId/:ssoId/state",
+            "params": [
+              {
+                "name": "stateUUID",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier for the state to which the Agent will be switched."
+              },
+              {
+                "name": "ssoId",
+                "value": "",
+                "type": "path",
+                "description": "The universally unique identifier (UUID) of the Agent being placed into a new state."
+              }
+            ]
+          },
+          "docs": "Set the State (`stateUUID`) of an active Agent identified by SSO ID (`ssoId`)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

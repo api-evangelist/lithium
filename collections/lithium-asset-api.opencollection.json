@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Asset API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Asset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/asset/:assetPath",
+            "params": [
+              {
+                "name": "assetPath",
+                "value": "",
+                "type": "path",
+                "description": "The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+              },
+              {
+                "name": "thumbnail",
+                "value": "",
+                "type": "query",
+                "description": "When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow."
+              }
+            ]
+          },
+          "docs": "Retrieve an asset specified by its assetPath"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

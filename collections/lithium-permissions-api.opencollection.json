@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Permissions API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve permissions for current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/privilege",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Results will be a list of permissions in the **currently selected company**."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

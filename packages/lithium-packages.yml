@@ -1,16 +1,22 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: searched
 source: >-
-  npm registry search + package metadata, the github.com/lithiumtech organization
-  (verified, display name "Khoros"), and PyPI. First-party status is asserted only where
-  the package repository or maintainer resolves to lithiumtech / flow-ai / an
-  eng-khoros / IgniteTech distribution account.
+  Live unauthenticated reads of registry.npmjs.org and pypi.org/pypi/<pkg>/json for every
+  registry-published package, plus api.github.com repo + tag metadata for the
+  GitHub-distributed mobile SDKs in the github.com/lithiumtech organization (GitHub-verified,
+  display name "Khoros"). First-party status is asserted only where the npm maintainer set or
+  the repository owner resolves to lithiumtech / flow-ai / an IgniteTech-Trilogy distribution
+  account.
 description: >-
-  Client libraries and SDKs for the Lithium / Khoros platform. The Community plugin SDK
-  still ships under the original `lithium-sdk` name and carries the `li` CLI (see
-  ../cli/lithium-cli.yml). Brand Messenger ships native iOS, Android, React Native and
-  Flutter SDKs; Khoros Flow ships the flow.ai JavaScript SDK and message templates; the
-  Aurora community platform ships `khoros-aurora-sdk`.
+  Client libraries and SDKs for the Lithium / Khoros platform. The Community plugin SDK still
+  ships under the original `lithium-sdk` name and carries the `li` CLI (see
+  ../cli/lithium-cli.yml). Brand Messenger ships native iOS, Android, React Native and Flutter
+  SDKs; Khoros Flow ships the flow.ai JavaScript SDK and message templates; the Aurora
+  community platform ships `khoros-aurora-sdk`. Currency is uneven: only `khoros-aurora-sdk`
+  and the Brand Messenger distributions have shipped in 2026. The two SDKs that carry the
+  Lithium name itself — `lithium-sdk` (npm, 1.11.0, last published 2022-10-31) and
+  `li-android-sdk` (last tag v1.2.0, repo last pushed 2023-05) — have not been released in
+  over three years while the APIs they wrap are still documented and served.
 
 packages:
   - language: javascript
@@ -19,11 +25,15 @@ packages:
     url: https://www.npmjs.com/package/lithium-sdk
     install: npm install -g lithium-sdk
     repository: https://github.com/lithiumtech/lithium-sdk
-    version_seen: 1.11.0
+    version: 1.11.0
+    published: '2022-10-31'
     first_published: '2015-05-15'
-    last_published: '2025-07-14'
     official: true
     provides_cli: li
+    note: >-
+      Latest npm release is over three years old (checked 2026-08-13 against
+      registry.npmjs.org). The GitHub repository was last pushed 2026-04-15 and its newest
+      tag is v1.4.1, so the repo tags do not track the published npm versions.
     description: >-
       Lithium Community SDK — scaffolds, builds, previews and deploys Community plugins
       (FreeMarker components, endpoints, skins, assets) against a community instance.
@@ -33,13 +43,16 @@ packages:
     name: khoros-aurora-sdk
     url: https://www.npmjs.com/package/khoros-aurora-sdk
     install: npm install khoros-aurora-sdk
-    version_seen: 26.3.5
+    version: 26.4.3
+    published: '2026-07-27'
     first_published: '2024-03-26'
-    last_published: '2026-06-16'
     official: true
+    note: >-
+      The most actively maintained first-party package in the estate; calendar-versioned
+      (YY.MINOR.PATCH). Maintainers include the IgniteTech/Trilogy distribution accounts.
     description: >-
-      Aurora SDK — customize Aurora community plugin points from a Git repository and
-      preview changes against the community.
+      Aurora SDK — customize Aurora community plugin points from a Git repository and preview
+      changes against the community.
 
   - language: javascript
     registry: npm
@@ -48,8 +61,9 @@ packages:
     install: npm install flowai-js
     repository: https://github.com/flow-ai/flowai-js
     homepage: https://flow.ai
-    version_seen: 1.9.5
-    last_published: '2025-08-15'
+    version: 1.9.5
+    published: '2025-01-06'
+    first_published: '2016-12-22'
     official: true
     description: The Khoros Flow (flow.ai) JavaScript SDK.
 
@@ -59,8 +73,9 @@ packages:
     url: https://www.npmjs.com/package/flowai-js-templates
     install: npm install flowai-js-templates
     repository: https://github.com/flow-ai/flowai-js-templates
-    version_seen: 1.10.13
-    last_published: '2025-08-15'
+    version: 1.10.13
+    published: '2025-08-15'
+    first_published: '2017-04-13'
     official: true
     description: Message response templates for Khoros Flow (flow.ai).
 
@@ -69,45 +84,77 @@ packages:
     name: react-native-brandmessenger-sdk
     url: https://www.npmjs.com/package/react-native-brandmessenger-sdk
     install: npm install react-native-brandmessenger-sdk
-    repository: https://github.com/lithiumtech/react-native-brandmessenger-sdk
-    version_seen: 1.3.2
-    last_published: '2025-08-29'
+    version: 1.3.2
+    published: '2025-08-29'
+    first_published: '2024-04-26'
     official: true
+    note: >-
+      The package declares repository github.com/lithiumtech/react-native-brandmessenger-sdk,
+      but that repository returns HTTP 404 to the GitHub API (probed 2026-08-13) — the source
+      is private or has been removed, so only the published tarball is available.
     description: Official Khoros Brand Messenger React Native SDK.
 
   - language: swift
     registry: github
     name: li-ios-sdk
     url: https://github.com/lithiumtech/li-ios-sdk
+    version: 0.5.0
+    published: null
     official: true
+    note: >-
+      Distributed from GitHub, not a language registry, so there is no registry metadata
+      endpoint to date the release. Newest tag 0.5.0; repository last pushed 2025-09-13
+      (api.github.com, 2026-08-13).
     description: Lithium Community iOS SDK.
 
   - language: java
     registry: github
     name: li-android-sdk
     url: https://github.com/lithiumtech/li-android-sdk
+    version: v1.2.0
+    published: null
     official: true
+    note: >-
+      No registry (not on Maven Central). Newest tag v1.2.0; repository last pushed
+      2023-05-03 — over three years stale (api.github.com, 2026-08-13).
     description: Lithium Community (LIA) Android SDK.
 
   - language: objective-c
     registry: github
     name: ios-brandmessenger-sdk-dist
     url: https://github.com/lithiumtech/ios-brandmessenger-sdk-dist
+    version: v1.16.6
+    published: null
     official: true
+    note: >-
+      Binary distribution repository, no registry metadata endpoint. Newest tag v1.16.6;
+      repository last pushed 2026-06-06 (api.github.com, 2026-08-13).
     description: Khoros Brand Messenger iOS SDK distribution.
 
   - language: kotlin
     registry: github
     name: android-brandmessenger-sdk-dist
     url: https://github.com/lithiumtech/android-brandmessenger-sdk-dist
+    version: v2.0.1
+    published: null
     official: true
+    note: >-
+      Binary distribution repository, no registry metadata endpoint. Newest tag v2.0.1;
+      repository last pushed 2026-01-01 (api.github.com, 2026-08-13). This is ahead of the
+      1.16.1 the Brand Messenger changelog documents, so the published changelog trails the
+      shipped SDK.
     description: Khoros Brand Messenger Android SDK distribution.
 
   - language: dart
     registry: github
     name: flutter_brandmessenger_sdk
     url: https://github.com/lithiumtech/flutter_brandmessenger_sdk
+    version: 1.16.0
+    published: null
     official: true
+    note: >-
+      Not published to pub.dev; distributed from GitHub only. Newest tag 1.16.0; repository
+      last pushed 2025-09-09 (api.github.com, 2026-08-13).
     description: Khoros Brand Messenger Flutter SDK.
 
   - language: python
@@ -115,20 +162,33 @@ packages:
     name: khoros
     url: https://pypi.org/project/khoros/
     install: pip install khoros
-    version_seen: 5.4.0
+    version: 5.4.0
+    published: '2023-11-01'
     repository: https://github.com/jeffshurtliff/khoros
     official: false
     author: Jeff Shurtliff
     description: >-
-      Community-maintained (not first-party) Python library for managing a Khoros
-      Communities (formerly Lithium) environment. Widely used but published by an
-      individual, not by Khoros.
+      Community-maintained (not first-party) Python library for managing a Khoros Communities
+      (formerly Lithium) environment. Widely used but published by an individual, not by
+      Khoros. Last release 2023-11-01 (pypi.org, checked 2026-08-13).
+
+registries_checked:
+  - {registry: npm, endpoint: 'https://registry.npmjs.org/<pkg>', result: 5 first-party packages}
+  - {registry: pypi, endpoint: 'https://pypi.org/pypi/<pkg>/json', result: no first-party package (one community package)}
+  - {registry: maven-central, result: none}
+  - {registry: nuget, result: none}
+  - {registry: pkg.go.dev, result: none}
+  - {registry: rubygems, result: none}
+  - {registry: packagist, result: none}
+  - {registry: crates.io, result: none}
+  - {registry: pub.dev, result: none (the Flutter SDK is GitHub-only)}
 
 notes:
   - >-
-    No first-party package was found on Maven Central, NuGet, pkg.go.dev, RubyGems,
-    Packagist or crates.io for this provider; the native mobile SDKs are distributed via
-    GitHub repositories rather than language registries.
+    No first-party package was found on Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist,
+    crates.io or pub.dev; the native mobile SDKs are distributed via GitHub repositories rather
+    than language registries, which is why five entries carry `published: null` — there is no
+    registry metadata endpoint to date them, and the GitHub tag is the only version signal.
   - >-
     The github.com/lithiumtech organization is GitHub-verified and its display name is
     "Khoros" — it is the surviving first-party code home for the Lithium lineage.

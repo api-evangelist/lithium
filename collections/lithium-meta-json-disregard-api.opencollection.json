@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?disregard API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?disregard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get excluded trends from values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?disregard",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "disregard",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

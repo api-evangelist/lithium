@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Respond API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Respond",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Respond to incoming message (bot to channel)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/respond",
+            "headers": [
+              {
+                "name": "charset",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Respond to an incoming message (bot to channel)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

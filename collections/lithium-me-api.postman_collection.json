@@ -1,0 +1,226 @@
+{
+  "item": [
+    {
+      "id": "93e6a5dd-c1bf-47cc-8bbc-d021b43ff16e",
+      "name": "Me",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e5e3a1e-9e37-4ce0-91f1-ddac6fe22804",
+          "name": "List of your companies with this app enabled",
+          "request": {
+            "name": "List of your companies with this app enabled",
+            "description": {
+              "content": "List of your companies **with this app enabled**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d42d18a2-4484-4f33-b100-88c936990713",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"string\",\n  \"email\": \"APfCnS2F@kqJWUdjcYmbwCQAdRWRhtrvE.fks\",\n  \"companies\": [\n    {\n      \"sfEntityType\": \"string\",\n      \"directoryId\": 788,\n      \"name\": \"string\",\n      \"environment\": \"string\"\n    },\n    {\n      \"sfEntityType\": \"string\",\n      \"directoryId\": 1786,\n      \"name\": \"string\",\n      \"environment\": \"string\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e213a702-b940-4743-89cc-625c820942b5",
+          "name": "Retrieve a List of Companies with this App Enabled",
+          "request": {
+            "name": "Retrieve a List of Companies with this App Enabled",
+            "description": {
+              "content": "Retrieve a list of companies the currently-authenticated user is associated with for this app",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a7a7e97-0c5d-4ff2-a07c-cd2976862013",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companies\\\": [\\n      {\\n        \\\"directoryId\\\": \\\"24606\\\",\\n        \\\"environment\\\": \\\"APP3\\\",\\n        \\\"environmentUrl\\\": \\\"https://app3.spredfast.com\\\",\\n        \\\"id\\\": \\\"389\\\",\\n        \\\"name\\\": \\\"(documentation2)\\\",\\n        \\\"productName\\\": null,\\n        \\\"sfEntityType\\\": \\\"AvailableCompany\\\"\\n      }\\n    ],\\n    \\\"email\\\": \\\"ryan.pierson+doc@khoros.com\\\",\\n    \\\"sfEntityType\\\": \\\"User\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "5bfd1aaa-b7ad-4d40-a7d6-8acb3ff3d476",
+    "name": "agent-states-api-v2 AccountSet Me API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

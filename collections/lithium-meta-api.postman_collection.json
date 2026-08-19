@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "fba20505-d6d1-4acb-ab6a-13698cfc0b60",
+      "name": "Meta",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90f6dc32-ec74-4a77-9909-d749bb3b6f8f",
+          "name": "Define Object Structures",
+          "request": {
+            "name": "Define Object Structures",
+            "description": {
+              "content": "Define object structures for a specified type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meta",
+                "object",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1edb0807-3db0-452b-99e1-5a97e9e61c1c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meta",
+                    "object",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06490311-b22c-4e78-89fc-7e26b77dae7f",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meta",
+                    "object",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "d27533d2-ada8-4b8a-abd0-a3f912807269",
+    "name": "agent-states-api-v2 AccountSet Meta API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

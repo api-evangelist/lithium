@@ -1,0 +1,1348 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Reports API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/jobs"
+          },
+          "docs": "Retrieve the status of a job . This endpoint will be deprecated and removed in April 2020."
+        },
+        {
+          "info": {
+            "name": "Create conversation actions report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/conversation_actions",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\" target=\"_blank\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\" target=\"_blank\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "(Required) The end time in epoch milliseconds. This value will not be adjusted. includeDisabled"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the report. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "(Required) The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the report export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Conversation Actions export"
+        },
+        {
+          "info": {
+            "name": "Create conversation actions export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/conversation_actions",
+            "params": [
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a Conversation Actions export"
+        },
+        {
+          "info": {
+            "name": "Create user export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/user",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the agent. Use a separate instance of the `agentId` parameter for each agent to include. Example: `?agentId=1&agent=2&agentId=3`."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "(Required) The end time in epoch milliseconds. This value will not be adjusted. includeDisabled"
+              },
+              {
+                "name": "includeDisabled",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to include disabled agents in the report"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "(Required) The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the team used to filter the report. Find the team ID with the `/teams` endpoint. Example: `?teamId=1&teamId=2&teamId=3`"
+              }
+            ]
+          },
+          "docs": "Generate a User export"
+        },
+        {
+          "info": {
+            "name": "Create user export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/user",
+            "params": [
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a User export"
+        },
+        {
+          "info": {
+            "name": "Download export by run ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/:workflowId/:runId/download",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path",
+                "description": "The workflowId returned from a request to an export generation endpoint, such as `/reports/report/author`. Must be URL-encoded."
+              },
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The runID returned from a request to an export generation endpoint like /reports/report/author. Must be URL-encoded."
+              }
+            ]
+          },
+          "docs": "Download an export"
+        },
+        {
+          "info": {
+            "name": "Create raw author export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/author",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Genearate a Raw Author export"
+        },
+        {
+          "info": {
+            "name": "Create raw combined export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/combined",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Combined export"
+        },
+        {
+          "info": {
+            "name": "Create raw conversations export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/conversation",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "conversationReportType",
+                "value": "",
+                "type": "query",
+                "description": "_Used only for the Raw Conversation export._ Pass one of the following to specify which conversations to include in the export. If not specified, defaults to OPEN_AT_END:<br><br> OPEN_AT_END - get all conversations that were Open at the end of the interval set by `startTime` and `endTime`<br>CLOSED - get all conversations that were Closed during the interval set by `startTime` and `endTime`<br> CREATED - get all conversations that were created during the interval set by `startTime` and `endTime`"
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Conversations export"
+        },
+        {
+          "info": {
+            "name": "Create conversation action history export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/conversation_history_action",
+            "params": [
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "raiselimit",
+                "value": "",
+                "type": "query",
+                "description": "Enables an increase in the limit on the number of actions per conversation allowed in the export. By default, the limit in the export is 500 actions per single conversation that appears in the export. Using `raiselimit=true` will increase the limit to 2,000 actions per conversation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a Conversation Action History export"
+        },
+        {
+          "info": {
+            "name": "Create raw incoming post export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/incoming_post",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`.<br><br>Prior to the February 2019 release, only the Agent State Export, Raw Brand Post Export, Raw Expert Help Request, Raw Response, Raw Team Performance, and Team Performance Interval reports were available in JSON format."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Incoming Post export"
+        },
+        {
+          "info": {
+            "name": "Create agent state export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/raw_agent_states",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "teamIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified team ID.<br><br>You must use the ID of the team for this parameter. Use `/api/v2/public/teams` to find IDs for your existing teams.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Genereate an Agent State Export export"
+        },
+        {
+          "info": {
+            "name": "Create raw help request export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/raw_expert_help",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Help Request export"
+        },
+        {
+          "info": {
+            "name": "Create raw response export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/response",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Response export"
+        },
+        {
+          "info": {
+            "name": "Create raw response approval export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/response_approval",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "includeDisabled",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to include disabled agents in the report."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Response Approval export"
+        },
+        {
+          "info": {
+            "name": "Create raw team performance export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/team_performance",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "includeDisabled",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to include disabled agents in the report."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "teamIds",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the team used to filter the export. Find the team ID with the `/teams` endpoint."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Generate a Raw Team Performance export"
+        },
+        {
+          "info": {
+            "name": "Run team performance interval export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/team_performance_interval",
+            "params": [
+              {
+                "name": "businessHourType",
+                "value": "",
+                "type": "query",
+                "description": "Sets the business hour type. `true` means “within business hours”, `false` means “outside of business hours”, and null/missing means “No Business Hours, aka 24/7”.<br><br>If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`.<br><br>Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a>."
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "enableBusinessHour",
+                "value": "",
+                "type": "query",
+                "description": "Enables filtering by business hours using the `businessHourType` parameter.  If you pass in a non-null value for `businessHourType`, you *must* also pass in `enableBusinessHour=true`. Learn more about business hours in <a href=\"https://community.khoros.com/t5/Khoros-Care-Analytics/Business-hours-in-Response-enabling-and-reporting/ta-p/160172\">Business hours in Response</a><br><br>If the Smart View specified by the `smartViewId` parameter uses business hours, the smart view’s settings (as defined in Response’s Admin screen) for business hours overrides both `enableBusinessHour` and `businessHourType`."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "includeDisabled",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to include disabled agents in the report."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the export. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use `reportMetrics` to return specific metrics (columns) in the export. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the export to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "timeInterval",
+                "value": "",
+                "type": "query",
+                "description": "The interval period for the team performance report. Supported values include:<br><br>300000 => 5 minute<br>600000 => 10 minutes<br> 900000 => 15 minutes<br> 1800000 => 30 minutes<br> 3600000 => 1 hour<br> 7200000 => 2 hours<br> 14400000 => 4 hours<br> 28800000 => 8 hours<br> 43200000 => 12 hours<br> 86400000 => 1 day<br> 604800000 => 1 week<br><br> Anything greater than 1 week is interpreted as monthly intervals. Anything less than 1 week, and not one of the supported values listed above, will result in an error.<br><br>For a date range of 1 month, the allowed `timeInterval` values are:<br> 86400000 => 1 day<br>604800000 => 1 week<br><br>For a date range of 1 week, the allowed timeInterval values are:<br>28800000 => 8 hours<br>43200000 => 12 hours<br>86400000 => 1 day<br><br>If a timeInterval value specified is not one of the allowed values, the Analytics API will respond with the following:<br>`\"result\": \"Unable to hydrate filter for export info: com.lithium.socialweb.analytics.webapp.models.filter.HydrationException: Too many buckets (745) requested. Select a larger interval?\"`"
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the export to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Run a Team Performance Interval export"
+        },
+        {
+          "info": {
+            "name": "Run care analytics report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/reports/report/:report_type",
+            "params": [
+              {
+                "name": "report_type",
+                "value": "",
+                "type": "path",
+                "description": "Supported values: <br>author<br>combined<br>conversation<br>incoming_post<br>raw_expert_help<br>raw_agent_states<br>response_approval<br>team_performance<br>team_performance_interval"
+              },
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**."
+              },
+              {
+                "name": "conversationReportType",
+                "value": "",
+                "type": "query",
+                "description": "_Used only for the Raw Conversation export._ Pass one of the following to specify which conversations to include in the report. If not specified, defaults to OPEN_AT_END:<br><br> OPEN_AT_END - get all conversations that were Open at the end of the interval set by `startTime` and `endTime`<br>CLOSED - get all conversations that were Closed during the interval set by `startTime` and `endTime`<br> CREATED - get all conversations that were created during the interval set by `startTime` and `endTime`"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "includeDisabled",
+                "value": "",
+                "type": "query",
+                "description": "_Used with Team Performance, Team Performance Interval, and Raw Response Approvals._ Whether or not to include disabled agents in the report.  Default is `false`."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "The locale to use for the report. Supported values: en, es, fr, de, tr"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filters the reports to only data (posts or conversations) that match the specified priority.<br><br>Pass a comma-separated list with values 0 through 5. The list must be URL-encoded. For example: priorities=0%2C1%2C2%2C3%2C4%2C5<br/><br/>If not specified, all priorities are included."
+              },
+              {
+                "name": "reportFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the export. Possible values: json or csv. Default is `json`."
+              },
+              {
+                "name": "reportMetrics",
+                "value": "",
+                "type": "query",
+                "description": "Added December 2018. Use reportMetrics to return specific metrics (columns) in the report. You can use this to return a subset of metrics and also to return metrics currently disabled for your company. Use a separate `reportMetrics` query parameter for each metric desired.<br><br>Example: `reportMetrics=agent_name&reportMetrics=agent_email&reportMetrics=agent_id`"
+              },
+              {
+                "name": "smartViewId",
+                "value": "",
+                "type": "query",
+                "description": "Filters the reports to only data (posts or conversations) that match the specified smart view.  You must use the ID of the smart view for this parameter. Use `/api/v2/smartviews` to find IDs for your existing smart view.  **Note:** Only one smart view ID can be passed in as a parameter."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time in epoch milliseconds. This value will not be adjusted."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "A time zone ID to specify in which time zone to format dates in the report export. Find supported time zone IDs using the `/config/timezones` endpoint."
+              },
+              {
+                "name": "timezoneOffset",
+                "value": "",
+                "type": "query",
+                "description": "Pass the timezone offset in milliseconds to calculate and format dates in the report to this offset.<br><br>If not provided, then times will be in UTC (Coordinated Universal Time).<br><br>This is only used to format dates, and is not aware of changes to/from Daylight Saving Time.<br><br>Use Positive values for timezones ahead of UTC and negative values for timezones behind UTC.<br><br>Examples:<br>A timezone that is UTC +01:00 should send in a timezoneOffset of 3600000.<br>A timezone that is UTC -01:00 should send in a timezoneOffset of -3600000."
+              },
+              {
+                "name": "teamIds",
+                "value": "",
+                "type": "query",
+                "description": "_Used only with Raw Team Performance, Team Performance Interval, and Raw Response Approval_ The ID of the team used to filter the report. Find the team ID with the `/teams` endpoint."
+              },
+              {
+                "name": "timeInterval",
+                "value": "",
+                "type": "query",
+                "description": "_Used only with Team Performance Interval._ The interval period for the team performance report. Supported values are:<br><br>300000 => 5 minute<br>600000 => 10 minutes<br> 900000 => 15 minutes<br> 1800000 => 30 minutes<br> 3600000 => 1 hour<br> 7200000 => 2 hours<br> 14400000 => 4 hours<br> 28800000 => 8 hours<br> 43200000 => 12 hours<br> 86400000 => 1 day<br> 604800000 => 1 week<br><br> Anything greater than 1 week is interpreted as monthly intervals. Anything less than 1 week, and not one of the supported values listed above, will result in an error."
+              },
+              {
+                "name": "workqueueIds",
+                "value": "",
+                "type": "query",
+                "description": "Filters the reports to only data (posts or conversations) that match the specified work queue.<br><br>You must use the ID of the work queue for this parameter. Use `/api/v2/workqueues/active` to find IDs for your existing work queues.<br><br>Pass a comma-separated list of the IDs. The list must be URL-encoded. For example: `workqueueIds=15%2C21%2C2%2C23%2C52%2C13`"
+              }
+            ]
+          },
+          "docs": "Run a Care Analytics report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

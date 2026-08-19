@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Flow Rest Api API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flow Rest Api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:threadId",
+            "params": [
+              {
+                "name": "{threadId}",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier of the thread. This is a required field."
+              },
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "query",
+                "description": "Required parameter. The event name."
+              }
+            ]
+          },
+          "docs": "Trigger an event"
+        },
+        {
+          "info": {
+            "name": "Retrieve a bot's status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/",
+            "params": [
+              {
+                "name": "sync",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter for enabling sync mode"
+              },
+              {
+                "name": "{threadId}",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the thread"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a bot (whether it's paused or active) for a specific `threadId`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

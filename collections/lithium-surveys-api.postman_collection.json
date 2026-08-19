@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "e214fbb7-0ea7-47c6-881b-cbbb15db31bc",
+      "name": "Surveys",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f843704b-47a7-47af-8434-e97abc4bdb2f",
+          "name": "Surveys: List All Survey Data for a Set of Streams",
+          "request": {
+            "name": "Surveys: List All Survey Data for a Set of Streams",
+            "description": {
+              "content": "Returns a list of the available survey data for a given set of streams",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "surveys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "2016-01-01T00:00:00Z",
+                  "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "stop",
+                  "value": "2017-05-01T00:00:00Z",
+                  "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+                },
+                {
+                  "disabled": false,
+                  "key": "stream_ids",
+                  "value": "<integer>",
+                  "description": "A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company) endpoint to get the appropriate stream IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "stream_ids",
+                  "value": "<integer>",
+                  "description": "A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company) endpoint to get the appropriate stream IDs."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f6c5e93-5ffa-45b0-9e0c-661dde4a89e4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "2016-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "stop",
+                      "value": "2017-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "stream_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "stream_ids",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Coming Soon",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4f743fb-7617-424b-b041-2db247127dcc",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "2016-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "stop",
+                      "value": "2017-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "stream_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "stream_ids",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f2e0fce5-1765-4dc5-a8fa-fb9450797d1f",
+    "name": "agent-states-api-v2 AccountSet Surveys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

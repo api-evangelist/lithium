@@ -1,0 +1,156 @@
+{
+  "item": [
+    {
+      "id": "de968cb7-3db7-4821-8225-05ff0e97c7e0",
+      "name": "Labelsets Api",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ef4e7ff-ef9e-48d0-8754-f0a68291db8e",
+          "name": "Retrieve a Page of Labels Nested within Sets",
+          "request": {
+            "name": "Retrieve a Page of Labels Nested within Sets",
+            "description": {
+              "content": "Retrieve a page of labels nested within sets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "<string>",
+                  "description": "(Required) Page Number"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<string>",
+                  "description": "(Required) Page Size"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d8db889-8cd0-4487-8aa3-0b72ca35269f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"care\\\": true,\\n      \\\"createdByDirectoryUserId\\\": 232809,\\n      \\\"createdDate\\\": 1616018436858,\\n      \\\"description\\\": \\\"These are labels used for general posts.\\\",\\n      \\\"directoryCompanyId\\\": 24606,\\n      \\\"id\\\": \\\"example-8812-4646-902a-1c228d1cebc3\\\",\\n      \\\"initiativeIds\\\": [],\\n      \\\"labels\\\": [\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"example-3390-4b1a-903e-7fe79bfcd9ba\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"example-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687375,\\n          \\\"name\\\": \\\"Ideas\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        },\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"example-3f9d-48f7-80a9-c70bc0b22457\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"example-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687379,\\n          \\\"name\\\": \\\"Innovations\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        },\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"example-29af-4576-a74a-b74c143afd14\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"example-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687380,\\n          \\\"name\\\": \\\"Inspirations\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        },\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"f0718055-200f-426c-a144-32e5cdb85dfd\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"f10175c7-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687376,\\n          \\\"name\\\": \\\"Inventions\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        },\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"example-1d35-4b33-9f7b-057851f28e84\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"example-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687377,\\n          \\\"name\\\": \\\"Products\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        },\\n        {\\n          \\\"color\\\": null,\\n          \\\"createdByDirectoryUserId\\\": 232809,\\n          \\\"createdDate\\\": 1616018436858,\\n          \\\"directoryCompanyId\\\": 24606,\\n          \\\"id\\\": \\\"1fac7b26-c82f-45a8-9649-78393ab82fcb\\\",\\n          \\\"initiativeIds\\\": [],\\n          \\\"labelSetId\\\": \\\"f10175c7-8812-4646-902a-1c228d1cebc3\\\",\\n          \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n          \\\"lastModifiedDate\\\": 1616018436858,\\n          \\\"legacyId\\\": 687378,\\n          \\\"name\\\": \\\"Services\\\",\\n          \\\"parentLabelIds\\\": [],\\n          \\\"status\\\": \\\"ACTIVE\\\"\\n        }\\n      ],\\n      \\\"lastModifiedByDirectoryUserId\\\": 232809,\\n      \\\"lastModifiedDate\\\": 1616018436858,\\n      \\\"marketing\\\": true,\\n      \\\"multiSelect\\\": true,\\n      \\\"name\\\": \\\"General Labels\\\",\\n      \\\"parentLabelSetId\\\": null,\\n      \\\"profiles\\\": false,\\n      \\\"required\\\": false,\\n      \\\"status\\\": \\\"ACTIVE\\\"\\n    }\\n  ],\\n  \\\"pageNumber\\\": 1,\\n  \\\"pageSize\\\": 20,\\n  \\\"totalRecords\\\": 1\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "6b8f038f-b9a6-4a13-9047-08108c8e5a24",
+    "name": "agent-states-api-v2 AccountSet Labelsets Api API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

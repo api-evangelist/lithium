@@ -1,0 +1,173 @@
+{
+  "item": [
+    {
+      "id": "45c006ca-ca39-42ee-b9aa-8cbd2b89d402",
+      "name": "Compare.json?streams={content}&sort",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8264841f-292f-4105-97e0-714f21aaed88",
+          "name": "Get specified sort order",
+          "request": {
+            "name": "Get specified sort order",
+            "description": {
+              "content": "Defines the sort order of the results",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "{{content}}"
+                },
+                {
+                  "key": "sort",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "pct asc",
+                  "description": "Possible Values: `pct asc`, `pct desc`"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "234281a8-c7a5-4052-93ba-d778268a9413",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compare.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "streams",
+                      "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "pct asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 12990,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 0,\\n        \\\"total\\\": 12990\\n      },\\n      \\\"created_at\\\": \\\"2012-02-03T15:17:01Z\\\",\\n      \\\"description\\\": \\\"Topic 1\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/galaxy-topic1\\\",\\n      \\\"name\\\": \\\"galaxy-topic1\\\",\\n      \\\"pct\\\": 2,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 551979,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 81681394,\\n        \\\"total\\\": 82233373\\n      },\\n      \\\"created_at\\\": \\\"2013-09-09T18:26:01Z\\\",\\n      \\\"description\\\": \\\"The Twitterverse has some good things to say about the Amazon Kindle.\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/kindle\\\",\\n      \\\"name\\\": \\\"kindle\\\",\\n      \\\"pct\\\": 98,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "b0b6c052-d651-4f19-b8bb-3e9b98ef585c",
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams={content}&sort API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

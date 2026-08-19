@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?precision API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?precision",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get specific decimals in percent return",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?precision",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Determines the number of decimal places to return in percentages"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

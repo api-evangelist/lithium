@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Discussion API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discussion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send batch(es) of messages to be assembled into a case by reference message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:integrationUuid/discussion",
+            "params": [
+              {
+                "name": "integrationUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the social integration"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send one or more batches of messages to be assembled onto a case based on a reference message"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

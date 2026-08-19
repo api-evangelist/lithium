@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Requests API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create GDPR request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a GDPR request"
+        },
+        {
+          "info": {
+            "name": "Get GDPR request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/requests/:requestUUID",
+            "params": [
+              {
+                "name": "requestUUID",
+                "value": "",
+                "type": "path",
+                "description": "The `requestUUID` returned from your original GDPR request"
+              }
+            ]
+          },
+          "docs": "Check the status of a GDPR request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

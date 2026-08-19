@@ -1,0 +1,282 @@
+{
+  "item": [
+    {
+      "id": "84dd89b1-8555-47c3-b322-7904871eab22",
+      "name": "Email",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc5b42c1-786d-4a5c-aa4a-73ed99c4c605",
+          "name": "Set Agent State by Email",
+          "request": {
+            "name": "Set Agent State by Email",
+            "description": {
+              "content": "Change the State (`stateUUID`) of an Agent identified by Email (`userEmail`)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "email",
+                ":userEmail",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stateUUID",
+                  "value": "<string>",
+                  "description": "The unique identifier for the state to which the Agent will be switched."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userEmail",
+                  "description": "(Required) The email address of the agent being placed into a new state."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06a315f5-5211-4e6e-9eaf-b26f78ae5f3a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    ":userEmail",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userEmail",
+                      "description": "(Required) The email address of the agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": \\\"OK\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15b0537d-d058-4b59-a87e-1b38e2c19413",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    ":userEmail",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userEmail",
+                      "description": "(Required) The email address of the agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"fail\\\",\\n    \\\"message\\\": \\\"State with UUID c0ed7f9f-f98a-40a8-a9a4-example56ba8 not available to team TEAM.5228 for User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e4bc340-28fc-4101-98ca-042161eaf500",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    ":userEmail",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userEmail",
+                      "description": "(Required) The email address of the agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"fail\\\",\\n    \\\"message\\\": \\\"User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03 does not have an active session, could not set state to example-5c3e-4c2f-8949-670425bb4e18\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f688b762-165a-40f1-b599-246faa79b6e7",
+    "name": "agent-states-api-v2 AccountSet Email API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "d816e504-5a4a-4c5c-b69d-220e04a84aa7",
+      "name": "Streams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5af3cc3b-c7f9-4b74-b4f9-f9a373117ddb",
+          "name": "Streams: List All Available Streams for a Company",
+          "request": {
+            "name": "Streams: List All Available Streams for a Company",
+            "description": {
+              "content": "Returns a list of the available streams for a given Company Directory ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a77cda3d-9233-4979-bf77-2e8f74c731e8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[\\n  {\\n    \\\"campaign_id\\\": 1710,\\n    \\\"credential_id\\\": 0,\\n    \\\"hash\\\": \\\"c4ad3d29f2c80eea1c557a817581f04a\\\",\\n    \\\"id\\\": 22910,\\n    \\\"inbox\\\": false,\\n    \\\"mode\\\": \\\"standard\\\",\\n    \\\"name\\\": \\\"All Activity\\\",\\n    \\\"query\\\": \\\"\\\",\\n    \\\"stream_type\\\": \\\"spredfast\\\",\\n    \\\"user_id\\\": 73208\\n  },\\n  {\\n    \\\"campaign_id\\\": 1710,\\n    \\\"credential_id\\\": 0,\\n    \\\"hash\\\": \\\"17d10dfe348ab18a449858e836f59a7f\\\",\\n    \\\"id\\\": 22911,\\n    \\\"inbox\\\": false,\\n    \\\"mode\\\": \\\"user_engagement\\\",\\n    \\\"name\\\": \\\"Recent Engagement\\\",\\n    \\\"query\\\": \\\"\\\",\\n    \\\"stream_type\\\": \\\"spredfast\\\",\\n    \\\"user_id\\\": 73208\\n  }\\n]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f611926-24da-4f32-ad4a-b589df0d2753",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "01e5e832-aec8-4e10-be63-1178c23c3595",
+    "name": "agent-states-api-v2 AccountSet Streams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

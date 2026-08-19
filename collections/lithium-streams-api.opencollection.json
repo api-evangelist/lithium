@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Streams API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Streams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Streams: List All Available Streams for a Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/streams"
+          },
+          "docs": "Returns a list of the available streams for a given Company Directory ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

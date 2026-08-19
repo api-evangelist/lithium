@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Assets API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new Content Center Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/asset",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new image/video Content Center Asset."
+        },
+        {
+          "info": {
+            "name": "Create a new Content Center image/video Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/asset?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "video",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "videoSize",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new image/video Content Center Asset."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Content Center Asset based by asset ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/asset/:assetId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a Content Center Asset based by asset ID (including content labels information)."
+        },
+        {
+          "info": {
+            "name": "Update existing Content Center Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/asset/:assetId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "removeImage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "removeVideo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Content Center Asset based on the JSON request body."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

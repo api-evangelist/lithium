@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?num Trends API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?num Trends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get number of topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?num_trends",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "num_trends",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves the number of topics (buckets)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

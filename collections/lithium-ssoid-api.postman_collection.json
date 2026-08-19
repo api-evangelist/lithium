@@ -1,0 +1,282 @@
+{
+  "item": [
+    {
+      "id": "a70911f9-2217-4aa2-9bac-489e99645d89",
+      "name": "SsoId",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96eac9cc-b457-4d06-a29b-38d5160a77d7",
+          "name": "Set Agent State by SSO ID",
+          "request": {
+            "name": "Set Agent State by SSO ID",
+            "description": {
+              "content": "Set the State (`stateUUID`) of an active Agent identified by SSO ID (`ssoId`)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssoId",
+                ":ssoId",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stateUUID",
+                  "value": "<string>",
+                  "description": "The unique identifier for the state to which the Agent will be switched."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ssoId",
+                  "description": "(Required) The universally unique identifier (UUID) of the Agent being placed into a new state."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a367440a-4d41-4965-8ec5-f703b505fb28",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssoId",
+                    ":ssoId",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ssoId",
+                      "description": "(Required) The universally unique identifier (UUID) of the Agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": \\\"OK\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f9256ac-fc80-4795-ab8d-b517e20c5ac6",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssoId",
+                    ":ssoId",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ssoId",
+                      "description": "(Required) The universally unique identifier (UUID) of the Agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"fail\\\",\\n    \\\"message\\\": \\\"State with UUID c0ed7f9f-f98a-40a8-a9a4-example56ba8 not available to team TEAM.5228 for User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb6e754d-2193-4d61-805a-5e849d5bbd6d",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssoId",
+                    ":ssoId",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateUUID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ssoId",
+                      "description": "(Required) The universally unique identifier (UUID) of the Agent being placed into a new state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"fail\\\",\\n    \\\"message\\\": \\\"User 1234567<name@example.com / John Doe> with user UUID example-7eef-4196-ad76-cb2f2ebbdd03 does not have an active session, could not set state to example-5c3e-4c2f-8949-670425bb4e18\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "6d698804-8aad-4a97-9a11-d147a2138b58",
+    "name": "agent-states-api-v2 AccountSet SsoId API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

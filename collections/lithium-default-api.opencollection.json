@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet # API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get paginated list of authors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/#",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "An integer specifying how many authors to look back, and the first response will start with that result and show the previous 10"
+              },
+              {
+                "name": "include_deleted_crm",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all authors in a paginated response"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

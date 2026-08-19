@@ -1,0 +1,308 @@
+{
+  "item": [
+    {
+      "id": "0c72a35a-26ab-471c-90d0-f2df777dd627",
+      "name": "BySourceDocumentId",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f026d9c0-68b4-4eae-b427-63cdb2ca7ca5",
+          "name": "Get conversation details by document source ID",
+          "request": {
+            "name": "Get conversation details by document source ID",
+            "description": {
+              "content": "Get conversation details by display ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bySourceDocumentId",
+                "networks",
+                ":network",
+                "instances",
+                ":instance",
+                "id",
+                ":source document id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) The unique name of the network serving as the source channel for the conversation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance",
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  }
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "source document id",
+                  "description": "(Required) This is the unique ID given by the source channel for the document. (i.e. Facebook post)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52b48a0c-f6e8-47b3-a119-3bed1b08ba04",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bySourceDocumentId",
+                    "networks",
+                    ":network",
+                    "instances",
+                    ":instance",
+                    "id",
+                    ":source document id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) The unique name of the network serving as the source channel for the conversation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance",
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      }
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source document id",
+                      "description": "(Required) This is the unique ID given by the source channel for the document. (i.e. Facebook post)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"success\\\",\\n  \\\"data\\\": [\\n    {\\n      \\\"userHasPermissionToView\\\": true,\\n      \\\"displayNumber\\\": 1878862,\\n      \\\"primaryDocId\\\": 3319840,\\n      \\\"stateId\\\": 2,\\n      \\\"dispositionId\\\": 19,\\n      \\\"encodedCaseDisposition\\\": 2579,\\n      \\\"customDisposition\\\": \\\"We love examples\\\",\\n      \\\"status\\\": \\\"CLOSED\\\",\\n      \\\"assignedToAgent\\\": {\\n        \\\"name\\\": \\\"John Doe\\\",\\n        \\\"email\\\": \\\"johndoe@example.com\\\",\\n        \\\"lswUuid\\\": \\\"401e017b-e98f-4eed-9345-3487ae9207cf\\\"\\n      },\\n      \\\"lswUuid\\\": \\\"45cd7d6f-ca88-46ff-a71d-84859c94e420\\\",\\n      \\\"ownerId\\\": 1003043,\\n      \\\"reviewOwnerId\\\": 0,\\n      \\\"createDate\\\": 1592511678995,\\n      \\\"tarStartDate\\\": 1592435572000,\\n      \\\"dueDate\\\": 1592521972000,\\n      \\\"closeDate\\\": 1592918036137,\\n      \\\"responsePortalLink\\\": \\\"https://<your_care_url>/portal/conversation/1878862\\\",\\n      \\\"primaryMessage\\\": {\\n        \\\"lakeProperties\\\": [],\\n        \\\"userHasPermissionToView\\\": true,\\n        \\\"isSourceHidden\\\": false,\\n        \\\"gdprdeleted\\\": false,\\n        \\\"documentId\\\": 3319840,\\n        \\\"conversationDisplayId\\\": 1878862,\\n        \\\"network\\\": \\\"lithium\\\",\\n        \\\"networkinstance\\\": \\\"example.com/\\\",\\n        \\\"id\\\": \\\"example.com/:444\\\",\\n        \\\"lswUuid\\\": \\\"e1624458-361d-4072-b92c-03a98a6d8452\\\",\\n        \\\"author\\\": {\\n          \\\"gdprMarked\\\": false,\\n          \\\"gdprScrubbed\\\": false,\\n          \\\"authorId\\\": 111327667,\\n          \\\"lswUuid\\\": \\\"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\\\",\\n          \\\"name\\\": \\\"DaveEvGUEST\\\",\\n          \\\"screenName\\\": \\\"DaveEvGUEST\\\",\\n          \\\"network\\\": \\\"lithium\\\",\\n          \\\"networkinstance\\\": \\\"example.com/\\\",\\n          \\\"id\\\": \\\"94\\\",\\n          \\\"avatarUrl\\\": \\\"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\\\",\\n          \\\"personId\\\": 111549247,\\n          \\\"tags\\\": [\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 28724,\\n              \\\"lswUuid\\\": \\\"7b84200c-54fe-4a01-a7db-b1118b83bead\\\"\\n            },\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 61719,\\n              \\\"lswUuid\\\": \\\"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\\\"\\n            },\\n            {\\n              \\\"creator\\\": {\\n                 \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 60314,\\n              \\\"lswUuid\\\": \\\"a500a902-15c3-4b1b-b57f-39796f9c6392\\\"\\n            },\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"AGENT\\\"\\n              },\\n              \\\"tagId\\\": 16284,\\n              \\\"lswUuid\\\": \\\"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\\\"\\n            },\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 59916,\\n              \\\"lswUuid\\\": \\\"3045f656-2938-4b85-8b43-cd358fc16f68\\\"\\n            }\\n          ]\\n        },\\n        \\\"receiveDate\\\": 1592511678000,\\n        \\\"publishDate\\\": 1592435572000,\\n        \\\"postContent\\\": \\\"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\\\",\\n        \\\"url\\\": \\\"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\\\",\\n        \\\"isPrivate\\\": false,\\n        \\\"isReferenceDoc\\\": true,\\n        \\\"tags\\\": [\\n          {\\n            \\\"creator\\\": {\\n              \\\"type\\\": \\\"SYSTEM\\\"\\n            },\\n            \\\"tagId\\\": 12,\\n            \\\"lswUuid\\\": \\\"48a6df96-1f88-11e7-9247-99eedf934291\\\"\\n          },\\n          {\\n            \\\"creator\\\": {\\n              \\\"type\\\": \\\"SYSTEM\\\"\\n            },\\n            \\\"tagId\\\": 3945,\\n            \\\"lswUuid\\\": \\\"240bf655-4728-11e8-84fc-0a0bfd34bea2\\\"\\n          }\\n        ],\\n        \\\"docMeta\\\": {\\n          \\\"lang\\\": \\\"en\\\"\\n        },\\n        \\\"urlRecords\\\": [],\\n        \\\"title\\\": \\\"Need some advice\\\",\\n        \\\"inReplySourceId\\\": \\\"\\\",\\n        \\\"text\\\": \\\"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\\\",\\n        \\\"documentType\\\": \\\"LI_TOPIC\\\",\\n        \\\"ingestMethod\\\": \\\"UNKNOWN\\\",\\n        \\\"createdDuringBusinessHours\\\": false,\\n        \\\"isSourceDeleted\\\": false,\\n        \\\"isSoftAttached\\\": false,\\n        \\\"media\\\": []\\n      },\\n      \\\"messages\\\": [\\n        {\\n          \\\"lakeProperties\\\": [],\\n          \\\"userHasPermissionToView\\\": true,\\n          \\\"isSourceHidden\\\": false,\\n          \\\"gdprdeleted\\\": false,\\n          \\\"documentId\\\": 3319840,\\n          \\\"conversationDisplayId\\\": 1878862,\\n          \\\"network\\\": \\\"lithium\\\",\\n          \\\"networkinstance\\\": \\\"example.com/\\\",\\n          \\\"id\\\": \\\"example.com/:444\\\",\\n          \\\"lswUuid\\\": \\\"e1624458-361d-4072-b92c-03a98a6d8452\\\",\\n          \\\"author\\\": {\\n            \\\"gdprMarked\\\": false,\\n            \\\"gdprScrubbed\\\": false,\\n            \\\"authorId\\\": 111327667,\\n            \\\"lswUuid\\\": \\\"4bb6ce8b-fff0-4d7c-b9b2-51c7a96f84c1\\\",\\n            \\\"name\\\": \\\"DaveEvGUEST\\\",\\n            \\\"screenName\\\": \\\"DaveEvGUEST\\\",\\n            \\\"network\\\": \\\"lithium\\\",\\n            \\\"networkinstance\\\": \\\"example.com/\\\",\\n            \\\"id\\\": \\\"94\\\",\\n            \\\"avatarUrl\\\": \\\"https://example.com/t5/image/serverpage/avatar-name/bird/avatar-theme/candy/avatar-collection/animals/avatar-display-size/print/version/2?xdesc=1.0\\\",\\n            \\\"personId\\\": 111549247,\\n            \\\"tags\\\": [\\n              {\\n                \\\"creator\\\": {\\n                  \\\"type\\\": \\\"SYSTEM\\\"\\n                },\\n                \\\"tagId\\\": 28724,\\n                \\\"lswUuid\\\": \\\"7b84200c-54fe-4a01-a7db-b1118b83bead\\\"\\n              },\\n              {\\n                \\\"creator\\\": {\\n                  \\\"type\\\": \\\"SYSTEM\\\"\\n                },\\n                \\\"tagId\\\": 61719,\\n                \\\"lswUuid\\\": \\\"7549e9a9-d13e-4f7b-abc5-aa8d77cf7eca\\\"\\n              },\\n              {\\n                \\\"creator\\\": {\\n                  \\\"type\\\": \\\"SYSTEM\\\"\\n                },\\n                \\\"tagId\\\": 60314,\\n                \\\"lswUuid\\\": \\\"a500a902-15c3-4b1b-b57f-39796f9c6392\\\"\\n              },\\n              {\\n                \\\"creator\\\": {\\n                  \\\"type\\\": \\\"AGENT\\\"\\n                },\\n                \\\"tagId\\\": 16284,\\n                \\\"lswUuid\\\": \\\"37f183bd-cff2-46b1-9e18-7afb7ffcdcd2\\\"\\n              },\\n              {\\n                \\\"creator\\\": {\\n                  \\\"type\\\": \\\"SYSTEM\\\"\\n                },\\n                \\\"tagId\\\": 59916,\\n                \\\"lswUuid\\\": \\\"3045f656-2938-4b85-8b43-cd358fc16f68\\\"\\n              }\\n            ]\\n          },\\n          \\\"receiveDate\\\": 1592511678000,\\n          \\\"publishDate\\\": 1592435572000,\\n          \\\"postContent\\\": \\\"<p>My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....</p>\\\",\\n          \\\"url\\\": \\\"https://example.com/t5/Auto-Smoke-Blog/Need-some-advice/ba-p/444\\\",\\n          \\\"isPrivate\\\": false,\\n          \\\"isReferenceDoc\\\": true,\\n          \\\"tags\\\": [\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 12,\\n              \\\"lswUuid\\\": \\\"48a6df96-1f88-11e7-9247-99eedf934291\\\"\\n            },\\n            {\\n              \\\"creator\\\": {\\n                \\\"type\\\": \\\"SYSTEM\\\"\\n              },\\n              \\\"tagId\\\": 3945,\\n              \\\"lswUuid\\\": \\\"240bf655-4728-11e8-84fc-0a0bfd34bea2\\\"\\n            }\\n          ],\\n          \\\"docMeta\\\": {\\n            \\\"lang\\\": \\\"en\\\"\\n          },\\n          \\\"urlRecords\\\": [],\\n          \\\"title\\\": \\\"Need some advice\\\",\\n          \\\"inReplySourceId\\\": \\\"\\\",\\n          \\\"text\\\": \\\"My truck smokes when it is cold, then is fine once it warms up. Summer time? No smoke, at all....\\\",\\n          \\\"documentType\\\": \\\"LI_TOPIC\\\",\\n          \\\"ingestMethod\\\": \\\"UNKNOWN\\\",\\n          \\\"createdDuringBusinessHours\\\": false,\\n          \\\"isSourceDeleted\\\": false,\\n          \\\"isSoftAttached\\\": false,\\n          \\\"media\\\": []\\n        }\\n      ],\\n      \\\"tags\\\": [\\n        {\\n          \\\"creator\\\": {\\n            \\\"type\\\": \\\"AGENT\\\"\\n          },\\n          \\\"tagId\\\": 20545,\\n          \\\"lswUuid\\\": \\\"ec56355a-6628-4c11-865b-10adf01f7f71\\\"\\n        },\\n        {\\n          \\\"creator\\\": {\\n            \\\"type\\\": \\\"SYSTEM\\\"\\n          },\\n          \\\"tagId\\\": 61987,\\n          \\\"lswUuid\\\": \\\"861038a4-9604-4920-9f12-952f1e04484f\\\"\\n        }\\n      ],\\n      \\\"priority\\\": 5,\\n      \\\"workQueue\\\": {\\n        \\\"lswUuid\\\": \\\"e00dd04f-a459-47d8-9d94-d368eaffedef\\\",\\n        \\\"id\\\": 156\\n      },\\n      \\\"notes\\\": [\\n        {\\n          \\\"source\\\": \\\"UI\\\",\\n          \\\"createDate\\\": 1592918036000,\\n          \\\"note\\\": \\\"test\\\",\\n          \\\"agent\\\": {\\n            \\\"name\\\": \\\"John Doe\\\",\\n            \\\"email\\\": \\\"johndoe@example.com\\\",\\n            \\\"lswUuid\\\": \\\"401e017b-e98f-4eed-9345-3487ae9207cf\\\"\\n          }\\n        }\\n      ],\\n      \\\"needsAttention\\\": false,\\n      \\\"discussionStyle\\\": \\\"LI_BLOG\\\",\\n      \\\"snoozeExpiration\\\": -1,\\n      \\\"isUserWatching\\\": false,\\n      \\\"isUserHelping\\\": false,\\n      \\\"totalResponses\\\": 0,\\n      \\\"hasResponse\\\": false\\n    }\\n  ]\\n}\\n404:\\n\\n \\n\\n{\\n  \\\"status\\\": \\\"fail\\\",\\n  \\\"message\\\": \\\"No conversations found that contain document with id not_a_real_id\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97bd0c3e-bcee-478d-af6b-af1a95403c01",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bySourceDocumentId",
+                    "networks",
+                    ":network",
+                    "instances",
+                    ":instance",
+                    "id",
+                    ":source document id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) The unique name of the network serving as the source channel for the conversation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance",
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      }
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source document id",
+                      "description": "(Required) This is the unique ID given by the source channel for the document. (i.e. Facebook post)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "885f7783-c54e-4c28-b0ae-dcb605596127",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bySourceDocumentId",
+                    "networks",
+                    ":network",
+                    "instances",
+                    ":instance",
+                    "id",
+                    ":source document id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) The unique name of the network serving as the source channel for the conversation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance",
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      }
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source document id",
+                      "description": "(Required) This is the unique ID given by the source channel for the document. (i.e. Facebook post)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"fail\\\",\\n  \\\"message\\\": \\\"No conversations found that contain document with id not_a_real_id\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "a83e0934-70e7-40e4-bdec-e5f06481e286",
+    "name": "agent-states-api-v2 AccountSet BySourceDocumentId API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

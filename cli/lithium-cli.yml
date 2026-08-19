@@ -8,7 +8,11 @@ description: >-
   distributed as the npm package `lithium-sdk`. It scaffolds a Community plugin project,
   builds and validates the plugin (FreeMarker components, endpoints, skins, scripts, text
   keys), serves it locally, and submits it to a community instance. It is the surviving
-  Lithium-branded developer tool and is still receiving releases (1.11.0, July 2025).
+  Lithium-branded developer tool, but it is NOT actively released: the latest npm version is
+  1.11.0, published 2022-10-31 (registry.npmjs.org, checked 2026-08-13). An earlier round of
+  this file recorded "still receiving releases (1.11.0, July 2025)" — that date was wrong and
+  is corrected here. The GitHub repository was last pushed 2026-04-15 but its newest tag is
+  v1.4.1, so repository activity does not correspond to shipped CLI versions.
 
 name: li
 package: lithium-sdk

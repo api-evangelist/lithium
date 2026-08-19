@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams={content}&target API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compare.json?streams={content}&target",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get percentage towards target",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/compare.json?streams=:content&target",
+            "params": [
+              {
+                "name": "content",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streams",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a percentage towards a specified target"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

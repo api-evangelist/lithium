@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get entity information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Provides information about and derived from the entities in a stream"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

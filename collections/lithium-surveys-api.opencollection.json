@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Surveys API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Surveys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Surveys: List All Survey Data for a Set of Streams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/surveys",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+              },
+              {
+                "name": "stop",
+                "value": "",
+                "type": "query",
+                "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+              },
+              {
+                "name": "stream_ids",
+                "value": "",
+                "type": "query",
+                "description": "A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company) endpoint to get the appropriate stream IDs."
+              }
+            ]
+          },
+          "docs": "Returns a list of the available survey data for a given set of streams"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Note API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Note",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add internal note to bot conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/note",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach an internal note to the current bot conversation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

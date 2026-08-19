@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Projects API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/projects/:projectId/flows",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Pagination option. Number of items per response. Optional."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Pagination option. Number of items to skip. Optional."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Project ID the Flow belongs to."
+              },
+              {
+                "name": "flows",
+                "value": "",
+                "type": "path",
+                "description": "Indicates the flows"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all flows using the Flow Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

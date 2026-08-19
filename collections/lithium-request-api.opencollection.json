@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Request API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Monitor request to Bot v3 API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/request/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path",
+                "description": "A string. The ID of a known request record received from a previous HTTP request. Do not expect any particular format for the ID.<br><br>Find request IDs in a callback request header and a response header named `x-amzn-RequestId`. You may note the ID and ask for information about the status of certain kinds of requests by using the `/request/[requestId}` endpoint."
+              }
+            ]
+          },
+          "docs": "Monitor a specific request to the Bot v3 API"
+        },
+        {
+          "info": {
+            "name": "Monitor requests by date range, state, and origin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/request/appId/:appId)/",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The bot identifier"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "A string of the form “<quantity><unit>” indicating how far in the past to look for recent request records. For example: “30m”, “2h”, \"3d” representing “30 minutes”, “2 hours”, or “3 days”, respectively.<br><br>Defaults to 1 day.<br><br>31 days is the current maximum"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "A string indicating the state of the requests to return.<br><br>No default: if unspecified, all records from the period are returned.<br><br>Supported values: ERROR, PENDING, or SUCCESS<br><br>You may specify this parameter multiple times, as in: `/bots/v3/request/appId/mybot?from=6h&state=PENDING&state=ERROR`"
+              },
+              {
+                "name": "origin",
+                "value": "",
+                "type": "query",
+                "description": "Optional. A string indicating that the query should return only request records of the specified origin.<br><br>Possible values are KHOROS or BOT<br><br>Khoros-originated records are those requests the bot framework made to your bot.<br><br>Bot-originated records are those requests your bot made to the bot framework."
+              }
+            ]
+          },
+          "docs": "Monitor requests to the Bot v3 API by date range, state, and origin"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

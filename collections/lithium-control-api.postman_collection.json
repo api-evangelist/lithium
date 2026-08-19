@@ -1,0 +1,477 @@
+{
+  "item": [
+    {
+      "id": "23ddb329-7ec4-4d19-8f3e-dc63fa2e0a88",
+      "name": "Control",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9452411d-fa81-415b-8ad9-a94487e97936",
+          "name": "Get entity currently controlling conversation by author and network",
+          "request": {
+            "name": "Get entity currently controlling conversation by author and network",
+            "description": {
+              "content": "Return which entity (agent or bot) has current control of the conversation associated with the specified author on the specified network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "control",
+                "network",
+                ":networkKey",
+                "externalId",
+                ":externalId",
+                "author",
+                ":authorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "networkKey",
+                  "description": "(Required) The social network for the registration. Must match the `network` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId field` of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authorId",
+                  "description": "(Required) The author ID. Find the author ID from the [Author object](ref:author-object) included in all messages."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92c14243-c105-492a-a062-ae5ca70e354d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "control",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "author",
+                    ":authorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `network` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId field` of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorId",
+                      "description": "(Required) The author ID. Find the author ID from the [Author object](ref:author-object) included in all messages."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{  \\n  \\\"data\\\":{  \\n    \\\"author\\\":{  \\n      \\\"id\\\":\\\"authorId\\\",\\n      \\\"fullName\\\":\\\"author name\\\"\\n    },\\n    \\\"coordinate\\\":{  \\n      \\\"companyKey\\\":\\\"some-company\\\",\\n      \\\"networkKey\\\":\\\"some-network\\\",\\n      \\\"externalId\\\":\\\"external-id\\\"\\n    },\\n    \\\"owner\\\":{  \\n      \\\"type\\\":\\\"BOT\\\",\\n      \\\"appId\\\":\\\"foobar-bot\\\"\\n    },\\n    \\\"lastUpdatedTS\\\":1540501501979,\\n    \\\"type\\\":\\\"control\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5423c560-1c6a-4141-9fea-d6a45f1441bc",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "control",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "author",
+                    ":authorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `network` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId field` of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorId",
+                      "description": "(Required) The author ID. Find the author ID from the [Author object](ref:author-object) included in all messages."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 400 Bad Request{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"Invalid networkKey farcebook\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3da6f0f-6095-474e-b774-2c52fc7fe809",
+          "name": "Pass conversation control",
+          "request": {
+            "name": "Pass conversation control",
+            "description": {
+              "content": "Pass conversation control",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "control"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75590f85-423a-4d7d-8b25-e02a91d84dbb",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "control"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 200 OK{  \\n  \\\"data\\\":{  \\n    \\\"type\\\":\\\"control\\\",\\n    \\\"owner\\\":{  \\n      \\\"type\\\":\\\"AGENT\\\"\\n    },\\n    \\\"author\\\":{  \\n      \\\"id\\\":\\\"urn:mbid:....\\\",\\n      \\\"fullName\\\":\\\"Anonymous Alligator\\\"\\n    },\\n    \\\"coordinate\\\":{  \\n      \\\"companyKey\\\":\\\"[COMPANY KEY]\\\",\\n      \\\"networkKey\\\":\\\"apple\\\",\\n      \\\"externalId\\\":\\\"117101b2-e66a-11e7-86ec-b1a405106b73\\\",\\n      \\\"messageId\\\":\\\"b7bee35c-0cfc-4de9-8a88-9b444d7b0475\\\",\\n      \\\"botId\\\":\\\"my-abc-bot\\\",\\n      \\\"scope\\\":\\\"PRIVATE\\\"\\n    },\\n    \\\"conversationDisplayId\\\":\\\"<conversationDisplayId>\\\",\\n    \\\"lastUpdateTS\\\":\\\"<last-message-update-timestamp>\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8952c42-b194-490a-89a9-cd5003b7eab4",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "control"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 400 Bad Request{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"Invalid networkKey farcebook\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53c4a556-4833-485d-b0dd-056dfe5966c2",
+              "name": "409",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "control"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"requestId\\\": \\\"requestId\\\",\\n  \\\"error\\\": {\\n    \\\"messages\\\": [\\n      \\\"A (possibly transient) conflict occurred. No change was made. This request may be retried.\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "6758f176-b20a-44e4-b9e9-e48954795ebb",
+    "name": "agent-states-api-v2 AccountSet Control API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.khoros.com/ (all five doc projects, via the 800-URL sitemap),
+  https://developer.khoros.com/khoros-flow/docs/flow-basics-app-testing, the Khoros Community
+  Plugin SDK documentation, and the published gulp task modules in
+  https://github.com/lithiumtech/lithium-sdk.
+public_sandbox: false
+description: >-
+  Khoros publishes no public sandbox. There are no test credentials, no test-vs-live key
+  prefixes, no magic test identifiers, no simulator values, no test clocks and no fixture or
+  trigger tooling anywhere in the four public API surfaces (Care, Marketing, Flow, Community).
+  Nothing here can be exercised without an existing customer contract: credentials are
+  provisioned inside a customer's own Khoros instance, so a developer evaluating these APIs
+  cannot make a single call. What Khoros does document is a stage-vs-production separation
+  for Community plugin development and an in-product conversation tester for Flow — both real
+  , both customer-instance-scoped, neither reachable by an outside developer. Recorded here so
+  the absence is explicit; no Sandbox pointer is wired into apis.yml, because a test surface
+  that requires a signed contract is not a developer sandbox.
+
+test_vs_live:
+  key_prefixes: none
+  modes: none
+  note: >-
+    No Khoros authentication scheme distinguishes test from live. Care uses HTTP Basic and a
+    session token, Marketing uses OAuth 2.0 with a single `all` scope, Flow uses an API key,
+    Community uses per-instance app credentials — none of them carries a test/live mode or a
+    key prefix that would tell a caller which environment they are pointed at. See
+    ../authentication/lithium-authentication.yml.
+
+magic_values:
+  test_cards: none
+  test_accounts: none
+  test_identifiers: none
+  note: >-
+    Not a payments provider and no reserved test identifier ranges are published for any
+    product.
+
+environments:
+  - product: Khoros Community
+    name: stage server
+    kind: customer-instance
+    public: false
+    docs: https://khoros.com/developer/community/community-plugin-sdk
+    mechanism: >-
+      The Community Plugin SDK submits plugins to a stage community from the command line
+      (`li` — see ../cli/lithium-cli.yml, whose serve group carries `local-server`, `watch`
+      and `sandbox` tasks), and imports/exports plugin content between an IDE and the stage
+      environment. The stage instance belongs to the customer and is provisioned by Khoros;
+      there is no shared or public stage community.
+  - product: Khoros Flow
+    name: Try it out
+    kind: in-product console
+    public: false
+    docs: https://developer.khoros.com/khoros-flow/docs/flow-basics-app-testing
+    mechanism: >-
+      A built-in tester inside the Flow Design app: converse with the bot, watch parameter
+      values, and clear context with Reset / Clear buttons. It runs against the customer's own
+      Flow app behind the product login, and it exercises the bot rather than the REST API.
+  - product: Khoros Care
+    name: none
+    public: false
+    note: >-
+      No sandbox, staging host or test tenant is documented. The only environment axis Khoros
+      publishes for Care is data residency — the US, EU and APAC gateways recorded in
+      ../conventions/lithium-conventions.yml — and all three are production.
+  - product: Khoros Marketing
+    name: none
+    public: false
+    note: No sandbox, test tenant or fixture tooling is documented for api.spredfast.com.
+
+evidence:
+  - {url: 'https://developer.khoros.com/khoroscaredevdocs/docs/sandbox', status: 404}
+  - {url: 'https://developer.khoros.com/khoroscaredevdocs/docs/testing', status: 404}
+  - {url: 'https://developer.khoros.com/sitemap.xml', status: 200, note: 'no sandbox/test-credentials page in 800 URLs'}
+  - {url: 'https://developer.khoros.com/khoros-flow/docs/flow-basics-app-testing', status: 200, note: 'in-product "Try it out" tester only'}
+
+related:
+  authentication: ../authentication/lithium-authentication.yml
+  cli: ../cli/lithium-cli.yml
+  conventions: ../conventions/lithium-conventions.yml
+  plans: ../plans/lithium-plans-pricing.yml

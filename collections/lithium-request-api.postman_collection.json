@@ -1,0 +1,402 @@
+{
+  "item": [
+    {
+      "id": "06138f67-9b59-47a1-89e5-3a7ba225c12e",
+      "name": "Request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afc9547a-2b40-4ecc-b62c-05923c819b5a",
+          "name": "Monitor request to Bot v3 API",
+          "request": {
+            "name": "Monitor request to Bot v3 API",
+            "description": {
+              "content": "Monitor a specific request to the Bot v3 API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "request",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) A string. The ID of a known request record received from a previous HTTP request. Do not expect any particular format for the ID.<br><br>Find request IDs in a callback request header and a response header named `x-amzn-RequestId`. You may note the ID and ask for information about the status of certain kinds of requests by using the `/request/[requestId}` endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4a60dd4-e72b-40e7-91ab-4cf20f6758b2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "request",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) A string. The ID of a known request record received from a previous HTTP request. Do not expect any particular format for the ID.<br><br>Find request IDs in a callback request header and a response header named `x-amzn-RequestId`. You may note the ID and ask for information about the status of certain kinds of requests by using the `/request/[requestId}` endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{  \\n  \\\"data\\\":{  \\n    \\\"id\\\":\\\"03a913a3-552e-4e2a-8d23-d1e5257474bc\\\",\\n    \\\"companyKey\\\":\\\"mycompany\\\",\\n    \\\"externalId\\\":\\\"9876543211234567\\\",\\n    \\\"networkKey\\\":\\\"facebook\\\",\\n    \\\"appId\\\":\\\"company-bot\\\",\\n    \\\"callbackUrl\\\":\\\"https://www.example.com/receive\\\",\\n    \\\"origin\\\":\\\"BOT\\\",\\n    \\\"details\\\":<map of details relevant to the request>,\\n    \\\"state\\\":\\\"PENDING\\\",\\n    \\\"payload\\\":<json payload given to or taken from bot>,\\n    \\\"createdEpochMillis\\\":1551757370603,\\n    \\\"completedEpochMillis\\\":1551757370707,\\n    \\\"lastUpdatedEpochMillis\\\":1551757370707\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93aaf5b9-c0dd-45f9-8ae2-64dcfa5e38ec",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "request",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) A string. The ID of a known request record received from a previous HTTP request. Do not expect any particular format for the ID.<br><br>Find request IDs in a callback request header and a response header named `x-amzn-RequestId`. You may note the ID and ask for information about the status of certain kinds of requests by using the `/request/[requestId}` endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 404 Not Found{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"03a913a3-552e-4e2a-8d23-d1e5257474b not found\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2165c668-696b-45c4-bf03-4336720bcb2d",
+          "name": "Monitor requests by date range, state, and origin",
+          "request": {
+            "name": "Monitor requests by date range, state, and origin",
+            "description": {
+              "content": "Monitor requests to the Bot v3 API by date range, state, and origin",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "request",
+                "appId",
+                "{{appId}})",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "A string of the form “<quantity><unit>” indicating how far in the past to look for recent request records. For example: “30m”, “2h”, \"3d” representing “30 minutes”, “2 hours”, or “3 days”, respectively.<br><br>Defaults to 1 day.<br><br>31 days is the current maximum"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "A string indicating the state of the requests to return.<br><br>No default: if unspecified, all records from the period are returned.<br><br>Supported values: ERROR, PENDING, or SUCCESS<br><br>You may specify this parameter multiple times, as in: `/bots/v3/request/appId/mybot?from=6h&state=PENDING&state=ERROR`"
+                },
+                {
+                  "disabled": false,
+                  "key": "origin",
+                  "value": "<string>",
+                  "description": "Optional. A string indicating that the query should return only request records of the specified origin.<br><br>Possible values are KHOROS or BOT<br><br>Khoros-originated records are those requests the bot framework made to your bot.<br><br>Bot-originated records are those requests your bot made to the bot framework."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2be1fd8a-16e7-4aee-a108-0897e599a50f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "request",
+                    "appId",
+                    "{{appId}})",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{  \\n  \\\"data\\\":[  \\n    {  \\n      \\\"id\\\":\\\"5f153108725b404b9aca71a4a5e17cb4\\\",\\n      \\\"companyKey\\\":\\\"myco\\\",\\n      \\\"externalId\\\":\\\"987654321234567890\\\",\\n      \\\"networkKey\\\":\\\"facebook\\\",\\n      \\\"appId\\\":\\\"myco-bot\\\",\\n      \\\"callbackUrl\\\":\\\"https://www.example.com/receive\\\",\\n      \\\"origin\\\":\\\"BOT\\\",\\n      \\\"state\\\":\\\"PENDING\\\",\\n      \\\"createdEpochMillis\\\":1551757840916,\\n      \\\"completedEpochMillis\\\":1551757841000,\\n      \\\"lastUpdatedEpochMillis\\\":1551757841000,\\n      \\\"payload\\\":\\\"{\\\\\\\"coordinate\\\\\\\":{\\\\\\\"companyKey\\\\\\\":\\\\\\\"myco\\\\\\\",\\\\\\\"networkKey\\\\\\\":\\\\\\\"facebook\\\\\\\",\\\\\\\"externalId\\\\\\\":\\\\\\\"987654321234567890\\\\\\\",\\\\\\\"messageId\\\\\\\":\\\\\\\"superSpecialMessageId\\\\\\\",\\\\\\\"botId\\\\\\\":\\\\\\\"myco-bot\\\\\\\",\\\\\\\"scope\\\\\\\":\\\\\\\"PRIVATE\\\\\\\"},\\\\\\\"text\\\\\\\":\\\\\\\"I have a question that I need help with.\\\\\\\",\\\\\\\"author\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"superSpecialAuthorId\\\\\\\",\\\\\\\"fullName\\\\\\\":\\\\\\\"Anonymous Coyote 2380\\\\\\\",\\\\\\\"properties\\\\\\\":{}},\\\\\\\"owner\\\\\\\":{\\\\\\\"type\\\\\\\":\\\\\\\"BOT\\\\\\\",\\\\\\\"appId\\\\\\\":\\\\\\\"myco-bot\\\\\\\"},\\\\\\\"publishedTS\\\\\\\":1555336064223,\\\\\\\"receivedTS\\\\\\\":1555336066071,\\\\\\\"properties\\\\\\\":{},\\\\\\\"type\\\\\\\":\\\\\\\"message\\\\\\\"}\\\"\\n    },\\n    {  \\n      \\\"id\\\":\\\"c3e3c2570130410eadf7a04881dfbfe9\\\",\\n      \\\"companyKey\\\":\\\"myco\\\",\\n      \\\"externalId\\\":\\\"987654321234567890\\\",\\n      \\\"networkKey\\\":\\\"facebook\\\",\\n      \\\"appId\\\":\\\"myco-bot\\\",\\n      \\\"callbackUrl\\\":\\\"https://www.example.com/receive\\\",\\n      \\\"origin\\\":\\\"KHOROS\\\",\\n      \\\"details\\\":{  \\n        \\\"code\\\":\\\"403\\\",\\n        \\\"message\\\":\\\"Forbidden\\\"\\n      },\\n      \\\"state\\\":\\\"ERROR\\\",\\n      \\\"createdEpochMillis\\\":1551758199555,\\n      \\\"completedEpochMillis\\\":1551758200801,\\n      \\\"lastUpdatedEpochMillis\\\":1551758200804,\\n      \\\"payload\\\":\\\"{... the json blob that Khoros sent to your bot ...}\\\"\\n    }\\n  ]\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcec9442-b546-4169-a3a7-e7d471e3559b",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "request",
+                    "appId",
+                    "{{appId}})",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 400 Bad Request{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"Incorrect syntax in \\\\\\\"from\\\\\\\"\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The bot identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "appId"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "dc874c74-d5c9-4daa-a4f4-83fc38ebca75",
+    "name": "agent-states-api-v2 AccountSet Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

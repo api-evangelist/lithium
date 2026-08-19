@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Introspection Api API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Introspection Api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current User Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/"
+          },
+          "docs": "This returns directory level info about the current user using Khoros Marketing Introspection API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet MultiChannelMessages API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MultiChannelMessages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve an existing multi-channel message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/multiChannelMessage/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

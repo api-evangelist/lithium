@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Khorosapi API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Khorosapi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return entity JWT status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/khorosapi/ownerId/:ownerId",
+            "params": [
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "path",
+                "description": "The owner of the token (this is the `appId` provided in the registration payload)"
+              }
+            ]
+          },
+          "docs": "Return whether a JWT exists for an entity"
+        },
+        {
+          "info": {
+            "name": "Create JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/khorosapi/ownerId/:ownerId",
+            "params": [
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "path",
+                "description": "The owner of the token (this is the `appId` provided in the registration payload)"
+              }
+            ]
+          },
+          "docs": "Generate a JWT token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

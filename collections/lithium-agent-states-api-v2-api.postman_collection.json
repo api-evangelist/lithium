@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "62125742-a3b9-4ebc-8472-3f56d6233e8f",
+      "name": "Agent States Api V2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bb53a4ea-17e0-453e-a7d4-b5cbfe397ed6",
+          "name": "Retrieve Defined Agent States",
+          "request": {
+            "name": "Retrieve Defined Agent States",
+            "description": {
+              "content": "Retrieves a list of defined agent states for the company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8199ab9f-693d-4a81-a602-109e63cc67ae",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": [\\n        {\\n            \\\"name\\\": \\\"Offline\\\",\\n            \\\"id\\\": \\\"f846cf43-5c3e-4c2f-8949-example\\\",\\n            \\\"deleted\\\": false,\\n            \\\"allowActions\\\": false,\\n            \\\"visibleForAllTeams\\\": true,\\n            \\\"keepAssignedConversations\\\": true,\\n            \\\"type\\\": \\\"OFFLINE\\\",\\n            \\\"lastUpdatedTimeInMillis\\\": 1570559212865\\n        },\\n        {\\n            \\\"name\\\": \\\"Lunch\\\",\\n            \\\"id\\\": \\\"37c03720-1fdf-4eb4-b46f-example\\\",\\n            \\\"deleted\\\": false,\\n            \\\"allowActions\\\": false,\\n            \\\"visibleForAllTeams\\\": true,\\n            \\\"keepAssignedConversations\\\": true,\\n            \\\"type\\\": \\\"CUSTOM\\\",\\n            \\\"lastUpdatedTimeInMillis\\\": 1588347349760\\n        },\\n        {\\n            \\\"name\\\": \\\"Available\\\",\\n            \\\"id\\\": \\\"c26df5d0-7e59-4d88-b563-example\\\",\\n            \\\"deleted\\\": false,\\n            \\\"allowActions\\\": true,\\n            \\\"visibleForAllTeams\\\": true,\\n            \\\"keepAssignedConversations\\\": true,\\n            \\\"type\\\": \\\"AVAILABLE\\\",\\n            \\\"lastUpdatedTimeInMillis\\\": 1568222746855\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bda3de4-184a-4334-8bf4-1cccb7404a86",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "f1461cc1-0b52-4869-ae53-d13a70f80e9a",
+    "name": "agent-states-api-v2 AccountSet Agent States Api V2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "c19cf28a-8797-408f-ab2e-4385b49e0b62",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d110d65-79f1-4ca1-bfad-b81e74210dd6",
+          "name": "Retrieve a list of Conversations users",
+          "request": {
+            "name": "Retrieve a list of Conversations users",
+            "description": {},
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "users",
+                "initiative",
+                ":initiativeId",
+                "publishers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87b7392f-6e64-41c4-8877-450d52150c2d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "users",
+                    "initiative",
+                    ":initiativeId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"data\": [\n        {\n          \"id\": 3022,\n          \"displayName\": \"string\"\n        },\n        {\n          \"id\": 9943,\n          \"displayName\": \"string\"\n        }\n      ],\n      \"status\": {\n        \"succeeded\": false,\n        \"error\": {\n          \"code\": \"PUBLISH_DATE_INVALID\",\n          \"message\": \"string\"\n        }\n      },\n      \"pagination\": {\n        \"next\": \"string\",\n        \"previous\": \"string\",\n        \"totalItems\": 8028\n      }\n    },\n    {\n      \"data\": [\n        {\n          \"id\": 7232,\n          \"displayName\": \"string\"\n        },\n        {\n          \"id\": 3519,\n          \"displayName\": \"string\"\n        }\n      ],\n      \"status\": {\n        \"succeeded\": false,\n        \"error\": {\n          \"code\": \"IP_ADDRESS_REJECTED\",\n          \"message\": \"string\"\n        }\n      },\n      \"pagination\": {\n        \"next\": \"string\",\n        \"previous\": \"string\",\n        \"totalItems\": 765\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "74f2daed-e66c-47e7-9a08-e6b6bd21bb10",
+    "name": "agent-states-api-v2 AccountSet Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

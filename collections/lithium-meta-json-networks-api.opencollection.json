@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json? Networks API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json? Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get networks in meta response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json? networks",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "networks",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Include networks property in the response, which is an array of strings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

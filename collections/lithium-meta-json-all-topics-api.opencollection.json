@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?all Topics API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?all Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?all_topics",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "all_topics",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all topics, not just those with count > 0"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

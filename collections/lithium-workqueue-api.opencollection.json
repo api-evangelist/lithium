@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Workqueue API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workqueue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Move conversation to specified workqueue",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/workqueue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use the Bot v3 API to have a bot move a conversation to a specific workqueue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

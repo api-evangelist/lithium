@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Csv Long API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Csv Long",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create CSV export for download by date(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/csv_long/:reportName",
+            "params": [
+              {
+                "name": "reportName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the report to run. Run `/reports/list` to get a list of available reports. Supported values: `authorReport`, `conversation`, `post`, `rawPost`, `rawPostIncludeActions`, `agentActions`, `publishExport`, `custSatisfaction`, `postTagTrend`, `incomingPostTag`"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The beginning of the reporting interval (date range) represented as milliseconds since epoch."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end of the reporting interval (date range) represented as milliseconds since epoch."
+              },
+              {
+                "name": "TzOffsetMs",
+                "value": "",
+                "type": "query",
+                "description": "Sets the timezone for the formatted dates in milliseconds. When using Epoch time, this parameter only affects the display of the date/time in the reports."
+              },
+              {
+                "name": "bucketSizeMs",
+                "value": "",
+                "type": "query",
+                "description": "The size of the bucketed intervals within the date range in milliseconds. Used by the following reports: `conversation`, `post`, `agentActions`, `custSatisfaction`, `incomingPostTag`"
+              },
+              {
+                "name": "providerType",
+                "value": "",
+                "type": "query",
+                "description": "Filter report data by Provider Type/Source. Support values: `twitter`, `facebook`, `lithium`"
+              },
+              {
+                "name": "incldActions",
+                "value": "",
+                "type": "query",
+                "description": "Use this for a raw post data report only. If `false`, the report will include all that that were received during the time range. If `true`, the report will include all posts that were received plus posts that had the following agent actions performed on them during the time range: Claimed, Responded to, Closed"
+              }
+            ]
+          },
+          "docs": "Generate a CSV export for download using dates represented as milliseconds since epoch. This call was deprecated November 2016."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

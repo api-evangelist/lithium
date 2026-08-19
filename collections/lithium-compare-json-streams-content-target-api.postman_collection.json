@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "835c4e87-74b0-4a0e-aa71-0a7be71b9cfb",
+      "name": "Compare.json?streams={content}&target",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7876927b-96fe-4fcb-b3d4-89eeded778a1",
+          "name": "Get percentage towards target",
+          "request": {
+            "name": "Get percentage towards target",
+            "description": {
+              "content": "Get a percentage towards a specified target",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "{{content}}"
+                },
+                {
+                  "key": "target",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "disabled": false,
+                  "key": "target",
+                  "value": "5000"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1827788b-c77f-4027-a707-b9bc493ea6c3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compare.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "streams",
+                      "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                    },
+                    {
+                      "key": "target",
+                      "value": "5000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Coming Soon",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "9b2f2af4-2e04-4430-a93b-987235f214ea",
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams={content}&target API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

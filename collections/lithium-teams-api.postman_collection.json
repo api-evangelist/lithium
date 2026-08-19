@@ -1,0 +1,146 @@
+{
+  "item": [
+    {
+      "id": "c2328409-3152-45d8-8136-097a477e6476",
+      "name": "Teams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9af2b4e9-67ed-44de-8fee-739e0d45b0b5",
+          "name": "Get team IDs",
+          "request": {
+            "name": "Get team IDs",
+            "description": {
+              "content": "Get team IDs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "teams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "companyKey",
+                  "value": "<string>",
+                  "description": "(Required) The company key found in **Account Admin > General Settings > Analytics API Settings**."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48201e4b-c46c-4ba9-a990-e4be771486c8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyKey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Formatted JSON Data\\n{\\n  \\\"status\\\":\\\"PASS\\\",\\n  \\\"request\\\":null,\\n  \\\"message\\\":null,\\n  \\\"result\\\":[\\n    {\\n      \\\"uuid\\\":\\\"4c1d5194-8946-4e7f-aa8e-6315b3379bf3\\\",\\n      \\\"teamId\\\":6222,\\n      \\\"name\\\":\\\"North West\\\",\\n      \\\"description\\\":null,\\n      \\\"numberOfMembers\\\":3\\n    },\\n    {\\n      \\\"uuid\\\":\\\"6af42c52-ff19-4b3b-bd0c-d4cf617f27f8\\\",\\n      \\\"teamId\\\":7031,\\n      \\\"name\\\":\\\"South West\\\",\\n      \\\"description\\\":null,\\n      \\\"numberOfMembers\\\":3\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "48f259fd-78c4-458f-9258-c68c5e66028e",
+    "name": "agent-states-api-v2 AccountSet Teams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

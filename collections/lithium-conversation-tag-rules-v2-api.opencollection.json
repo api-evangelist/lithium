@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Conversation Tag Rules V2 API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversation Tag Rules V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation tag rule definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of tag rules to return from a single call. The default limit is 20. It is not recommended to change the limit between subsequent paginating requests. We do not enforce a max limit for the limit parameter, but for performance reasons, we recommend against using a value greater than 100."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "An offset to use for pagination. This should be a multiple of the limit parameter, and be incremented by the value of limit between requests. For example, a series of requests might use the following incremental values for offset and limit: \"offset=0,limit=20\", \"offset=20,limit=20\", \"offset=40,limit=20\", ... until you have exhausted the result set."
+              },
+              {
+                "name": "tagIds",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of tag IDs used to filter the response. There is no limit to the number of tag IDs passed with this query parameter, but for performance purposes, we recommend passing no more than 25."
+              }
+            ]
+          },
+          "docs": "Return all conversation tag rule definitions in the Khoros Care system"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

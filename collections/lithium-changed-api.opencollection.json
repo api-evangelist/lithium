@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Changed API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Changed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List author records changed today",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/changed",
+            "params": [
+              {
+                "name": "startEpochMillis",
+                "value": "",
+                "type": "query",
+                "description": "The start time of the query period specified as milliseconds since the UNIX Epoch"
+              },
+              {
+                "name": "endEpochMillis",
+                "value": "",
+                "type": "query",
+                "description": "The end of of the query period specified as milliseconds since the UNIX Epoch"
+              }
+            ]
+          },
+          "docs": "Get a list of author records that have changed in a 24-hour period"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

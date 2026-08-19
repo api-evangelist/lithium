@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Labels API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve paged labels.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/contentLabel",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "If present, filter the results by the provided title string."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "If present, only return \"top\" labels."
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve paged labels."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

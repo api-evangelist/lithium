@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Author Api V2 API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Author Api V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get author details by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:lswUuid",
+            "params": [
+              {
+                "name": "lswUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique Care author ID"
+              },
+              {
+                "name": "include_deleted_crm",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, the response includes authors whose CRM entry has been deleted. Otherwise, the response will not include authors whose CRM entry has been deleted."
+              }
+            ]
+          },
+          "docs": "Get author details by the unique Care author ID"
+        },
+        {
+          "info": {
+            "name": "Update or merge author handles by Care author ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:lswUuid",
+            "params": [
+              {
+                "name": "lswUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique Care author ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update or merge existing author handles for the specified Care author ID"
+        },
+        {
+          "info": {
+            "name": "Create Care author",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an author to Care"
+        },
+        {
+          "info": {
+            "name": "Batch update author records by author",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/"
+          },
+          "docs": "Batch update author records associated with a single author"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

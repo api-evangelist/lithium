@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Email API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Set Agent State by Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/email/:userEmail/state",
+            "params": [
+              {
+                "name": "stateUUID",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier for the state to which the Agent will be switched."
+              },
+              {
+                "name": "userEmail",
+                "value": "",
+                "type": "path",
+                "description": "The email address of the agent being placed into a new state."
+              }
+            ]
+          },
+          "docs": "Change the State (`stateUUID`) of an Agent identified by Email (`userEmail`)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

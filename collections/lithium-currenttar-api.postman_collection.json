@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "c89a5226-3526-4126-ba4c-e6c8213eb7ef",
+      "name": "CurrentTAR",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6e6a194-b71b-4218-8d6d-be311740df7e",
+          "name": "Get current time to agent response (TAR)",
+          "request": {
+            "name": "Get current time to agent response (TAR)",
+            "description": {
+              "content": "Retrieves the current Time to Agent Response (TAR)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "currentTAR"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRangeInMillis",
+                  "value": "<long>",
+                  "description": "(Required) (Required) The time range (in milliseconds) to collect TAR data. The time range starts from the time the call is made and runs back to the number of milliseconds passed. This is similar to selecting a Live range in the Analytics UI. Max value is one year (31556952000 milliseconds)."
+                },
+                {
+                  "disabled": false,
+                  "key": "priorities",
+                  "value": "<string>",
+                  "description": "A comma-separated list of case priorities used to filter the TAR data. For example, passing '0,1,2' indicates to include only cases with priorities of 0,1, and 2."
+                },
+                {
+                  "disabled": false,
+                  "key": "workqueueIds",
+                  "value": "<string>",
+                  "description": "A comma-separated list of long workqueueIds used to filter the TAR data. For example, passing '1001,1002,2340' filters the data to include only those work queues."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseType",
+                  "value": "<string>",
+                  "description": "Response types to query for. Supported values: 'FIRST' or 'SUBSEQUENT' (case-insensitive). Omitting the query parameter returns all response types. This query parameters is equivalent to the \"Response Type\" filter used in the Analytics UI when adding a Response widget to a dashboard."
+                },
+                {
+                  "disabled": false,
+                  "key": "smartViewId",
+                  "value": "<long>",
+                  "description": "A single smart View ID by which to filter the TAR data.<br/><br/>If the smart view ID passed includes priority and/or work queue definitions, the priorities and work queues defined in the smart view will override values passed with priorities and workqueueIds parameters. <br/><br/>For example, suppose Smart View 102 includes priorities 0 and 5 and work queues 10,11, and, 12. Making a call with timeRangeInMillis=3600000&priorities=1,2,3&workqueueIds=1001,1002,1003&smartViewId=102 will result in data matching the definition defined for Smart View 102 only. The priorities and workqueueIds parameters will be ignored.<br/><br/>On the other hand, if smart view 102 defines a series of tags and has no definitions for priorities or work queues, then that same call would result in matching the tags from smart view 102 and filtering to priorities 1,2, and 3 in work queues 1001,1002, and 1003."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6fd664c-2da4-4435-87a9-31f584fe3ec3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currentTAR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRangeInMillis",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "priorities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workqueueIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smartViewId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"success\\\",\\n  \\\"data\\\": {\\n    \\\"avgTarTimeInMillis\\\": 1076043325,\\n    \\\"medianTarTimeInMillis\\\": 5660000\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cb8bcee-1f5f-4459-aa3e-03eef350fdad",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currentTAR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRangeInMillis",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "priorities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workqueueIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smartViewId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "47d08448-1cd3-4617-af5a-32e0d944ef32",
+    "name": "agent-states-api-v2 AccountSet CurrentTAR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

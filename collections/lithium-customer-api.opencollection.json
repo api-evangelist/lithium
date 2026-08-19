@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Customer API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "bestmatchCustomers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customer/bestmatch",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find a customer best match based on known Social Information"
+        },
+        {
+          "info": {
+            "name": "createCustomer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customer",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new customer"
+        },
+        {
+          "info": {
+            "name": "findCustomer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customer/:id",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              }
+            ]
+          },
+          "docs": "Returns info for a specific customer"
+        },
+        {
+          "info": {
+            "name": "updateCustomer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customer/:id",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a customer’s details"
+        },
+        {
+          "info": {
+            "name": "findCases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customer/:id/cases",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              }
+            ]
+          },
+          "docs": "Get all cases for the given customer ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

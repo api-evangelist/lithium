@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Define Object Structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/meta/object/:type",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Object name. **Allowed Values:** `customer`, `case`"
+              }
+            ]
+          },
+          "docs": "Define object structures for a specified type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

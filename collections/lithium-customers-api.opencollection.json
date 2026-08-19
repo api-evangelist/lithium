@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Customers API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "searchCustomers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/customers",
+            "headers": [
+              {
+                "name": "x-sf-user-email",
+                "value": ""
+              },
+              {
+                "name": "x-sf-initiative",
+                "value": ""
+              },
+              {
+                "name": "x-sf-company-id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find all customers matching the provided set of criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

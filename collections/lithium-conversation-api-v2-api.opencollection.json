@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Conversation Api V2 API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversation Api V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation details by unique ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:lswUuid",
+            "params": [
+              {
+                "name": "lswUuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the conversation"
+              }
+            ]
+          },
+          "docs": "Retrieve conversation details by unique ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

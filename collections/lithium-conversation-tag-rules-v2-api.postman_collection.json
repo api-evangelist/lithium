@@ -1,0 +1,224 @@
+{
+  "item": [
+    {
+      "id": "d73104ca-1a7b-4e15-b314-25ae6fe941cd",
+      "name": "Conversation Tag Rules V2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c18ad9b-4848-453a-9f31-ab27623aa4f2",
+          "name": "Get conversation tag rule definitions",
+          "request": {
+            "name": "Get conversation tag rule definitions",
+            "description": {
+              "content": "Return all conversation tag rule definitions in the Khoros Care system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of tag rules to return from a single call. The default limit is 20. It is not recommended to change the limit between subsequent paginating requests. We do not enforce a max limit for the limit parameter, but for performance reasons, we recommend against using a value greater than 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "An offset to use for pagination. This should be a multiple of the limit parameter, and be incremented by the value of limit between requests. For example, a series of requests might use the following incremental values for offset and limit: \"offset=0,limit=20\", \"offset=20,limit=20\", \"offset=40,limit=20\", ... until you have exhausted the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagIds",
+                  "value": "<integer>",
+                  "description": "A comma-separated list of tag IDs used to filter the response. There is no limit to the number of tag IDs passed with this query parameter, but for performance purposes, we recommend passing no more than 25."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b6528bf-44d6-4982-9bf5-823bad4c4bad",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagIds",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": [\\n        {\\n            \\\"id\\\": 348,\\n            \\\"tagId\\\": 996,\\n            \\\"definitions\\\": [\\n                {\\n                    \\\"type\\\": \\\"KEYWORD\\\",\\n                    \\\"value\\\": \\\"rBGH, hormone free\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": \\\"ANY\\\"\\n                },\\n                {\\n                    \\\"type\\\": \\\"KEYWORD\\\",\\n                    \\\"value\\\": \\\"free range, fair trade\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": \\\"ANY\\\"\\n                }\\n            ]\\n        },\\n        {\\n            \\\"id\\\": 355,\\n            \\\"tagId\\\": 1003,\\n            \\\"definitions\\\": [\\n                {\\n                    \\\"type\\\": \\\"KEYWORD\\\",\\n                    \\\"value\\\": \\\"doin, this, for the, thrill of it\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": \\\"ALL\\\"\\n                },\\n                {\\n                    \\\"type\\\": \\\"KEYWORD\\\",\\n                    \\\"value\\\": \\\"whiskey, tango, foxtrot\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": \\\"ANY\\\"\\n                },\\n                {\\n                    \\\"type\\\": \\\"LUCENE\\\",\\n                    \\\"value\\\": \\\"\\\\\\\"bubbles ducky\\\\\\\"~10 OR derp*\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": null\\n                }\\n            ]\\n        },\\n        {\\n            \\\"id\\\": 362,\\n            \\\"tagId\\\": 1010,\\n            \\\"definitions\\\": [\\n                {\\n                    \\\"type\\\": \\\"REGEX\\\",\\n                    \\\"value\\\": \\\"[.]nusoapwholesale[.](com|net)\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": null\\n                },\\n                {\\n                    \\\"type\\\": \\\"REGEX\\\",\\n                    \\\"value\\\": \\\".soapdailydeals.*\\\",\\n                    \\\"language\\\": null,\\n                    \\\"operator\\\": null\\n                }\\n            ]\\n        }\\n    ],\\n    \\\"_metadata\\\": {\\n        \\\"paging\\\": {\\n            \\\"offset\\\": \\\"10\\\",\\n            \\\"limit\\\": \\\"15\\\",\\n            \\\"moreContent\\\": true,\\n        }\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e488959-2fd4-4fa8-a877-ae2ae5e4958a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagIds",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "a5f98fce-dc0e-480c-a829-cd4c58db0e32",
+    "name": "agent-states-api-v2 AccountSet Conversation Tag Rules V2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

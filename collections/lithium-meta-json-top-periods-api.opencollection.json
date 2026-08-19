@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?top Periods API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?top Periods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get top retweets in specified hours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?top_periods",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "top_periods",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Include top tweets from specific hourly periods provided"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

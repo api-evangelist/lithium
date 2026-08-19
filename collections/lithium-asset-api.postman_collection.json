@@ -1,0 +1,394 @@
+{
+  "item": [
+    {
+      "id": "c8ba52d0-1b11-45a2-8144-696dba8682e4",
+      "name": "Asset",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9a6ee4b-2c6a-42f1-a011-3fc9e39a38f9",
+          "name": "Get an asset",
+          "request": {
+            "name": "Get an asset",
+            "description": {
+              "content": "Retrieve an asset specified by its assetPath",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "thumbnail",
+                  "value": "false",
+                  "description": "When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91c20c1b-7594-44e4-9dba-0c27fc03f4e6",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":assetPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnail",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetPath",
+                      "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bf5c856-decd-4861-91af-127374db3746",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":assetPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnail",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetPath",
+                      "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db35139b-0b8b-4e49-b760-e532b3738b30",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":assetPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnail",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetPath",
+                      "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bd1780a-4be4-40d1-94a6-c1aef462f539",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":assetPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnail",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetPath",
+                      "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10b73578-ba50-4030-88fe-7660d2cce75a",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":assetPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnail",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetPath",
+                      "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "80b34957-85a0-4e9a-af7b-b39e1b7329cf",
+    "name": "agent-states-api-v2 AccountSet Asset API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

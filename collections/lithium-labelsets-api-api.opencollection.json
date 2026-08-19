@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Labelsets Api API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labelsets Api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a Page of Labels Nested within Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page Number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ]
+          },
+          "docs": "Retrieve a page of labels nested within sets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "b92dc2f1-cddd-42b5-9bd7-e9d08c2fc4f7",
+      "name": "Projects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ae5a53c-da3b-4397-935e-d6d57851ec1e",
+          "name": "List all flows",
+          "request": {
+            "name": "List all flows",
+            "description": {
+              "content": "Retrieve a list of all flows using the Flow Management API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Pagination option. Number of items per response. Optional."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<string>",
+                  "description": "Pagination option. Number of items to skip. Optional."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) Project ID the Flow belongs to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flows",
+                  "description": "(Required) Indicates the flows"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d608feb-788c-42a3-ac7b-2534c3b6bce3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Project ID the Flow belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flows",
+                      "description": "(Required) Indicates the flows"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[{\\n    \\\"flowId\\\": \\\"FLOW-08e4-40bc-89b8-f7ea02ba6cd5\\\",\\n    \\\"projectId\\\": \\\"PROJECT-fe06-4dcc-a7a0-35b0c0ec55c3\\\",\\n    \\\"brainId\\\": \\\"BRAIN-25f7-4d3d-9dcf-eaa2a6f810b1\\\",\\n    \\\"title\\\": \\\"Get started\\\",\\n  \\\"group\\\": \\\"Weather\\\",\\n    \\\"createdAt\\\": \\\"2018-10-24T06:45:03.828Z\\\",\\n    \\\"disabled\\\": false,\\n    \\\"steps\\\": [{\\n        \\\"stepId\\\": \\\"EXAMPLE-ad8d-4bf8-8ff5-da9dd7cb5636\\\",\\n        \\\"type\\\": \\\"INTENT\\\",\\n        \\\"title\\\": \\\"Get started\\\",\\n        \\\"contexts\\\": [],\\n        \\\"actions\\\": [\\\"ACTIONSf0838670032b1aa11\\\"],\\n        \\\"intent\\\": \\\"INTENT0838670032b1aa16\\\"\\n    }]\\n}, {\\n    \\\"flowId\\\": \\\"FLOW-fa2b-4f67-a391-15b9e98d47ea\\\",\\n    \\\"projectId\\\": \\\"PROJECT95-fe06-4dcc-a7a0-35b0c0ec55c3\\\",\\n    \\\"brainId\\\": \\\"BRAIN0-25f7-4d3d-9dcf-eaa2a6f810b1\\\",\\n    \\\"title\\\": \\\"Weather\\\",\\n  \\\"group\\\": \\\"Weather\\\",\\n    \\\"createdAt\\\": \\\"2018-10-24T06:45:03.820Z\\\",\\n    \\\"disabled\\\": false,\\n    \\\"steps\\\": [{\\n        \\\"stepId\\\": \\\"STEP-eb07-4ad6-8df2-518c43c180e3\\\",\\n        \\\"type\\\": \\\"INTENT\\\",\\n        \\\"title\\\": \\\"What is the weather like\\\",\\n        \\\"contexts\\\": [],\\n        \\\"actions\\\": [\\\"ACTIONS0838670032b1aa13\\\"]\\n    }, {\\n        \\\"stepId\\\": \\\"STEPS-a51b-48f3-ab46-81ce10f05454\\\",\\n        \\\"type\\\": \\\"SLOT\\\",\\n        \\\"title\\\": \\\"SLOT\\\",\\n        \\\"contexts\\\": [\\\"CONTEXT-eb07-4ad6-8df2-518c43c180e3\\\"],\\n        \\\"actions\\\": [\\\"ACTIONS0838670032b1aa12\\\"],\\n        \\\"slot\\\": {\\n            \\\"validation\\\": \\\"REQUIRED\\\",\\n            \\\"entityId\\\": \\\"system.query\\\",\\n            \\\"label\\\": \\\"city\\\"\\n        }\\n    }]\\n}]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "66b9b9e1-0a77-4da9-a7b2-5e727bab3922",
+    "name": "agent-states-api-v2 AccountSet Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

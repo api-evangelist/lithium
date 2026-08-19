@@ -1,0 +1,1948 @@
+{
+  "item": [
+    {
+      "id": "15d3ce60-9ea2-47e3-ada6-d5b39f79aba6",
+      "name": "Export",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5577ea9d-e778-4376-8714-c04fb4c2d0f8",
+          "name": "Published Posts",
+          "request": {
+            "name": "Published Posts",
+            "description": {
+              "content": "Export Posts and Metrics for those Posts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports."
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"content_filter\": {\n      \"dark\": \"<boolean>\",\n      \"promoted\": \"<boolean>\",\n      \"tags\": {\n        \"untagged\": \"<boolean>\",\n        \"tags\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"post_type\": \"<string>\",\n      \"plans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content_types\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"intiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"account_sets\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f309f70-bc31-4d35-995e-5ba5510d14fd",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"content_filter\": {\n      \"dark\": \"<boolean>\",\n      \"promoted\": \"<boolean>\",\n      \"tags\": {\n        \"untagged\": \"<boolean>\",\n        \"tags\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"post_type\": \"<string>\",\n      \"plans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content_types\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"intiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"account_sets\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1234567\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8146c3e8-fa20-4e1b-adf4-bd33d5e5c67e",
+          "name": "Daily Account Level Metrics",
+          "request": {
+            "name": "Daily Account Level Metrics",
+            "description": {
+              "content": "Export contains daily account-level performance metrics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV column headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6f4a0c2-f0c1-42be-9d71-acc4382dd580",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1234567\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15644649-5fb5-47f1-9c0e-582dc54e7f3c",
+          "name": "Daily Post Summary",
+          "request": {
+            "name": "Daily Post Summary",
+            "description": {
+              "content": "Export contains a Daily Summary of Post metrics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "daily_post_summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports."
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"content_filter\": {\n      \"dark\": \"<boolean>\",\n      \"promoted\": \"<boolean>\",\n      \"tags\": {\n        \"untagged\": \"<boolean>\",\n        \"tags\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"post_type\": \"<string>\",\n      \"plans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content_types\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"intiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"account_sets\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc822d4e-7442-4a2a-b088-4b6fe0ac2b27",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "daily_post_summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"content_filter\": {\n      \"dark\": \"<boolean>\",\n      \"promoted\": \"<boolean>\",\n      \"tags\": {\n        \"untagged\": \"<boolean>\",\n        \"tags\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"post_type\": \"<string>\",\n      \"plans\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"content_types\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"intiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"account_sets\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"expires\\\": \\\"2021-03-24T16:53:55.648\\\",\\n  \\\"export_id\\\": 1958297,\\n  \\\"status\\\": \\\"complete\\\",\\n  \\\"url\\\": \\\"https://massrel-verwalter.s3.amazonaws.com/exports/123456/232809/data/1a2b3ce6-8203-4d52-aac3-713fdb5db66f/daily_post_summary-20210324T155343-0500.csv?response-content-disposition=attachment%3B%20filename%3Ddaily_post_summary-20210324T155343-0500.csv&X-Amz-Security-Token=Fexampleexampleexample2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDPMVtf8RaJXrdgThPSKtAdePouocqDWJxsJxiyNRQ7byWyrYkAQJZn308RqCWte10npSx7rk2dme3KXPEa81oC%2FAX4b7Ta0KO5RSK0eVHVUCwN0J087G3eSHjYkWinhY4gtFD3dGdtJYek4DyeTKphkQmBZVvqQ2Is70D4CZyy%2Bgg%2FATTAO%2FwxH85l1Rcac8BO3vbvPXoPAUGlSKihU8%2F9ZPhhkx6qsphmfkdGdgnmoIKMnC7oIGMi3z%2BS6kxyTz7BXmuX1lJ4u65N%2BFQTl39KxAroQXdQOwHB6AcsIxdrDbjLNJPdU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210324T205355Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20210324%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f120f85c2b533c721d574f6952b4a5a0b57e63b11ea4399ab9e0a74dec1ecca5\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63bc5a10-fc15-48f8-b3ef-7eaa3ca7d67c",
+          "name": "Ads Net Values",
+          "request": {
+            "name": "Ads Net Values",
+            "description": {
+              "content": "Export Ads and Metrics for those Ads",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "net_ads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports."
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"initiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"ad_accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_campaigns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_sets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_placements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_objectives\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"plans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tags\": {\n      \"untagged\": \"<boolean>\",\n      \"tags\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1eaeb022-1082-4d03-bfd7-5315ede94160",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "net_ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"initiatives\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fields\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"ad_accounts\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_campaigns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_sets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_placements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_objectives\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"plans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tags\": {\n      \"untagged\": \"<boolean>\",\n      \"tags\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1234567\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c59b9ceb-3b16-4c26-86e1-9becfe6de8c9",
+          "name": "Stream Item Data",
+          "request": {
+            "name": "Stream Item Data",
+            "description": {
+              "content": "Generates an export file containing stream items within the requested date and stream parameters using Khoros Marketing Analytics API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "stream_items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "csv",
+                  "description": "Supports `json` and `csv`."
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV column headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"only_responded_items\": false,\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc43390a-b53a-4e5b-9a3a-488ce73f7c9c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "stream_items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"only_responded_items\": false,\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1958302\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6316eda2-71ad-42f6-a14d-2e4b811d1e60",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "stream_items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"only_responded_items\": false,\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": \"<string>\",\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f4dec7c-96d4-41c8-9482-ff2f0174a5bf",
+          "name": "Stream Item Action Data",
+          "request": {
+            "name": "Stream Item Action Data",
+            "description": {
+              "content": "Create Stream item action data in JSON or CSV using Khoros Marketing Analytics API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "stream_item_actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "csv",
+                  "description": "Supports `json` and `csv`."
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV column headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports."
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"use_action_date\": false,\n    \"only_responded_items\": \"false\",\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df12f81e-b4f0-4438-a9da-2a84dcd8f929",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "stream_item_actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"use_action_date\": false,\n    \"only_responded_items\": \"false\",\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1958302\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf8b6c30-83c2-4bfd-9bc3-53d707590ef1",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "stream_item_actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"use_action_date\": false,\n    \"only_responded_items\": \"false\",\n    \"stream_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"topic_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e9b40f0-95f1-4fe0-9e4d-6be54d575d89",
+          "name": "Customer Feedback",
+          "request": {
+            "name": "Customer Feedback",
+            "description": {
+              "content": "Create a list of customer feedback responses received in the user-selected date range using Khoros Marketing Analytics API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "customer_feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "csv",
+                  "description": "Supports `json` and `csv`."
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV column headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abfe174a-efaa-4abf-807d-584a5bd9e3cd",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "customer_feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1234567\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337c575b-d606-4991-9bce-c7b77446a39e",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "customer_feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e6d6bf0-3c5d-4983-96d6-7c5dd94b9133",
+          "name": "Profiles",
+          "request": {
+            "name": "Profiles",
+            "description": {
+              "content": "Export information about social network profiles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "csv",
+                  "description": "Supports `json` and `csv`."
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "true",
+                  "description": "If `true` then include CSV column headers."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                },
+                {
+                  "disabled": false,
+                  "key": "email_recipients",
+                  "value": "<string>",
+                  "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e47026e-13a2-413b-a095-89a50ac9d9c4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"export_id\\\": \\\"1234567\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bbdbc10-c32f-499c-89b7-9756ddc32882",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "csv"
+                    },
+                    {
+                      "key": "header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email_recipients",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {\n    \"start\": \"<string>\",\n    \"stop\": \"<string>\",\n    \"fields\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"timezone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "734258c7-f105-4c25-ba3b-83b464a4fdf0",
+          "name": "Retrieve Export Status",
+          "request": {
+            "name": "Retrieve Export Status",
+            "description": {
+              "content": "Check the status of an export using Khoros Marketing Analytics API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                ":id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of a given export job.  This id is contained in the api-response for an Export request."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13afb772-5e03-4fd7-8377-584103ef06fd",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of a given export job.  This id is contained in the api-response for an Export request."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"expires\\\": \\\"2021-03-24T16:58:16.478\\\",\\n  \\\"export_id\\\": 1958298,\\n  \\\"status\\\": \\\"complete\\\",\\n  \\\"url\\\": \\\"https://massrel-verwalter.s3.amazonaws.com/exports/12345/232809/data/example-65ea-459b-9310-b65fa1efcc5e/accounts-20210324example-0500.csv?response-content-disposition=attachment%3B%20filename%3Daccounts-20210324T155721-0500.csv&X-Amz-Security-Token=[TOKEN]&X-Amz-Signature=[SIGNATURE]\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29334066-5238-4c02-ad67-f68aa0590cf0",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of a given export job.  This id is contained in the api-response for an Export request."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5ba7d45-3168-4052-a5e1-4380a744f599",
+          "name": "Get Available Report Fields",
+          "request": {
+            "name": "Get Available Report Fields",
+            "description": {
+              "content": "Retrieve any available report fields by specified export type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                ":export_type",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "export_type",
+                  "description": "(Required) The export type that you wish to retrieve available fields and their field-ids. **Allowed Values:* `posts`"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f14c12d-a654-473b-a474-ddc1abf11e8a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":export_type",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "export_type",
+                      "description": "(Required) The export type that you wish to retrieve available fields and their field-ids. **Allowed Values:* `posts`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Coming Soon",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61f744cd-e9ae-484d-bff2-7d0649e9a150",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":export_type",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "export_type",
+                      "description": "(Required) The export type that you wish to retrieve available fields and their field-ids. **Allowed Values:* `posts`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "0b983a24-d2be-44db-9364-f90e67e12c6f",
+    "name": "agent-states-api-v2 AccountSet Export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

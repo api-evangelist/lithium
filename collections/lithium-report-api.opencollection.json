@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Report API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get export job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/report/reports/:workflowId/:runId/status",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path",
+                "description": "The `workflowId` returned in the response to a export generation request (e.g., /reports/report/author).<br>Example: f71ccb0c-afdc-32c6-8bfd-443f8eabae87"
+              },
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The `runId` returned in the response to a export generation request (e.g., /reports/report/author)<br>Example: 23nUak09Gc3t5K65L3GMQ3Y1onNYtvSsfUSuqEO0+pkHA="
+              },
+              {
+                "name": "analyticsAccessToken",
+                "value": "",
+                "type": "query",
+                "description": "The access token returned in the `statusUrl` field of the response to a export generation request (e.g., /reports/report/author)"
+              }
+            ]
+          },
+          "docs": "Check the status of an export job. This endpoint is returned in the `statusUrl` field of the response to a generate export requests (e.g., /reports/report/author)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

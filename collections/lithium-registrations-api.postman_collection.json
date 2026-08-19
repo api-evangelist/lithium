@@ -1,0 +1,1452 @@
+{
+  "item": [
+    {
+      "id": "ad4ce492-1617-4266-b144-a195b7405fea",
+      "name": "Registrations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69aadbee-6010-4be6-a2f5-ae0ae8d98bb3",
+          "name": "Get registrations using valid JWT token",
+          "request": {
+            "name": "Get registrations using valid JWT token",
+            "description": {
+              "content": "Get all registrations using any valid JWT token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f108be19-8624-4b3a-9879-d4c5904c3c32",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"data\\\": [\\n        {\\n            \\\"platform\\\": \\\"LITHIUM\\\",\\n            \\\"companyKey\\\": \\\"<company key>\\\",\\n            \\\"networkKey\\\": \\\"apple\\\",\\n            \\\"networkInstance\\\": \\\"www.apple.com\\\",\\n            \\\"externalId\\\": \\\"appleExternalId\\\",\\n            \\\"appId\\\": \\\"my-apple-bot\\\",\\n            \\\"name\\\": \\\"My Apple bot\\\",\\n            \\\"callbackUrl\\\": \\\"<callback URL>\\\",\\n            \\\"mode\\\": \\\"LIVE\\\",\\n            \\\"credentials\\\": {\\n                \\\"type\\\": \\\"BASIC_AUTH\\\",\\n                \\\"identity\\\": \\\"username\\\",\\n                \\\"secret\\\": \\\"password\\\"\\n            }, ...\\n    ],\\n    \\\"requestId\\\": \\\"8d6b6437-2632-4e89-b24c-53e4e0887b7f\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a86df63-30f6-4df6-9644-49f4b202c8ca",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\n  \\\"error\\\": { \\n    \\\"message\\\": \\\"Unauthorized\\\", \\n    \\\"requestId\\\": \\\"e9ea518b-c84e-4c22-8f64-a01e04bd28cb\\\" \\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af357cf5-e96d-403d-a872-d94e55b09062",
+          "name": "Register bot with Khoros Care and the Automation Framework",
+          "request": {
+            "name": "Register bot with Khoros Care and the Automation Framework",
+            "description": {
+              "content": "Register a bot with Khoros Care and the Automation Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf015b5b-546d-4b5a-a4f9-320e36a2c111",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 202 Accepted\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fffc139-906f-4bf6-b820-44c90e44b816",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 422 Unprocessable Entity\\n{\\n  \\\"errors\\\": [\\n    \\\"callbackUrl may not be empty\\\",\\n    \\\"credentials.secret may not be empty\\\"\\n  ]\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "459eda94-4f14-4727-9eff-b57565ea861d",
+          "name": "Edit bot registration",
+          "request": {
+            "name": "Edit bot registration",
+            "description": {
+              "content": "Edit a bot registration for a bot registered with the Automation Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df8c400c-5a01-48e6-9502-481ab2582363",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 202 Accepted\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b835b4ec-7d91-45b0-a9c2-e87bdb8b1b1a",
+              "name": "4XX",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RAW_BODY\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"errors\\\": [\\n    \\\"callbackUrl may not be empty\\\",\\n    \\\"credentials.secret may not be empty\\\"\\n  ]\\n}\\n\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c67c099a-83e6-45da-b878-0c57869d0ea8",
+          "name": "Get bot registrations by source channel",
+          "request": {
+            "name": "Get bot registrations by source channel",
+            "description": {
+              "content": "Retrieve all bot registrations registered with the Automation Framework for the specified source channel",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations",
+                "network",
+                ":networkKey",
+                "externalId",
+                ":externalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "networkKey",
+                  "description": "(Required) The source network for the registration. Must match the `network` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external identifier of the bot on the network. Must match the `externalId` field of the bot registration."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39e2b751-322c-49b4-8221-7a818c7727c8",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The source network for the registration. Must match the `network` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 404 Not Found\\n{\\n\\t\\\"error\\\": {\\n\\t\\t\\\"message\\\": \\\"No bot registration found\\\"\\n\\t}\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60a42fea-24cb-4bf2-a171-e531e7861720",
+              "name": "2XX",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The source network for the registration. Must match the `network` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 200 OK\\n{  \\n  \\\"data\\\":[  \\n    {  \\n      \\\"platform\\\":\\\"LITHIUM\\\",\\n      \\\"companyKey\\\":\\\"...\\\",\\n      \\\"networkKey\\\":\\\"facebook\\\",\\n      \\\"networkInstance\\\":\\\"www.facebook.com\\\",\\n      \\\"externalId\\\":\\\"...\\\",\\n      \\\"appId\\\":\\\"my-bot\\\",\\n      \\\"name\\\":\\\"simple bot\\\",\\n      \\\"callbackUrl\\\":\\\"https://www.example.com/bot\\\",\\n      \\\"mode\\\":\\\"LIVE\\\",\\n      \\\"publicFilter\\\":{  \\n        \\\"includeTargeted\\\":true,\\n        \\\"includeSourceTagIds\\\":[  \\n          999,\\n          1002\\n        ]\\n      },\\n      \\\"credentials\\\":{  \\n        \\\"type\\\":\\\"...\\\",\\n        \\\"identity\\\":\\\"...\\\",\\n        \\\"secret\\\":\\\"...\\\"\\n      },\\n      \\\"contact\\\":{  \\n        \\\"email\\\":\\\"...\\\"\\n      },\\n      \\\"createdEpochMillis\\\":1538146602440,\\n      \\\"lastUpdatedEpochMillis\\\":1538146602440\\n    }\\n  ]\\n}\\n\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "530671a9-022a-42ee-8f88-5536eb0ce01e",
+          "name": "Get bot registration details",
+          "request": {
+            "name": "Get bot registration details",
+            "description": {
+              "content": "Retrieve registration details about an existing bot registered with the Automation Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations",
+                "network",
+                ":networkKey",
+                "externalId",
+                ":externalId",
+                "appId",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "networkKey",
+                  "description": "(Required) The source network for the registration. Must match the `networkKey` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external identifier of the bot on the source network. Must match the `externalId` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "176af842-664a-4fdb-82ed-18a1fed035dc",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The source network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the source network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 200 OK\\n{  \\n  \\\"data\\\":{  \\n    \\\"platform\\\":\\\"LITHIUM\\\",\\n    \\\"companyKey\\\":\\\"...\\\",\\n    \\\"networkKey\\\":\\\"facebook\\\",\\n    \\\"networkInstance\\\":\\\"www.facebook.com\\\",\\n    \\\"externalId\\\":\\\"...\\\",\\n    \\\"appId\\\":\\\"some-bot-that-doesn’t-exist\\\",\\n    \\\"name\\\":\\\"simple bot\\\",\\n    \\\"callbackUrl\\\":\\\"https://www.example.com/bot\\\",\\n    \\\"mode\\\":\\\"LIVE\\\",\\n    \\\"publicFilter\\\":{  \\n      \\\"includeTargeted\\\":true,\\n      \\\"includeSourceTagIds\\\":[  \\n        999,\\n        1002\\n      ]\\n    },\\n    \\\"credentials\\\":{  \\n      \\\"type\\\":\\\"...\\\",\\n      \\\"identity\\\":\\\"...\\\",\\n      \\\"secret\\\":\\\"...\\\"\\n    },\\n    \\\"contact\\\":{  \\n      \\\"email\\\":\\\"...\\\"\\n    },\\n    \\\"createdEpochMillis\\\":1538146602440,\\n    \\\"lastUpdatedEpochMillis\\\":1538146602440\\n  }\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16d001ed-cc34-4b64-9f52-b76c4527ea60",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The source network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the source network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 404 Not Found\\n{\\n\\t\\\"error\\\": {\\n\\t\\t\\\"message\\\": \\\"No bot registration found\\\"\\n\\t}\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82a58f8f-b381-436d-a338-2b4475c8ff22",
+          "name": "Delete bot registration",
+          "request": {
+            "name": "Delete bot registration",
+            "description": {
+              "content": "Delete a bot registration from the Automation Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations",
+                "network",
+                ":networkKey",
+                "externalId",
+                ":externalId",
+                "appId",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "networkKey",
+                  "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acdb8975-c962-4300-8f32-617da612ee32",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 204 No Content\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8e20dc0-0f47-4a11-8987-e566e132ef0d",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 500 Internal Server Error\\n{\\n    \\\"errors\\\": [\\n        \\\"Unable to delete registration\\\"\\n    ]\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d0cfeb9-875b-4e4a-ad5d-04a119c23f9f",
+          "name": "Change bot operating mode",
+          "request": {
+            "name": "Change bot operating mode",
+            "description": {
+              "content": "Change a bot's operating mode",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "registrations",
+                "network",
+                ":networkKey",
+                "externalId",
+                ":externalId",
+                "appId",
+                ":appId",
+                "mode",
+                ":mode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "networkKey",
+                  "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mode",
+                  "description": "(Required) The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated \"maintenanceMode”: true state."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a024646-8c71-4024-8601-48dafee92604",
+              "name": "202",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId",
+                    "mode",
+                    ":mode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mode",
+                      "description": "(Required) The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated \"maintenanceMode”: true state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 202 Accepted\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fea53a9d-2057-40f0-baf5-f8e88355fd40",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId",
+                    "mode",
+                    ":mode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mode",
+                      "description": "(Required) The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated \"maintenanceMode”: true state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 400 Bad Request\\n{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"Invalid mode: liev\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a3ddedb-f58c-49cd-9201-b3204bcd910b",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "registrations",
+                    "network",
+                    ":networkKey",
+                    "externalId",
+                    ":externalId",
+                    "appId",
+                    ":appId",
+                    "mode",
+                    ":mode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "networkKey",
+                      "description": "(Required) The social network for the registration. Must match the `networkKey` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mode",
+                      "description": "(Required) The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated \"maintenanceMode”: true state."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"HTTP/1.1 404 Not Found\\n{  \\n  \\\"error\\\":{  \\n    \\\"messages\\\":[  \\n      \\\"No such bot myfirstbot for company doghotel network facebook external id 12345678901234\\\"\\n    ]\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "a86e929e-5fd5-494a-a298-7a71d4342726",
+    "name": "agent-states-api-v2 AccountSet Registrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

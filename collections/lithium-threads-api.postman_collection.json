@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "04172da4-c261-4896-8f44-9ecb8d6672ac",
+      "name": "Threads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73b2fa9d-0edf-4f12-ae9b-39db587f80c6",
+          "name": "Retrieve a list of threads",
+          "request": {
+            "name": "Retrieve a list of threads",
+            "description": {
+              "content": "Fetches a list of threads using the Flow REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sync",
+                  "value": "<string>",
+                  "description": "Optional parameter for enabling sync mode"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Required) Required parameter for pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "threads",
+                  "description": "(Required) A list of threads"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fcbe424-4502-4636-a6e6-d97f03a08c34",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sync",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "threads",
+                      "description": "(Required) A list of threads"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"result\\\": {\\n        \\\"threads\\\": [\\n            \\\"EXAMPLE-afa7-45ed-a3db-42c4b538d42c|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\\\",\\n            \\\"EXAMPLE-133b-4d92-84e8-005d5350ca2e|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\\\",\\n            \\\"EXAMPLE-1647-42db-bbb5-9d835f53ee95|o_4f4f442c-cd6c-44f1-8f3d-28d9668ab72c\\\",\\n            ...\\n        ],\\n        \\\"page\\\": \\\"1\\\",\\n        \\\"pages\\\": 100\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "d6f2d15b-b736-4eeb-93b6-c767daa96976",
+    "name": "agent-states-api-v2 AccountSet Threads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

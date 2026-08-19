@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Meta.json?activity API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta.json?activity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get activity and count props",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:account/:streamName/meta.json?activity",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streamName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activity",
+                "value": "",
+                "type": "query",
+                "description": "**Format:** binary"
+              }
+            ]
+          },
+          "docs": "Include activity and count properties in response"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,290 @@
+{
+  "item": [
+    {
+      "id": "3531013e-66f8-493a-85cc-72cc6019d755",
+      "name": "Csv",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43e40169-8887-451b-8326-99ba64cc2d1d",
+          "name": "Create CSV export for download",
+          "request": {
+            "name": "Create CSV export for download",
+            "description": {
+              "content": "Generate a CSV export for download",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "csv",
+                ":reportName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "(Required) The beginning of the reporting interval (date range) represented as milliseconds since epoch."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "The current time",
+                  "description": "The end of the reporting interval (date range) represented as milliseconds since epoch."
+                },
+                {
+                  "disabled": false,
+                  "key": "tzOffsetMs",
+                  "value": "0/GMT",
+                  "description": "Sets the timezone for the formatted dates in milliseconds. When using Epoch time, this parameter only affects the display of the date/time in the reports."
+                },
+                {
+                  "disabled": false,
+                  "key": "bucketSizeMs",
+                  "value": "1 hour",
+                  "description": "The size of the bucketed intervals within the date range in milliseconds. Used by the following reports: `conversation`, `post`, `agentActions`, `custSatisfaction`, `incomingPostTag`"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerType",
+                  "value": "All providers",
+                  "description": "Filter report data by Provider Type/Source. Support values: `twitter`, `facebook`, `lithium`"
+                },
+                {
+                  "disabled": false,
+                  "key": "incldActions",
+                  "value": "false",
+                  "description": "Use this for a raw post data report only. If `false`, the report will include all that that were received during the time range. If `true`, the report will include all posts that were received plus posts that had the following agent actions performed on them during the time range: Claimed, Responded to, Closed"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reportName",
+                  "description": "(Required) The name of the report to run. Run `/reports/list` to get a list of available reports. Supported values: `authorReport`, `conversation`, `post`, `rawPost`, `rawPostIncludeActions`, `agentActions`, `publishExport`, `custSatisfaction`, `postTagTrend`, `incomingPostTag`"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68dda241-5f31-4af8-b7b0-66a25414ec70",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "csv",
+                    ":reportName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "The current time"
+                    },
+                    {
+                      "key": "tzOffsetMs",
+                      "value": "0/GMT"
+                    },
+                    {
+                      "key": "bucketSizeMs",
+                      "value": "1 hour"
+                    },
+                    {
+                      "key": "providerType",
+                      "value": "All providers"
+                    },
+                    {
+                      "key": "incldActions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportName",
+                      "description": "(Required) The name of the report to run. Run `/reports/list` to get a list of available reports. Supported values: `authorReport`, `conversation`, `post`, `rawPost`, `rawPostIncludeActions`, `agentActions`, `publishExport`, `custSatisfaction`, `postTagTrend`, `incomingPostTag`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6354e6b5-5b77-4f31-867b-a818049ca04e",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "csv",
+                    ":reportName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "The current time"
+                    },
+                    {
+                      "key": "tzOffsetMs",
+                      "value": "0/GMT"
+                    },
+                    {
+                      "key": "bucketSizeMs",
+                      "value": "1 hour"
+                    },
+                    {
+                      "key": "providerType",
+                      "value": "All providers"
+                    },
+                    {
+                      "key": "incldActions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportName",
+                      "description": "(Required) The name of the report to run. Run `/reports/list` to get a list of available reports. Supported values: `authorReport`, `conversation`, `post`, `rawPost`, `rawPostIncludeActions`, `agentActions`, `publishExport`, `custSatisfaction`, `postTagTrend`, `incomingPostTag`"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "d391f2c9-14c2-4c55-a380-f35fd5cf7e71",
+    "name": "agent-states-api-v2 AccountSet Csv API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

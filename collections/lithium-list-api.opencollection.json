@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet List API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available report names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/list"
+          },
+          "docs": "Returns a list of all available report names"
+        },
+        {
+          "info": {
+            "name": "List a specific directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/list/:resourcePath",
+            "params": [
+              {
+                "name": "resourcePath",
+                "value": "",
+                "type": "path",
+                "description": "The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+              }
+            ]
+          },
+          "docs": "List the assets available within a specific directory"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

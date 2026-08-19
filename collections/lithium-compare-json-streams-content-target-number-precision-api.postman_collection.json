@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "9b50e599-d869-4862-8c5d-046c9a57ea2f",
+      "name": "Compare.json?streams={content}&target={number}&precision",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f076699a-8f25-46f8-901d-c264b17f6cc5",
+          "name": "Get specific decimals in percent return",
+          "request": {
+            "name": "Get specific decimals in percent return",
+            "description": {
+              "content": "Return specific decimals",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "{{content}}"
+                },
+                {
+                  "key": "target",
+                  "value": "{{number}}"
+                },
+                {
+                  "key": "precision",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "disabled": false,
+                  "key": "target",
+                  "value": "500"
+                },
+                {
+                  "disabled": false,
+                  "key": "precision",
+                  "value": "1",
+                  "description": "**Possible Values:** `0`, `1`, `2`, `3`, `4`"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "184a8350-44d0-4481-abcc-bfcd78fdd558",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compare.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "streams",
+                      "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                    },
+                    {
+                      "key": "target",
+                      "value": "500"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Coming Soon",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "number"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "187097bc-21c8-4e2b-ae5e-82c03a861374",
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams={content}&target={number}&precision API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

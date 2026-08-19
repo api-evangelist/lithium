@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "e767571b-0043-4411-9da9-df1e37325f3d",
+      "name": "Config",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c58139e8-6352-455b-9027-89812f6b4a79",
+          "name": "Get time zone IDs for exports",
+          "request": {
+            "name": "Get time zone IDs for exports",
+            "description": {
+              "content": "Get time zone IDs used to format time zones in exports",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config",
+                "timezones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "companyKey",
+                  "value": "<string>",
+                  "description": "(Required) The company key found in **Account Admin > General Settings > Analytics API Settings**"
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "en",
+                  "description": "A locale code to filter the response. Default is `en`"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bca3cfd-377e-42e2-b628-a2e87ba30bb3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "timezones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locale",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\":\\\"PASS\\\",\\n  \\\"request\\\":null,\\n  \\\"message\\\":null,\\n  \\\"result\\\":[\\n    {\\n      \\\"id\\\":\\\"Etc/GMT+12\\\",\\n      \\\"name\\\":\\\"GMT-12:00\\\",\\n      \\\"shortName\\\":\\\"GMT-12:00\\\",\\n      \\\"offsetString\\\":\\\"-12:00\\\",\\n      \\\"offsetMillis\\\":-43200000\\n    },\\n    {\\n      \\\"id\\\":\\\"Etc/GMT+11\\\",\\n      \\\"name\\\":\\\"GMT-11:00\\\",\\n      \\\"shortName\\\":\\\"GMT-11:00\\\",\\n      \\\"offsetString\\\":\\\"-11:00\\\",\\n      \\\"offsetMillis\\\":-39600000\\n    },\\n    ...\\n    {\\n      \\\"id\\\":\\\"Pacific/Apia\\\",\\n      \\\"name\\\":\\\"Samoa Daylight Time\\\",\\n      \\\"shortName\\\":\\\"SDT\\\",\\n      \\\"offsetString\\\":\\\"+14:00\\\",\\n      \\\"offsetMillis\\\":50400000\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "1bdeeb83-41a7-46cb-b7df-e44f6666ed41",
+    "name": "agent-states-api-v2 AccountSet Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

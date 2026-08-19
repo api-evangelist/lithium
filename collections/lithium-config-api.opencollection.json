@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Config API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get time zone IDs for exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/config/timezones",
+            "params": [
+              {
+                "name": "companyKey",
+                "value": "",
+                "type": "query",
+                "description": "The company key found in **Account Admin > General Settings > Analytics API Settings**"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "A locale code to filter the response. Default is `en`"
+              }
+            ]
+          },
+          "docs": "Get time zone IDs used to format time zones in exports"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

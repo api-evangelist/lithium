@@ -27,6 +27,44 @@ tenancy:
     x-sf-user-email: Identifies the acting user.
     x-sf-email: Variant of x-sf-user-email on some operations.
 
+hosts:
+  note: >-
+    Added 2026-08-13. The estate is six distinct API hosts, not one — the single
+    api.app.lithium.com base that apis.yml previously carried on every entry was wrong for
+    over half of them. Each entry's baseURL is now the host published in the specification
+    that operation actually came from.
+  regional_gateways:
+    documented: true
+    docs: https://developer.khoros.com/khoroscaredevdocs/reference/care-apis
+    note: >-
+      Khoros Care is data-resident: the gateway host encodes the region and a client must
+      call the one its instance is hosted in. There is no single global host and no
+      redirect between them.
+    regions:
+      - {region: US, host: 'https://api.app.lithium.com', status: 403}
+      - {region: EU, host: 'https://api-eu.app.lithium.com', status: 403}
+      - {region: APAC, host: 'https://api-ap.app.lithium.com', status: 403}
+    probed: '2026-08-13'
+    probe_note: All three answer HTTP 403 {"message":"Forbidden"} to anonymous requests — alive and gated.
+  by_product:
+    - {product: Khoros Care, host: 'https://api.app.lithium.com', note: 'regional; see regional_gateways'}
+    - {product: Khoros Care (per-instance legacy), host: 'https://{instance}.response.lithium.com', note: templated per customer instance}
+    - {product: Khoros Care Analytics Reports, host: 'https://analytics-api.app.lithium.com/api/public'}
+    - {product: Khoros Marketing, host: 'https://api.spredfast.com', note: 'shared host, tenant selected by x-sf-* headers'}
+    - {product: Khoros Marketing Stream, host: 'https://api.massrelevance.com', status: 502, dead: true, note: 'see ../lifecycle/lithium-lifecycle.yml dead_hosts'}
+    - {product: Khoros Flow, host: 'https://api.flow.ai/rest/v1'}
+    - {product: Khoros Community, host: 'https://{community}/api/2.0', note: per-community instance}
+
+api_catalog:
+  published: true
+  url: https://developer.khoros.com/.well-known/api-catalog
+  spec: RFC 9727
+  content_type: application/linkset+json
+  file: ../well-known/lithium-api-catalog.json
+  note: >-
+    Real linkset document, but every service-desc descriptor it advertises returns 404 and two
+    of the five doc projects are missing from it. Detail in ../well-known/lithium-well-known.yml.
+
 authentication:
   summary: Four different models, one per product.
   by_product:

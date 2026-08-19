@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "10edf26d-fa72-4cb7-8b3a-3cbecdbba77c",
+      "name": "Introspection Api",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4992b127-c322-44fa-87a4-6c6e7824530e",
+          "name": "Current User Details",
+          "request": {
+            "name": "Current User Details",
+            "description": {
+              "content": "This returns directory level info about the current user using Khoros Marketing Introspection API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47371e04-8d40-4b59-b167-094d5aa50129",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"companies\\\": [\\n    {\\n      \\\"id\\\": 12345,\\n      \\\"name\\\": \\\"Example Corp\\\",\\n      \\\"products\\\": []\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"name\\\": \\\"Example Company\\\",\\n      \\\"products\\\": [\\n        {\\n          \\\"environmentId\\\": 14,\\n          \\\"environmentName\\\": \\\"care\\\",\\n          \\\"environmentUrl\\\": \\\"https://care.spredfast.com\\\",\\n          \\\"externalCompanyId\\\": \\\"45\\\",\\n          \\\"id\\\": 10,\\n          \\\"name\\\": \\\"Care\\\"\\n        },\\n        {\\n          \\\"environmentId\\\": 2,\\n          \\\"environmentName\\\": \\\"APP3\\\",\\n          \\\"environmentUrl\\\": \\\"https://app3.spredfast.com\\\",\\n          \\\"externalCompanyId\\\": \\\"45\\\",\\n          \\\"id\\\": 1,\\n          \\\"name\\\": \\\"Conversations\\\"\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"description\\\": \\\"\\\",\\n  \\\"email\\\": \\\"johndoe@example.com\\\",\\n  \\\"firstName\\\": \\\"John\\\",\\n  \\\"id\\\": 123123,\\n  \\\"jobTitle\\\": \\\"Assistant to the Regional Manager\\\",\\n  \\\"lastName\\\": \\\"Doe\\\",\\n  \\\"profileImageUri\\\": \\\"https://example.com/image.jpg\\\",\\n  \\\"timezone\\\": \\\"America/Chicago\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "0bf066ba-d871-4042-ac26-a8fe406ddb1b",
+    "name": "agent-states-api-v2 AccountSet Introspection Api API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

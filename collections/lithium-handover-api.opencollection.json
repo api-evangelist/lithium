@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Handover API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Handover",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Handover action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/handover/:threadId",
+            "params": [
+              {
+                "name": "{threadId}",
+                "value": "",
+                "type": "path",
+                "description": "The unique threadId. This is a required field."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use the Flow REST API to create a handover action to pause a bot."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

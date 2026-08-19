@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Registrations API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get registrations using valid JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations"
+          },
+          "docs": "Get all registrations using any valid JWT token"
+        },
+        {
+          "info": {
+            "name": "Register bot with Khoros Care and the Automation Framework",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a bot with Khoros Care and the Automation Framework"
+        },
+        {
+          "info": {
+            "name": "Edit bot registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a bot registration for a bot registered with the Automation Framework"
+        },
+        {
+          "info": {
+            "name": "Get bot registrations by source channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations/network/:networkKey/externalId/:externalId",
+            "params": [
+              {
+                "name": "networkKey",
+                "value": "",
+                "type": "path",
+                "description": "The source network for the registration. Must match the `network` field of the bot registration."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the bot on the network. Must match the `externalId` field of the bot registration."
+              }
+            ]
+          },
+          "docs": "Retrieve all bot registrations registered with the Automation Framework for the specified source channel"
+        },
+        {
+          "info": {
+            "name": "Get bot registration details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations/network/:networkKey/externalId/:externalId/appId/:appId",
+            "params": [
+              {
+                "name": "networkKey",
+                "value": "",
+                "type": "path",
+                "description": "The source network for the registration. Must match the `networkKey` field of the bot registration."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the bot on the source network. Must match the `externalId` field of the bot registration."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+              }
+            ]
+          },
+          "docs": "Retrieve registration details about an existing bot registered with the Automation Framework"
+        },
+        {
+          "info": {
+            "name": "Delete bot registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations/network/:networkKey/externalId/:externalId/appId/:appId",
+            "params": [
+              {
+                "name": "networkKey",
+                "value": "",
+                "type": "path",
+                "description": "The social network for the registration. Must match the `networkKey` field of the bot registration."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+              }
+            ]
+          },
+          "docs": "Delete a bot registration from the Automation Framework"
+        },
+        {
+          "info": {
+            "name": "Change bot operating mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/registrations/network/:networkKey/externalId/:externalId/appId/:appId/mode/:mode",
+            "params": [
+              {
+                "name": "networkKey",
+                "value": "",
+                "type": "path",
+                "description": "The social network for the registration. Must match the `networkKey` field of the bot registration."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the bot on the social network. Must match the `externalId` field of the bot registration."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The internal identifier for the bot used by Khoros. Must match the `appId` field of the bot registration."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "path",
+                "description": "The operating mode of the bot: LIVE or MAINTENANCE.<br><br>LIVE: The normal operating mode. All events are forwarded to the Bot Server via webhooks, and the bot can take any supported action. Only one LIVE bot can be supported on a specific network/externalId at one time.<br><br>MAINTENANCE:  No events are sent via webhooks. Any customer messages that arrive while in this mode are explicitly handed off to an AGENT, so that when the bot returns from MAINTENANCE mode, the bot will not start answering conversations already in progress. (MAINTENANCE is equivalent to deprecated \"maintenanceMode”: true state."
+              }
+            ]
+          },
+          "docs": "Change a bot's operating mode"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

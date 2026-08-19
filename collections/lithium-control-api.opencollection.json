@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Control API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Control",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get entity currently controlling conversation by author and network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/control/network/:networkKey/externalId/:externalId/author/:authorId",
+            "params": [
+              {
+                "name": "networkKey",
+                "value": "",
+                "type": "path",
+                "description": "The social network for the registration. Must match the `network` field of the bot registration."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the bot on the social network. Must match the `externalId field` of the bot registration."
+              },
+              {
+                "name": "authorId",
+                "value": "",
+                "type": "path",
+                "description": "The author ID. Find the author ID from the [Author object](ref:author-object) included in all messages."
+              }
+            ]
+          },
+          "docs": "Return which entity (agent or bot) has current control of the conversation associated with the specified author on the specified network."
+        },
+        {
+          "info": {
+            "name": "Pass conversation control",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/control",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pass conversation control"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

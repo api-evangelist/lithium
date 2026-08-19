@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compare.json?streams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Compare stream volumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/compare.json?streams",
+            "params": [
+              {
+                "name": "streams",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve stream volumes and compare them."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

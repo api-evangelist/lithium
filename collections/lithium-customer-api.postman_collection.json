@@ -1,0 +1,2177 @@
+{
+  "item": [
+    {
+      "id": "9cb0d3b1-9158-4294-a7e0-7f802e90876c",
+      "name": "Customer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3f8c855-4f36-4837-a7f7-e3aeb17795f7",
+          "name": "bestmatchCustomers",
+          "request": {
+            "name": "bestmatchCustomers",
+            "description": {
+              "content": "Find a customer best match based on known Social Information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer",
+                "bestmatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Care initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27751171-66e0-4926-bd2e-159db86cd984",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    "bestmatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c361b8c0-7ad5-4243-bec0-81c03ab3fceb",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    "bestmatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acde5129-dfaa-4e9e-8337-d4480b7a77b2",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    "bestmatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2aee2898-f09a-4856-b472-40dca4ce05d0",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    "bestmatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c2010c6-5146-4ba5-85b8-5c49cd7b7db4",
+          "name": "createCustomer",
+          "request": {
+            "name": "createCustomer",
+            "description": {
+              "content": "Create a new customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bb9f70b-5aad-43da-97e0-0ef13bb5b1b8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6115392b-da68-425f-ac2c-ac2334f16977",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19af7c41-e92c-45aa-b039-f3222eab55fb",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5142e18-f865-4eec-9fd1-1d569d9ed14f",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "784b43ec-3d0b-48a0-a126-3938a19f15d6",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6960494b-8525-4c65-b5df-d3af60e601b0",
+          "name": "findCustomer",
+          "request": {
+            "name": "findCustomer",
+            "description": {
+              "content": "Returns info for a specific customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af1a7796-2cc2-49cb-895c-b58a89acca9c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a036536c-97ba-49b8-a7dd-192c1d703ca4",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f0ac2c7-df2f-47a6-b8ab-7878136505a6",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e196efbd-d843-4ecb-ae1b-074588e93458",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41787fcf-bbc3-4cef-8b07-e663f168d51c",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9953a2-8b4d-48b5-bad7-aac5c1415489",
+          "name": "updateCustomer",
+          "request": {
+            "name": "updateCustomer",
+            "description": {
+              "content": "Update a customer’s details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1093fcc8-7b1b-4128-b6b3-7f7848aa304a",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Marketing agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1cc69ee8-7ca8-4e10-b80f-51eb5bd1681d",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Marketing agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acc4c8a3-79b7-430b-9b73-760d75e306a4",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Marketing agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a61b97f-f463-4320-b6c6-2208756c757e",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Marketing agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d74a089-0c1c-4541-a71c-3635d39d5a10",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Marketing agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d178bb19-5db7-42e0-909c-36144565e56e",
+          "name": "findCases",
+          "request": {
+            "name": "findCases",
+            "description": {
+              "content": "Get all cases for the given customer ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b45fef98-d8b2-4209-9a66-90e512f0761c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "386e7494-9fbe-441b-af2a-6ce515b6b264",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01ee5171-695f-40dc-b82b-eb69b7503ee7",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d5477eb-9e03-4147-871f-ff2f03d4766f",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffaa396a-0fc9-41dc-aa03-f0e6ab6e2697",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer",
+                    ":id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email ID of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ID of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care ID of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "996a647e-6ace-4865-b2ca-c44c72151f77",
+    "name": "agent-states-api-v2 AccountSet Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

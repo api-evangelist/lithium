@@ -1,0 +1,1380 @@
+{
+  "item": [
+    {
+      "id": "b56cdcee-309f-4d46-8d4b-ec8341708504",
+      "name": "Case",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c77f9ca-069d-4d36-9fdc-f82bed920b4c",
+          "name": "createCase",
+          "request": {
+            "name": "createCase",
+            "description": {
+              "content": "Create a new case with interactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Care agent performing the action.",
+                "key": "x-sf-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68578e74-064a-423e-a085-3f0354cb839d",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"See Details for Schema\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1245761-30e1-4a69-b2d9-aeb7b95aed2c",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb68a28e-a819-47fb-a750-8165ebfca81f",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a31fd505-d6c9-4e75-b94c-319d62e91316",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53c2d901-d8e1-4b47-9501-3d31c63d841d",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a826d41-bfaa-498d-acc0-4fcdd7aab119",
+          "name": "lookupCase",
+          "request": {
+            "name": "lookupCase",
+            "description": {
+              "content": "Returns info for a specific case",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Care agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a75d823e-47c1-4388-afd3-896036d6c147",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ace620a0-1f2a-4ecb-a188-dde9dc1ae450",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7a7064d-ca90-46a3-917e-f1c9c43a15fc",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59dadf79-f91f-43d5-9662-dd25c3cff037",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1311b7db-161c-4060-aed2-d8364be3540b",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-user-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef199be3-ea5b-4392-8a25-4e67b88fa5c8",
+          "name": "updateCase",
+          "request": {
+            "name": "updateCase",
+            "description": {
+              "content": "Create a new case with interactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Care agent performing the action.",
+                "key": "x-sf-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f4f2b18-995a-47eb-a23c-42ee6aa17864",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The case ID to update."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"See Details for Schema\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6228d222-c919-4f13-b3cf-afcffd60c2f2",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The case ID to update."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83e0205e-81b4-4b32-b3d0-cd0b410703d2",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The case ID to update."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42946cde-047e-4573-9bd5-a79aa68bc10d",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The case ID to update."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c3fce6e-3917-48b7-81ab-0b97cf6794c3",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "case",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The case ID to update."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The email id of the Khoros Care agent performing the action.",
+                    "key": "x-sf-email",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The id of the active Khoros Care initiative the user is in when performing the action. **Format:** int64",
+                    "key": "x-sf-initiative",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The Khoros Care id of the company the user is in when making the request. **Format:** int64",
+                    "key": "x-sf-company-id",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "See Details for Schema",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "e4c9a976-154b-4273-96a1-60ee169213e6",
+    "name": "agent-states-api-v2 AccountSet Case API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

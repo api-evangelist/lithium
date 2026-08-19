@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Tag Api V2 API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tag Api V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tag details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/"
+          },
+          "docs": "Get tag details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

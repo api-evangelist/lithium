@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet DisplayIds API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DisplayIds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation details by display ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/displayIds/:displayNumber",
+            "params": [
+              {
+                "name": "displayNumber",
+                "value": "",
+                "type": "path",
+                "description": "One or more conversation IDs"
+              }
+            ]
+          },
+          "docs": "Get conversation details by display ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

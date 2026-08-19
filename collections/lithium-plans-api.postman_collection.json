@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "72b75c50-1688-4601-98e1-56a8a6389a96",
+      "name": "Plans",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5c8b21e-a57a-46cd-99fe-764363728b5d",
+          "name": "Retrieve a list of Plans.",
+          "request": {
+            "name": "Retrieve a list of Plans.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1be442e9-dc42-473b-bbe1-3d45d0a7553c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nameFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"companyId\": 1371,\n      \"campaignId\": 3771,\n      \"name\": \"string\",\n      \"overview\": \"string\",\n      \"objective\": \"string\",\n      \"targetAudience\": \"string\",\n      \"color\": \"string\",\n      \"startDate\": \"1981-09-30T18:22:48.392Z\",\n      \"endDate\": \"1999-12-18T11:23:17.180Z\",\n      \"createdDate\": \"2007-09-15T10:53:08.185Z\",\n      \"lastModifiedDate\": \"1980-07-08T18:39:16.956Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"companyId\": 2299,\n      \"campaignId\": 7577,\n      \"name\": \"string\",\n      \"overview\": \"string\",\n      \"objective\": \"string\",\n      \"targetAudience\": \"string\",\n      \"color\": \"string\",\n      \"startDate\": \"2020-07-04T12:30:30.551Z\",\n      \"endDate\": \"1998-03-17T05:45:21.591Z\",\n      \"createdDate\": \"1999-09-16T09:35:19.876Z\",\n      \"lastModifiedDate\": \"1978-08-28T17:55:11.068Z\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_TARGETING_PROFILE\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 6849\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "b8bb4a9b-da32-4dc1-8ff1-586d7fd53606",
+    "name": "agent-states-api-v2 AccountSet Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

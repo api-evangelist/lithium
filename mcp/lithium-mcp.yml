@@ -1,14 +1,27 @@
 generated: '2026-07-19'
 method: derived
 status: candidate
-source: Derived from the 273 operations across the 28 harvested definitions in ../openapi/. Searched npm, the official
-  MCP registry and the Khoros developer documentation first — Khoros publishes no MCP server.
-description: 'Khoros does not ship an MCP server. This is a candidate tool surface derived from the published operations,
-  not a Khoros product. Anyone building it should note three things from ../conventions/lithium-conventions.yml:
-  there is no idempotency contract, so write tools must not be retried blindly; authentication differs per product
-  (Basic and JWT for Care, OAuth 2.0 for Marketing, API app credentials for Community); and the only OAuth scope
-  available is `all`, which is read/write, so a read-only agent cannot be enforced at the token level and must be
-  constrained by tool selection instead.'
+source: Derived from the 273 operations across the 28 harvested definitions in ../openapi/. Searched npm,
+  the official MCP registry and the Khoros developer documentation first — Khoros publishes no MCP server.
+description: 'Khoros does not ship an MCP server. This is a candidate tool surface derived from the published
+  operations, not a Khoros product. Anyone building it should note three things from ../conventions/lithium-conventions.yml:
+  there is no idempotency contract, so write tools must not be retried blindly; authentication differs
+  per product (Basic and JWT for Care, OAuth 2.0 for Marketing, API app credentials for Community); and
+  the only OAuth scope available is `all`, which is read/write, so a read-only agent cannot be enforced
+  at the token level and must be constrained by tool selection instead.'
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+  note: >-
+    Khoros ships neither a remote MCP endpoint nor a local stdio package. Re-checked
+    2026-08-13 against the official MCP registry, the npm registry and the
+    developer.khoros.com sitemap — still zero results. `mode: none` because everything below
+    is a candidate tool surface derived from the harvested OpenAPI, not a server anyone can
+    reach. No endpoint URL is recorded because none exists; do not guess one.
 server:
   name: lithium
   published: false
@@ -31,10 +44,10 @@ tool_summary:
     Khoros Marketing: 149
 safety_notes:
 - 'No Idempotency-Key support: a retried write tool call can duplicate a message, tag or subscription.'
-- Khoros Care rate limits are 60 calls per 60 seconds (Author/Conversation) and 20 per minute (Analytics Reports)
-  with no rate-limit response headers, so a client must throttle itself.
-- Marketing tools act on a tenant identified by the x-sf-company-id / x-sf-initiative / x-sf-user-email headers
-  — these must be bound per connection, not chosen by the agent.
+- Khoros Care rate limits are 60 calls per 60 seconds (Author/Conversation) and 20 per minute (Analytics
+  Reports) with no rate-limit response headers, so a client must throttle itself.
+- Marketing tools act on a tenant identified by the x-sf-company-id / x-sf-initiative / x-sf-user-email
+  headers — these must be bound per connection, not chosen by the agent.
 - The GDPR API performs data-subject erasure; it should be gated behind explicit human approval.
 tools:
 - name: retrieve_defined_agent_states
@@ -1675,3 +1688,9 @@ tools:
   method: GET
   path: /compare.json?streams={content}&sort
   source_operation: openapi/lithium-marketing-stream-api-openapi.json#get-specified-sort-order-1
+deployment:
+  mode: none
+  verified: derived
+  tools: 273
+  checked: '2026-08-12'
+  source: catalog MCP census

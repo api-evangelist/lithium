@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Admin API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a Custom CRM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/admin/custom",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a custom customer relationship manager"
+        },
+        {
+          "info": {
+            "name": "Register a Custom CRM",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/admin/custom/:crmId",
+            "params": [
+              {
+                "name": "crmId",
+                "value": "",
+                "type": "path",
+                "description": "**Format:** int64"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a custom customer relationship manager"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

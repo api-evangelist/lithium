@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AccountSet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists all accounts sets and corresponding accounts available to the user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/:environment/v1/company/:companyId/initiative/:initiativeId/accountset",
+            "params": [
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all account sets and accounts available.\n\nNote: the following criteria must be met for an account set to be listed:\n1. Your user must be a member of the Account Set.\n2. There must be at least one Account registered in the Account Set."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

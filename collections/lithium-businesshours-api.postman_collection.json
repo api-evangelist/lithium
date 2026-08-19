@@ -1,0 +1,146 @@
+{
+  "item": [
+    {
+      "id": "9fc4f282-030f-42fe-9b80-2e3581acec6b",
+      "name": "Businesshours",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8443194-53f8-4581-b140-dd983ed32f09",
+          "name": "Business Hours",
+          "request": {
+            "name": "Business Hours",
+            "description": {
+              "content": "Retrieve a list of configured business hours for your project using the Flow REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesshours"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sync",
+                  "value": "<string>",
+                  "description": "Optional parameter for enabling sync mode"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b716119-3ddc-47c9-80a8-f77d91e8fa68",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesshours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sync",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"businessHours\\\": [\\n    {\\n      \\\"weekdays\\\": [\\n        {\\n          \\\"weekday\\\": \\\"Monday\\\",\\n          \\\"content\\\": [\\n            {\\n              \\\"from\\\": \\\"0:20\\\",\\n              \\\"to\\\": \\\"4:19\\\"\\n            },\\n            {\\n              \\\"from\\\": \\\"10:00\\\",\\n              \\\"to\\\": \\\"22:22\\\"\\n            },\\n            ...\\n          ]\\n        },\\n        ...\\n      ],\\n      \\\"holidays\\\": [\\n        {\\n          \\\"holiday\\\": \\\"New Year\\\",\\n          \\\"date\\\": \\\"2019-12-31T00:00:00.000Z\\\"\\n        },\\n        ...\\n      ],\\n      \\\"label\\\": \\\"test BH\\\",\\n      \\\"timezone\\\": \\\"(UTC+03:00) Minsk\\\"\\n    },\\n    ...\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "6a65f372-50bb-4ba4-a0fb-de545d65bacb",
+    "name": "agent-states-api-v2 AccountSet Businesshours API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

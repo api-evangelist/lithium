@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "b1583a2f-99da-45f0-a086-9ef594c6ecb8",
+      "name": "Khorosapi",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb79bfa9-4102-4b3a-988a-e2e100288902",
+          "name": "Return entity JWT status",
+          "request": {
+            "name": "Return entity JWT status",
+            "description": {
+              "content": "Return whether a JWT exists for an entity",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "khorosapi",
+                "ownerId",
+                ":ownerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ownerId",
+                  "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3dffb2fa-1131-4fb9-819d-18c8abc8588a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "khorosapi",
+                    "ownerId",
+                    ":ownerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownerId",
+                      "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"success\\\",\\n    \\\"data\\\": {\\n        \\\"token\\\": \\\"<JWT>\\\",\\n        \\\"expiresAtMillis: \\\": 1557163788687\\n    }\\n}\\n\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26c6d12b-ef71-4792-921e-7f5687627f3f",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "khorosapi",
+                    "ownerId",
+                    ":ownerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownerId",
+                      "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d166083a-7bf8-4484-ad09-f713a8d0d891",
+          "name": "Create JWT token",
+          "request": {
+            "name": "Create JWT token",
+            "description": {
+              "content": "Generate a JWT token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "khorosapi",
+                "ownerId",
+                ":ownerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ownerId",
+                  "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d72c9934-1d1f-406c-a8ce-3810ce31083f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "khorosapi",
+                    "ownerId",
+                    ":ownerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownerId",
+                      "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{  \\n  \\\"status\\\":\\\"success\\\",\\n  \\\"data\\\":{  \\n    \\\"token\\\":\\\"<JWT>\\\",\\n    \\\"expiresAtMillis: \\\":1557163788687\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ad05449-c31e-40c7-9157-752db582dfca",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "khorosapi",
+                    "ownerId",
+                    ":ownerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownerId",
+                      "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"status\\\": \\\"fail\\\",\\n    \\\"message\\\": \\\"Unauthorized\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a47df71-4108-4c52-80b7-4b8c83e43d15",
+              "name": "409",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "khorosapi",
+                    "ownerId",
+                    ":ownerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownerId",
+                      "description": "(Required) The owner of the token (this is the `appId` provided in the registration payload)"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\":\\\"fail\\\",\\n  \\\"message\\\":\\\"A token at this path already exists.\\\"\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "5029c3bb-d4aa-4779-923b-4155b55cfa44",
+    "name": "agent-states-api-v2 AccountSet Khorosapi API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

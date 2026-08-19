@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Businesshours API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Businesshours",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Business Hours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/businesshours",
+            "params": [
+              {
+                "name": "sync",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter for enabling sync mode"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of configured business hours for your project using the Flow REST API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

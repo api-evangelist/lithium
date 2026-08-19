@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "40dc8a49-f3a7-4146-89fb-391c6133ce84",
+      "name": "Broadcast",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b08de4f-ef0f-47e5-99b7-4e581aa03bad",
+          "name": "Broadcast to MSISDN",
+          "request": {
+            "name": "Broadcast to MSISDN",
+            "description": {
+              "content": "Broadcasts to a mobile subscriber ISDN (MSISDN) number with the Flow REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "broadcast",
+                "instant"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"audience\": [\n    {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"profile\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"profile\": \"<string>\"\n    }\n  ],\n  \"channel\": {\n    \"channelName\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"payload\": {\n    \"type\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"speech\": \"<string>\",\n    \"metadata\": {\n      \"language\": {},\n      \"timezone\": {},\n      \"params\": {}\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ff456d2-2021-4991-9905-56d65f0a89d2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "broadcast",
+                    "instant"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audience\": [\n    {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"profile\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"profile\": \"<string>\"\n    }\n  ],\n  \"channel\": {\n    \"channelName\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"payload\": {\n    \"type\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"speech\": \"<string>\",\n    \"metadata\": {\n      \"language\": {},\n      \"timezone\": {},\n      \"params\": {}\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"ok\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b35dd26-e5fc-43bc-bdb3-56284a084019",
+          "name": "Broadcast to Segments",
+          "request": {
+            "name": "Broadcast to Segments",
+            "description": {
+              "content": "Broadcast to segments with the Flow REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "broadcast",
+                "instant",
+                "segment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"audience\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"payload\": {\n    \"type\": \"<string>\",\n    \"speech\": \"<string>\",\n    \"url\": \"<string>\",\n    \"lat\": \"<string>\",\n    \"eventName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3365b96-2ce7-455c-b747-6f9074d2e3da",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "broadcast",
+                    "instant",
+                    "segment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audience\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"payload\": {\n    \"type\": \"<string>\",\n    \"speech\": \"<string>\",\n    \"url\": \"<string>\",\n    \"lat\": \"<string>\",\n    \"eventName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"status\\\": \\\"ok\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a6e99e9-13e0-4201-af4a-0b5bcdc2ce61",
+          "name": "Retrieve audience segments",
+          "request": {
+            "name": "Retrieve audience segments",
+            "description": {
+              "content": "Retrieve audience segments with the Flow REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "broadcast",
+                "segments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sync",
+                  "value": "<string>",
+                  "description": "Optional parameter for enabling sync mode"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c56f1d31-fb99-4f36-ae60-088799f96d83",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "broadcast",
+                    "segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sync",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"segments\\\": [{\\n      \\\"agentId\\\": \\\"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\\\",\\n      \\\"audienceId\\\": \\\"EXAMPLE-7a3e-40fb-8b44-4de3688509f8\\\",\\n      \\\"channels\\\": [\\n        \\\"eazy\\\"\\n      ],\\n      \\\"conditions\\\": [],\\n      \\\"contact\\\": \\\"all\\\",\\n      \\\"createdAfterCondition\\\": \\\"2020-07-14T21:00:00.000Z\\\",\\n      \\\"createdAt\\\": \\\"2020-07-15T15:44:05.831Z\\\",\\n      \\\"createdBeforeCondition\\\": \\\"2020-07-15T21:00:00.000Z\\\",\\n      \\\"importCondition\\\": \\\"all_contacts\\\",\\n      \\\"title\\\": \\\"Created on 15th of July (Eazy)\\\",\\n      \\\"type\\\": \\\"segment\\\",\\n      \\\"updatedAt\\\": \\\"2020-07-15T15:44:05.828Z\\\"\\n    },\\n    {\\n      \\\"agentId\\\": \\\"EXAMPLE-8bf3-4bf2-abc1-e4d2865bae10\\\",\\n      \\\"audienceId\\\": \\\"EXAMPLE-db65-4aaf-9b07-9eab3b4ff459\\\",\\n      \\\"channels\\\": [\\n        \\\"messenger\\\"\\n      ],\\n      \\\"conditions\\\": [{\\n        \\\"condition\\\": \\\"has_tag_name\\\",\\n        \\\"conditionValue\\\": \\\"OPTIN\\\"\\n      }],\\n      \\\"contact\\\": \\\"messenger\\\",\\n      \\\"createdAfterCondition\\\": null,\\n      \\\"createdAt\\\": \\\"2020-07-15T15:44:37.013Z\\\",\\n      \\\"createdBeforeCondition\\\": null,\\n      \\\"importCondition\\\": \\\"all_contacts\\\",\\n      \\\"title\\\": \\\"OPTIN tag (Messenger)\\\",\\n      \\\"type\\\": \\\"segment\\\",\\n      \\\"updatedAt\\\": \\\"2020-07-15T15:44:37.012Z\\\"\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "instance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.response.lithium.com/api/v2/agentstate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "6c0e0ef5-e7c9-48db-a0d6-a503a734ee1d",
+    "name": "agent-states-api-v2 AccountSet Broadcast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

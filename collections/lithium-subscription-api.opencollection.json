@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Subscription API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/subscription",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Result page number. Used for cursoring. **Format:** int32"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return. **Format:** int32"
+              }
+            ]
+          },
+          "docs": "Retrieves all subscriptions to events registered for the specified company using Khoros Marketing Events API."
+        },
+        {
+          "info": {
+            "name": "Create a Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a subscription to an event originating from the specified company using Khoros Marketing Events API."
+        },
+        {
+          "info": {
+            "name": "Retrieve Subscription Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/subscription/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the subscription. **Format:** uuid"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific subscription to an event by its UUID using Khoros Marketing Events API."
+        },
+        {
+          "info": {
+            "name": "Delete a Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/subscription/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the subscription. **Format:** uuid"
+              }
+            ]
+          },
+          "docs": "Deletes a specific subscription to an event registered for a company using Khoros Marketing Events API."
+        },
+        {
+          "info": {
+            "name": "Update a Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/subscription/:id/:status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of subscription. **Format:** uuid"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "path",
+                "description": "**Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+              }
+            ]
+          },
+          "docs": "Updates the status of a subscription using Khoros Marketing Events API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

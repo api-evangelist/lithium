@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "agent-states-api-v2 AccountSet Compare.json?streams={content}&target={number}&precision API",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compare.json?streams={content}&target={number}&precision",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get specific decimals in percent return",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.response.lithium.com/api/v2/agentstate/compare.json?streams=:content&target=:number&precision",
+            "params": [
+              {
+                "name": "content",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "streams",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "**Possible Values:** `0`, `1`, `2`, `3`, `4`"
+              }
+            ]
+          },
+          "docs": "Return specific decimals"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
