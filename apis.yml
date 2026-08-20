@@ -43,6 +43,17 @@ created: '2026-07-17'
 modified: '2026-08-13'
 tags:
 - Company
+- MarTech
+- Community
+- Social-Media
+- Customer Engagement
+- Customer-Support
+- Chatbots
+- Messaging
+- Analytics
+- Marketing
+tags_raw:
+- Company
 - Martech
 - Community
 - Social Media
@@ -233,6 +244,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.flow.ai/rest/v1
   tags:
+  - Business Hours
+  tags_raw:
   - Businesshours
   properties:
   - type: OpenAPI
@@ -318,7 +331,8 @@ apis:
     The Compare.json?streams={content}&sort API from Lithium — 1 operation(s) for compare.json?streams={content}&sort.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&sort
   properties:
   - type: OpenAPI
@@ -336,7 +350,8 @@ apis:
     The Compare.json?streams={content}&target API from Lithium — 1 operation(s) for compare.json?streams={content}&target.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&target
   properties:
   - type: OpenAPI
@@ -355,7 +370,8 @@ apis:
     compare.json?streams={content}&target={number}&precision.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&target={number}&precision
   properties:
   - type: OpenAPI
@@ -459,6 +475,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
+  - CSV
+  tags_raw:
   - Csv
   properties:
   - type: OpenAPI
@@ -510,6 +528,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -577,7 +597,8 @@ apis:
   description: 'The # API from Lithium — 1 operation(s) for #.'
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
-  tags:
+  tags: []
+  tags_raw:
   - '#'
   properties:
   - type: OpenAPI
@@ -902,6 +923,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.spredfast.com
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -1363,6 +1386,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.flow.ai/rest/v1
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -1635,6 +1660,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://analytics-api.app.lithium.com/api/public
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -1703,6 +1730,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.spredfast.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -1720,6 +1749,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
+  - UUID
+  tags_raw:
   - Uuid
   properties:
   - type: OpenAPI
@@ -1754,6 +1785,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
+  - Work Queues
+  tags_raw:
   - Workqueues
   properties:
   - type: OpenAPI
