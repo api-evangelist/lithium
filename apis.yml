@@ -14,6 +14,18 @@ description: >-
   Khoros Community (the LiQL-powered Community v2 API plus the legacy v1 REST API), with the
   newer Aurora community platform adding a GraphQL API behind a login.
 url: https://raw.githubusercontent.com/api-evangelist/lithium/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -1804,6 +1816,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/lithium-capability-edges.yml
+  name: Lithium Business Capability Map
 - type: DomainSecurity
   url: security/lithium-domain-security.yml
 - type: OAuthScopes
