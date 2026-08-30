@@ -55,7 +55,7 @@ created: '2026-07-17'
 modified: '2026-08-13'
 tags:
 - Company
-- MarTech
+- Martech
 - Community
 - Social-Media
 - Customer Engagement
@@ -256,7 +256,7 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.flow.ai/rest/v1
   tags:
-  - Business Hours
+  - Businesshours
   tags_raw:
   - Businesshours
   properties:
@@ -487,7 +487,7 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
-  - CSV
+  - Csv
   tags_raw:
   - Csv
   properties:
@@ -1761,7 +1761,7 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
-  - UUID
+  - Uuid
   tags_raw:
   - Uuid
   properties:
@@ -1797,7 +1797,7 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
-  - Work Queues
+  - Workqueues
   tags_raw:
   - Workqueues
   properties:
