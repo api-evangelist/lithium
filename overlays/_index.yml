@@ -1,9 +1,9 @@
-generated: '2026-07-19'
-method: generated
-source: Generated from each harvested definition in ../openapi/. Overlays record API Evangelist provenance
+x-generated: '2026-07-19'
+x-method: generated
+x-source: Generated from each harvested definition in ../openapi/. Overlays record API Evangelist provenance
   and the cross-artifact links; they never mutate the harvested specs.
-description: OpenAPI Overlay 1.0.0 documents, one per harvested Lithium / Khoros definition.
-overlays:
+x-description: OpenAPI Overlay 1.0.0 documents, one per harvested Lithium / Khoros definition.
+x-overlays:
 - file: lithium-care-agent-states-api-v2-overlay.yaml
   extends: openapi/lithium-care-agent-states-api-v2-openapi.json
   title: agent-states-api-v2

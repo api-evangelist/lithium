@@ -1816,6 +1816,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Community
+  url: https://community.khoros.com/
+- type: BlogRSS
+  url: https://khoros.ai/feed/
 - type: CapabilityMap
   url: capabilities/lithium-capability-edges.yml
   name: Lithium Business Capability Map

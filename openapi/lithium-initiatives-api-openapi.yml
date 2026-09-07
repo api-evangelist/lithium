@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: agent-states-api-v2 AccountSet Initiatives API
   version: '1.1'
@@ -92,43 +92,6 @@ paths:
                 $ref: '#/components/schemas/EntityResponseInitiative'
 components:
   schemas:
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
-    EntityResponseInitiative:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Initiative'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-    Initiative:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-    EntityPageResponseInitiative:
-      type: object
-      properties:
-        data:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Initiative'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -139,6 +102,15 @@ components:
         totalItems:
           type: integer
           format: int64
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
     ApiError:
       type: object
       properties:
@@ -183,6 +155,34 @@ components:
         message:
           type: string
           readOnly: true
+    Initiative:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    EntityResponseInitiative:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Initiative'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    EntityPageResponseInitiative:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Initiative'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
 x-readme:
   headers: []
   explorer-enabled: false

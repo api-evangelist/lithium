@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: agent-states-api-v2 AccountSet Folder API
   version: '1.1'
@@ -255,15 +255,16 @@ paths:
                 $ref: '#/components/schemas/EntityPageResponseAsset'
 components:
   schemas:
-    AssetFolderMetrics:
+    Pagination:
       type: object
       properties:
-        assetCount:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
           type: integer
           format: int64
-        lastModifiedAssetImageThumb:
-          type: string
-          format: uri
     CallStatus:
       type: object
       properties:
@@ -273,6 +274,77 @@ components:
           default: false
         error:
           $ref: '#/components/schemas/ApiError'
+    OptionalResponseLong:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int64
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+    AssetFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        companyId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        metrics:
+          $ref: '#/components/schemas/AssetFolderMetrics'
+        sfEntityType:
+          type: string
+          example: AssetFolder
     Asset:
       type: object
       required:
@@ -360,32 +432,6 @@ components:
         description: Cool new Asset!
         text: Text body.
         sfEntityType: Asset
-    EntityResponseAssetFolder:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AssetFolder'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-    AssetFolder:
-      type: object
-      properties:
-        id:
-          type: string
-        companyId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        createdDate:
-          type: string
-          format: date-time
-        metrics:
-          $ref: '#/components/schemas/AssetFolderMetrics'
-        sfEntityType:
-          type: string
-          example: AssetFolder
     EntityPageResponseAsset:
       type: object
       properties:
@@ -414,6 +460,34 @@ components:
           type: string
           enum:
           - AssetFolder
+    AssetFolderMetrics:
+      type: object
+      properties:
+        assetCount:
+          type: integer
+          format: int64
+        lastModifiedAssetImageThumb:
+          type: string
+          format: uri
+    EntityResponseAssetFolder:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AssetFolder'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+    EntityPageResponseAssetFolder:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssetFolder'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     AssetFolderCreate:
       type: object
       required:
@@ -427,80 +501,6 @@ components:
           type: string
           enum:
           - AssetFolder
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-        previous:
-          type: string
-        totalItems:
-          type: integer
-          format: int64
-    ApiError:
-      type: object
-      properties:
-        code:
-          type: string
-          readOnly: true
-          enum:
-          - PUBLISH_DATE_INVALID
-          - CANNOT_CREATE_NEW_LABELS
-          - IP_ADDRESS_REJECTED
-          - MISSING_FIELD
-          - NOT_ACCEPTABLE
-          - NOT_FOUND
-          - PUBLISH_POST_UPDATE_NOT_ALLOWED
-          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
-          - PUBLISH_IMAGE_TOO_LARGE
-          - PUBLISH_IMAGE_BAD_IMAGE
-          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
-          - INVALID_MESSAGE_ID
-          - NOT_IN_PRE_PUBLISH_STATE
-          - NOT_ACCEPTABLE_CONTENT_TYPE
-          - MESSAGE_HAS_A_LINK_PREVIEW
-          - MESSAGE_HAS_TARGETING_PROFILE
-          - MESSAGE_HAS_PROMOTION
-          - MESSAGE_HAS_SCHEDULED_SERIES
-          - MESSAGE_HAS_APPROVAL_TEAMS
-          - EDIT_MESSAGE_SERVER_ERROR
-          - UNAUTHENTICATED
-          - UNAUTHORIZED
-          - UNKNOWN_ERROR
-          - RESOURCE_NOT_FOUND
-          - VALIDATION_ERROR
-          - VIDEO_SINGLE_ASSET_ALLOWED
-          - VIDEO_INVALID_CATEGORY
-          - SERVICE_INVALID_NAME
-          - STREAM_ITEM_INVALID_TYPE
-          - PROXY_UNROUTABLE_REQUEST
-          - PROXY_SERVER_FAILURE
-          - PROXY_ORIGIN_SERVER_FAILURE
-          - ACCOUNT_LOCKED
-          - PASSWORD_EXPIRED
-        message:
-          type: string
-          readOnly: true
-    EntityPageResponseAssetFolder:
-      type: object
-      properties:
-        data:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AssetFolder'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    OptionalResponseLong:
-      type: object
-      properties:
-        data:
-          type: integer
-          format: int64
-        status:
-          $ref: '#/components/schemas/CallStatus'
 x-readme:
   headers: []
   explorer-enabled: false

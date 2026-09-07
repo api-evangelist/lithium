@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: agent-states-api-v2 AccountSet Customers API
   version: '1.1'
