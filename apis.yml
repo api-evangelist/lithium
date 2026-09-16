@@ -1,18 +1,15 @@
 aid: lithium
 name: Lithium
-description: >-
-  Lithium Technologies is the enterprise online-community and social-customer-engagement
-  platform that, after merging with Spredfast in 2018, rebranded as Khoros and is today
-  operated by IgniteTech. The Lithium name is still load-bearing in the live platform: the
-  Khoros Care APIs are served from *.response.lithium.com and api.app.lithium.com, the
-  Community plugin SDK and CLI ship on npm as lithium-sdk (the `li` command), and the public
-  GitHub organization is still github.com/lithiumtech. The platform exposes four public
-  developer surfaces documented at developer.khoros.com — Khoros Care (agent, author,
-  conversation, bot, work-queue, analytics and GDPR APIs on the Lithium hosts), Khoros
-  Marketing (the Spredfast-lineage Conversations, CRM, Stream, label-set and notification
-  APIs on api.spredfast.com), Khoros Flow (the flow.ai bot and messaging REST API), and
-  Khoros Community (the LiQL-powered Community v2 API plus the legacy v1 REST API), with the
-  newer Aurora community platform adding a GraphQL API behind a login.
+description: 'Lithium Technologies is the enterprise online-community and social-customer-engagement platform
+  that, after merging with Spredfast in 2018, rebranded as Khoros and is today operated by IgniteTech.
+  The Lithium name is still load-bearing in the live platform: the Khoros Care APIs are served from *.response.lithium.com
+  and api.app.lithium.com, the Community plugin SDK and CLI ship on npm as lithium-sdk (the `li` command),
+  and the public GitHub organization is still github.com/lithiumtech. The platform exposes four public
+  developer surfaces documented at developer.khoros.com — Khoros Care (agent, author, conversation, bot,
+  work-queue, analytics and GDPR APIs on the Lithium hosts), Khoros Marketing (the Spredfast-lineage Conversations,
+  CRM, Stream, label-set and notification APIs on api.spredfast.com), Khoros Flow (the flow.ai bot and
+  messaging REST API), and Khoros Community (the LiQL-powered Community v2 API plus the legacy v1 REST
+  API), with the newer Aurora community platform adding a GraphQL API behind a login.'
 url: https://raw.githubusercontent.com/api-evangelist/lithium/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -52,7 +49,7 @@ x-also-known-as:
 x-current-owner: IgniteTech
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-08-13'
+modified: '2026-09-16'
 tags:
 - Company
 - MarTech
@@ -78,14 +75,12 @@ tags_raw:
 apis:
 - aid: lithium:community
   name: Khoros Community API
-  description: >-
-    The Lithium/Khoros Community platform API. Version 2 is driven by LiQL (Lithium Query Language), a
-    SQL-like query language over community objects such as messages, users, boards and categories; the
+  description: The Lithium/Khoros Community platform API. Version 2 is driven by LiQL (Lithium Query Language),
+    a SQL-like query language over community objects such as messages, users, boards and categories; the
     legacy v1 REST API remains available under /restapi/vc/. Both are served per community instance —
     the URLs here point at Khoros' own Atlas community. The developer documentation for Community and
     for the newer Aurora platform (which adds a GraphQL API) sits behind an Atlas login.
-  humanURL: >-
-    https://developer.khoros.com/khoroscommunitydevdocs/reference/khoros-communities-platform-apis
+  humanURL: https://developer.khoros.com/khoroscommunitydevdocs/reference/khoros-communities-platform-apis
   baseURL: https://community.khoros.com/api/2.0
   tags:
   - Community
@@ -110,8 +105,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-active-api
@@ -127,8 +121,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-admin-api
@@ -144,8 +137,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-agent-states-api-v2-api
@@ -161,8 +153,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-asset-api
@@ -178,8 +169,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-assets-api
@@ -195,8 +185,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-author-api-v2-api
@@ -212,8 +201,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-authors-api
@@ -229,8 +217,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-broadcast-api
@@ -246,8 +233,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-businesshours-api
@@ -265,8 +251,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-bysourcedocumentid-api
@@ -282,8 +267,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-case-api
@@ -299,8 +283,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-changed-api
@@ -316,8 +299,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-compare-json-streams-api
@@ -333,14 +315,12 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-compare-json-streams-content-sort-api
   name: Lithium Compare.json?streams={content}&sort API
-  description: >-
-    The Compare.json?streams={content}&sort API from Lithium — 1 operation(s) for compare.json?streams={content}&sort.
+  description: The Compare.json?streams={content}&sort API from Lithium — 1 operation(s) for compare.json?streams={content}&sort.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags: []
@@ -352,14 +332,12 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-compare-json-streams-content-target-api
   name: Lithium Compare.json?streams={content}&target API
-  description: >-
-    The Compare.json?streams={content}&target API from Lithium — 1 operation(s) for compare.json?streams={content}&target.
+  description: The Compare.json?streams={content}&target API from Lithium — 1 operation(s) for compare.json?streams={content}&target.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags: []
@@ -371,15 +349,13 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-compare-json-streams-content-target-number-precision-api
   name: Lithium Compare.json?streams={content}&target={number}&precision API
-  description: >-
-    The Compare.json?streams={content}&target={number}&precision API from Lithium — 1 operation(s) for
-    compare.json?streams={content}&target={number}&precision.
+  description: The Compare.json?streams={content}&target={number}&precision API from Lithium — 1 operation(s)
+    for compare.json?streams={content}&target={number}&precision.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags: []
@@ -391,8 +367,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-config-api
@@ -408,8 +383,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-control-api
@@ -425,8 +399,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-conversation-api-v2-api
@@ -442,14 +415,13 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-conversation-tag-rules-v2-api
   name: Lithium Conversation Tag Rules V2 API
-  description: >-
-    The Conversation Tag Rules V2 API from Lithium — 1 operation(s) for conversation tag rules v2.
+  description: The Conversation Tag Rules V2 API from Lithium — 1 operation(s) for conversation tag rules
+    v2.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
@@ -460,8 +432,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-conversations-api
@@ -477,8 +448,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-csv-api
@@ -496,8 +466,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-csv-long-api
@@ -513,8 +482,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-currenttar-api
@@ -530,8 +498,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-customer-api
@@ -549,8 +516,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-customer-copy-api
@@ -566,8 +532,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-customers-api
@@ -583,8 +548,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-data-api
@@ -600,8 +564,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-default-api
@@ -618,8 +581,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-discussion-api
@@ -635,8 +597,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-displayids-api
@@ -652,8 +613,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-email-api
@@ -669,14 +629,13 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-entities-json-entity-ids-api
   name: Lithium Entities.json?entity Ids API
-  description: >-
-    The Entities.json?entity Ids API from Lithium — 1 operation(s) for entities.json?entity ids.
+  description: The Entities.json?entity Ids API from Lithium — 1 operation(s) for entities.json?entity
+    ids.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags:
@@ -687,8 +646,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-export-api
@@ -704,12 +662,11 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-flow-rest-api-api
-  name: Lithium Flow Rest Api API
+  name: Lithium Flow Rest Api
   description: The Flow Rest Api API from Lithium — 2 operation(s) for flow rest api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.flow.ai/rest/v1
@@ -721,8 +678,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-folder-api
@@ -738,8 +694,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-form-api
@@ -755,8 +710,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-getforms-api
@@ -772,8 +726,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-handover-api
@@ -789,8 +742,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-health-api
@@ -806,8 +758,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-initiatives-api
@@ -823,12 +774,11 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-introspection-api-api
-  name: Lithium Introspection Api API
+  name: Lithium Introspection Api
   description: The Introspection Api API from Lithium — 1 operation(s) for introspection api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.spredfast.com/v2/whoami
@@ -840,8 +790,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-khorosapi-api
@@ -857,8 +806,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-labels-api
@@ -874,12 +822,11 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-labelsets-api-api
-  name: Lithium Labelsets Api API
+  name: Lithium Labelsets Api
   description: The Labelsets Api API from Lithium — 1 operation(s) for labelsets api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.spredfast.com/v2/labelsets
@@ -891,8 +838,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-list-api
@@ -908,8 +854,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-me-api
@@ -925,8 +870,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-messages-api
@@ -944,8 +888,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-api
@@ -961,8 +904,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-activity-api
@@ -978,8 +920,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-all-topics-api
@@ -995,8 +936,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-api
@@ -1012,8 +952,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-disregard-api
@@ -1029,8 +968,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-finish-api
@@ -1046,8 +984,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-networks-api
@@ -1063,14 +1000,12 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-contributors-api
   name: Lithium Meta.json?num Contributors API
-  description: >-
-    The Meta.json?num Contributors API from Lithium — 1 operation(s) for meta.json?num contributors.
+  description: The Meta.json?num Contributors API from Lithium — 1 operation(s) for meta.json?num contributors.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags:
@@ -1081,8 +1016,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-days-api
@@ -1098,8 +1032,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-hashtags-api
@@ -1115,8 +1048,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-hours-api
@@ -1132,8 +1064,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-minutes-api
@@ -1149,8 +1080,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-num-trends-api
@@ -1166,8 +1096,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-percent-api
@@ -1183,8 +1112,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-precision-api
@@ -1200,8 +1128,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-sort-api
@@ -1217,8 +1144,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-top-count-api
@@ -1234,8 +1160,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-top-periods-api
@@ -1251,14 +1176,13 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-meta-json-top-periods-relative-api
   name: Lithium Meta.json?top Periods Relative API
-  description: >-
-    The Meta.json?top Periods Relative API from Lithium — 1 operation(s) for meta.json?top periods relative.
+  description: The Meta.json?top Periods Relative API from Lithium — 1 operation(s) for meta.json?top
+    periods relative.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
   tags:
@@ -1269,8 +1193,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-multichannelmessages-api
@@ -1286,8 +1209,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-networks-api
@@ -1303,8 +1225,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-note-api
@@ -1320,8 +1241,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-pause-api
@@ -1337,8 +1257,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-permissions-api
@@ -1354,8 +1273,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-plans-api
@@ -1371,8 +1289,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-priority-api
@@ -1388,8 +1305,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-projects-api
@@ -1407,8 +1323,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-registrations-api
@@ -1424,8 +1339,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-report-api
@@ -1441,8 +1355,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-reports-api
@@ -1458,8 +1371,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-request-api
@@ -1475,8 +1387,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-requests-api
@@ -1492,8 +1403,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-resolve-api
@@ -1509,8 +1419,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-respond-api
@@ -1526,8 +1435,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-smart-views-api-v2-api
@@ -1543,8 +1451,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-ssoid-api
@@ -1560,12 +1467,11 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-stream-api-api
-  name: Lithium Stream Api API
+  name: Lithium Stream Api
   description: The Stream Api API from Lithium — 25 operation(s) for stream api.
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.massrelevance.com
@@ -1577,8 +1483,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-streams-api
@@ -1594,8 +1499,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-subscription-api
@@ -1611,8 +1515,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-surveys-api
@@ -1628,8 +1531,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-tag-api
@@ -1645,8 +1547,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-tag-api-v2-api
@@ -1662,8 +1563,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-teams-api
@@ -1681,8 +1581,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-threads-api
@@ -1698,8 +1597,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-tokens-api
@@ -1715,8 +1613,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-trigger-api
@@ -1732,8 +1629,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-users-api
@@ -1751,8 +1647,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-uuid-api
@@ -1770,8 +1665,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-workqueue-api
@@ -1787,8 +1681,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-workqueues-api
@@ -1806,8 +1699,7 @@ apis:
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 maintainers:
@@ -1893,7 +1785,10 @@ common:
   url: asyncapi/lithium-webhooks.yml
 - type: X-MCPServerCandidate
   url: mcp/lithium-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
 - type: Overlay
@@ -1926,9 +1821,7 @@ x-enrichment:
   status: enriched
   artifacts_added: 3
   pass: local-v1
-  note: >-
-    Round 2. Resolved the multi-product baseURL disagreement (56 of 100 apis[] entries were
-    pointed at the Khoros Care gateway when their operations belong to Khoros Marketing,
-    the Marketing Stream API or Khoros Flow); found a real RFC 9727 api-catalog linkset at
-    developer.khoros.com; found api.massrelevance.com dead (502 on every path); refreshed
-    package currency from live registry metadata.
+  note: Round 2. Resolved the multi-product baseURL disagreement (56 of 100 apis[] entries were pointed
+    at the Khoros Care gateway when their operations belong to Khoros Marketing, the Marketing Stream
+    API or Khoros Flow); found a real RFC 9727 api-catalog linkset at developer.khoros.com; found api.massrelevance.com
+    dead (502 on every path); refreshed package currency from live registry metadata.
