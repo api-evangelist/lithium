@@ -230,25 +230,6 @@ apis:
       https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
-- aid: lithium:lithium-businesshours-api
-  name: Lithium Businesshours API
-  description: The Businesshours API from Lithium — 1 operation(s) for businesshours.
-  humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.flow.ai/rest/v1
-  tags:
-  - Business Hours
-  tags_raw:
-  - Businesshours
-  properties:
-  - type: OpenAPI
-    url: openapi/lithium-businesshours-api-openapi.yml
-  - type: Documentation
-    url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
-  - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
-  - type: Documentation
-    url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
 - aid: lithium:lithium-bysourcedocumentid-api
   name: Lithium BySourceDocumentId API
   description: The BySourceDocumentId API from Lithium — 1 operation(s) for bysourcedocumentid.
@@ -1668,16 +1649,17 @@ apis:
       https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
-- aid: lithium:lithium-workqueue-api
-  name: Lithium Workqueue API
-  description: The Workqueue API from Lithium — 1 operation(s) for workqueue.
-  humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+- aid: lithium:lithium-business-hours-api
+  name: Lithium Business Hours API
+  description: The Business Hours API from Lithium — 1 operation(s) for business hours.
+  humanURL: >-
+    https://developer.khoros.com/khoroscommunitydevdocs/reference/khoros-communities-platform-apis
+  baseURL: https://community.khoros.com/api/2.0
   tags:
-  - Workqueue
+  - Business Hours
   properties:
   - type: OpenAPI
-    url: openapi/lithium-workqueue-api-openapi.yml
+    url: openapi/lithium-business-hours-api-openapi.yml
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
@@ -1685,18 +1667,35 @@ apis:
       https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
   - type: Documentation
     url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
-- aid: lithium:lithium-workqueues-api
-  name: Lithium Workqueues API
-  description: The Workqueues API from Lithium — 1 operation(s) for workqueues.
-  humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
-  baseURL: https://api.app.lithium.com
+- aid: lithium:lithium-work-queue-api
+  name: Lithium Work Queue API
+  description: The Work Queue API from Lithium — 1 operation(s) for work queue.
+  humanURL: >-
+    https://developer.khoros.com/khoroscommunitydevdocs/reference/khoros-communities-platform-apis
+  baseURL: https://community.khoros.com/api/2.0
   tags:
-  - Work Queues
-  tags_raw:
-  - Workqueues
+  - Work Queue
   properties:
   - type: OpenAPI
-    url: openapi/lithium-workqueues-api-openapi.yml
+    url: openapi/lithium-work-queue-api-openapi.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/developing-and-integrating-with-khoros-marketing
+  - type: Documentation
+    url: https://developer.khoros.com/khoros-flow/docs/overview-of-khoros-flow-apis
+- aid: lithium:lithium-work-queues-api
+  name: Lithium Work Queues API
+  description: The Work Queues API from Lithium — 1 operation(s) for work queues.
+  humanURL: >-
+    https://developer.khoros.com/khoroscommunitydevdocs/reference/khoros-communities-platform-apis
+  baseURL: https://community.khoros.com/api/2.0
+  tags:
+  - Work Queues
+  properties:
+  - type: OpenAPI
+    url: openapi/lithium-work-queues-api-openapi.yml
   - type: Documentation
     url: https://developer.khoros.com/khoroscaredevdocs/docs/khoros-care-integration-overview
   - type: Documentation
