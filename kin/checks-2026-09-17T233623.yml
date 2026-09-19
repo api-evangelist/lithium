@@ -2,35 +2,31 @@
 kin_checks:
   slug: lithium
   schema_version: 0.22.0
-  scored_at: '2026-09-15'
-  run_ts: 2026-09-15T230249
-  note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.22.0.yml; counts below let you verify that.
+  scored_at: '2026-09-17'
+  run_ts: 2026-09-17T233623
+  note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
+    apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
+    below let you verify that.
   counts:
     total: 136
-    earned: 54
-    partial: 13
-    missed: 44
+    earned: 52
+    partial: 18
+    missed: 41
     na: 25
   checks:
   - id: maintainer_present
-    status: missed
-  - id: base_url_per_api
     status: missed
   - id: apis_json_self_hosted
     status: missed
   - id: openapi_3_2
     status: missed
-    detail: 0 of 99 openapi documents pass
+    detail: 0 of 93 openapi documents pass
   - id: info_complete
     status: missed
-    detail: 0 of 99 openapi documents pass
-  - id: security_schemes_defined
-    status: missed
-    detail: 0 of 99 openapi documents pass
+    detail: 0 of 93 openapi documents pass
   - id: webhooks_or_callbacks
     status: missed
-    detail: 0 of 99 openapi documents pass
+    detail: 0 of 93 openapi documents pass
   - id: inbound_contract_published
     status: missed
   - id: json_schema_present
@@ -100,33 +96,46 @@ kin_checks:
     status: missed
   - id: dry_run_mode
     status: missed
-  - id: delegated_identity
-    status: missed
   - id: protected_resource_metadata
     status: missed
   - id: dynamic_client_registration
     status: missed
   - id: agentic_commerce
     status: missed
+  - id: servers_resolvable
+    status: partial
+    earned: 4.67
   - id: operations_description_coverage
     status: partial
-    earned: 5.64
-    detail: 93 of 99 openapi documents pass
+    earned: 5.42
+    detail: 84 of 93 openapi documents pass
   - id: response_coverage
     status: partial
     earned: 4.95
-    detail: 98 of 99 openapi documents pass
+    detail: 92 of 93 openapi documents pass
   - id: error_responses_documented
     status: partial
-    earned: 2.02
-    detail: 50 of 99 openapi documents pass
+    earned: 1.98
+    detail: 46 of 93 openapi documents pass
   - id: examples_present
     status: partial
-    earned: 3.59
+    earned: 3.57
   - id: components_reuse
     status: partial
-    earned: 0.18
-    detail: 6 of 99 openapi documents pass
+    earned: 0.19
+    detail: 6 of 93 openapi documents pass
+  - id: security_schemes_defined
+    status: partial
+    earned: 2.15
+    detail: 50 of 93 openapi documents pass
+  - id: security_applied
+    status: partial
+    earned: 2.68
+    detail: 83 of 93 openapi documents pass
+  - id: oauth_scopes_enumerated
+    status: partial
+    earned: 2.62
+    detail: 61 of 93 openapi documents pass
   - id: lifecycle_documented
     status: partial
     earned: 1.17
@@ -143,8 +152,8 @@ kin_checks:
     detail: 'grade: documented'
   - id: auth_clarity
     status: partial
-    earned: 3.5
-    detail: 'grade: bearer'
+    earned: 7.5
+    detail: 'grade: negotiable'
   - id: error_semantics
     status: partial
     earned: 4.0
@@ -157,3 +166,33 @@ kin_checks:
     status: partial
     earned: 1.25
     detail: 'authorship: derived'
+  - id: delegated_identity
+    status: partial
+    earned: 3.0
+    detail: 'grade: documented'
+  na:
+  - asyncapi_3_x
+  - channels_defined
+  - contract_self_operated
+  - fhir_capability_statement
+  - fhir_resource_coverage
+  - graphql_descriptions
+  - graphql_sdl_present
+  - graphql_type_depth
+  - messages_with_schema
+  - os_code_of_conduct
+  - os_contribution_guide
+  - os_releases
+  - os_security_policy
+  - reg_camara_conformance
+  - reg_certification_signal
+  - reg_consent_model
+  - reg_entitlement_terms
+  - reg_fapi_profile
+  - reg_mandate_verified
+  - reg_named_standard_conformance
+  - reg_pci_sca
+  - reg_smart_configuration
+  - reg_write_surface
+  - security_schemes
+  - server_bindings

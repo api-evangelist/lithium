@@ -61,8 +61,8 @@ tags:
 - Messaging
 - Analytics
 - Marketing
-- Lithium
 tags_raw:
+- Lithium
 - Company
 - Martech
 - Community
@@ -572,6 +572,8 @@ apis:
   humanURL: https://developer.khoros.com/khoroscaredevdocs/reference
   baseURL: https://api.app.lithium.com
   tags:
+  - Discussions
+  tags_raw:
   - Discussion
   properties:
   - type: OpenAPI
