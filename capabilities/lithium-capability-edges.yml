@@ -105,7 +105,8 @@ edges:
     retrieving survey data realises voice-of-customer/feedback collection within customer service. Confidence
     moderated because only one read operation and no schema detail.
 - tag: Workqueue
-  spec_file: lithium-workqueue-api-openapi.yml
+  spec_file: lithium-work-queue-api-openapi.yml
+  reanchored_from: lithium-workqueue-api-openapi.yml
   capability_id: BC-430.10
   capability_id_l1: BC-430
   capability_name: Customer Inquiry Management
