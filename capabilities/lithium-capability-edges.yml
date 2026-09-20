@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 10
+edge_count: 15
 edges:
 - tag: Requests
   spec_file: lithium-requests-api-openapi.yml
@@ -45,6 +45,17 @@ edges:
   reason: CRUD over customer records plus a best-match lookup (identity resolution) — customer master
     data management. 'findCases' links the record to service cases, but the operations centre on maintaining
     the customer record itself.
+- tag: Priority
+  spec_file: lithium-priority-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.72
+  evidence: PUT /priority — "Change conversation priority"
+  reason: Khoros Care is a social customer-engagement/agent desktop; changing the priority of a customer
+    conversation is inbound contact triage and routing, i.e. Customer Inquiry Management. Some chance
+    it belongs to contact-centre operations instead, hence moderate confidence.
+  recovered_from: vertical-media-entertainment-telecom-content-edges.json
 - tag: Uuid
   spec_file: lithium-uuid-api-openapi.yml
   capability_id: BC-430.30
@@ -55,6 +66,28 @@ edges:
   reason: Setting an agent's availability state is contact-centre agent/workforce control in the Khoros
     Care agent-states API (spec title 'agent-states-api-v2'). Tag string is a technical identifier but
     the operation is unambiguous.
+- tag: Author Api V2
+  spec_file: lithium-author-api-v2-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: PUT /{lswUuid}  Update or merge author handles by Care author ID
+  reason: Authors are the customer/social identities in Khoros Care; creating author records and merging
+    handles under one Care author ID is identity resolution over customer data (golden record), not sales
+    or support case handling.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: CurrentTAR
+  spec_file: lithium-currenttar-api-openapi.yml
+  capability_id: BC-430.30
+  capability_id_l1: BC-430
+  capability_name: Contact Centre Operations Management
+  confidence: 0.7
+  evidence: GET /currentTAR  currenttar  Get current time to agent response (TAR)
+  reason: 'Time-to-agent-response is an operational service-desk metric for the Khoros Care agent workforce,
+    i.e. contact-centre operational performance monitoring. Moderate confidence: single metric endpoint,
+    could alternatively sit under general inquiry management.'
+  recovered_from: vertical-media-entertainment-telecom-content-edges.json
 - tag: Discussion
   spec_file: lithium-discussion-api-openapi.yml
   capability_id: BC-430.10
@@ -65,6 +98,18 @@ edges:
   reason: Inbound messages are ingested and assembled into a support case in the Khoros Care agent workspace
     — capture and routing of customer contacts. Maps to Customer Inquiry Management; some ambiguity as
     the endpoint is an ingestion integration point.
+- tag: MultiChannelMessages
+  spec_file: lithium-multichannelmessages-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: 'getMultiChannelMessage  Retrieve an existing multi-channel message. schemas: TargetingProfile,
+    MessageSponsor, SingleChannelMessage, MessageContent, PublicationResult'
+  reason: Message content composed per channel with targeting profiles, sponsorship and publication results,
+    scoped under a marketing 'initiative' — this is social/digital campaign publishing, i.e. digital marketing
+    execution. Some ambiguity between digital marketing and content marketing sub-capabilities.
+  recovered_from: vertical-media-entertainment-telecom-content-edges.json
 - tag: Networks
   spec_file: lithium-networks-api-openapi.yml
   capability_id: BC-420.10
@@ -94,6 +139,16 @@ edges:
   reason: Posts a reply to an inbound customer message on a social/messaging channel, i.e. handling of
     customer contacts in the care platform. L1 Customer Service Management is clear; ambiguous between
     inquiry handling and automated self-service, so no L2.
+- tag: SsoId
+  spec_file: lithium-ssoid-api-openapi.yml
+  capability_id: BC-430.30
+  capability_id_l1: BC-430
+  capability_name: Contact Centre Operations Management
+  confidence: 0.7
+  evidence: PUT /ssoId/{ssoId}/state — "Set Agent State by SSO ID"
+  reason: Setting a care agent's availability state is contact-centre agent/workforce operations. Identity
+    is only the lookup key, not the capability; slight ambiguity with IAM keeps confidence moderate.
+  recovered_from: vertical-media-entertainment-telecom-content-edges.json
 - tag: Surveys
   spec_file: lithium-surveys-api-openapi.yml
   capability_id: BC-430.50
