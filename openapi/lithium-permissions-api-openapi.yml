@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Permissions API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Permissions API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Permissions
 paths:
@@ -16,7 +15,7 @@ paths:
     get:
       tags:
       - Permissions
-      summary: Retrieve permissions for current user.
+      summary: Retrieve permissions for current user
       description: Results will be a list of permissions in the **currently selected company**.
       operationId: getPrivileges
       parameters:
@@ -49,15 +48,6 @@ components:
         canCreateLabels:
           type: boolean
           default: false
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
     EntityResponseUserPrivilege:
       type: object
       properties:
@@ -109,8 +99,25 @@ components:
         message:
           type: string
           readOnly: true
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

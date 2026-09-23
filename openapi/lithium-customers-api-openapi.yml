@@ -1,12 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Customers API
+  title: Lithium Customers API
   version: '1.1'
+  description: 'Operations tagged Customers across 2 of this provider''s published API definitions: lithium-care-api-specifications-openapi.json, lithium-marketing-api-specifications-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{your-domain}.com
   variables:
-    instance:
-      default: instance
+    your-domain:
+      default: your-domain
 security:
 - {}
 tags:
@@ -83,6 +84,14 @@ paths:
       security: []
       tags:
       - Customers
+    servers:
+    - url: https://{your-domain}.com
+      variables:
+        your-domain:
+          default: your-domain
+x-refined-from:
+- lithium-care-api-specifications-openapi.json
+- lithium-marketing-api-specifications-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Resolve API
-  version: '1.1'
+  title: Lithium Resolve API
+  version: '1.0'
+  description: 'Operations tagged Resolve across 2 of this provider''s published API definitions: lithium-care-bot-api-v3-openapi.json, lithium-flow-flow-rest-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.app.lithium.com/bots/v3
+- url: https://api.flow.ai/rest/v1/
 security:
 - {}
 tags:
@@ -52,6 +51,8 @@ paths:
         - curl
       tags:
       - Resolve
+    servers:
+    - url: https://api.app.lithium.com/bots/v3
   /resolve/{threadId}:
     post:
       summary: Resolve Action
@@ -94,6 +95,11 @@ paths:
         - http
       tags:
       - Resolve
+    servers:
+    - url: https://api.flow.ai/rest/v1/
+x-refined-from:
+- lithium-care-bot-api-v3-openapi.json
+- lithium-flow-flow-rest-api-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

@@ -1,16 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet CSV API
+  title: supervisor-reports-api CSV API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://servername.lithium.com/reports
 security:
-- {}
+- sec0: []
 tags:
-- name: Csv
+- name: CSV
 paths:
   /csv/{reportName}:
     get:
@@ -91,9 +88,14 @@ paths:
         samples-languages:
         - http
       tags:
-      - Csv
+      - CSV
+components:
+  securitySchemes:
+    sec0:
+      type: http
+      scheme: basic
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

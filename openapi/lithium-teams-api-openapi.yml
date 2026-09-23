@@ -1,21 +1,17 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Teams API
+  title: analytics-reports Teams API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://analytics-api.app.lithium.com/api/public
 security:
-- {}
+- sec0: []
 tags:
 - name: Teams
 paths:
   /teams:
     get:
       summary: Get team IDs
-      description: Get team IDs
       operationId: teams
       parameters:
       - name: companyKey
@@ -42,6 +38,11 @@ paths:
         - curl
       tags:
       - Teams
+components:
+  securitySchemes:
+    sec0:
+      type: http
+      scheme: basic
 x-readme:
   headers: []
   explorer-enabled: false

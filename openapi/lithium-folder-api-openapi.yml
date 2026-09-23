@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Folder API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Folder API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Folder
 paths:
@@ -16,7 +15,7 @@ paths:
     get:
       tags:
       - Folder
-      summary: Retrieve a list of folders.
+      summary: Retrieve a list of folders
       description: This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders.
       operationId: listFolders
       parameters:
@@ -67,7 +66,7 @@ paths:
     post:
       tags:
       - Folder
-      summary: Create a new Content Center Asset Folder.
+      summary: Create a new Content Center Asset Folder
       description: ''
       operationId: createFolder
       parameters:
@@ -98,7 +97,7 @@ paths:
     get:
       tags:
       - Folder
-      summary: Retrieve a specific Content Center Asset Folder by ID.
+      summary: Retrieve a specific Content Center Asset Folder by ID
       description: ''
       operationId: findFolder
       parameters:
@@ -129,7 +128,7 @@ paths:
     put:
       tags:
       - Folder
-      summary: Updates an existing Content Center Asset Folder.
+      summary: Updates an existing Content Center Asset Folder
       description: ''
       operationId: updateFolder
       parameters:
@@ -165,7 +164,7 @@ paths:
     delete:
       tags:
       - Folder
-      summary: Deletes an existing Content Center Asset Folder.
+      summary: Deletes an existing Content Center Asset Folder
       description: ''
       operationId: deleteFolder
       parameters:
@@ -197,7 +196,7 @@ paths:
     get:
       tags:
       - Folder
-      summary: Retrieve a list of assets in a folder.
+      summary: Retrieve a list of assets in a folder
       description: ''
       operationId: listFolderAssets
       parameters:
@@ -265,23 +264,35 @@ components:
         totalItems:
           type: integer
           format: int64
-    CallStatus:
+    AssetFolderCreate:
       type: object
+      required:
+      - sfEntityType
       properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
-    OptionalResponseLong:
+        name:
+          type: string
+        description:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - AssetFolder
+    AssetFolderUpdate:
       type: object
+      required:
+      - sfEntityType
+      - id
       properties:
-        data:
-          type: integer
-          format: int64
-        status:
-          $ref: '#/components/schemas/CallStatus'
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - AssetFolder
     ApiError:
       type: object
       properties:
@@ -326,25 +337,6 @@ components:
         message:
           type: string
           readOnly: true
-    AssetFolder:
-      type: object
-      properties:
-        id:
-          type: string
-        companyId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        createdDate:
-          type: string
-          format: date-time
-        metrics:
-          $ref: '#/components/schemas/AssetFolderMetrics'
-        sfEntityType:
-          type: string
-          example: AssetFolder
     Asset:
       type: object
       required:
@@ -444,22 +436,46 @@ components:
           $ref: '#/components/schemas/CallStatus'
         pagination:
           $ref: '#/components/schemas/Pagination'
-    AssetFolderUpdate:
+    CallStatus:
       type: object
-      required:
-      - sfEntityType
-      - id
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    AssetFolder:
+      type: object
       properties:
         id:
+          type: string
+        companyId:
           type: string
         name:
           type: string
         description:
           type: string
+        createdDate:
+          type: string
+          format: date-time
+        metrics:
+          $ref: '#/components/schemas/AssetFolderMetrics'
         sfEntityType:
           type: string
-          enum:
-          - AssetFolder
+          example: AssetFolder
+    EntityPageResponseAssetFolder:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssetFolder'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     AssetFolderMetrics:
       type: object
       properties:
@@ -476,33 +492,24 @@ components:
           $ref: '#/components/schemas/AssetFolder'
         status:
           $ref: '#/components/schemas/CallStatus'
-    EntityPageResponseAssetFolder:
+    OptionalResponseLong:
       type: object
       properties:
         data:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AssetFolder'
+          type: integer
+          format: int64
         status:
           $ref: '#/components/schemas/CallStatus'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    AssetFolderCreate:
-      type: object
-      required:
-      - sfEntityType
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        sfEntityType:
-          type: string
-          enum:
-          - AssetFolder
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

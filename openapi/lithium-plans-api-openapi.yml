@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Plans API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Plans API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Plans
 paths:
@@ -16,7 +15,7 @@ paths:
     get:
       tags:
       - Plans
-      summary: Retrieve a list of Plans.
+      summary: Retrieve a list of Plans
       description: ''
       operationId: listPlans
       parameters:
@@ -65,25 +64,6 @@ paths:
                 $ref: '#/components/schemas/EntityPageResponsePlan'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-        previous:
-          type: string
-        totalItems:
-          type: integer
-          format: int64
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
     ApiError:
       type: object
       properties:
@@ -128,18 +108,6 @@ components:
         message:
           type: string
           readOnly: true
-    EntityPageResponsePlan:
-      type: object
-      properties:
-        data:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Plan'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Plan:
       type: object
       properties:
@@ -173,8 +141,47 @@ components:
         lastModifiedDate:
           type: string
           format: date-time
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    EntityPageResponsePlan:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Plan'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
+          type: integer
+          format: int64
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

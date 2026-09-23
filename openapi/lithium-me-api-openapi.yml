@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Me API
-  version: '1.1'
+  title: Lithium Me API
+  version: '1.0'
+  description: 'Operations tagged Me across 2 of this provider''s published API definitions: lithium-marketing-conversations-api-v1-openapi.json, lithium-marketing-conversations-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
+- url: https://api.spredfast.com/v2
 tags:
 - name: Me
 paths:
@@ -26,6 +23,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Me'
+    servers:
+    - url: https://api.spredfast.com
   /me:
     get:
       summary: Retrieve a List of Companies with this App Enabled
@@ -85,8 +84,24 @@ paths:
       deprecated: false
       tags:
       - Me
+      security:
+      - sec0: []
+    servers:
+    - url: https://api.spredfast.com/v2
 components:
   schemas:
+    Companies:
+      type: object
+      description: List of companies
+      properties:
+        sfEntityType:
+          type: string
+        directoryId:
+          type: integer
+        name:
+          type: string
+        environment:
+          type: string
     ApiError:
       type: object
       properties:
@@ -131,27 +146,6 @@ components:
         message:
           type: string
           readOnly: true
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
-    Companies:
-      type: object
-      description: List of companies
-      properties:
-        sfEntityType:
-          type: string
-        directoryId:
-          type: integer
-        name:
-          type: string
-        environment:
-          type: string
     Me:
       type: object
       description: List of companies you have authorized for use with this app
@@ -167,6 +161,33 @@ components:
             $ref: '#/components/schemas/Companies'
         status:
           $ref: '#/components/schemas/CallStatus'
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-refined-from:
+- lithium-marketing-conversations-api-v1-openapi.json
+- lithium-marketing-conversations-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

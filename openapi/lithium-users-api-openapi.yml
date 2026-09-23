@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Users API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Users API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Users
 paths:
@@ -65,34 +64,6 @@ components:
           default: false
         error:
           $ref: '#/components/schemas/ApiError'
-    EntityPageResponseConversationsUser:
-      type: object
-      properties:
-        data:
-          type: array
-          readOnly: true
-          items:
-            type: object
-            description: Minimal data about Conversations users
-            properties:
-              id:
-                type: integer
-              displayName:
-                type: string
-        status:
-          $ref: '#/components/schemas/CallStatus'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-        previous:
-          type: string
-        totalItems:
-          type: integer
-          format: int64
     ApiError:
       type: object
       properties:
@@ -137,8 +108,44 @@ components:
         message:
           type: string
           readOnly: true
+    EntityPageResponseConversationsUser:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            type: object
+            description: Minimal data about Conversations users
+            properties:
+              id:
+                type: integer
+              displayName:
+                type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
+          type: integer
+          format: int64
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

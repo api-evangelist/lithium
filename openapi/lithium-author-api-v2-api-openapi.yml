@@ -1,9 +1,9 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Author Api V2 API
+  title: author-api-v2 Author Api V2 API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{instance}.response.lithium.com/api/v2/authors
   variables:
     instance:
       default: instance
@@ -190,5 +190,5 @@ paths:
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

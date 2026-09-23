@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Initiatives API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Initiatives API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Initiatives
 paths:
@@ -16,7 +15,7 @@ paths:
     get:
       tags:
       - Initiatives
-      summary: Retrieve a list of available initiatives.
+      summary: Retrieve a list of available initiatives
       description: ''
       operationId: listInitiatives
       parameters:
@@ -62,7 +61,7 @@ paths:
     get:
       tags:
       - Initiatives
-      summary: Retrieve a single initiative by ID.
+      summary: Retrieve a single initiative by ID
       description: ''
       operationId: getInitiative
       parameters:
@@ -92,25 +91,6 @@ paths:
                 $ref: '#/components/schemas/EntityResponseInitiative'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-        previous:
-          type: string
-        totalItems:
-          type: integer
-          format: int64
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
     ApiError:
       type: object
       properties:
@@ -155,15 +135,6 @@ components:
         message:
           type: string
           readOnly: true
-    Initiative:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
     EntityResponseInitiative:
       type: object
       properties:
@@ -171,6 +142,15 @@ components:
           $ref: '#/components/schemas/Initiative'
         status:
           $ref: '#/components/schemas/CallStatus'
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
     EntityPageResponseInitiative:
       type: object
       properties:
@@ -183,8 +163,35 @@ components:
           $ref: '#/components/schemas/CallStatus'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Initiative:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
+          type: integer
+          format: int64
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

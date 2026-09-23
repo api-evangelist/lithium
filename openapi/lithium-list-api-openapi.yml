@@ -1,14 +1,14 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet List API
+  title: Lithium List API
   version: '1.1'
+  description: 'Operations tagged List across 2 of this provider''s published API definitions: lithium-care-supervisor-reports-api-openapi.json, lithium-marketing-api-specifications-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://servername.lithium.com/reports
+- url: https://{your-domain}.com
   variables:
-    instance:
-      default: instance
-security:
-- {}
+    your-domain:
+      default: your-domain
 tags:
 - name: List
 paths:
@@ -49,6 +49,8 @@ paths:
         - http
       tags:
       - List
+    servers:
+    - url: https://servername.lithium.com/reports
   /list/{resourcePath}:
     get:
       summary: List a specific directory
@@ -101,6 +103,19 @@ paths:
       security: []
       tags:
       - List
+    servers:
+    - url: https://{your-domain}.com
+      variables:
+        your-domain:
+          default: your-domain
+components:
+  securitySchemes:
+    sec0:
+      type: http
+      scheme: basic
+x-refined-from:
+- lithium-care-supervisor-reports-api-openapi.json
+- lithium-marketing-api-specifications-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

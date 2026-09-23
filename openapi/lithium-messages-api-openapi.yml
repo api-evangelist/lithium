@@ -1,14 +1,15 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Messages API
-  version: '1.1'
+  title: Lithium Messages API
+  version: '1.0'
+  description: 'Operations tagged Messages across 3 of this provider''s published API definitions: lithium-care-listening-api-v2-openapi.json, lithium-flow-flow-rest-api-openapi.json, lithium-marketing-conversations-api-v1-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{instance}.response.lithium.com/api/v2/listening
   variables:
     instance:
       default: instance
-security:
-- {}
+- url: https://api.flow.ai/rest/v1/
+- url: https://api.spredfast.com
 tags:
 - name: Messages
 paths:
@@ -74,10 +75,14 @@ paths:
         - http
       tags:
       - Messages
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/listening
+      variables:
+        instance:
+          default: instance
   /{integrationUuid}/messages:
     post:
       summary: Create inbound messages
-      description: Create inbound messages
       operationId: integrationuuiddiscussion
       parameters:
       - name: integrationUuid
@@ -138,7 +143,6 @@ paths:
       - Messages
     delete:
       summary: Delete messages
-      description: Delete messages
       operationId: integrationuuidmessages-1
       parameters:
       - name: integrationUuid
@@ -197,6 +201,11 @@ paths:
         - http
       tags:
       - Messages
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/listening
+      variables:
+        instance:
+          default: instance
   /messages:
     post:
       summary: Generate a Thread ID
@@ -237,6 +246,10 @@ paths:
         - javascript
       tags:
       - Messages
+      security:
+      - {}
+    servers:
+    - url: https://api.flow.ai/rest/v1/
   /messages/{threadId}:
     post:
       summary: Create a Text Message
@@ -716,11 +729,13 @@ paths:
         - http
       tags:
       - Messages
+    servers:
+    - url: https://api.flow.ai/rest/v1/
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message:
     post:
       tags:
       - Messages
-      summary: Publish a new message.
+      summary: Publish a new message
       description: Publish a new *Spredfast* Messages for the target Initiative.
       operationId: publishMessage
       parameters:
@@ -753,11 +768,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+    servers:
+    - url: https://api.spredfast.com
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}:
     get:
       tags:
       - Messages
-      summary: Retrieve an existing message.
+      summary: Retrieve an existing message
       description: The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative.
       operationId: getMessage
       parameters:
@@ -792,7 +809,7 @@ paths:
     put:
       tags:
       - Messages
-      summary: Update an existing multi-part message.
+      summary: Update an existing multi-part message
       description: This endpoint is used to update an existing multi-part *Spredfast* Message.
       operationId: editMessage
       parameters:
@@ -835,7 +852,7 @@ paths:
     delete:
       tags:
       - Messages
-      summary: Delete an existing message.
+      summary: Delete an existing message
       description: This endpoint is used to delete an existing *Spredfast* Message.
       operationId: deleteMessage
       parameters:
@@ -869,11 +886,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OptionalResponseLong'
+    servers:
+    - url: https://api.spredfast.com
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?multipart:
     post:
       tags:
       - Messages
-      summary: Publish a new message.
+      summary: Publish a new message
       description: Publish a new *Spredfast* Messages for the target Initiative.
       operationId: publishMultiPartMessage
       parameters:
@@ -918,12 +937,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+    servers:
+    - url: https://api.spredfast.com
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?imageset:
     post:
       tags:
       - Messages
-      summary: Publish a new message.
-      description: "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEntityType\":\"ImageShare\",\"caption\":\"image one\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image two\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image three\"}]},\"targetAccountIds\":[\"4\"]};type=application/json' -F 'image=@butterfly1.jpg' -F 'image=@butterfly2.jpg' -F 'image=@butterfly3.jpg' 'https://api.spredfast.com/{env}/v1/company/{companyId}/initiative/{initiativeId}/message' \n``` "
+      summary: Publish a new message
+      description: 'Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded):
+
+
+        ```curl -X POST --header ''Content-Type: multipart/form-data'' --header ''Accept: application/json'' --header ''Authorization: Bearer {your token}'' -F ''message={"sfEntityType":"Message","service":"FACEBOOK","content":{"sfEntityType":"ImageShareList","images":[{"sfEntityType":"ImageShare","caption":"image one"},{"sfEntityType":"ImageShare","caption":"image two"},{"sfEntityType":"ImageShare","caption":"image three"}]},"targetAccountIds":["4"]};type=application/json'' -F ''image=@butterfly1.jpg'' -F ''image=@butterfly2.jpg'' -F ''image=@butterfly3.jpg'' ''https://api.spredfast.com/{env}/v1/company/{companyId}/initiative/{initiativeId}/message''
+
+        ```'
       operationId: publishImageSetMessage
       parameters:
       - name: companyId
@@ -967,11 +993,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+    servers:
+    - url: https://api.spredfast.com
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?video:
     post:
       tags:
       - Messages
-      summary: Publish a new message.
+      summary: Publish a new message
       description: Publish a new *Spredfast* Messages for the target Initiative.
       operationId: publishMultiPartVideoMessage
       parameters:
@@ -1012,11 +1040,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+    servers:
+    - url: https://api.spredfast.com
   /{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}?multipart:
     put:
       tags:
       - Messages
-      summary: Update an existing multi-part message.
+      summary: Update an existing multi-part message
       description: This endpoint is used to update an existing multi-part *Spredfast* Message.
       operationId: editMultiPartMessage
       parameters:
@@ -1066,8 +1096,163 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+    servers:
+    - url: https://api.spredfast.com
 components:
   schemas:
+    MessageMultiPartVideo:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          example: Video
+        caption:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: YOUTUBE
+        content:
+          sfEntityType: Video
+          videoTitle: Cool video!
+          description: That one guy doing that thing.
+        assetIds:
+        - xxx-xxx-xxx-xxx
+        targetAccountIds:
+        - '4'
+    TargetingProfile:
+      type: object
+      properties:
+        targetingType:
+          type: string
+          enum:
+          - ENHANCED
+          - GATED
+        targetingValues:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TargetingValue'
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
     Message:
       type: object
       properties:
@@ -1170,20 +1355,10 @@ components:
           text: Status Update
         targetAccountIds:
         - '4'
-    TargetingProfile:
+    MessageContent:
       type: object
-      properties:
-        targetingType:
-          type: string
-          enum:
-          - ENHANCED
-          - GATED
-        targetingValues:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/TargetingValue'
+      discriminator:
+        propertyName: sfEntityType
     CallStatus:
       type: object
       properties:
@@ -1193,6 +1368,165 @@ components:
           default: false
         error:
           $ref: '#/components/schemas/ApiError'
+    TargetingValue:
+      type: object
+      properties:
+        subType:
+          type: string
+          enum:
+          - COUNTRY
+          - REGION
+          - METRO
+          - CONTINENT
+          - ZIP_CODE
+        value:
+          type: string
+        description:
+          type: string
+    PublicationResult:
+      type: object
+      properties:
+        accountId:
+          type: string
+        serviceId:
+          type: string
+        serviceLink:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PUBLISHED
+          - ERROR
+          - DELETED
+        datePublished:
+          type: string
+          format: date-time
+    MessageNote:
+      type: object
+      description: A Note on the Message.
+      properties:
+        sfEntityType:
+          type: string
+          description: Spredfast internal entity type
+          enum:
+          - Note
+        text:
+          type: string
+          description: The note's text content.
+        id:
+          type: string
+          description: The note's ID. This should be left empty or set to 0 for new notes.
+        createdByDisplayName:
+          type: string
+          description: The formatted name [firstName lastName] of the note's author.
+          readOnly: true
+        createdByUserId:
+          type: string
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          readOnly: true
+        lastModifiedByUserId:
+          type: string
+          readOnly: true
+        lastModifiedDate:
+          type: string
+          format: date-time
+          readOnly: true
+    MessageMultiPart:
+      type: object
+      properties:
+        sfEntityType:
+          type: string
+          example: ImageShare
+        caption:
+          type: string
+        id:
+          type: string
+        content:
+          $ref: '#/components/schemas/MessageContent'
+        title:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        service:
+          type: string
+          enum:
+          - FACEBOOK
+          - GOOGLEPLUS
+          - SINAWEIBO
+          - LINKEDIN
+          - PINTEREST
+          - YOUTUBE
+          - VK
+        targetAccountIds:
+          type: array
+          items:
+            type: string
+        organicVisibility:
+          type: string
+          enum:
+          - VISIBLE
+          - INVISIBLE
+          - VISIBLE_POST_PUBLISH
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING
+          - AWAITING_APPROVAL
+          - REJECTED
+          - PUBLISHED
+          - ERROR
+          - DELETED
+          - NATIVELY_SCHEDULED
+        delegationStatus:
+          type: string
+          enum:
+          - NOT_DELEGATED
+          - SCHEDULED_FOR_DELEGATION
+          - DELEGATION_FAILED
+          - DELEGATED
+        publicationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicationResult'
+        scheduledPublishDate:
+          type: string
+          format: date-time
+        callbacks:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: uri
+        targetingProfile:
+          $ref: '#/components/schemas/TargetingProfile'
+        assetIds:
+          type: array
+          items:
+            type: string
+        planId:
+          type: string
+        nativeScheduling:
+          type: boolean
+          default: false
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageNote'
+      example:
+        sfEntityType: Message
+        service: FACEBOOK
+        content:
+          sfEntityType: ImageShare
+          caption: Status Update w/ image
+        targetAccountIds:
+        - '4'
     MessageMultiPartImages:
       type: object
       properties:
@@ -1287,14 +1621,6 @@ components:
             caption: image one
         targetAccountIds:
         - '4'
-    OptionalResponseLong:
-      type: object
-      properties:
-        data:
-          type: integer
-          format: int64
-        status:
-          $ref: '#/components/schemas/CallStatus'
     MessageSponsor:
       type: object
       description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to *only* Facebook *verified* Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don't comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
@@ -1308,308 +1634,27 @@ components:
         link:
           type: string
           description: The link to the sponsor's profile in the corresponding Social Network.
-    MessageContent:
-      type: object
-      discriminator:
-        propertyName: sfEntityType
-    ApiError:
+    OptionalResponseLong:
       type: object
       properties:
-        code:
-          type: string
-          readOnly: true
-          enum:
-          - PUBLISH_DATE_INVALID
-          - CANNOT_CREATE_NEW_LABELS
-          - IP_ADDRESS_REJECTED
-          - MISSING_FIELD
-          - NOT_ACCEPTABLE
-          - NOT_FOUND
-          - PUBLISH_POST_UPDATE_NOT_ALLOWED
-          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
-          - PUBLISH_IMAGE_TOO_LARGE
-          - PUBLISH_IMAGE_BAD_IMAGE
-          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
-          - INVALID_MESSAGE_ID
-          - NOT_IN_PRE_PUBLISH_STATE
-          - NOT_ACCEPTABLE_CONTENT_TYPE
-          - MESSAGE_HAS_A_LINK_PREVIEW
-          - MESSAGE_HAS_TARGETING_PROFILE
-          - MESSAGE_HAS_PROMOTION
-          - MESSAGE_HAS_SCHEDULED_SERIES
-          - MESSAGE_HAS_APPROVAL_TEAMS
-          - EDIT_MESSAGE_SERVER_ERROR
-          - UNAUTHENTICATED
-          - UNAUTHORIZED
-          - UNKNOWN_ERROR
-          - RESOURCE_NOT_FOUND
-          - VALIDATION_ERROR
-          - VIDEO_SINGLE_ASSET_ALLOWED
-          - VIDEO_INVALID_CATEGORY
-          - SERVICE_INVALID_NAME
-          - STREAM_ITEM_INVALID_TYPE
-          - PROXY_UNROUTABLE_REQUEST
-          - PROXY_SERVER_FAILURE
-          - PROXY_ORIGIN_SERVER_FAILURE
-          - ACCOUNT_LOCKED
-          - PASSWORD_EXPIRED
-        message:
-          type: string
-          readOnly: true
-    MessageMultiPartVideo:
-      type: object
-      properties:
-        sfEntityType:
-          type: string
-          example: Video
-        caption:
-          type: string
-        id:
-          type: string
-        content:
-          $ref: '#/components/schemas/MessageContent'
-        title:
-          type: string
-        labels:
-          type: array
-          items:
-            type: string
-        service:
-          type: string
-          enum:
-          - FACEBOOK
-          - GOOGLEPLUS
-          - SINAWEIBO
-          - LINKEDIN
-          - PINTEREST
-          - YOUTUBE
-          - VK
-        targetAccountIds:
-          type: array
-          items:
-            type: string
-        organicVisibility:
-          type: string
-          enum:
-          - VISIBLE
-          - INVISIBLE
-          - VISIBLE_POST_PUBLISH
+        data:
+          type: integer
+          format: int64
         status:
-          type: string
-          enum:
-          - DRAFT
-          - PENDING
-          - AWAITING_APPROVAL
-          - REJECTED
-          - PUBLISHED
-          - ERROR
-          - DELETED
-          - NATIVELY_SCHEDULED
-        delegationStatus:
-          type: string
-          enum:
-          - NOT_DELEGATED
-          - SCHEDULED_FOR_DELEGATION
-          - DELEGATION_FAILED
-          - DELEGATED
-        publicationResults:
-          type: array
-          items:
-            $ref: '#/components/schemas/PublicationResult'
-        scheduledPublishDate:
-          type: string
-          format: date-time
-        callbacks:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-            format: uri
-        targetingProfile:
-          $ref: '#/components/schemas/TargetingProfile'
-        assetIds:
-          type: array
-          items:
-            type: string
-        planId:
-          type: string
-        nativeScheduling:
-          type: boolean
-          default: false
-        notes:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageNote'
-      example:
-        sfEntityType: Message
-        service: YOUTUBE
-        content:
-          sfEntityType: Video
-          videoTitle: Cool video!
-          description: That one guy doing that thing.
-        assetIds:
-        - xxx-xxx-xxx-xxx
-        targetAccountIds:
-        - '4'
-    TargetingValue:
-      type: object
-      properties:
-        subType:
-          type: string
-          enum:
-          - COUNTRY
-          - REGION
-          - METRO
-          - CONTINENT
-          - ZIP_CODE
-        value:
-          type: string
-        description:
-          type: string
-    PublicationResult:
-      type: object
-      properties:
-        accountId:
-          type: string
-        serviceId:
-          type: string
-        serviceLink:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - PUBLISHED
-          - ERROR
-          - DELETED
-        datePublished:
-          type: string
-          format: date-time
-    MessageMultiPart:
-      type: object
-      properties:
-        sfEntityType:
-          type: string
-          example: ImageShare
-        caption:
-          type: string
-        id:
-          type: string
-        content:
-          $ref: '#/components/schemas/MessageContent'
-        title:
-          type: string
-        labels:
-          type: array
-          items:
-            type: string
-        service:
-          type: string
-          enum:
-          - FACEBOOK
-          - GOOGLEPLUS
-          - SINAWEIBO
-          - LINKEDIN
-          - PINTEREST
-          - YOUTUBE
-          - VK
-        targetAccountIds:
-          type: array
-          items:
-            type: string
-        organicVisibility:
-          type: string
-          enum:
-          - VISIBLE
-          - INVISIBLE
-          - VISIBLE_POST_PUBLISH
-        status:
-          type: string
-          enum:
-          - DRAFT
-          - PENDING
-          - AWAITING_APPROVAL
-          - REJECTED
-          - PUBLISHED
-          - ERROR
-          - DELETED
-          - NATIVELY_SCHEDULED
-        delegationStatus:
-          type: string
-          enum:
-          - NOT_DELEGATED
-          - SCHEDULED_FOR_DELEGATION
-          - DELEGATION_FAILED
-          - DELEGATED
-        publicationResults:
-          type: array
-          items:
-            $ref: '#/components/schemas/PublicationResult'
-        scheduledPublishDate:
-          type: string
-          format: date-time
-        callbacks:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-            format: uri
-        targetingProfile:
-          $ref: '#/components/schemas/TargetingProfile'
-        assetIds:
-          type: array
-          items:
-            type: string
-        planId:
-          type: string
-        nativeScheduling:
-          type: boolean
-          default: false
-        notes:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageNote'
-      example:
-        sfEntityType: Message
-        service: FACEBOOK
-        content:
-          sfEntityType: ImageShare
-          caption: Status Update w/ image
-        targetAccountIds:
-        - '4'
-    MessageNote:
-      type: object
-      description: A Note on the Message.
-      properties:
-        sfEntityType:
-          type: string
-          description: Spredfast internal entity type
-          enum:
-          - Note
-        text:
-          type: string
-          description: The note's text content.
-        id:
-          type: string
-          description: The note's ID. This should be left empty or set to 0 for new notes.
-        createdByDisplayName:
-          type: string
-          description: The formatted name [firstName lastName] of the note's author.
-          readOnly: true
-        createdByUserId:
-          type: string
-          readOnly: true
-        createdDate:
-          type: string
-          format: date-time
-          readOnly: true
-        lastModifiedByUserId:
-          type: string
-          readOnly: true
-        lastModifiedDate:
-          type: string
-          format: date-time
-          readOnly: true
+          $ref: '#/components/schemas/CallStatus'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
+x-refined-from:
+- lithium-care-listening-api-v2-openapi.json
+- lithium-flow-flow-rest-api-openapi.json
+- lithium-marketing-conversations-api-v1-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

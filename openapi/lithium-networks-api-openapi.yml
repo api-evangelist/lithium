@@ -1,9 +1,18 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Networks API
+  title: Lithium Networks API
   version: '1.1'
+  description: 'Operations tagged Networks across 3 of this provider''s published API definitions: lithium-care-author-api-v2-openapi.json, lithium-care-bot-api-v2-openapi.json, lithium-care-conversation-api-v2-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{instance}.response.lithium.com/api/v2/authors
+  variables:
+    instance:
+      default: instance
+- url: https://{instance}.response.lithium.com/api/v2/bots
+  variables:
+    instance:
+      default: instance
+- url: https://{instance}.response.lithium.com/api/v2/conversations
   variables:
     instance:
       default: instance
@@ -251,6 +260,11 @@ paths:
         - http
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/ids/{networkid}:
     get:
       summary: Get author by source network ID per instance
@@ -458,6 +472,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/handles/{networkhandle}:
     get:
       summary: Get author(s) by network handle
@@ -676,6 +695,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}:
     get:
       summary: Get author(s) by network handle and instance
@@ -823,6 +847,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/ids/{networkid}/conversations:
     get:
       summary: Get conversation IDs by author, network ID, and day
@@ -898,6 +927,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/ids/{networkid}/conversations:
     get:
       summary: Get conversation IDs by author network ID, instance, and day
@@ -977,6 +1011,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/handles/{networkhandle}/conversations:
     get:
       summary: Get conversation IDs by author network handle and network
@@ -1051,6 +1090,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/handles/{networkhandle}/conversations:
     get:
       summary: Get conversation IDs by author network handle and instance
@@ -1132,6 +1176,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/ids/{networkid}/split:
     post:
       summary: Remove Person attributes by network ID and instance
@@ -1178,6 +1227,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/networktype/ids/networkid/conversations/reactivate:
     put:
       summary: Reactivate author conversations
@@ -1247,6 +1301,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/ids/{networkId}/conversations/reactivate:
     put:
       summary: Reactivate instance author conversations
@@ -1322,6 +1381,11 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/authors
+      variables:
+        instance:
+          default: instance
   /networks/{networkType}/registrations:
     get:
       summary: Get bot registration details
@@ -1661,6 +1725,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/bots
+      variables:
+        instance:
+          default: instance
   /networks/{networkType}/allRegistrations:
     get:
       summary: Get registrations by external ID
@@ -1739,6 +1808,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/bots
+      variables:
+        instance:
+          default: instance
   /networks/{networkType}/authors/{authorId}/handoff:
     put:
       summary: Hand conversation to Care agent
@@ -1806,6 +1880,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/bots
+      variables:
+        instance:
+          default: instance
   /networks/{networkType}/authors/{authorId}/resolve:
     put:
       summary: Mark conversation resolved for bot
@@ -1858,6 +1937,11 @@ paths:
       security: []
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/bots
+      variables:
+        instance:
+          default: instance
   /networks/{networktype}/instances/{networkinstance}/ids/{authorID}:
     get:
       summary: Get conversation IDs by author and date
@@ -1931,6 +2015,15 @@ paths:
         - curl
       tags:
       - Networks
+    servers:
+    - url: https://{instance}.response.lithium.com/api/v2/conversations
+      variables:
+        instance:
+          default: instance
+x-refined-from:
+- lithium-care-author-api-v2-openapi.json
+- lithium-care-bot-api-v2-openapi.json
+- lithium-care-conversation-api-v2-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

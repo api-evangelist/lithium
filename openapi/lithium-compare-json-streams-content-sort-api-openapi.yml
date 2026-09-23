@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Compare.json?streams={content}&sort API
+  title: stream-api Compare.json?streams={content}&sort API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.massrelevance.com
 security:
-- {}
+- sec0: []
 tags:
 - name: Compare.json?streams={content}&sort
 paths:
@@ -102,8 +99,16 @@ paths:
       security: []
       tags:
       - Compare.json?streams={content}&sort
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

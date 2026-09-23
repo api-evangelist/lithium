@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Data API
+  title: notification-service Data API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.spredfast.com/v2/events
 security:
-- {}
+- sec0: []
 tags:
 - name: Data
 paths:
@@ -60,8 +57,16 @@ paths:
       security: []
       tags:
       - Data
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

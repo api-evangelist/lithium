@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Get Forms API
+  title: secure-forms-api-v2 Get Forms API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.app.lithium.com/engage/api/v2/secureForms
 security:
-- {}
+- sec0: []
 tags:
 - name: GetForms
 paths:
@@ -44,8 +41,13 @@ paths:
         - curl
       tags:
       - GetForms
+components:
+  securitySchemes:
+    sec0:
+      type: http
+      scheme: basic
 x-readme:
   headers: []
-  explorer-enabled: false
-  proxy-enabled: false
+  explorer-enabled: true
+  proxy-enabled: true
 x-readme-fauxas: true

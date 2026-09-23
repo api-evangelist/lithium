@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Reports API
+  title: analytics Reports API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://analytics-api.app.lithium.com/api/public
 security:
-- {}
+- sec0: []
 tags:
 - name: Reports
 paths:
@@ -2000,6 +1997,11 @@ paths:
         - curl
       tags:
       - Reports
+components:
+  securitySchemes:
+    sec0:
+      type: http
+      scheme: basic
 x-readme:
   headers: []
   explorer-enabled: false

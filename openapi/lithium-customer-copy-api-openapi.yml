@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Customer (COPY) Customer (COPY) API
+  title: api-specifications Customer (COPY) API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{your-domain}.com
   variables:
-    instance:
-      default: instance
+    your-domain:
+      default: your-domain
 security:
 - {}
 tags:

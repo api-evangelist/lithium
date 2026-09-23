@@ -1,16 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Businesshours API
-  version: '1.1'
+  title: flow-rest-api Businesshours API
+  version: '1.0'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.flow.ai/rest/v1/
 security:
 - {}
 tags:
-- name: Businesshours
+- name: Business Hours
 paths:
   /businesshours:
     get:
@@ -46,9 +43,9 @@ paths:
         samples-languages:
         - http
       tags:
-      - Businesshours
+      - Business Hours
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

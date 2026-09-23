@@ -1,14 +1,13 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Assets API
-  version: '1.1'
+  description: Welcome to the Spredfast Conversations API.
+  version: '1'
+  title: Conversations API V1 Assets API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
-security:
-- {}
+- url: https://api.spredfast.com
 tags:
 - name: Assets
 paths:
@@ -16,7 +15,7 @@ paths:
     post:
       tags:
       - Assets
-      summary: Create a new Content Center Asset.
+      summary: Create a new Content Center Asset
       description: Create a new image/video Content Center Asset.
       operationId: createAsset
       parameters:
@@ -40,7 +39,7 @@ paths:
     post:
       tags:
       - Assets
-      summary: Create a new Content Center image/video Asset.
+      summary: Create a new Content Center image/video Asset
       description: Create a new image/video Content Center Asset.
       operationId: createMultiPartAsset
       parameters:
@@ -81,7 +80,7 @@ paths:
     get:
       tags:
       - Assets
-      summary: Retrieve a Content Center Asset based by asset ID.
+      summary: Retrieve a Content Center Asset based by asset ID
       description: Gets a Content Center Asset based by asset ID (including content labels information).
       operationId: findAsset
       parameters:
@@ -102,7 +101,7 @@ paths:
     put:
       tags:
       - Assets
-      summary: Update existing Content Center Asset.
+      summary: Update existing Content Center Asset
       description: Updates a Content Center Asset based on the JSON request body.
       operationId: updateAsset
       parameters:
@@ -139,59 +138,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResponseAsset'
 components:
-  parameters:
-    companyId:
-      name: companyId
-      in: path
-      required: true
-      schema:
-        type: string
-    environment:
-      in: path
-      required: true
-      name: environment
-      schema:
-        type: string
-        enum:
-        - Production
-        - VCP1
-        - APP3
-        - APP
   schemas:
-    EntityResponseAsset:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Asset'
-        status:
-          $ref: '#/components/schemas/CallStatus'
-    AssetCreate:
-      type: object
-      required:
-      - sfEntityType
-      - folderId
-      properties:
-        folderId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        text:
-          type: string
-        sfEntityType:
-          type: string
-          enum:
-          - Asset
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
     ApiError:
       type: object
       properties:
@@ -323,6 +270,15 @@ components:
         description: Cool new Asset!
         text: Text body.
         sfEntityType: Asset
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
     AssetCreateMultipart:
       type: object
       description: JSON describing the uploaded file.
@@ -342,8 +298,59 @@ components:
           type: string
           enum:
           - Asset
+    AssetCreate:
+      type: object
+      required:
+      - sfEntityType
+      - folderId
+      properties:
+        folderId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        text:
+          type: string
+        sfEntityType:
+          type: string
+          enum:
+          - Asset
+    EntityResponseAsset:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Asset'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+    environment:
+      in: path
+      required: true
+      name: environment
+      schema:
+        type: string
+        enum:
+        - Production
+        - VCP1
+        - APP3
+        - APP
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
 x-readme:
-  headers: []
   explorer-enabled: false
   proxy-enabled: false
-x-readme-fauxas: true
+  samples-enabled: true

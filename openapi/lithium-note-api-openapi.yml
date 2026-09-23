@@ -1,12 +1,9 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Note API
+  title: bot-api-v3 Note API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
-  variables:
-    instance:
-      default: instance
+- url: https://api.app.lithium.com/bots/v3
 security:
 - {}
 tags:
@@ -53,7 +50,11 @@ paths:
       tags:
       - Note
 x-readme:
-  headers: []
+  headers:
+  - key: Authorization
+    value: Bearer [TOKEN]
+  - key: Content-type
+    value: application/json; charset=utf-8
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true

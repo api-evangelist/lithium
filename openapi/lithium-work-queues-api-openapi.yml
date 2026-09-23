@@ -1,21 +1,21 @@
 openapi: 3.2.0
 info:
-  title: agent-states-api-v2 AccountSet Workqueues API
+  title: work-queue-api-v1 Workqueues API
   version: '1.1'
 servers:
-- url: https://{instance}.response.lithium.com/api/v2/agentstate
+- url: https://{instance}.response.lithium.com/api/v1/
   variables:
     instance:
       default: instance
 security:
 - {}
 tags:
-- name: Workqueues
+- name: Work Queues
 paths:
   /workqueues:
     get:
       summary: Get work queues details
-      description: Returns details about work queues in  Care
+      description: Returns details about work queues in Care
       operationId: workqueues
       responses:
         '200':
@@ -66,9 +66,9 @@ paths:
         samples-languages:
         - curl
       tags:
-      - Workqueues
+      - Work Queues
 x-readme:
   headers: []
   explorer-enabled: false
-  proxy-enabled: false
+  proxy-enabled: true
 x-readme-fauxas: true
