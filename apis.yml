@@ -1713,6 +1713,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VendorFacets
+  url: vendor-facets/khoros-ai-vendor-facets.yml
 - type: Community
   url: https://community.khoros.com/
 - type: BlogRSS
